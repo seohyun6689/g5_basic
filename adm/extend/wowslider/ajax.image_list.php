@@ -10,11 +10,10 @@ if ( !isset($ws_id) )
 	die( urldecode( json_encode( $error ) ) );
 }
 
-$sql = "select * from {$g5['ws_images_table']} where ws_id = '{$ws_id}' order by wsi_id asc";
+$sql = "select * from {$g5['ws_images_table']} where ws_id = '{$ws_id}' order by wsi_sortable asc";
 $result = sql_query( $sql );
 while ( $row = mysql_fetch_assoc($result) )
 {
-// 	$row['wsi_title'] = urlencode( $row['wsi_title'] );
 	$rows[] = $row;
 }
 
