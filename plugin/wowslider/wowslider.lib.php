@@ -27,7 +27,7 @@ function wowslider( $ws_id, $style=null, $script=null)
 		add_stylesheet( '<link rel="stylesheet" href="' . sprintf( G5_WS_ENGINE_URL, $ws_id ) . '/style.css">', 0 );
 	}
 	
-	$images_sql = "select * from `{$g5['ws_images_table']}` where ws_id = '{$ws['ws_id']}' and wsi_disable != 'Y' order by wsi_id asc";
+	$images_sql = "select * from `{$g5['ws_images_table']}` where ws_id = '{$ws['ws_id']}' and wsi_disable != 'Y' order by wsi_sortable asc";
 	$result = sql_query( $images_sql );
 	$images = array();
 	$index = 0;
