@@ -1,0 +1,13 @@
+#wowslider-container$GallerySuffix$ a.ws_next,
+#wowslider-container$GallerySuffix$ a.ws_prev,
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	display:none;
+}
+
+* html #wowslider-container$GallerySuffix$ a.ws_next,* html #wowslider-container$GallerySuffix$ a.ws_prev{display:block}
+
+#wowslider-container$GallerySuffix$:hover a.ws_next,
+#wowslider-container$GallerySuffix$:hover a.ws_prev,
+#wowslider-container$GallerySuffix$:hover .ws_playpause {
+	display:block
+}

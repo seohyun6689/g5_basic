@@ -1,0 +1,88 @@
+#wowslider-container$GallerySuffix$  .ws_bullets { 
+	padding: 5px 0; 
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a { 
+	width: 20px;
+	height: 20px;
+
+	background-image: url(./bullet.png);
+	float: left; 
+	text-indent: -4000px; 
+	position:relative;
+	margin-left:0px;
+	color:transparent;
+	background-size: 100%;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a:hover, #wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull{
+	background-position: 0 100%;
+}
+#wowslider-container$GallerySuffix$ a.ws_next, #wowslider-container$GallerySuffix$ a.ws_prev {
+	position:absolute;
+	top:50%;
+	margin-top:-1.1em;
+	z-index:60;
+	width: 2.2em;	
+	height: 2.2em;
+	background-image: url(./arrows.png);
+	background-size: 200%;
+	opacity: 0.7;
+}
+#wowslider-container$GallerySuffix$ a.ws_next{
+	background-position: 0 0; 
+	right:10px;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	background-position: 100% 0;
+	left:10px;
+}
+#wowslider-container1 a.ws_next:hover{
+	background-position: 0 100%; 
+	opacity: 1;
+}
+#wowslider-container1 a.ws_prev:hover{
+	background-position: 100% 100%;
+	opacity: 1;
+}
+
+/*playpause*/
+#wowslider-container$GallerySuffix$ .ws_playpause {
+    width: 2.4em;
+    height: 2.4em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -1.2em;
+    margin-top: -1.2em;
+    z-index: 59;
+	background-size: 100%;
+	opacity: 0.5;
+}
+
+#wowslider-container$GallerySuffix$ .ws_pause {
+    background-image: url(./pause.png);
+	background-position: 0 0; 
+    opacity: 0.5;
+}
+
+#wowslider-container$GallerySuffix$ .ws_play {
+    background-image: url(./play.png);
+	background-position: 0 0; 
+    opacity: 0.5;
+}
+
+#wowslider-container$GallerySuffix$ .ws_pause:hover {
+	background-position: 0 100%; 
+    opacity: 1;
+}
+#wowslider-container1 .ws_play:hover {
+	background-position: 0 100%; 
+    opacity: 1;
+}
+
+#wowslider-container$GallerySuffix$,
+#wowslider-container$GallerySuffix$ .ws_effect,
+#wowslider-container$GallerySuffix$ .ws_images img {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}

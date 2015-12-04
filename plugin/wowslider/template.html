@@ -1,0 +1,16 @@
+<div id="wowslider-container-<?php echo $ws_id; ?>">
+	<div class="ws_images">
+		<ul>
+<?php foreach ( $images as $index => $image ) : ?>			
+			<li>
+				<?php echo $image['image']; ?>
+			</li>
+<?php endforeach; ?>			
+		</ul>
+	</div>
+	<?php echo $ws_bullets; ?>
+	<?php echo $ws_shadow; ?>
+</div>	
+
+<script src="<?php echo sprintf( G5_WS_ENGINE_URL, $ws_id ); ?>/wowslider.js"></script>
+<script src="<?php echo sprintf( G5_WS_ENGINE_URL, $ws_id ); ?>/script.js"></script>

@@ -1,0 +1,26 @@
+#wowslider-container$GallerySuffix$ .ws-title{
+	position:absolute;
+	display:block;
+	font: $TemplateFontSize$ $fontFamily$;
+	bottom: -0.2em;
+	left: 0; 
+	margin:1.8em 0.7em;
+	padding:0.6em 0.5em;
+	color:#777777;
+	z-index: 50;
+	line-height: 1em;
+	text-transform: uppercase;
+	color: $TemplateColor$;
+	
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 0.05em solid $TemplateColor$;
+    border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+}
+#wowslider-container$GallerySuffix$ .ws-title div{
+	margin-top: 0.3em;
+	font-size: 0.8em;
+	line-height: 1.15em;
+	font-weight: normal;
+}

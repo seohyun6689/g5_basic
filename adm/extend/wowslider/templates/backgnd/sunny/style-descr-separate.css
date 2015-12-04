@@ -1,0 +1,40 @@
+#wowslider-container$GallerySuffix$ .ws-title{
+	position: absolute;
+    font: $TemplateFontSize$ $fontFamily$;
+	bottom:1.35em;
+	left: 0;
+	margin: 0 0.2em 0.8em 0;
+	z-index: 50;
+	color: $TemplateColor$;
+	font-weight: bold;	
+}
+#wowslider-container$GallerySuffix$ .ws-title div,#wowslider-container$GallerySuffix$ .ws-title span{
+	display:inline-block;
+	background-color:#E3D84B;	
+	border: 0.05em solid #E0D335;	
+	border-radius:0 0.2em 0.2em 0;	
+	-moz-border-radius:0 0.2em 0.2em 0;
+ 	-webkit-border-radius:0 0.2em 0.2em 0;
+	opacity:0.8;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);	
+	box-shadow: 0 0.05em 0 rgba(255, 255, 255, 0.2) inset;
+	-moz-box-shadow: 0 0.05em 0 rgba(255, 255, 255, 0.2) inset;
+	-webkit-box-shadow: 0 0.05em 0 rgba(255, 255, 255, 0.2) inset;
+}
+#wowslider-container$GallerySuffix$ .ws-title div{
+	padding:0.6em;
+	line-height: 1.15em;
+	display:block;
+	margin-top:0.5em;
+	font-size: 0.6em;
+	font-weight: normal;
+	background-color:#fcfae8;
+	border: 0.05em solid #f9f5d2;	
+	box-shadow: 0 0.05em 0 rgba(215, 215, 215, 0.2) inset;
+	-moz-box-shadow: 0 0.05em 0 rgba(215, 215, 215, 0.2) inset;
+	-webkit-box-shadow: 0 0.05em 0 rgba(215, 215, 215, 0.2) inset;	
+}
+#wowslider-container$GallerySuffix$ .ws-title span{
+	padding:0.35em;
+	line-height: 1.1em;
+}

@@ -1,0 +1,15 @@
+#wowslider-container$GallerySuffix$ .ws_thumbs  a{
+	opacity:1;
+	background-color: #E5E5E5;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+	-webkit-transition: box-shadow 0.5s cubic-bezier(0.35, 0, 0.25, 1), background-color 0.5s cubic-bezier(0.35, 0, 0.25, 1), -webkit-transform 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+	transition: box-shadow 0.5s cubic-bezier(0.35, 0, 0.25, 1), background-color 0.5s cubic-bezier(0.35, 0, 0.25, 1), transform 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+}
+
+#wowslider-container$GallerySuffix$ .ws_thumbs a.ws_selthumb{
+	background-color: #ddd;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+	-webkit-transform: translate3d(0, -1px, 0);
+	transform: translate3d(0, -1px, 0);
+}

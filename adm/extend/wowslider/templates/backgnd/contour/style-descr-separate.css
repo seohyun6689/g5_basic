@@ -1,0 +1,39 @@
+#wowslider-container$GallerySuffix$ .ws-title{
+	position:absolute;
+	display:block;
+	font: $TemplateFontSize$ $fontFamily$;
+	bottom: 1.5em;
+	left: 0.5em;
+	margin-right:1em;
+	color:#444444;	
+	z-index: 50;
+	font-weight:bold;
+	line-height: 1em;
+	text-transform: uppercase;
+}
+#wowslider-container$GallerySuffix$ .ws-title div,#wowslider-container$GallerySuffix$ .ws-title span{
+	display:inline-block;
+	background: none;
+	padding:0.4em;
+	border:3px solid #444444;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+#wowslider-container$GallerySuffix$ .ws-title div{
+	display:block;
+	margin-top:0.3em;
+	font-size: 0.696em;
+	line-height: 1.3em;	
+}
+
+#wowslider-container$GallerySuffix$ .ws-title:hover span{
+	color: $TemplateColor$;
+	background-color:#66bcb6;
+	border:3px solid #66bcb6;
+}
+#wowslider-container$GallerySuffix$ .ws-title:hover div{
+	color: $TemplateColor$;
+	background-color:#66bcb6;
+	border:3px solid #66bcb6;
+}  

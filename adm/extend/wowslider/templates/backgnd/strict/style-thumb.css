@@ -1,0 +1,8 @@
+#wowslider-container$GallerySuffix$ .ws_thumbs a.ws_selthumb{
+    background-color: rgb(96,125,246);
+}
+
+#wowslider-container$GallerySuffix$ .ws_thumbs  a{
+    background-color: rgba(96,125,246,0.7);
+}
+

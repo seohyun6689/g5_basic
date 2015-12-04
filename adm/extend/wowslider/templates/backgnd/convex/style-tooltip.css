@@ -1,0 +1,37 @@
+#wowslider-container$GallerySuffix$ .ws_bullets  a img{
+	position:absolute;
+	display:block;
+	text-indent:0;
+	$TooltipPos$:15px;
+	left:-$ThumbWidthHalf$px;
+	visibility:hidden;
+	max-width:none;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a:hover img{
+	visibility:visible;
+}
+
+#wowslider-container$GallerySuffix$ .ws_bulframe div div{
+	height:$ThumbHeight$px;
+	overflow:visible;
+	position:relative;
+}
+#wowslider-container$GallerySuffix$ .ws_bulframe div {
+	left:0;
+	overflow:hidden;
+	position:relative;
+	width:$ThumbWidth$px;
+}
+#wowslider-container$GallerySuffix$  .ws_bullets .ws_bulframe{
+	position:absolute;
+	display:none;
+	$TooltipPos$:25px;
+	margin-left:8px;
+	cursor:pointer;
+
+	/* fixed bulframe hidding in Chrome */
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+}

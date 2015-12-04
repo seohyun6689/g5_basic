@@ -196,7 +196,7 @@ define('G5_THUMB_PNG_COMPRESS', 5);
 define('G5_IS_MOBILE_DHTML_USE', false);
 
 // MySQLi 사용여부를 설정합니다.
-define('G5_MYSQLI_USE', true);
+define('G5_MYSQLI_USE', false);
 
 // Browscap 사용여부를 설정합니다.
 define('G5_BROWSCAP_USE', true);

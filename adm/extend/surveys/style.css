@@ -1,0 +1,11 @@
+ul { list-style: none; margin: 0; padding: 0; }
+ol { margin: 0; padding: 0; }
+/* 설문조사 결과 */
+#surveys_result { }
+#surveys_result dl dt { font-size: 15px; font-weight: bold; margin: 10px 0; }
+#surveys_result dl dd {  }
+#surveys_result dl dd ul li {  }
+#surveys_result dl dd table { width: 100%; border-collapse: collapse; }
+#surveys_result dl dd table th { width: 120px; }
+#surveys_result dl dd table .result { width: 120px; text-align: center; }
+#surveys_result dl dd table .progress { height: 25px; line-height: 25px; background: #ccc;  }

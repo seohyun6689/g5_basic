@@ -1,0 +1,19 @@
+#wowslider-container$GallerySuffix$ .ws_images,
+#wowslider-container$GallerySuffix$ .ws_shadow {
+	margin-top: $thumbMarginHeightEm$em;
+}
+#wowslider-container$GallerySuffix$  .ws_thumbs {
+    position: absolute;
+    text-align: left;
+
+    top: 0;
+    left: 0;
+	width:100%;
+	height: $thumbFullHeightEm$em;
+}
+#wowslider-container$GallerySuffix$  .ws_thumbs div{
+	position:relative;
+	letter-spacing:-4px;
+	width:$thumbContWidthEm$em;
+	height: 100%;
+}

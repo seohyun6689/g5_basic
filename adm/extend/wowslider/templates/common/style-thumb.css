@@ -1,0 +1,29 @@
+#wowslider-container$GallerySuffix$  .ws_thumbs { 
+	overflow:auto;
+	z-index:60;
+}
+#wowslider-container$GallerySuffix$ .ws_thumbs img{
+	text-decoration: none;
+	border: 0;
+	width: 100%;
+}
+#wowslider-container$GallerySuffix$ .ws_thumbs a {
+	position:relative;
+	text-indent: -4000px; 
+	color:transparent;
+	opacity:0.85;
+	text-decoration: none;
+	display: inline-block;
+	border: 0;
+	margin:$thumbMargin$%;
+	text-indent:0;
+	padding: $thumbPadding$%;
+	width: $thumbOnePercent$%;
+	max-width: $ThumbWidth$px;
+}
+#wowslider-container$GallerySuffix$ .ws_thumbs a:hover{
+	opacity:1;
+}
+#wowslider-container$GallerySuffix$ .ws_thumbs a:hover img{
+	visibility:visible;
+}

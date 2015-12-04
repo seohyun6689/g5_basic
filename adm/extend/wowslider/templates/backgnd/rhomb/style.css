@@ -1,0 +1,118 @@
+/* bullets */
+#wowslider-container$GallerySuffix$  .ws_bullets { 
+	padding: 0px; 
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a { 
+	position:relative;
+	display: inline-block;
+	width: 0;
+	margin: 3px 6px;
+	padding: 8px;
+} 
+#wowslider-container$GallerySuffix$ .ws_bullets a > span {
+	position:absolute;
+	display: block;
+	top:0;
+	right: 0;
+	height:100%;
+	width:100%;
+	border-radius: 3px;
+	box-shadow: inset 0 0 0 2px #fff;
+
+	-webkit-transition: background 200ms ease-in-out, -webkit-transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+	transition: background 200ms ease-in-out, transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+}
+
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_overbull > span,
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull > span {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	background: $TemplateColor$;
+	box-shadow: inset 0 0 0 2px $TemplateColor$;
+}
+
+
+
+
+/* play/pause, arrows */
+#wowslider-container$GallerySuffix$ a.ws_next,
+#wowslider-container$GallerySuffix$ a.ws_prev,
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	position:absolute;
+	font: 2em "ws-ctrl-rhomb";
+	width: 2.9em;
+	height: 2.9em;
+	top:50%;
+	border-radius: 0.15em;
+	
+	margin-top: -1.25em;
+	color: #ffffff;
+	z-index: 100;
+
+	box-shadow: inset 0 0 0 2px #fff;
+
+	-webkit-transition: background 200ms ease-in-out, -webkit-transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+	transition: background 200ms ease-in-out, transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+}
+#wowslider-container$GallerySuffix$ a.ws_next {
+	right: 20px;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	left: 20px;
+}
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	left:50%;
+	margin-left:-1.25em;
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next:hover,
+#wowslider-container$GallerySuffix$ a.ws_prev:hover,
+#wowslider-container$GallerySuffix$ .ws_playpause:hover {
+	background: $TemplateColor$;
+	box-shadow: inset 0 0 0 2px $TemplateColor$;
+
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+
+#wowslider-container$GallerySuffix$ a.ws_next > span,
+#wowslider-container$GallerySuffix$ a.ws_prev > span,
+#wowslider-container$GallerySuffix$ .ws_playpause > span {
+	display: block;
+	-webkit-transition: -webkit-transform 200ms ease-in-out;
+	transition: transform 200ms ease-in-out, -webkit-transform 200ms ease-in-out;
+}
+#wowslider-container$GallerySuffix$ a.ws_next:hover > span,
+#wowslider-container$GallerySuffix$ a.ws_prev:hover > span,
+#wowslider-container$GallerySuffix$ .ws_playpause:hover > span {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next > span:before,
+#wowslider-container$GallerySuffix$ a.ws_prev > span:before,
+#wowslider-container$GallerySuffix$ .ws_playpause > span:before {
+	display: block;
+	text-align: center;
+	line-height: 2.9em;
+	line-height: 3.2em\9; /* ie9 hack */
+	height:100%;
+}
+/* IE10+ hacks */
+_:-ms-input-placeholder, :root #wowslider-container$GallerySuffix$ a.ws_next > span:before {line-height: 3.2em;}
+_:-ms-input-placeholder, :root #wowslider-container$GallerySuffix$ a.ws_prev > span:before {line-height: 3.2em;}
+_:-ms-input-placeholder, :root #wowslider-container$GallerySuffix$ a.ws_playpause > span:before {line-height: 3.2em;}
+
+#wowslider-container$GallerySuffix$ .ws_play > span:before {
+	content:"\e800";
+}
+#wowslider-container$GallerySuffix$ .ws_pause > span:before {
+	content:"\e801";
+}
+#wowslider-container$GallerySuffix$ a.ws_next > span:before {
+	content:'\e803';
+}
+#wowslider-container$GallerySuffix$ a.ws_prev > span:before {
+	content:'\e802';
+}

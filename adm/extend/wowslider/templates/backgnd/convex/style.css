@@ -1,0 +1,152 @@
+/* bullets */
+#wowslider-container$GallerySuffix$  .ws_bullets { 
+	padding: 0px; 
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a { 
+	position:relative;
+	display: inline-block;
+	width: 0;
+	margin: 3px 5px;
+	padding: 8px;	
+
+	-webkit-perspective: 80px;
+	perspective: 80px;
+} 
+#wowslider-container$GallerySuffix$ .ws_bullets a > span {
+	position:absolute;
+	display: block;
+	top:0;
+	right: 0;
+	height:100%;
+	width:100%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-transition: -webkit-transform 0.5s ease;
+  	transition: -webkit-transform 0.5s ease, transform 0.5s ease;
+}
+
+#wowslider-container$GallerySuffix$ .ws_bullets a > span:before,
+#wowslider-container$GallerySuffix$ .ws_bullets a > span:after {
+	content: '';
+	display: block;
+	height:100%;
+	background: $TemplateColor$;
+
+  	-webkit-transform: rotateX(-90deg) translateZ(-8px) translateY(8px);
+  	transform: rotateX(-90deg) translateZ(-8px) translateY(8px);
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a > span:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  	background: #1A2223;
+  	-webkit-transform: rotateX(0deg);
+  	transform: rotateX(0deg);
+}
+
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_overbull > span,
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull > span {
+    -webkit-transform: rotateX(-90deg) translateZ(8px) translateY(8px);
+    transform: rotateX(-90deg) translateZ(8px) translateY(8px);
+}
+
+
+
+
+/* play/pause, arrows */
+#wowslider-container$GallerySuffix$ a.ws_next,
+#wowslider-container$GallerySuffix$ a.ws_prev,
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	position:absolute;
+	font: 2em "ws-ctrl-convex";
+	width: 2.5em;
+	height: 2.5em;
+	top:50%;
+	
+	margin-top: -1.25em;
+	color: #ffffff;
+	z-index: 100;
+
+	-webkit-perspective: 20em;
+	perspective: 20em;
+}
+#wowslider-container$GallerySuffix$ a.ws_next {
+	right: 0;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	left: 0;
+}
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	left:50%;
+	margin-left:-1.25em;
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next > span,
+#wowslider-container$GallerySuffix$ a.ws_prev > span,
+#wowslider-container$GallerySuffix$ .ws_playpause > span,
+#wowslider-container$GallerySuffix$ .ws_bullets a > span {
+	display: block;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-transition: -webkit-transform 0.5s ease;
+  	transition: -webkit-transform 0.5s ease, transform 0.5s ease;
+}
+
+
+#wowslider-container$GallerySuffix$ a.ws_next > span:before,
+#wowslider-container$GallerySuffix$ a.ws_prev > span:before,
+#wowslider-container$GallerySuffix$ .ws_playpause > span:before,
+#wowslider-container$GallerySuffix$ a.ws_next > span:after,
+#wowslider-container$GallerySuffix$ a.ws_prev > span:after,
+#wowslider-container$GallerySuffix$ .ws_playpause > span:after {
+	display: block;
+	text-align: center;
+	line-height: 2.5em;
+	height:100%;
+	background: $TemplateColor$;
+	color: #1A2223;
+
+  	-webkit-transform: rotateX(-90deg) translateZ(-1.25em) translateY(1.25em);
+  	transform: rotateX(-90deg) translateZ(-1.25em) translateY(1.25em);
+}
+#wowslider-container$GallerySuffix$ .ws_play > span:before,
+#wowslider-container$GallerySuffix$ .ws_play > span:after{
+	content:"\e800";
+}
+#wowslider-container$GallerySuffix$ .ws_pause > span:before,
+#wowslider-container$GallerySuffix$ .ws_pause > span:after{
+	content:"\e801";
+}
+#wowslider-container$GallerySuffix$ a.ws_next > span:before,
+#wowslider-container$GallerySuffix$ a.ws_next > span:after {
+	content:'\e803';
+}
+#wowslider-container$GallerySuffix$ a.ws_prev > span:before,
+#wowslider-container$GallerySuffix$ a.ws_prev > span:after {
+	content:'\e802';
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next > span:after,
+#wowslider-container$GallerySuffix$ a.ws_prev > span:after,
+#wowslider-container$GallerySuffix$ .ws_playpause > span:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  	-webkit-transform: rotateX(0deg);
+  	transform: rotateX(0deg);
+  	background: #1A2223;
+	color: $TemplateColor$;
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next:hover > span,
+#wowslider-container$GallerySuffix$ a.ws_prev:hover > span,
+#wowslider-container$GallerySuffix$ .ws_playpause:hover > span {
+    -webkit-transform: rotateX(-90deg) translateZ(1.25em) translateY(1.25em);
+    transform: rotateX(-90deg) translateZ(1.25em) translateY(1.25em);
+}

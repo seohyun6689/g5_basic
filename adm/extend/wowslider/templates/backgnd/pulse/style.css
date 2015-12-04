@@ -1,0 +1,72 @@
+
+/* Navigation arrows for preview mode */
+#wowslider-container$GallerySuffix$ a.ws_next, #wowslider-container$GallerySuffix$ a.ws_prev{
+	position:absolute;
+	top:50%;
+	width:5.6em;
+	height:5.6em;
+	margin:-2.8em 0 0 0;
+	z-index:60;
+	cursor:pointer;
+    -moz-border-radius:1em;
+    -webkit-border-radius:1em;
+    border-radius:1em;
+	opacity:0.6;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);	
+}
+#wowslider-container$GallerySuffix$ a.ws_next{
+	right:2%;
+	background:#000 url(./next_photo.png) no-repeat 50% 50%;
+	background-size: 100%;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev{
+	left:2%;
+	background:#000 url(./prev_photo.png) no-repeat 50% 50%;
+	background-size: 100%;
+}
+#wowslider-container$GallerySuffix$ a.ws_next:hover, #wowslider-container$GallerySuffix$ a.ws_prev:hover{
+	opacity:0.8;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80);	
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a {
+	position:relative;
+	background:url("bullet.png") no-repeat scroll 0 0 transparent;
+	border:0 none;
+	float:left;
+	cursor:pointer;
+	height:10px;
+	margin-right:4px;
+	text-indent:-9999px;
+	width:10px;
+	z-index:100;
+	outline:none;
+	color:transparent;
+}
+#wowslider-container$GallerySuffix$ a.ws_selbull,#wowslider-container$GallerySuffix$ a.ws_overbull,#wowslider-container$GallerySuffix$ .ws_bullets a:hover{
+	background-position:100% 0;
+}
+
+/*playpause*/
+#wowslider-container$GallerySuffix$ .ws_playpause {
+    width: 4.8em;
+    height: 4.8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -2.4em;
+    margin-top: -2.4em;
+    z-index: 59;
+	background-size: 100%;
+}
+
+#wowslider-container$GallerySuffix$ .ws_pause {
+    background-image: url(./pause.png);
+}
+
+#wowslider-container$GallerySuffix$ .ws_play {
+    background-image: url(./play.png);
+}
+
+#wowslider-container$GallerySuffix$ .ws_pause:hover, #wowslider-container1 .ws_play:hover {
+    background-position: 100% 100% !important;
+}

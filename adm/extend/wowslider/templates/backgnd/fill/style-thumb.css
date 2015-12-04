@@ -1,0 +1,15 @@
+#wowslider-container$GallerySuffix$ .ws_thumbs {
+	background: $TemplateColor$;
+}
+#wowslider-container$GallerySuffix$ .ws_thumbs a.ws_selthumb{
+	outline-color: #000;
+	outline-style: solid;
+	outline-width: $thumbPadding$%;
+	opacity:1;
+}
+
+#wowslider-container$GallerySuffix$ .ws_thumbs  a{
+	opacity:0.6;
+	background-color: #000;
+}
+

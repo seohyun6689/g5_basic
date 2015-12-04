@@ -1,0 +1,16 @@
+#wowslider-container$GallerySuffix$ .ws_bulframe div div{
+	height: auto;
+}
+
+@media all and (max-width:760px) {
+	#wowslider-container$GallerySuffix$ .ws_fullscreen {
+		display: block;
+	}
+}
+@media all and (max-width:400px){
+	#wowslider-container$GallerySuffix$ .ws_controls,
+	#wowslider-container$GallerySuffix$ .ws_bullets,
+	#wowslider-container$GallerySuffix$ .ws_thumbs{
+		display: none
+	}
+}

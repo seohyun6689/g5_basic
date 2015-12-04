@@ -1,0 +1,19 @@
+#wowslider-container$GallerySuffix$ .ws_shadow{
+	background: url(./shadow.png) left 100%;
+	background-repeat: no-repeat;
+	background-size:100%;
+	position: absolute;
+	left:$frameL$%;
+	top:$frameT$%;
+	width:$frameW$%;
+	height:$frameH$%;
+	z-index:-1;
+}
+* html #wowslider-container$GallerySuffix$ .ws_shadow{/*ie6*/
+	background:none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader( src='$ImgPath$shadow.png', sizingMethod='scale');
+}
+*+html #wowslider-container$GallerySuffix$ .ws_shadow{/*ie7*/
+	background:none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader( src='$ImgPath$shadow.png', sizingMethod='scale');
+}

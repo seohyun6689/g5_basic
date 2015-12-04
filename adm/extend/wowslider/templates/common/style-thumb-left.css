@@ -1,0 +1,22 @@
+#wowslider-container$GallerySuffix$ .ws_images {
+	margin-left: $thumbMarginWidthEm$em;
+}
+#wowslider-container$GallerySuffix$ div.ws_shadow {
+	left: $thumbMarginWidthEm$em;
+	right: -$frameL$%;
+	margin-left: -$frameL$%;
+	width: auto;
+}
+#wowslider-container$GallerySuffix$ .ws_thumbs {
+    position: absolute;
+    text-align: left;
+
+    top: 0;
+    left: 0;
+	width:$thumbFullWidthEm$em;
+	height:100%;
+}
+#wowslider-container$GallerySuffix$  .ws_thumbs div{
+	position:relative;
+	width:100%;
+}

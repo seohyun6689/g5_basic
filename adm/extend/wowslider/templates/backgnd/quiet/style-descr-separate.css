@@ -1,0 +1,35 @@
+#wowslider-container$GallerySuffix$ .ws-title{
+	position:absolute;
+	display:block;
+	font: $TemplateFontSize$ $fontFamily$;
+	bottom: 10%;
+	left: 7%;
+	margin: 0.3em;
+	z-index: 50;
+	color: $TemplateColor$;
+	text-shadow: 0.04em 0.04em 0.04em #BBBBBB;
+}
+#wowslider-container$GallerySuffix$ .ws-title div,#wowslider-container$GallerySuffix$ .ws-title span{
+	display:inline-block;
+	padding:0.5em;
+	background:#fff;
+	border-radius:0.25em;
+	-moz-border-radius:0.25em;
+	-webkit-border-radius:0.25em;
+	opacity:0.5;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);	
+}
+#wowslider-container$GallerySuffix$ .ws-title div{
+	display:block;
+	background:#666666;
+	margin-top:0.5em;
+	font-size: 0.833em;
+	color: #FFFFFF;
+	opacity:0.8;
+	text-shadow: 0.05em 0.05em 0.05em $TemplateColor$;
+	padding:0.4em;
+}
+#wowslider-container$GallerySuffix$ .ws-title span{
+	line-height: 1.5em;
+	padding:0.3em;
+}

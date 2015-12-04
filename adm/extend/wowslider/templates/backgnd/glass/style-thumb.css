@@ -1,0 +1,10 @@
+#wowslider-container$GallerySuffix$ .ws_thumbs a.ws_selthumb{
+	opacity: 1;
+}
+
+#wowslider-container$GallerySuffix$ .ws_thumbs  a{
+    background-color:#FFFFFF;
+	opacity: 0.5;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); 
+}
+

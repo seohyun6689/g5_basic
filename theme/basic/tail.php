@@ -6,7 +6,7 @@ if (G5_IS_MOBILE) {
     return;
 }
 ?>
-
+		<?php echo $lnb->display_tail(); ?>
     </div>
 </div>
 

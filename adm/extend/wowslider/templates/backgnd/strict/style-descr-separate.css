@@ -1,0 +1,24 @@
+#wowslider-container$GallerySuffix$ .ws-title{
+	position:absolute;
+	display:block;
+	font: $TemplateFontSize$ $fontFamily$;
+	bottom: 1.6em;
+	left: 0;
+	margin-right:0.5em;
+	color:$TemplateColor$;	
+	z-index: 50;
+	line-height: 1em;
+	text-transform: none;
+}
+#wowslider-container$GallerySuffix$ .ws-title div,#wowslider-container$GallerySuffix$ .ws-title span{
+	display:inline-block;
+	background-color: rgba(96,125,246,0.7);
+	padding:0.4em;
+	opacity:1;
+}
+#wowslider-container$GallerySuffix$ .ws-title div{
+	display:block;
+	margin-top:0.3em;
+	font-size: 0.692em;
+	line-height: 1.3em;
+}

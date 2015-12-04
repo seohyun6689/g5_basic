@@ -1,0 +1,21 @@
+[
+	{
+		"name": "none",
+		"alias": "none"
+	}, {
+		"name": "Move",
+		"alias": "move"
+	}, {
+		"name": "Fade",
+		"alias": "fade"
+	}, {
+		"name": "Parallax",
+		"alias": "parallax"
+	}, {
+		"name": "Slide",
+		"alias": "slide"
+	}, {
+		"name": "Traces",
+		"alias": "traces"
+	}
+]

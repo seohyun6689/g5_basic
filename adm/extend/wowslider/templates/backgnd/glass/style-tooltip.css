@@ -1,0 +1,45 @@
+#wowslider-container$GallerySuffix$ .ws_bullets  a img{
+	text-indent:0;
+	display:block;
+	$TooltipPos$:15px;
+	left:-$ThumbWidthHalf$px;
+	visibility:hidden;
+	position:absolute;
+    border: 2px solid #FFFFFF;
+	border-radius:0px;
+	max-width:none;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a:hover img{
+	visibility:visible;
+}
+
+#wowslider-container$GallerySuffix$ .ws_bulframe div div{
+	height:$ThumbHeight$px;
+	overflow:visible;
+	position:relative;
+}
+#wowslider-container$GallerySuffix$ .ws_bulframe div {
+	left:0;
+	overflow:hidden;
+	position:relative;
+	width:$ThumbWidth$px;
+	background-color:#FFFFFF;
+}
+#wowslider-container$GallerySuffix$  .ws_bullets .ws_bulframe{
+	display:none;
+	overflow:visible;
+	position:absolute;
+	cursor:pointer;
+    border: 2px solid #FFFFFF;
+	border-radius:0px;
+}
+#wowslider-container$GallerySuffix$ .ws_bulframe span{
+	display:block;
+	position:absolute;
+	$TooltipPos$:-9px;
+	margin-left:-2px;
+	left:$ThumbWidthHalf$px;
+	background:url(./triangle.png);
+	width:15px;
+	height:8px;
+}

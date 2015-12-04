@@ -1,0 +1,96 @@
+
+#wowslider-container$GallerySuffix$  .ws_bullets { 
+	padding: 5px; 
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a { 
+	width:40px;
+	height:8px;
+	background: none;
+	border: 1px solid $TemplateColor$;
+	float: left; 
+	text-indent: -9999px; 
+	position:relative;
+	margin-left:8px;
+	margin-top: 5px;
+	color:transparent;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull, #wowslider-container$GallerySuffix$ .ws_bullets a:hover{
+	outline:  1px solid $TemplateColor$;
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next, #wowslider-container$GallerySuffix$ a.ws_prev {
+	position:absolute;
+	z-index:60;
+	height: 4em;
+	width: 4em;
+	background: none;
+	border-style: solid;
+	border-color: $TemplateColor$;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+	background-size: 200%;
+}
+#wowslider-container$GallerySuffix$ a.ws_next{
+	border-width: 1px 1px 0 0;
+	top:5em;
+	right:5em;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	border-width: 0 0 1px 1px;
+	right:5em;
+	bottom:5em;
+}
+#wowslider-container$GallerySuffix$ a.ws_next:hover{
+	border-width: 2px 2px 0 0;
+	margin: -0.5em -0.5em 0 0;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev:hover {
+	border-width: 0 0 2px 2px;
+	margin: 0 0.5em -0.5em 0;
+}
+
+/*playpause*/
+#wowslider-container$GallerySuffix$ .ws_playpause {
+    position: absolute;
+    top: 50%;
+	margin-top:-2em;
+    right: 6em;
+    z-index: 59;
+}
+#wowslider-container$GallerySuffix$:hover .ws_playpause {
+	-webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+	background-size: 100%;
+}
+#wowslider-container$GallerySuffix$ .ws_pause {
+    width: 1em;
+    height: 4em;
+	border-style:solid;
+	border-width:0 1px;
+	border-color: $TemplateColor$;	
+}
+#wowslider-container$GallerySuffix$ .ws_pause:hover {
+	width: 1.5em;
+    height: 5em;
+	border-width: 0 2px;
+	margin-right:-0.5em;
+}
+#wowslider-container$GallerySuffix$ .ws_play {
+    width: 3em;
+    height: 3em;
+    border-style:solid;
+	border-width:1px 1px 0 0;
+	border-color: $TemplateColor$;
+	-webkit-transform:rotate(45deg);
+	   -moz-transform:rotate(45deg);
+		 -o-transform:rotate(45deg);
+			transform:rotate(45deg);
+}
+#wowslider-container$GallerySuffix$ .ws_play:hover {
+	border-width: 2px 2px 0 0;
+	margin-right:-0.5em;
+}

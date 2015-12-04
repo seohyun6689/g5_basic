@@ -1,0 +1,227 @@
+#wowslider-container$GallerySuffix$ .ws_bullets a { 
+	position:relative;
+	display: inline-block;
+	margin: 4px 10px;
+	padding: 7px;
+	width: 0;
+	-webkit-box-shadow: 0 0 0 2px #fff;
+	-moz-box-shadow: 0 0 0 2px #fff;
+	box-shadow: 0 0 0 2px #fff;
+	
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a:hover:after{
+	background-color: $TemplateColor$;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull, #wowslider-container$GallerySuffix$ .ws_bullets a:hover{
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+	-moz-box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+	box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull:after,
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_overbull:after{
+	position: absolute;
+	content:'';
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $TemplateColor$;
+
+	border-radius: 50%;
+	
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	
+	-webkit-transform:scale(0.4);
+	-moz-transform:scale(0.4);
+	-o-transform:scale(0.4);
+	transform:scale(0.4);	
+}
+@-webkit-keyframes nextArrow {
+	49% { -webkit-transform: translate(100%); }
+	50% { opacity: 0; -webkit-transform: translate(-100%); }
+	51% { opacity: 1; }
+}
+@-moz-keyframes nextArrow {
+	49% { -moz-transform: translate(100%); }
+	50% { opacity: 0; -moz-transform: translate(-100%); }
+	51% { opacity: 1; }
+}
+@keyframes nextArrow {
+	49% { transform: translate(100%); }
+	50% { opacity: 0; transform: translate(-100%); }
+	51% { opacity: 1; }
+}
+
+@-webkit-keyframes prevArrow {
+	49% { -webkit-transform: translate(-100%); }
+	50% { opacity: 0; -webkit-transform: translate(100%); }
+	51% { opacity: 1; }
+}
+@-moz-keyframes prevArrow {
+	49% { -moz-transform: translate(-100%); }
+	50% { opacity: 0; -moz-transform: translate(100%); }
+	51% { opacity: 1; }
+}
+@keyframes prevArrow {
+	49% { transform: translate(-100%); }
+	50% { opacity: 0; transform: translate(100%); }
+	51% { opacity: 1; }
+}
+#wowslider-container$GallerySuffix$ a.ws_next, #wowslider-container$GallerySuffix$ a.ws_prev {
+	font: 2.8em "ws-ctrl-showy";
+	z-index:60;
+	color: $TemplateColor$;
+	background-color:#fff;
+	overflow: hidden;
+	width: 1.6em;
+	height: 2.16em;
+	
+	-webkit-transition: all .4s ease;
+  	-moz-transition: all .4s ease;
+  	-o-transition: all .4s ease;
+  	transition: all .4s ease;
+}
+#wowslider-container$GallerySuffix$ a.ws_next {
+	position:absolute;
+	top:50%;
+	margin-top:-1.08em;
+	right: 0.5em;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	position:absolute;
+	top:50%;
+	margin-top:-1.08em;
+	left: 0.5em;
+}
+#wowslider-container$GallerySuffix$ a.ws_next:after,
+#wowslider-container$GallerySuffix$ a.ws_prev:after {
+	display: block;
+	text-align: center;
+	line-height: 2.16em;
+	
+	-webkit-transition: color .4s ease;
+  	-moz-transition: color .4s ease;
+  	-o-transition: color .4s ease;
+  	transition: color .4s ease;
+}
+#wowslider-container$GallerySuffix$ a.ws_next:after{
+	content:'\e801';
+}
+#wowslider-container$GallerySuffix$ a.ws_prev:after{
+	content:'\e800';
+}
+#wowslider-container$GallerySuffix$ a.ws_next:hover:after{
+	color: #fff;
+	-webkit-animation: nextArrow 0.3s forwards;
+	-moz-animation: nextArrow 0.3s forwards;
+	animation: nextArrow 0.3s forwards;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev:hover:after{
+	color: #fff;
+	-webkit-animation: prevArrow 0.3s forwards;
+	-moz-animation: prevArrow 0.3s forwards;
+	animation: prevArrow 0.3s forwards;
+}
+#wowslider-container$GallerySuffix$ a.ws_next:hover,
+#wowslider-container$GallerySuffix$ a.ws_prev:hover{
+	background-color: $TemplateColor$;
+	-webkit-box-shadow: 0 0 0 0.25em rgba(255,255,255,0.3);
+	-moz-box-shadow: 0 0 0 0.25em rgba(255,255,255,0.3);
+	box-shadow: 0 0 0 0.25em rgba(255,255,255,0.3);
+}
+
+/*playpause*/
+@-webkit-keyframes playAnimate {
+	49% { -webkit-transform: translateY(100%); }
+	50% { opacity: 0; -webkit-transform: translateY(-100%); }
+	51% { opacity: 1; }
+}
+@-moz-keyframes playAnimate {
+	49% { -moz-transform: translateY(100%); }
+	50% { opacity: 0; -moz-transform: translateY(-100%); }
+	51% { opacity: 1; }
+}
+@keyframes playAnimate {
+	49% { transform: translateY(100%); }
+	50% { opacity: 0; transform: translateY(-100%); }
+	51% { opacity: 1; }
+}
+@-webkit-keyframes pauseAnimate {
+	49% { -webkit-transform: translateY(-100%); }
+	50% { opacity: 0; -webkit-transform: translateY(100%); }
+	51% { opacity: 1; }
+}
+@-moz-keyframes pauseAnimate {
+	49% { -moz-transform: translateY(-100%); }
+	50% { opacity: 0; -moz-transform: translateY(100%); }
+	51% { opacity: 1; }
+}
+@keyframes pauseAnimate {
+	49% { transform: translateY(-100%); }
+	50% { opacity: 0; transform: translateY(100%); }
+	51% { opacity: 1; }
+}
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	position:absolute;
+	font: 2.8em "ws-ctrl-showy";
+	top:50%;
+	left: 50%;
+	margin-top:-1.08em;
+	margin-left: -0.8em;
+	background-color:#fff;
+	color: $TemplateColor$;
+	text-decoration: none;
+	width: 1.6em;
+	height: 2.16em;
+	overflow: hidden;
+	z-index: 59;
+	
+	 -webkit-transition: all .4s ease;
+  	-moz-transition: all .4s ease;
+  	-o-transition: all .4s ease;
+  	transition: all .4s ease;
+}
+#wowslider-container$GallerySuffix$ .ws_playpause:hover {
+	background-color: $TemplateColor$;
+	-webkit-box-shadow: 0 0 0 0.25em rgba(255,255,255,0.3);
+	-moz-box-shadow: 0 0 0 0.25em rgba(255,255,255,0.3);
+	box-shadow: 0 0 0 0.25em rgba(255,255,255,0.3);
+}
+#wowslider-container$GallerySuffix$ .ws_playpause:after{
+	display: block;
+	text-align: center;
+	line-height: 2.16em;
+	
+	-webkit-transition: color .4s ease;
+  	-moz-transition: color .4s ease;
+  	-o-transition: color .4s ease;
+  	transition: color .4s ease;
+}
+#wowslider-container$GallerySuffix$ .ws_pause:after {
+	content: '\e803';
+}
+#wowslider-container$GallerySuffix$ .ws_play:after {
+	content: '\e802';
+}	
+#wowslider-container$GallerySuffix$ .ws_pause:hover:after {
+	color: #fff;
+	-webkit-animation: pauseAnimate 0.3s forwards;
+	-moz-animation: pauseAnimate 0.3s forwards;
+	animation: pauseAnimate 0.3s forwards;
+}
+#wowslider-container$GallerySuffix$ .ws_play:hover:after {
+	color: #fff;
+	-webkit-animation: playAnimate 0.3s forwards;
+	-moz-animation: playAnimate 0.3s forwards;
+	animation: playAnimate 0.3s forwards;
+}

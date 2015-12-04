@@ -1,0 +1,5 @@
+#wowslider-container$GallerySuffix$ .ws_images img, #wowslider-container$GallerySuffix$ .ws_effect img, #wowslider-container1 .ws_effect>* {
+    border-radius: 6px; 
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+}

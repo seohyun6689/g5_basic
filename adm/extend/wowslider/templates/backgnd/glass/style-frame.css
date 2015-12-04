@@ -1,0 +1,16 @@
+#wowslider-container$GallerySuffix$ .ws_cover{
+	left:0;
+	top:0;
+	bottom:0;
+	right:0;
+	border: 7px solid #FFFFFF;
+	width: auto !important;
+	height: auto !important;
+	background: transparent !important;
+	opacity: 0.4 !important;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=40);
+}
+* html #wowslider-container$GallerySuffix$ .ws_cover{
+	width:$FrameW$px;
+	height:$FrameH$px;
+}

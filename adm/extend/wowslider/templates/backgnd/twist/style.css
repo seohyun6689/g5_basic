@@ -1,0 +1,158 @@
+
+#wowslider-container$GallerySuffix$  .ws_bullets { 
+	padding: 0px; 
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a { 
+	position:relative;
+	display: inline-block;
+	width: 0;
+	margin: 3px 5px;
+	padding: 8px;	
+} 
+#wowslider-container$GallerySuffix$ .ws_bullets a > span{
+	position:absolute;
+	display: block;
+	top:0;
+	right: 0;
+	height:100%;
+	width:100%;
+	background-color: rgba(37, 37, 37, 0.8);
+	border-radius:2px;
+	
+	-webkit-transition: all 0.5s ease;
+  	transition: all 0.5s ease;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_overbull > span{
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+	background-color: $TemplateColor$;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull > span{
+	opacity:1;
+	background-color: $TemplateColor$;
+	-webkit-box-shadow: 0 0 0 2px rgba(37, 37, 37, 0.8);
+	box-shadow: 0 0 0 2px rgba(37, 37, 37, 0.8);
+}
+#wowslider-container$GallerySuffix$ a.ws_next, #wowslider-container$GallerySuffix$ a.ws_prev {
+	font: 2em "ws-ctrl-twist";
+	width: 2.4em;
+	height: 2.6em;
+	
+	margin-top: -1.3em;
+	color: #ffffff;
+	z-index: 100;
+
+	-webkit-perspective: 20em;
+	perspective: 20em;
+
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+}
+#wowslider-container$GallerySuffix$ a.ws_next {
+	position:absolute;
+	top:50%;
+	right: 0;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	position:absolute;
+	top:50%;
+	left: 0;
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next > span,
+#wowslider-container$GallerySuffix$ a.ws_prev > span,
+#wowslider-container$GallerySuffix$ .ws_playpause > span {
+	display: block;
+}
+
+#wowslider-container$GallerySuffix$ a.ws_next:hover > span{
+	background-color: $TemplateColor$;
+	color: #252525;
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+}
+#wowslider-container$GallerySuffix$ a.ws_prev:hover > span{
+	background-color: $TemplateColor$;
+	color: #252525;
+    -webkit-transform: rotateY(-360deg);
+    transform: rotateY(-360deg);
+}
+#wowslider-container$GallerySuffix$ a.ws_next > span,
+#wowslider-container$GallerySuffix$ a.ws_prev > span {
+	display: block;
+	height:100%;
+	background-color: rgba(37, 37, 37, 0.8);
+	-webkit-transition: all 0.8s ease;
+  	transition: all 0.8s ease;
+
+  	-webkit-border-radius: 0.17em 0 0 0.17em;
+  	border-radius: 0.17em 0 0 0.17em;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev > span {
+  	-webkit-border-radius: 0 0.17em 0.17em 0;
+  	border-radius: 0 0.17em 0.17em 0;
+}
+#wowslider-container$GallerySuffix$ a.ws_next > span:before {
+	content:'\e803';
+	display: block;
+	text-align: center;
+	line-height: 2.6em;
+}
+
+#wowslider-container$GallerySuffix$ a.ws_prev > span:before{
+	content:'\e802';
+	display: block;
+	text-align: center;
+	line-height: 2.6em;
+}
+
+/*playpause*/
+#wowslider-container$GallerySuffix$ .ws_playpause > span {
+	display: block;
+	height:100%;
+	background-color: rgba(37, 37, 37, 0.8);
+	
+    border-radius: 0.2em;
+
+	-webkit-transition: all 0.5s ease;
+  	transition: all 0.5s ease;
+}
+#wowslider-container$GallerySuffix$ .ws_playpause:hover > span {
+	background-color: $TemplateColor$;
+	color: #252525;
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+}
+#wowslider-container$GallerySuffix$ .ws_pause > span:before{
+	content:"\e801";
+	display: block;
+	text-align: center;
+	line-height: 2.6em;
+}
+#wowslider-container$GallerySuffix$ .ws_play > span:before{
+	content:"\e800";
+	display: block;
+	text-align: center;
+	line-height: 2.6em;
+}
+
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	position:absolute;
+	font: 2em "ws-ctrl-twist";
+    color: #ffffff;
+	width: 2.4em;
+	height: 2.6em;
+	top:50%;
+	left:50%;
+	margin-left:-1.2em;
+	margin-top:-1.3em;
+    z-index: 100;
+
+    -webkit-perspective: 20em;
+    perspective: 20em;
+  
+	opacity: 0.9;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+}

@@ -1,0 +1,5 @@
+/* bottom right */
+#wowslider-container$GallerySuffix$  .ws_bullets {
+    $TooltipPos$: -2px;
+	right: 20px;
+}

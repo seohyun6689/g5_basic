@@ -1,0 +1,9 @@
+#wowslider-container$GallerySuffix$ .ws_thumbs a.ws_selthumb{
+	background-color: #edd8a3;
+}
+
+#wowslider-container$GallerySuffix$ .ws_thumbs  a{
+	background-color: #f0e6da;
+	outline:  3px solid #72522d;
+}
+

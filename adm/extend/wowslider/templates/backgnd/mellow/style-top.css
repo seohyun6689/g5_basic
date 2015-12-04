@@ -1,0 +1,8 @@
+/* top right */
+#wowslider-container$GallerySuffix$  .ws_bullets {
+    top: $backMarginsTop$px;
+    right: $backMarginsRight$px;
+	margin-top: -5px;
+	margin-right: -5px;
+}
+

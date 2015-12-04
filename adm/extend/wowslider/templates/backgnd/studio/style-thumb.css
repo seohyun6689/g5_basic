@@ -1,0 +1,10 @@
+#wowslider-container$GallerySuffix$ .ws_thumbs a.ws_selthumb{
+	opacity: 1;
+}
+
+#wowslider-container$GallerySuffix$ .ws_thumbs  a{
+	box-shadow: 0 1px 1px #FFFFFF inset, 0 1px 3px rgba(0, 0, 0, 0.4); 
+	opacity: 0.5;
+	background-color: #fff;
+}
+

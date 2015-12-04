@@ -1,0 +1,12 @@
+#wowslider-container$GallerySuffix$ .ws_thumbs a.ws_selthumb{
+	background-color: #444;
+}
+
+#wowslider-container$GallerySuffix$ .ws_thumbs  a{
+    -moz-box-shadow: 0 0 5px #FFF;
+	box-shadow: 0 0 5px #FFF;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	background-color: #000;
+}
+

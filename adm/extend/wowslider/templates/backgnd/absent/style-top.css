@@ -1,0 +1,20 @@
+/* top right */
+#wowslider-container$GallerySuffix$  .ws_bullets {
+	$TooltipPos$:10px;
+    right: 0;
+}
+#wowslider-container$GallerySuffix$ .ws_bulframe span{
+	visibility: visible;
+	opacity: 1;
+	position: absolute;
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid $TemplateColor$;
+
+	$TooltipPos$:-6px;
+	margin-left:-2px;
+	left:$ThumbWidthHalf$px;
+}
+

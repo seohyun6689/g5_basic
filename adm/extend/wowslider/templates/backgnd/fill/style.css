@@ -1,0 +1,93 @@
+#wowslider-container$GallerySuffix$ ul > li:after,
+#wowslider-container$GallerySuffix$ .ws_swipe_left:after,
+#wowslider-container$GallerySuffix$ .ws_swipe_right:after {
+	content: '';
+	position: absolute;
+	width: $circleWidth$em;
+	height: $circleHeight$em;
+	top: 20px;
+	left: 50%;
+	margin-left: -$circleWidthHalf$em;
+
+	box-shadow: 0 0 0 $circleSizeShadow$em $TemplateColor$;
+	border-radius: $circleHeightHalf$em;
+}
+
+
+#wowslider-container$GallerySuffix$ .ws_bullets a { 
+	position:relative;
+	display: inline-block;
+	margin: 2px;
+	padding: 4px;
+	width: 0;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px #000;
+	background: #000;
+	
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+#wowslider-container$GallerySuffix$ .ws_bullets a.ws_selbull,
+#wowslider-container$GallerySuffix$ .ws_bullets a:hover{
+	background-color: transparent;
+}
+
+
+#wowslider-container$GallerySuffix$ a.ws_next,
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	font: 3.7em "cs-ctrl-fill";
+	z-index:60;
+	color: #000;
+	overflow: hidden;
+}
+#wowslider-container$GallerySuffix$ a.ws_next {
+	position:absolute;
+	top: $arrowsPos$em;
+	right: 0.5em;
+}
+#wowslider-container$GallerySuffix$ a.ws_prev {
+	position:absolute;
+	top: $arrowsPos$em;
+	left: 0.5em;
+}
+#wowslider-container$GallerySuffix$ a.ws_next:after,
+#wowslider-container$GallerySuffix$ a.ws_prev:after {
+	display: block;
+	text-align: center;
+	line-height: 2em;	
+	line-height: 2.1em\9; /* ie9 hack */
+}
+/* IE10+ hacks */
+_:-ms-input-placeholder, :root #wowslider-container$GallerySuffix$ a.ws_next:after {line-height: 2.1em;}
+_:-ms-input-placeholder, :root #wowslider-container$GallerySuffix$ a.ws_prev:after {line-height: 2.1em;}
+#wowslider-container$GallerySuffix$ a.ws_next:after{
+	content:'\e801';
+}
+#wowslider-container$GallerySuffix$ a.ws_prev:after{
+	content:'\e800';
+}
+
+/*playpause*/
+#wowslider-container$GallerySuffix$ .ws_playpause {
+	position:absolute;
+	top: 0;
+	left: 0.6em;
+	font: 1.8em "cs-ctrl-fill";
+	color: #000;
+	z-index: 59;
+	text-decoration: none;
+}
+#wowslider-container$GallerySuffix$ .ws_playpause:after{
+	display: block;
+	text-align: center;
+	line-height: 2.3em;
+	line-height: 2.4em\9; /* ie9 hack */
+}
+/* IE10+ hacks */
+_:-ms-input-placeholder, :root #wowslider-container$GallerySuffix$ .ws_playpause:after {line-height: 2.4em;}
+#wowslider-container$GallerySuffix$ .ws_pause:after {
+	content: '\e803';
+}
+#wowslider-container$GallerySuffix$ .ws_play:after {
+	content: '\e802';
+}
