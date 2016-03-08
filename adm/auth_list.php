@@ -1,9 +1,10 @@
 <?php
 $sub_menu = "100200";
 include_once('./_common.php');
-
 if ($is_admin != 'super')
     alert('최고관리자만 접근 가능합니다.');
+
+$token = get_token();
 
 $sql_common = " from {$g5['auth_table']} a left join {$g5['member_table']} b on (a.mb_id=b.mb_id) ";
 
@@ -43,7 +44,7 @@ $sql = " select *
             limit {$from_record}, {$rows} ";
 $result = sql_query($sql);
 
-$listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목록</a>';
+$listall = '<a href="'.$_SERVER['PHP_SELF'].'" class="ov_listall">전체목록</a>';
 
 $g5['title'] = "관리권한설정";
 include_once('./admin.head.php');
@@ -71,7 +72,7 @@ $colspan = 5;
 <input type="hidden" name="sfl" value="<?php echo $sfl ?>">
 <input type="hidden" name="stx" value="<?php echo $stx ?>">
 <input type="hidden" name="page" value="<?php echo $page ?>">
-<input type="hidden" name="token" value="">
+<input type="hidden" name="token" value="<?php echo $token ?>">
 
 <div class="tbl_head01 tbl_wrap">
     <table>
@@ -156,7 +157,7 @@ else
 </form>
 
 <?php
-$pagelist = get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, $_SERVER['SCRIPT_NAME'].'?'.$qstr.'&amp;page=');
+$pagelist = get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, $_SERVER['PHP_SELF'].'?'.$qstr.'&amp;page=');
 echo $pagelist;
 ?>
 
@@ -166,7 +167,7 @@ echo $pagelist;
 <input type="hidden" name="sst" value="<?php echo $sst ?>">
 <input type="hidden" name="sod" value="<?php echo $sod ?>">
 <input type="hidden" name="page" value="<?php echo $page ?>">
-<input type="hidden" name="token" value="">
+<input type="hidden" name="token" value="<?php echo $token ?>">
 
 <section id="add_admin">
     <h2 class="h2_frm">관리권한 추가</h2>
@@ -195,16 +196,22 @@ echo $pagelist;
         <tr>
             <th scope="row"><label for="au_menu">접근가능메뉴<strong class="sound_only">필수</strong></label></th>
             <td>
+<!--
                 <select id="au_menu" name="au_menu" required class="required">
                     <option value=''>선택하세요</option>
                     <?php
                     foreach($auth_menu as $key=>$value)
                     {
-                        if (!(substr($key, -3) == '000' || $key == '-' || !$key))
+                        // if (!(substr($key, -3) == '000' || $key == '-' || !$key))
+                        if (!($key == '-' || !$key))
                             echo '<option value="'.$key.'">'.$key.' '.$value.'</option>';
                     }
                     ?>
                 </select>
+-->
+                <?php foreach($auth_menu as $key=>$value) : ?>
+                <input type="checkbox" name="au_menu[]" id="au_menu_<?php echo $key; ?>" value="<?php echo $key; ?>" /> <label for="au_menu_<?php echo $key; ?>"><?php echo $value . '(' . $key . ')'; ?></label><br />
+                <?php endforeach; ?>
             </td>
         </tr>
         <tr>
