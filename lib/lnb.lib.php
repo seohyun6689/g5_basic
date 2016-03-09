@@ -34,85 +34,6 @@ class LNB extends GNB
 	function setExclude( $exclude ) {
 		$this->exclude = $exclude;
 	}
-	// function selected( $key, $lnb ) 
-	// {
-	// 	global $g5, $bo_table, $co_id;
-		
-	// 	$me_link_parse = parse_url( $lnb['me_link'] );
-	// 	parse_str($me_link_parse['query'], $me_link_parameters);
-		
-	// 	$has_define = ( defined('G5_MENU') && G5_MENU == $key );
-	// 	$has_menu = preg_match( '/^' . preg_quote( $_SERVER['REQUEST_URI'], '/' )  . '$/' , $lnb['me_link'] );
-	// 	$has_content = ( isset($_REQUEST['co_id']) && $_REQUEST['co_id'] == $me_link_parameters['co_id'] );
-	// 	$has_board = ( isset($_REQUEST['bo_table']) && $_REQUEST['bo_table'] == $me_link_parameters['bo_table'] );
-		
-	// 	if ( defined('_SHOP_') ) {
-	// 		$has_shop = (isset($_REQUEST['ca_id']) && $_REQUEST['ca_id'] == $me_link_parameters['ca_id']);
-	// 	}
-		
-	// 	return ( $has_define || $has_menu || $has_content || $has_board || $has_shop );
-	// }
-	// 
-	// public function get_lnb( $menus = null )
-	// {
-	// 	global $g5;
-		
-	// 	if ( !count($menus) )
-	// 	{
-	// 		return null;
-	// 	}
-		
-	//     foreach ( $menus as $key => $lnb )
-	// 	{
-			
-	// 		if ( $this->selected( $key, $lnb ) )
-	// 		{
-	// 			$lnb_key = substr( $key, 0, 2 );
-	// 			return $this->lnb_menu[$lnb_key];
-	// 		}
-			
-	// 		if ( count( $lnb['items'] ) > 0 )
-	// 		{
-	// 			$current_lnb = $this->get_lnb($lnb['items']);
-	// 			if ( !is_null( $current_lnb ) )
-	// 			{
-	// 				return $current_lnb;
-	// 				break;
-	// 			}
-	// 		}
-	// 	}
-	// }
-	
-	// public function current_lnb()
-	// {
-	// 	global $g5;
-		
-	// 	if ( count( $this->current_lnb['items'] ) <= 0 )
-	// 	{
-	// 		return false;
-	// 	}
-	// 	foreach( $this->current_lnb['items'] as $key => $lnb )
-	// 	{
-	// 		if ( $this->selected( $key, $lnb ) )
-	// 		{
-	// 			return $lnb;
-	// 		}
-	// 	}
-		
-	// 	return false;
-	// }
-	// function set_current_lnb( $lnb ) {
-	// 	global $g5;
-	// 	$this->current_lnb = $lnb;
-	// }
-	// function set_current_menu( $menu ){ 
-	// 	global $g5;
-	// 	$this->current_menu = $menu;
-	// }
-	// function get_current_menu(){
-	// 	return $this->current_menu;
-	// }
-
 	function get_current_menu() {
 		if (count($this->current_lnb['items'])<=0){ return null; }
 		foreach($this->current_lnb['items'] as $item) {
@@ -152,7 +73,11 @@ class LNB extends GNB
 				$this->title_small = $this->current_lnb['me_sub_name'];
 				
 				$this->lnb = ( count($this->current_lnb['items']) > 0 ? $this->current_lnb['items'] : array() );
+				// navigation
 				$this->get_navigations();
+				if (count($this->navi) > 0) {
+					$this->navi[count($this->navi)-1]['me_last'] = 'last';
+				}
 
 				ob_start();
 				include( $this->skin_path . '/lnb.head.php' );

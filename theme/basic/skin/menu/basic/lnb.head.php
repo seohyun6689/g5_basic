@@ -34,7 +34,7 @@
 			<ul class="clearfix">
 				<li><a href="/" class="home"><i class="fa fa-home"></i></a></li>
 				<?php  for($i=0; $i < count($this->navi); $i++) { ?>				
-				<li><a href="<?php echo $this->navi[$i]['me_link']; ?>"><?php echo $this->navi[$i]['me_name']; ?></a></li>
+				<li class="<?php echo $this->navi[$i]['me_last']; ?>"><a href="<?php echo $this->navi[$i]['me_link']; ?>"><?php echo $this->navi[$i]['me_name']; ?></a></li>
 				<?php } ?>
 			</ul>
 		</nav>
