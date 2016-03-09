@@ -1,5 +1,4 @@
 !.gitignore
-.phpintel/
 data/
 test/
 sirgle/
@@ -13,3 +12,4 @@ g5_tree/
 naver*.html
 .DS_Store
 .htaccess
+.phpintel/

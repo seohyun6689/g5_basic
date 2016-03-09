@@ -184,6 +184,11 @@ if(!isset($config['cf_sms_type'])) {
                     ADD `cf_sms_type` varchar(10) NOT NULL DEFAULT '' AFTER `cf_sms_use` ", true);
 }
 
+// 일반관리자 추가
+if(!isset($config['cf_administrator'])) {
+    sql_query(" ALTER TABLE `{$g5['config_table']}` varchar(50) NOT NULL DEFAULT '' AFTER `cf_admin` ", true);
+}
+
 // 접속자 정보 필드 추가
 if(!sql_query(" select vi_browser from {$g5['visit_table']} limit 1 ")) {
     sql_query(" ALTER TABLE `{$g5['visit_table']}`
@@ -194,6 +199,7 @@ if(!sql_query(" select vi_browser from {$g5['visit_table']} limit 1 ")) {
 
 if(!$config['cf_faq_skin']) $config['cf_faq_skin'] = "basic";
 if(!$config['cf_mobile_faq_skin']) $config['cf_mobile_faq_skin'] = "basic";
+
 
 $g5['title'] = '환경설정';
 include_once ('./admin.head.php');
@@ -250,6 +256,10 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
         <tr>
             <th scope="row"><label for="cf_admin">최고관리자<strong class="sound_only">필수</strong></label></th>
             <td colspan="3"><?php echo get_member_id_select('cf_admin', 10, $config['cf_admin'], 'required') ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="cf_administrator">일반관리자</label></th>
+            <td colspan="3"><?php echo get_member_id_select('cf_administrator', 10, $config['cf_administrator']) ?></td>
         </tr>
         <tr>
             <th scope="row"><label for="cf_admin_email">관리자 메일 주소<strong class="sound_only">필수</strong></label></th>
