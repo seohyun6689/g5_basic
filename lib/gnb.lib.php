@@ -10,7 +10,8 @@ class GNB {
 	protected $skin = '';
 	protected $skin_path = '';
 	protected $skin_url = '';
-	
+	protected $me_code_selected = null;
+	protected $global_menu = null;
 	function __construct($skin)
 	{
 		$this->setSkin( $skin );
@@ -29,92 +30,110 @@ class GNB {
     
 	}
 	
-	// 상위메뉴 전체 출력
-	protected function getGlobalMenu()
-	{
+	// 하위메뉴 갯수
+	protected function global_menu_count($me_code) {
+		global $g5;
+		if(!$me_code) return 0;
+		$me_code_len = strlen($me_code)+2;
+		$sql = "select count(me_id) as count from {$g5[menu_table]} where me_code LIKE '{$me_code}%' and LENGTH(me_code) = {$me_code_len}";
+		$result = sql_fetch($sql);
+
+		return $result['count'];
+	}
+
+	// 도든 메뉴 불러오기(제귀함수)
+	protected function global_menus($me_code = null){
 		global $g5, $is_mobile;
-		
 		$conditions = array();
-	    $conditions[] = "length(me_code) = '2'";
-	    if ( $is_mobile && G5_USE_MOBILE )
+
+		if (!$me_code) {
+			$conditions['me_code_len'] = "LENGTH(me_code) = 2";
+		} else {
+			$conditions['me_parent'] = "me_code LIKE '{$me_code}%'";
+			$conditions['me_code_len'] = "LENGTH(me_code) = " . (strlen($me_code) + 2);
+		}
+
+		if ( $is_mobile && G5_USE_MOBILE )
 	    {
-		   $conditions['me_group'] = "me_group = 'M'"; 
-		   $conditions['use'] = "me_mobile_use = '1'";
+		   $conditions['me_use'] = "me_mobile_use = '1'";
 	    }
 	    else
 	    {
-		   $conditions['me_group'] = "me_group = 'P'";
-		   $conditions['use'] = "me_use = '1'";
+		   $conditions['me_use'] = "me_use = '1'";
 	    }
 	    
 	    $condition = ( count( $conditions ) > 0 ? ' where ' . implode( ' and ', $conditions ) : '' );
-	    $sql = " select * from {$g5['menu_table']}
-					{$condition}
-					order by me_order, me_id ";
-		$result = sql_query($sql, false);
-		$gnb_zindex = 999; // gnb_1dli z-index 값 설정용
-		$rows = array();
-		while ( $row = sql_fetch_array( $result ) )
-		{
-			$conditions2 = array();
-			$conditions2[] = $conditions['me_group'];
-			$conditions2[] = $conditions['use'];
-			$conditions2[] = "length(me_code) = '4'";
-			$conditions2[] = "substring(me_code, 1, 2) = '{$row['me_code']}'";
-			$condition2 = (count($conditions2) > 0 ? ' where ' . implode(' and ', $conditions2) : '');
-			$sql2 = " select *
-						from {$g5['menu_table']}
-						{$condition2}
-						order by me_order, me_id ";
-			$result2 = sql_query($sql2);
-			$children = array();
-			$me_current = false;
-			while ($child = sql_fetch_array($result2)) {
-				$child['me_current'] = '';
-				if ( $current = $this->currentGnb( $child ) ) {
-					$me_current = true;
-					$child['me_current'] = ( $current ? ' current ' : '' );
-				}
-				$children[ $child['me_code'] ] = $child;
+	    $sql = " select * from {$g5['menu_table']} {$condition} order by me_order asc, me_code, me_id ";
+		$result = sql_query($sql, true);
+		$list = array();
+		while($row = sql_fetch_array($result)) {
+			$sub_count = $this->global_menu_count($row['me_code']); // 하위 메뉴 갯수
+
+			if ($row['me_selected'] = $this->selected($row)) { // 해당 메뉴 항목
+				$this->me_code_selected = $row['me_code'];
 			}
-			$row['me_current'] = ( $me_current ? ' current ' : '');
-			$row['items'] = $children;
-			$rows[$row['me_code']] = $row;
+
+			// 하위 메뉴가 있는 경우
+			if( $sub_count > 0 ) {
+				$row['items'] = $this->global_menus($row['me_code']);
+			} else {
+				$row['items'] = array();
+			}
+
+			$list[$row['me_code']] = $row;
 		}
-		return $rows;
+		return $list;
 	}
+
+	// 상위 메뉴 선택
+	protected function get_selected_global_menu($menu, $me_code_selected){
+		foreach ($menu as $key => $me){
+			if (in_array($me['me_code'], $me_code_selected)) {
+				$me['me_selected'] = true;
+			}
+			if(count($me['items'])) {
+				$me['items'] = $this->get_selected_global_menu($me['items'], $me_code_selected);
+			}
+			$menu[$key] = $me;
+		}
+		
+		return $menu;
+	}
+	// 전체 메뉴 리턴
+	protected function get_global_menu()
+	{
+		global $g5;
+		$this->global_menu = $menu = $this->global_menus();
+		if ($this->me_code_selected) {
+			$selectlen = strlen($this->me_code_selected);
+			for($i=2; $i <= $selectlen; $i+=2) {
+				$me_code = substr($this->me_code_selected, 0, $i);
+				$me_code_selected[] = $me_code;
+			}
+			$menu = $this->get_selected_global_menu($menu, $me_code_selected);
+			return $menu;
+		}
+		return $menu;	
+	}
+
 	// 선택된 메뉴
 	protected function selected($menu) 
 	{
 		global $g5, $bo_table, $co_id;
 		
-		$me_link_parse = parse_url( $lnb['me_link'] );
+		$me_link_parse = parse_url( $menu['me_link'] );
 		parse_str($me_link_parse['query'], $me_link_parameters);
-		
+
 		$is_define = ( defined('G5_MENU') && G5_MENU == $menu['me_code'] );
 		$is_menu = preg_match( '/^' . preg_quote( $_SERVER['REQUEST_URI'], '/' )  . '$/' , $menu['me_link'] );
-		$is_content = (isset($_REQUEST['co_id']) && preg_match( '/co_id=' . $_REQUEST['co_id'] . '/', $menu['me_link'] ) );
+		$is_content = (isset($_REQUEST['co_id']) && $_REQUEST['co_id'] == $me_link_parameters['co_id'] );
 		$is_board = ( isset($_REQUEST['bo_table']) && $_REQUEST['bo_table'] == $me_link_parameters['bo_table'] );
-		$is_shortlink = ( isset($_REQUEST['bo_table']) && preg_match( '/\/articles/' . $_REQUEST['bo_table'] . '/', $menu['me_link'] ) );
-		
+
 		if ( defined('_SHOP_') ) {
-			$is_shop = (isset($_REQUEST['ca_id']) && preg_match( '/ca_id=' . $_REQUEST['ca_id'] . '/', $menu['me_link'] ) );
+			$is_shop = (isset($_REQUEST['ca_id']) && $_REQUEST['ca_id'] == $me_link_parameters['ca_id']);
 		}
 
-		return ( $is_define || $is_menu || $is_content || $is_board || $is_shortlink || $is_shop );
-	}
-	// 현재 메뉴
-	function currentGnb( $menu )
-	{
-		global $g5;
-		
-		
-		if ( $this->selected($menu) )
-		{
-			return true;
-		}
-		
-		return false;
+		return ( $is_define || $is_menu || $is_content || $is_board || $is_shop );
 	}
 	
 	function display( $skin = null )
@@ -138,7 +157,7 @@ class GNB {
 		    return false;
 	    }
 	    		
-		$rows = $this->getGlobalMenu();
+		$rows = $this->get_global_menu();
 
 	    ob_start();
 	    include_once $this->skin_path.'/gnb.skin.php';
@@ -149,5 +168,5 @@ class GNB {
 	}
 }
 
-$gnb = new GNB('basic');
+$gnb = new GNB('theme/basic');
 ?>

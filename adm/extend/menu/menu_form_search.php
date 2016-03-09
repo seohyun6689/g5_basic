@@ -53,7 +53,7 @@ if($sql) {
                 $link = G5_BBS_URL.'/board.php?bo_table='.$row['id'];
                 break;
             case 'content':
-                $link = G5_URL.'/content/'.$row['id'];
+                $link = G5_BBS_URL.'/content.php?co_id='.$row['id'];
                 break;
             default:
                 $link = '';
@@ -77,6 +77,8 @@ if($sql) {
 </div>
 
 <div class="btn_win02 btn_win">
+    <input type="hidden" name="me_name" id="me_name" required>
+    <input type="hidden" name="me_link" id="me_link" required>
     <button type="button" class="btn_cancel" onclick="window.close();">창닫기</button>
 </div>
 
@@ -92,10 +94,6 @@ if($sql) {
     <tr>
         <th scope="row"><label for="me_name">메뉴<strong class="sound_only"> 필수</strong></label></th>
         <td><input type="text" name="me_name" id="me_name" required class="frm_input required"></td>
-    </tr>  
-    <tr>
-        <th scope="row"><label for="me_sub_name">서브명칭</label></th>
-        <td><input type="text" name="me_sub_name" id="me_sub_name" class="frm_input"></td>
     </tr>
     <tr>
         <th scope="row"><label for="me_link">링크<strong class="sound_only"> 필수</strong></label></th>

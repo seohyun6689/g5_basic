@@ -14,103 +14,110 @@ else { define( 'G5_LNB_LIB_EXISTS', true ); }
 class LNB extends GNB
 {
 	public $skin = '';
-	public $lnb_menu = array();
-	public $lnb_keys = array();
 	public $exclude = array();
 	public $current_lnb = array();
 	public $current_menu = array();
+	public $navi = array();
 	
 	function __construct( $skin = null, $exclude = null )
 	{
-
 		if ( isset($skin) && trim($skin) != '' ) {
 			$this->setSkin($skin);	
 		}
 		if ( isset( $exclude ) ) {
 			$this->setExclude($exclude);
 		}
-		$this->lnb_menu = $this->getGlobalMenu();
-		$this->lnb_keys = array_keys( $this->lnb_menu );
+		$global_menu = $this->get_global_menu();
+		$lnb_code_selected = substr($this->me_code_selected, 0, 2);
+		$this->current_lnb = $global_menu[$lnb_code_selected];
 	}
 	function setExclude( $exclude ) {
 		$this->exclude = $exclude;
 	}
-	function selected( $key, $lnb ) 
-	{
-		global $g5, $bo_table, $co_id;
+	// function selected( $key, $lnb ) 
+	// {
+	// 	global $g5, $bo_table, $co_id;
 		
-		$me_link_parse = parse_url( $lnb['me_link'] );
-		parse_str($me_link_parse['query'], $me_link_parameters);
+	// 	$me_link_parse = parse_url( $lnb['me_link'] );
+	// 	parse_str($me_link_parse['query'], $me_link_parameters);
 		
-		$has_define = ( defined('G5_MENU') && G5_MENU == $key );
-		$has_menu = preg_match( '/^' . preg_quote( $_SERVER['REQUEST_URI'], '/' )  . '$/' , $lnb['me_link'] );
-		$has_content = ( isset($_REQUEST['co_id']) && $_REQUEST['co_id'] == $me_link_parameters['co_id'] );
-		$has_board = ( isset($_REQUEST['bo_table']) && $_REQUEST['bo_table'] == $me_link_parameters['bo_table'] );
+	// 	$has_define = ( defined('G5_MENU') && G5_MENU == $key );
+	// 	$has_menu = preg_match( '/^' . preg_quote( $_SERVER['REQUEST_URI'], '/' )  . '$/' , $lnb['me_link'] );
+	// 	$has_content = ( isset($_REQUEST['co_id']) && $_REQUEST['co_id'] == $me_link_parameters['co_id'] );
+	// 	$has_board = ( isset($_REQUEST['bo_table']) && $_REQUEST['bo_table'] == $me_link_parameters['bo_table'] );
 		
-		if ( defined('_SHOP_') ) {
-			$has_shop = (isset($_REQUEST['ca_id']) && preg_match( '/ca_id=' . $_REQUEST['ca_id'] . '/', $lnb['me_link'] ) );
-		}
+	// 	if ( defined('_SHOP_') ) {
+	// 		$has_shop = (isset($_REQUEST['ca_id']) && $_REQUEST['ca_id'] == $me_link_parameters['ca_id']);
+	// 	}
 		
-		return ( $has_define || $has_menu || $has_content || $has_board || $has_shop );
-	}
-	public function getLnb( $menus = null )
-	{
-		global $g5;
+	// 	return ( $has_define || $has_menu || $has_content || $has_board || $has_shop );
+	// }
+	// 
+	// public function get_lnb( $menus = null )
+	// {
+	// 	global $g5;
 		
-		if ( !count($menus) )
-		{
-			return null;
-		}
+	// 	if ( !count($menus) )
+	// 	{
+	// 		return null;
+	// 	}
 		
-	    foreach ( $menus as $key => $lnb )
-		{
+	//     foreach ( $menus as $key => $lnb )
+	// 	{
 			
-			if ( $this->selected( $key, $lnb ) )
-			{
-				$lnb_key = substr( $key, 0, 2 );
-				return $this->lnb_menu[$lnb_key];
-			}
+	// 		if ( $this->selected( $key, $lnb ) )
+	// 		{
+	// 			$lnb_key = substr( $key, 0, 2 );
+	// 			return $this->lnb_menu[$lnb_key];
+	// 		}
 			
-			if ( count( $lnb['items'] ) > 0 )
-			{
-				$current_lnb = $this->getLnb($lnb['items']);
-				if ( !is_null( $current_lnb ) )
-				{
-					return $current_lnb;
-					break;
-				}
-			}
-		}
-	}
+	// 		if ( count( $lnb['items'] ) > 0 )
+	// 		{
+	// 			$current_lnb = $this->get_lnb($lnb['items']);
+	// 			if ( !is_null( $current_lnb ) )
+	// 			{
+	// 				return $current_lnb;
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+	// }
 	
-	public function current_lnb()
-	{
-		global $g5;
+	// public function current_lnb()
+	// {
+	// 	global $g5;
 		
-		if ( count( $this->current_lnb['items'] ) <= 0 )
-		{
-			return false;
-		}
-		foreach( $this->current_lnb['items'] as $key => $lnb )
-		{
-			if ( $this->selected( $key, $lnb ) )
-			{
-				return $lnb;
-			}
-		}
+	// 	if ( count( $this->current_lnb['items'] ) <= 0 )
+	// 	{
+	// 		return false;
+	// 	}
+	// 	foreach( $this->current_lnb['items'] as $key => $lnb )
+	// 	{
+	// 		if ( $this->selected( $key, $lnb ) )
+	// 		{
+	// 			return $lnb;
+	// 		}
+	// 	}
 		
-		return false;
-	}
-	function set_current_lnb( $lnb ) {
-		global $g5;
-		$this->current_lnb = $lnb;
-	}
-	function set_current_menu( $menu ){ 
-		global $g5;
-		$this->current_menu = $menu;
-	}
-	function get_current_menu(){
-		return $this->current_menu;
+	// 	return false;
+	// }
+	// function set_current_lnb( $lnb ) {
+	// 	global $g5;
+	// 	$this->current_lnb = $lnb;
+	// }
+	// function set_current_menu( $menu ){ 
+	// 	global $g5;
+	// 	$this->current_menu = $menu;
+	// }
+	// function get_current_menu(){
+	// 	return $this->current_menu;
+	// }
+
+	function get_current_menu() {
+		if (count($this->current_lnb['items'])<=0){ return null; }
+		foreach($this->current_lnb['items'] as $item) {
+			if($item['me_selected']) return $item;
+		}
 	}
 	function display_head( $skin = null ) 
 	{
@@ -125,18 +132,14 @@ class LNB extends GNB
 			echo 'LNB 스킨 디렉토리가 존재하지 않습니다.';
 		}
 
-		// G5_MENU 가 안먹힘..ㅠㅠ
-		if ( !$this->current_lnb ) {
-			$this->current_lnb = $this->getLnb($this->lnb_menu);
-		}
-		if ( is_null($this->current_lnb) ) {
+		if (is_null($this->current_lnb)) {
 			$this->current_lnb = array('me_name' => $config['cf_title']);
 			$this->current_menu = array('me_name' => $g5['title']);
 		}
-		if ( !defined("_INDEX_") && !is_null( $this->current_lnb ) ) 
+		if (!defined("_INDEX_") && !is_null($this->current_lnb)) 
 		{	
 			if ( count($this->current_menu) <= 0 ) {
-				$this->current_menu = $this->current_lnb();
+				$this->current_menu = $this->get_current_menu();
 				if ( in_array($currnt_menu['me_code'] , $this->exclude ) )
 				{
 					return false;
@@ -149,6 +152,8 @@ class LNB extends GNB
 				$this->title_small = $this->current_lnb['me_sub_name'];
 				
 				$this->lnb = ( count($this->current_lnb['items']) > 0 ? $this->current_lnb['items'] : array() );
+				$this->get_navigations();
+
 				ob_start();
 				include( $this->skin_path . '/lnb.head.php' );
 				$content = ob_get_contents();
@@ -184,6 +189,17 @@ class LNB extends GNB
 			}
 		}
 	}
+	// 네비게이션 배열
+	private function navigation($menu){
+		foreach($menu as $item) {
+			if ($item['me_selected']) array_push($this->navi, array('me_name' => $item['me_name'], 'me_link' => $item['me_link']));
+			if (count($item['items'])>0) { $this->navigation($item['items']); }
+		}
+	}
+	function get_navigations(){
+		array_push($this->navi, array('me_name' => $this->current_lnb['me_name'], 'me_link' => $this->current_lnb['me_link']));
+		$this->navigation($this->current_lnb['items']);
+	}
 	
 	function lnb_aside( $name )
 	{	
@@ -198,7 +214,8 @@ class LNB extends GNB
 		    return $aside;
 		}
 	}
+
 }
-$lnb = new LNB('basic');
+$lnb = new LNB('theme/basic');
 
 ?>

@@ -1,4 +1,5 @@
 <?php
+$sub_menu = "999002";
 include_once('./_common.php');
 
 if ($is_admin != 'super')
@@ -8,6 +9,8 @@ $g5['title'] = '메뉴 추가';
 include_once(G5_PATH.'/head.sub.php');
 
 // 코드
+$origin_code=$code;
+
 if($new == 'new' || !$code) {
     $code = base_convert(substr($code,0, 2), 36, 10);
     $code += 36;
@@ -18,8 +21,32 @@ if($new == 'new' || !$code) {
 <div id="menu_frm" class="new_win">
     <h1><?php echo $g5['title']; ?></h1>
 
-    <form name="fmenuform" id="fmenuform">
+    <form name="fmenuform" id="fmenuform" method="post" action="./menu_list_insert.php">
+	<input type="hidden" name="me_id" value="<?php echo $me_id?>">
 
+    <div class="new_win_desc">
+        <label for="me_code">메뉴선택</label>
+        <select name="me_code" id="me_code">
+			<option value="">선택</option>
+			<?php
+				$sql = "select * from {$g5['menu_table']} where 1=1 order by me_code,me_id ";
+				$res = sql_query($sql);
+				while($R=mysql_fetch_array($res)){
+			?>
+            <option value="<?php echo $R['me_code']?>" <?php if($R['me_code']==$origin_code) echo "selected"; ?> >
+				<?php if((strlen($R['me_code'])/2)>1) { ?>
+				<?php for($i=0;$i<(strlen($R['me_code'])/2);$i++){ echo "="; } ?> >
+				<?php } ?>
+				<?php echo $R['me_name']?>
+			</option>
+			<?php } ?>
+        </select>
+		<br>
+		* 선택된 메뉴의 하위 메뉴로 등록합니다.
+		* 선택이 없으면 최상단 메뉴로 등록합니다.
+
+    </div>
+	<br>
     <div class="new_win_desc">
         <label for="me_type">대상선택</label>
         <select name="me_type" id="me_type">
@@ -51,24 +78,51 @@ $(function() {
         );
     });
 
-    $("#add_manual").live("click", function() {
-        var me_name = $.trim($("#me_name").val());
-        var me_sub_name = $.trim($("#me_sub_name").val());
-        var me_link = $.trim($("#me_link").val());
 
-        add_menu_list(me_name, me_sub_name, me_link, "<?php echo $code; ?>");
+	$(document).on("click", "#add_manual", function() {
+
+		var f = document.fmenuform;
+
+		var me_name = $.trim($("#me_name").val());
+		var me_link = $.trim($("#me_link").val());
+
+		if(me_name==""){
+			alert('메뉴 이름을 입력하세요.');
+			return false;
+		}
+		if(me_link==""){
+			alert('메뉴 링크를 입력하세요.');
+			return false;
+		}
+
+		f.submit();
+
     });
 
-    $(".add_select").live("click", function() {
-        var me_name = $.trim($(this).siblings("input[name='subject[]']").val());
-        var me_sub_name = $.trim($(this).siblings("input[name='subject[]']").val());
-        var me_link = $.trim($(this).siblings("input[name='link[]']").val());
 
-        add_menu_list(me_name, me_sub_name, me_link, "<?php echo $code; ?>");
+    $(document).on("click", ".add_select", function() {
+		var f = document.fmenuform;
+        var parent = $(this).parent();
+		var me_name = $.trim(parent.find('input[name="subject[]"]').val());
+		var me_link = $.trim(parent.find('input[name="link[]"]').val());
+
+		if(me_name==""){
+			alert('메뉴 이름을 입력하세요.');
+			return false;
+		}
+		if(me_link==""){
+			alert('메뉴 링크를 입력하세요.');
+			return false;
+		}
+
+        $('#me_name').val(me_name);
+        $('#me_link').val(me_link);
+		f.submit();
     });
+
 });
 
-function add_menu_list(name, subname, link, code)
+function add_menu_list(name, link, code)
 {
     var $menulist = $("#menulist", opener.document);
     var ms = new Date().getTime();
@@ -84,10 +138,6 @@ function add_menu_list(name, subname, link, code)
     list += "<label for=\"me_name_"+ms+"\"  class=\"sound_only\">메뉴<strong class=\"sound_only\"> 필수</strong></label>";
     list += "<input type=\"hidden\" name=\"code[]\" value=\"<?php echo $code; ?>\">";
     list += "<input type=\"text\" name=\"me_name[]\" value=\""+name+"\" id=\"me_name_"+ms+"\" required class=\"required frm_input full_input\">";
-    list += "</td>";
-    list += "<td class=\"td_category\">";
-    list += "<label for=\"me_sub_name_"+ms+"\" class=\"sound_only\">서브명칭</label>";
-    list += "<input type=\"text\" name=\"me_sub_name[]\" value=\""+subname+"\" id=\"me_sub_name_"+ms+"\" class=\"frm_input full_input\">";
     list += "</td>";
     list += "<td>";
     list += "<label for=\"me_link_"+ms+"\"  class=\"sound_only\">링크<strong class=\"sound_only\"> 필수</strong></label>";
@@ -107,6 +157,13 @@ function add_menu_list(name, subname, link, code)
     list += "<td class=\"td_mngsmall\">";
     list += "<label for=\"me_use_"+ms+"\"  class=\"sound_only\">PC사용</label>";
     list += "<select name=\"me_use[]\" id=\"me_use_"+ms+"\">";
+    list += "<option value=\"1\">사용함</option>";
+    list += "<option value=\"0\">사용안함</option>";
+    list += "</select>";
+    list += "</td>";
+    list += "<td class=\"td_mngsmall\">";
+    list += "<label for=\"me_mobile_use_"+ms+"\"  class=\"sound_only\">모바일사용</label>";
+    list += "<select name=\"me_mobile_use[]\" id=\"me_mobile_use_"+ms+"\">";
     list += "<option value=\"1\">사용함</option>";
     list += "<option value=\"0\">사용안함</option>";
     list += "</select>";
@@ -142,6 +199,28 @@ function add_menu_list(name, subname, link, code)
 
     window.close();
 }
+
+function frm_submit(){
+
+	var f = document.fmenuform;
+
+    var me_name = $.trim($("#me_name").val());
+    var me_link = $.trim($("#me_link").val());
+
+	if(me_name==""){
+		alert('메뉴 이름을 입력하세요.');
+		return false;
+	}
+	if(me_link==""){
+		alert('메뉴 링크를 입력하세요.');
+		return false;
+	}
+
+	f.submit();
+
+}
+
+
 </script>
 
 <?php
