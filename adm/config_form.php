@@ -186,7 +186,7 @@ if(!isset($config['cf_sms_type'])) {
 
 // 일반관리자 추가
 if(!isset($config['cf_administrator'])) {
-    sql_query(" ALTER TABLE `{$g5['config_table']}` varchar(50) NOT NULL DEFAULT '' AFTER `cf_admin` ", true);
+    sql_query(" ALTER TABLE `{$g5['config_table']}` ADD `cf_administrator` varchar(50) NOT NULL DEFAULT '' AFTER `cf_admin` ", true);
 }
 
 // 접속자 정보 필드 추가
