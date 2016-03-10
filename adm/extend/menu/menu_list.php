@@ -79,10 +79,7 @@ $colspan = 8;
         $me_name = str_replace($search, $replace, $row['me_name']);
 
         // 메뉴 인덱스 탭
-        $sub_menu_style = '';
-        if ((strlen($row['me_code'])-2) > 0) {
-            $sub_menu_style = ' style="background:url(./sub_menu_ico' . strlen($row['me_code']) . '.gif) no-repeat 5px center;padding-left:' . (strlen($row['me_code'])*7) . 'px" ';
-        }
+        $sub_menu_style = ' style="background:url(./sub_menu_ico' . $depth . '.gif) no-repeat 5px center;padding-left:' . (($depth-1)*25) . 'px" ';
     ?>
     <tr class="<?php echo $bg; ?> menu_list menu_group_<?php echo $row['me_code']; ?>">
         <td class="td_category<?php echo $sub_menu_class; ?>"<?php echo $sub_menu_style; ?>>
