@@ -7,6 +7,17 @@ $g5['title'] = '게시글 저장';
 
 $msg = array();
 
+if($board['bo_use_category']) {
+    $ca_name = trim($_POST['ca_name']);
+    if(!$ca_name) {
+        $msg[] = '<strong>분류</strong>를 선택하세요.';
+    } else {
+        $categories = array_map('trim', explode("|", $board['bo_category_list'].($is_admin ? '|공지' : '')));
+        if(!empty($categories) && !in_array($ca_name, $categories))
+            $msg[] = '분류를 올바르게 입력하세요.';
+    }
+}
+
 $wr_subject = '';
 if (isset($_POST['wr_subject'])) {
     $wr_subject = substr(trim($_POST['wr_subject']),0,255);
@@ -67,7 +78,7 @@ if ($w == 'u' || $w == 'r') {
 
 // 외부에서 글을 등록할 수 있는 버그가 존재하므로 비밀글은 사용일 경우에만 가능해야 함
 if (!$is_admin && !$board['bo_use_secret'] && $secret) {
-	alert('비밀글 미사용 게시판 이므로 비밀글로 등록할 수 없습니다.');
+    alert('비밀글 미사용 게시판 이므로 비밀글로 등록할 수 없습니다.');
 }
 
 // 외부에서 글을 등록할 수 있는 버그가 존재하므로 비밀글 무조건 사용일때는 관리자를 제외(공지)하고 무조건 비밀글로 등록
@@ -109,9 +120,9 @@ if ($w == '' || $w == 'u') {
         alert('글을 쓸 권한이 없습니다.');
     }
 
-	// 외부에서 글을 등록할 수 있는 버그가 존재하므로 공지는 관리자만 등록이 가능해야 함
-	if (!$is_admin && $notice) {
-		alert('관리자만 공지할 수 있습니다.');
+    // 외부에서 글을 등록할 수 있는 버그가 존재하므로 공지는 관리자만 등록이 가능해야 함
+    if (!$is_admin && $notice) {
+        alert('관리자만 공지할 수 있습니다.');
     }
 
 } else if ($w == 'r') {
