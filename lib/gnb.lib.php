@@ -129,6 +129,13 @@ class GNB {
 		$is_content = (isset($_REQUEST['co_id']) && $_REQUEST['co_id'] == $me_link_parameters['co_id'] );
 		$is_board = ( isset($_REQUEST['bo_table']) && $_REQUEST['bo_table'] == $me_link_parameters['bo_table'] );
 
+		// 메뉴가 게시판이고 카테고리가 존재하는 경우 선택
+		if ( $is_board && isset($me_link_parameters['sca']) && $_REQUEST['sca'] == $me_link_parameters['sca'] ) {
+			$is_board = true;
+		} else if ($is_board && isset($me_link_parameters['sca']) && $_REQUEST['sca'] != $me_link_parameters['sca']) {
+			$is_board = false;
+		}
+		
 		if ( defined('_SHOP_') ) {
 			$is_shop = (isset($_REQUEST['ca_id']) && $_REQUEST['ca_id'] == $me_link_parameters['ca_id']);
 		}
