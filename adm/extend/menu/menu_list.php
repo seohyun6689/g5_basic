@@ -21,6 +21,8 @@ if(!sql_query(" DESCRIBE {$g5['menu_table']} ", false)) {
                   `me_target` varchar(255) NOT NULL DEFAULT '0',
                   `me_order` int(11) NOT NULL DEFAULT '0',
                   `me_use` tinyint(4) NOT NULL DEFAULT '0',
+                  `me_use_gnb` tinyint(4) NOT NULL DEFAULT '1',
+                  `me_use_lnb` tinyint(4) NOT NULL DEFAULT '1',
                   `me_mobile_use` tinyint(4) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`me_id`)
                 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ", true);
@@ -57,6 +59,8 @@ $colspan = 8;
         <th scope="col">새창</th>
         <th scope="col">순서</th>
         <th scope="col">PC사용</th>
+        <th scope="col">GNB 사용</th>
+        <th scope="col">LNB 사용</th>
         <th scope="col">모바일사용</th>
         <th scope="col">관리</th>
     </tr>
@@ -113,6 +117,20 @@ $colspan = 8;
             </select>
         </td>
         <td class="td_mng">
+            <label for="me_use_gnb_<?php echo $i; ?>" class="sound_only">GNB출력</label>
+            <select name="me_use_gnb[]" id="me_use_gnb_<?php echo $i; ?>">
+                <option value="1"<?php echo get_selected($row['me_use_gnb'], '1', true); ?>>사용함</option>
+                <option value="0"<?php echo get_selected($row['me_use_gnb'], '0', true); ?>>사용안함</option>
+            </select>
+        </td>
+        <td class="td_mng">
+            <label for="me_use_lnb_<?php echo $i; ?>" class="sound_only">LNB출력</label>
+            <select name="me_use_lnb[]" id="me_use_lnb_<?php echo $i; ?>">
+                <option value="1"<?php echo get_selected($row['me_use_lnb'], '1', true); ?>>사용함</option>
+                <option value="0"<?php echo get_selected($row['me_use_lnb'], '0', true); ?>>사용안함</option>
+            </select>
+        </td>
+        <td class="td_mng">
             <label for="me_mobile_use_<?php echo $i; ?>" class="sound_only">모바일사용</label>
             <select name="me_mobile_use[]" id="me_mobile_use_<?php echo $i; ?>">
                 <option value="1"<?php echo get_selected($row['me_mobile_use'], '1', true); ?>>사용함</option>
@@ -160,6 +178,8 @@ $(function() {
 		f.me_target.value = $(this).closest("tr").find("select[name='me_target[]']").val();
 		f.me_order.value = $(this).closest("tr").find("input[name='me_order[]']").val();
 		f.me_use.value = $(this).closest("tr").find("select[name='me_use[]']").val();
+        f.me_use_gnb.value = $(this).closest("tr").find("select[name='me_use_gnb[]']").val();
+        f.me_use_lnb.value = $(this).closest("tr").find("select[name='me_use_lnb[]']").val();
 		f.me_mobile_use.value = $(this).closest("tr").find("select[name='me_mobile_use[]']").val();
 		f.submit();
 
@@ -222,6 +242,8 @@ function fmenulist_submit(f)
 <input type="hidden" name="me_target" value="">
 <input type="hidden" name="me_order" value="">
 <input type="hidden" name="me_use" value="">
+<input type="hidden" name="me_use_gnb" value="">
+<input type="hidden" name="me_use_lnb" value="">
 <input type="hidden" name="me_mobile_use" value="">
 </form>
 

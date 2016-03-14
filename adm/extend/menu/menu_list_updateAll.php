@@ -29,6 +29,8 @@ for ($i=0; $i<$count; $i++)
                     me_target       = '{$_POST['me_target'][$i]}',
                     me_order        = '{$_POST['me_order'][$i]}',
                     me_use          = '{$_POST['me_use'][$i]}',
+                    me_use_gnb      = '{$_POST['me_use_gnb'][$i]}',
+                    me_use_lnb      = '{$_POST['me_use_lnb'][$i]}',
                     me_mobile_use   = '{$_POST['me_mobile_use'][$i]}'
 			where me_id='$me_id' ";
     sql_query($sql);

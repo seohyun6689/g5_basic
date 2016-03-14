@@ -25,6 +25,8 @@ if($me_id){
                     me_target       = '{$_POST['me_target']}',
                     me_order        = '{$_POST['me_order']}',
                     me_use          = '{$_POST['me_use']}',
+                    me_use_gnb      = '{$_POST['me_use_gnb']}',
+                    me_use_lnb      = '{$_POST['me_use_lnb']}',
                     me_mobile_use   = '{$_POST['me_mobile_use']}' 
 				where me_id='$me_id' ";
 
