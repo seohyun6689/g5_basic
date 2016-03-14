@@ -27,7 +27,7 @@ class LNB extends GNB
 		if ( isset( $exclude ) ) {
 			$this->setExclude($exclude);
 		}
-		$global_menu = $this->get_global_menu();
+		$global_menu = $this->get_global_menu("lnb");
 		$lnb_code_selected = substr($this->me_code_selected, 0, 2);
 		$this->current_lnb = $global_menu[$lnb_code_selected];
 	}

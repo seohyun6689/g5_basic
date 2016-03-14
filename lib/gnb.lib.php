@@ -86,21 +86,26 @@ class GNB {
 	}
 
 	// 상위 메뉴 선택
-	protected function get_selected_global_menu($menu, $me_code_selected){
+	protected function get_selected_global_menu($menu, $me_code_selected, $type){
+		$_menu = $menu;
 		foreach ($menu as $key => $me){
+			if ($me['me_use_' . $type] == 0)  {  // GNB, LNB 사용안함
+				unset($_menu[$key]);
+				continue; 
+			}
 			if (in_array($me['me_code'], $me_code_selected)) {
 				$me['me_selected'] = true;
 			}
 			if(count($me['items'])) {
-				$me['items'] = $this->get_selected_global_menu($me['items'], $me_code_selected);
+				$me['items'] = $this->get_selected_global_menu($me['items'], $me_code_selected, $type);
 			}
-			$menu[$key] = $me;
+			$_menu[$key] = $me;
 		}
 		
-		return $menu;
+		return $_menu;
 	}
 	// 전체 메뉴 리턴
-	protected function get_global_menu()
+	protected function get_global_menu($type="gnb")
 	{
 		global $g5;
 		$this->global_menu = $menu = $this->global_menus();
@@ -110,7 +115,7 @@ class GNB {
 				$me_code = substr($this->me_code_selected, 0, $i);
 				$me_code_selected[] = $me_code;
 			}
-			$menu = $this->get_selected_global_menu($menu, $me_code_selected);
+			$menu = $this->get_selected_global_menu($menu, $me_code_selected, $type);
 			return $menu;
 		}
 		return $menu;	
@@ -164,7 +169,7 @@ class GNB {
 		    return false;
 	    }
 	    		
-		$rows = $this->get_global_menu();
+		$rows = $this->get_global_menu("gnb");
 
 	    ob_start();
 	    include_once $this->skin_path.'/gnb.skin.php';
