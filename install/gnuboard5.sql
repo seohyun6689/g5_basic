@@ -863,6 +863,8 @@ CREATE TABLE IF NOT EXISTS `g5_menu` (
   `me_target` varchar(255) NOT NULL DEFAULT '',
   `me_order` int(11) NOT NULL DEFAULT '0',
   `me_use` tinyint(4) NOT NULL DEFAULT '0',
+  `me_use_gnb` tinyint(4) NOT NULL DEFAULT '1',
+  `me_use_lnb` tinyint(4) NOT NULL DEFAULT '1',
   `me_mobile_use` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`me_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
