@@ -12,7 +12,7 @@ if ( !isset($ws_id) )
 
 $sql = "select * from {$g5['ws_images_table']} where ws_id = '{$ws_id}' order by wsi_sortable asc";
 $result = sql_query( $sql );
-while ( $row = mysql_fetch_assoc($result) )
+while ( $row = sql_fetch_array($result) )
 {
 	$rows[] = $row;
 }

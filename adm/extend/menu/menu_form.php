@@ -31,7 +31,7 @@ if($new == 'new' || !$code) {
 			<?php
 				$sql = "select * from {$g5['menu_table']} where 1=1 order by me_code,me_id ";
 				$res = sql_query($sql);
-				while($R=mysql_fetch_array($res)){
+				while($R=sql_fetch_array($res)){
 			?>
             <option value="<?php echo $R['me_code']?>" <?php if($R['me_code']==$origin_code) echo "selected"; ?> >
 				<?php if((strlen($R['me_code'])/2)>1) { ?>

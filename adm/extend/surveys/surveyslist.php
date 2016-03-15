@@ -42,7 +42,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 		</thead>
 		<tbody>
 <?php
-    	for ($i=0; $row=mysql_fetch_array($result); $i++) {
+    	for ($i=0; $row=sql_fetch_array($result); $i++) {
 ?>	    			
 			<tr>
 				<td class="td_num"><?php echo $row['su_id']; ?></td>

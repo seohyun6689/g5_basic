@@ -18,10 +18,9 @@ if ( $result )
 {
 	$sql = "select * from `{$g5['ws_images_table']}` where ws_id = '{$ws_id}'";
 	$result = sql_query( $sql );
-	while ( $row = mysql_fetch_assoc( $result ) )
+	while ( $row = sql_fetch_array( $result ) )
 	{
 		$sql = "delete from `{$g5['ws_images_table']}` where wsi_id = '{$row['wsi_id']}'";
-		debugout( $$sql );
 		sql_query( $sql );
 	}
 	

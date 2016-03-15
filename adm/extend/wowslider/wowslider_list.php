@@ -9,7 +9,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 $sql = "select SQL_CALC_FOUND_ROWS m.*, count(i.wsi_id) as ws_items from {$g5['ws_master_table']} m left join {$g5['ws_images_table']} i on m.ws_id = i.ws_id group by m.ws_id ";
 $result = sql_query( $sql );
 $rows = array();
-while( $row = mysql_fetch_assoc( $result ) )
+while( $row = sql_fetch_array( $result ) )
 {
 	$rows[] = $row;
 }
