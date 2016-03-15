@@ -109,15 +109,15 @@ class GNB {
 	{
 		global $g5;
 		$this->global_menu = $menu = $this->global_menus();
+		$me_code_selected = array();
 		if ($this->me_code_selected) {
 			$selectlen = strlen($this->me_code_selected);
 			for($i=2; $i <= $selectlen; $i+=2) {
 				$me_code = substr($this->me_code_selected, 0, $i);
 				$me_code_selected[] = $me_code;
 			}
-			$menu = $this->get_selected_global_menu($menu, $me_code_selected, $type);
-			return $menu;
 		}
+		$menu = $this->get_selected_global_menu($menu, $me_code_selected, $type);
 		return $menu;	
 	}
 
