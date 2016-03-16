@@ -31,7 +31,7 @@ function wowslider( $ws_id, $style=null, $script=null)
 	$result = sql_query( $images_sql );
 	$images = array();
 	$index = 0;
-	while( $row = mysql_fetch_assoc( $result ) )
+	while( $row = sql_fetch_array( $result ) )
 	{	
 		$image = '<img src="' . $image_url . '/' . $row['wsi_file'] . '" alt="' . $row['wsi_source'] . '" title="' . $row['wsi_title'] . '" id="' . $ws_id . '_' . $index . '"/>';
 		
