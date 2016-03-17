@@ -1,0 +1,43 @@
+PHP_FLAG register_globals ON
+PHP_FLAG  allow_url_fopen  ON
+PHP_VALUE mysql.default_charset UTF8
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    RewriteBase /
+    
+    # www 추가
+	# RewriteCond %{HTTP_HOST} !^www\.
+	# RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+	
+	# www 제거
+	# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC] 
+	# RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
+    
+    RewriteCond %{REQUEST_URI} ^/contents/.*
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^contents\/(.*)$ /contents/index.php?__param=$1&%{QUERY_STRING} [L]
+	
+    # /bbs/content.php?co_id=revival_info
+    RewriteCond %{REQUEST_URI} ^/content/.*
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^content\/(.*)$ /content/index.php?co_id=$1&%{QUERY_STRING} [L]
+	
+	# rss
+	RewriteRule ^rss/([a-zA-Z0-9_]+)$ /bbs/rss.php?bo_table=$1 [L]
+	
+    #  /articles/notice/1 => /bbs/board.php?bo_table=notice&wr_id=1
+    RewriteRule ^link/([a-zA-Z0-9_]+)/([0-9]+)/([0-9]+)$ /bbs/link.php?bo_table=$1&wr_id=$2&no=$3 [L]
+    RewriteRule ^articles/w/([a-zA-Z0-9_]+)$ /bbs/write.php?bo_table=$1&%{QUERY_STRING} [L]
+    RewriteRule ^articles/([u|r])/([a-zA-Z0-9_]+)/([0-9]+)$ /bbs/write.php?w=$1&bo_table=$2&wr_id=$3&%{QUERY_STRING} [L]
+	RewriteRule ^articles/([a-zA-Z0-9_]+)/([0-9]+)$ /bbs/board.php?bo_table=$1&wr_id=$2&%{QUERY_STRING} [L]
+	RewriteRule ^articles/([a-zA-Z0-9_]+)$ /bbs/board.php?bo_table=$1&%{QUERY_STRING} [L]
+	
+</IfModule>
+
+ErrorDocument 404 /error/404.php
+AddDefaultCharset UTF-8
+AddType application/x-httpd-php .php .html .php5 .htm
