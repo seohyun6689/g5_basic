@@ -1,16 +1,17 @@
 <?php
-include_once('./_common.php');
-
-// 내용
-$sql = " select * from {$g5['content_table']} where co_id = '$co_id' ";
-$co = sql_fetch($sql);
-if (!$co['co_id'])
-    alert('등록된 내용이 없습니다.');
+if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 $g5['title'] = $co['co_subject'];
 include_once('./_head.php');
 
-$co_content = $co['co_mobile_content'] ? $co['co_mobile_content'] : $co['co_content'];
+// $co_content = $co['co_mobile_content'] ? $co['co_mobile_content'] : $co['co_content'];
+$contentpath = G5_DATA_PATH."/pages/mobile";
+if ( is_file( $contentpath . "/" . $co['co_id'] . ".php" ) && file_exists($contentpath . "/" . $co['co_id'] . ".php") ) {
+	ob_start();
+	@include_once( $contentpath . "/" . $co['co_id'] . ".php" );
+	$co_content = ob_get_contents();
+	ob_end_clean();
+}
 $str = conv_content($co_content, $co['co_html'], $co['co_tag_filter_use']);
 
 // $src 를 $dst 로 변환

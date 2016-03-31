@@ -6,17 +6,17 @@ if( !isset($g5['content_table']) ){
     die('<meta charset="utf-8">관리자 모드에서 게시판관리->내용 관리를 먼저 확인해 주세요.');
 }
 
-if (G5_IS_MOBILE) {
-    include_once(G5_MOBILE_PATH.'/content.php');
-    return;
-}
-
 // 내용
 $sql = " select * from {$g5['content_table']} where co_id = '$co_id' ";
 $co = sql_fetch($sql);
 if (!$co['co_id'])
     // alert('등록된 내용이 없습니다.');
     goto_url(G5_URL . '/error/404.php');
+
+if (G5_IS_MOBILE) {
+    include_once(G5_MOBILE_PATH.'/content.php');
+    return;
+}
 
 $contentpath = G5_DATA_PATH."/pages";
 if ( is_file( $contentpath . "/" . $co['co_id'] . ".php" ) && file_exists($contentpath . "/" . $co['co_id'] . ".php") ) {
