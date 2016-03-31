@@ -1,3 +1,3 @@
 <?php
-$cfg['LoginCookieValidity'] = (60 * 60) * 10; //(sec * min)  * hour 
+$cfg['LoginCookieValidity'] = 36000; //(sec * min)  * hour 
 ?>
