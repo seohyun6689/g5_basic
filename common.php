@@ -110,7 +110,7 @@ $_REQUEST = array_map_deep(G5_ESCAPE_FUNCTION,  $_REQUEST);
 @extract($_GET);
 @extract($_POST);
 @extract($_SERVER);
-
+@extract($_SESSION);
 
 // 완두콩님이 알려주신 보안관련 오류 수정
 // $member 에 값을 직접 넘길 수 있음
