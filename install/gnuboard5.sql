@@ -186,6 +186,7 @@ DROP TABLE IF EXISTS `g5_config`;
 CREATE TABLE IF NOT EXISTS `g5_config` (
   `cf_title` varchar(255) NOT NULL DEFAULT '',
   `cf_theme` varchar(255) NOT NULL DEFAULT '',
+  `cf_administrator` varchar(255) NOT NULL DEFAULT '',
   `cf_admin` varchar(255) NOT NULL DEFAULT '',
   `cf_admin_email` varchar(255) NOT NULL DEFAULT '',
   `cf_admin_email_name` varchar(255) NOT NULL DEFAULT '',
@@ -287,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `g5_config` (
   `cf_sms_use` varchar(255) NOT NULL DEFAULT '',
   `cf_sms_type` varchar(10) NOT NULL DEFAULT '',
   `cf_icode_id` varchar(255) NOT NULL DEFAULT '',
-  `cf_icode_pw` varchar(255) NOT NULL DEFAULT '',  
+  `cf_icode_pw` varchar(255) NOT NULL DEFAULT '',
   `cf_icode_server_ip` varchar(255) NOT NULL DEFAULT '',
   `cf_icode_server_port` varchar(255) NOT NULL DEFAULT '',
   `cf_googl_shorturl_apikey` varchar(255) NOT NULL DEFAULT '',
@@ -463,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `g5_member` (
   `mb_ip` varchar(255) NOT NULL default '',
   `mb_leave_date` varchar(8) NOT NULL default '',
   `mb_intercept_date` varchar(8) NOT NULL default '',
-  `mb_email_certify` datetime NOT NULL default '0000-00-00 00:00:00',  
+  `mb_email_certify` datetime NOT NULL default '0000-00-00 00:00:00',
   `mb_memo` text NOT NULL,
   `mb_lost_certify` varchar(255) NOT NULL,
   `mb_mailling` tinyint(4) NOT NULL default '0',
@@ -738,7 +739,7 @@ CREATE TABLE IF NOT EXISTS `g5_qa_config` (
 DROP TABLE IF EXISTS `g5_qa_content`;
 CREATE TABLE IF NOT EXISTS `g5_qa_content` (
   `qa_id` int(11) NOT NULL AUTO_INCREMENT,
-  `qa_num` int(11) NOT NULL DEFAULT '0',  
+  `qa_num` int(11) NOT NULL DEFAULT '0',
   `qa_parent` int(11) NOT NULL DEFAULT '0',
   `qa_related` int(11) NOT NULL DEFAULT '0',
   `mb_id` varchar(20) NOT NULL DEFAULT '',

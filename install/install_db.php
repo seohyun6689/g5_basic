@@ -97,6 +97,7 @@ $download_point = 0;
 $sql = " insert into `{$table_prefix}config`
             set cf_title = '".G5_VERSION."',
                 cf_theme = 'basic',
+                cf_administrator = 'admin',
                 cf_admin = '$admin_id',
                 cf_admin_email = '$admin_email',
                 cf_admin_email_name = '".G5_VERSION."',
@@ -174,6 +175,21 @@ $sql = " insert into `{$table_prefix}member`
                  mb_name = '$admin_name',
                  mb_nick = '$admin_name',
                  mb_email = '$admin_email',
+                 mb_level = '10',
+                 mb_mailling = '1',
+                 mb_open = '1',
+                 mb_email_certify = '".G5_TIME_YMDHIS."',
+                 mb_datetime = '".G5_TIME_YMDHIS."',
+                 mb_ip = '{$_SERVER['REMOTE_ADDR']}'
+                 ";
+sql_query($sql, true, $dblink);
+
+$sql = " insert into `{$table_prefix}member`
+            set mb_id = 'admin',
+                 mb_password = PASSWORD('admin'),
+                 mb_name = '관리자',
+                 mb_nick = '관리자',
+                 mb_email = 'admin@example.com',
                  mb_level = '10',
                  mb_mailling = '1',
                  mb_open = '1',
