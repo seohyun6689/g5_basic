@@ -38,7 +38,7 @@ define('G5_COOKIE_DOMAIN',  '');
 define('G5_DBCONFIG_FILE',  'dbconfig.php');
 
 define('G5_ADMIN_DIR',      'adm');
-define('G5_BBS_DIR',        'bbs');
+define('G5_BBS_DIR',        'core');
 define('G5_CSS_DIR',        'css');
 define('G5_DATA_DIR',       'data');
 define('G5_EXTEND_DIR',     'extend');
