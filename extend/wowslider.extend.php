@@ -22,11 +22,6 @@ define('G5_WS_ENGINE_PATH',             G5_WS_DATA_PATH . '/%s/engine');
 define('G5_WS_IMAGES_URL',             G5_WS_DATA_URL . '/%s/images');
 define('G5_WS_ENGINE_URL',             G5_WS_DATA_URL . '/%s/engine');
 
-// 언어팩
-if ( !is_null( $_translator ) ) {
-	$_translator->mergePack( G5_WS_PATH . '/i18n/' . $_COOKIE[translator::COOKIE_KEY] . '.ini' );
-}
-
 $g5['ws_master_table'] = 'ws_master';
 $g5['ws_images_table'] = 'ws_images';
 
@@ -89,7 +84,7 @@ if ( is_file( G5_WS_PATH . '/wowslider.lib.php' ) && file_exists(G5_WS_PATH . '/
 					INDEX `wsi_sortable` (`wsi_sortable`)
 					);';
 	sql_query( $ws_items_sql );
-	
+
 	$fonts_json = '{
 		"Arial": {
 			"family": "Arial, Helvetica, sans-serif"
@@ -334,13 +329,9 @@ if ( is_file( G5_WS_PATH . '/wowslider.lib.php' ) && file_exists(G5_WS_PATH . '/
 
 	if( !is_dir(G5_WS_DATA_PATH) && !file_exists( G5_WS_DATA_PATH ) )
 	{
-		$old = umask(0); 
-		mkdir(G5_WS_DATA_PATH,0777); 
+		$old = umask(0);
+		mkdir(G5_WS_DATA_PATH,0777);
 		umask($old);
 	}
 	include( G5_WS_PATH . '/wowslider.lib.php' );
 }
-
-
-
-?>
