@@ -1,0 +1,16 @@
+dl, dt, dd { margin: 0; }
+.basic-history { border-top: 2px solid #999; margin-bottom: 30px; background:url(/images/content/history.png) right top no-repeat; }
+.basic-history h3 { display: none; }
+.basic-history dl { clear: both; overflow: hidden; }
+.basic-history dl:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+.basic-history dl dt { width: 130px; float: left; padding: 18px 0 18px 20px; font-size: 25px; color: #364F91; }
+.basic-history dl dd { width: 590px; float: left; padding: 18px 0 18px 0; }
+
+.basic-history ul li { line-height: 26px; font-size:13px; }
+.basic-history ul li .date { color: #333; font-size: 16px; }

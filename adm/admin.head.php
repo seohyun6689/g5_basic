@@ -81,6 +81,9 @@ function imageview(id, w, h)
                 <li><a href="<?php echo G5_ADMIN_URL ?>/shop_admin/configform.php">쇼핑몰환경</a></li>
                 <li><a href="<?php echo G5_SHOP_URL ?>/">쇼핑몰</a></li>
                 <?php } ?>
+                <?php if ( defined('G5_USE_I18N') && $config['cf_use_i18n']) { ?>
+                <li><?php echo $i18n->getLangSelectbox(); ?></li>
+                <?php } ?>
                 <li id="tnb_logout"><a href="<?php echo G5_BBS_URL ?>/logout.php" class="tnb_logout">로그아웃</a></li>
             </ul>
 
@@ -132,10 +135,10 @@ function imageview(id, w, h)
                         $svc_class = ' lnb_svc';
                     else
                         $svc_class = '';
-                    
-                    if($sub_menu == $value[0]) 
+
+                    if($sub_menu == $value[0])
                         $active_class = ' active';
-                    else 
+                    else
                         $active_class = '';
 
                     echo $nl.'<li><a href="'.$value[2].'" class="'.$svc_class.$active_class.'">'.$value[1].'</a></li>';
