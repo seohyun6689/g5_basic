@@ -2,13 +2,13 @@
 include_once('./_common.php');
 
 if (!$is_member)
-    alert('회원만 이용하실 수 있습니다.');
+    alert(_(core_a49));
 
 $me_id = (int)$_REQUEST['me_id'];
 
 if ($kind == 'recv')
 {
-    $t = '받은';
+    $t = _(theme_t787);
     $unkind = 'send';
 
     $sql = " update {$g5['memo_table']}
@@ -20,15 +20,15 @@ if ($kind == 'recv')
 }
 else if ($kind == 'send')
 {
-    $t = '보낸';
+    $t = _(theme_t788);
     $unkind = 'recv';
 }
 else
 {
-    alert($kind.' 값을 넘겨주세요.');
+    alert(_(core_a87, $kind));
 }
 
-$g5['title'] = $t.' 쪽지 보기';
+$g5['title'] = $t;
 include_once(G5_PATH.'/head.sub.php');
 
 $sql = " select * from {$g5['memo_table']}

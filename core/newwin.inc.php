@@ -10,7 +10,7 @@ $result = sql_query($sql, false);
 
 <!-- 팝업레이어 시작 { -->
 <div id="hd_pop">
-    <h2>팝업레이어 알림</h2>
+    <h2><?php echo _(theme_t992); ?></h2>
 
 <?php
 for ($i=0; $nw=sql_fetch_array($result); $i++)
@@ -25,12 +25,12 @@ for ($i=0; $nw=sql_fetch_array($result); $i++)
             <?php echo conv_content($nw['nw_content'], 1); ?>
         </div>
         <div class="hd_pops_footer">
-            <button class="hd_pops_reject hd_pops_<?php echo $nw['nw_id']; ?> <?php echo $nw['nw_disable_hours']; ?>"><strong><?php echo $nw['nw_disable_hours']; ?></strong>시간 동안 다시 열람하지 않습니다.</button>
-            <button class="hd_pops_close hd_pops_<?php echo $nw['nw_id']; ?>">닫기</button>
+            <button class="hd_pops_reject hd_pops_<?php echo $nw['nw_id']; ?> <?php echo $nw['nw_disable_hours']; ?>"><strong><?php echo $nw['nw_disable_hours']; ?></strong><?php echo _(theme_t993); ?></button>
+            <button class="hd_pops_close hd_pops_<?php echo $nw['nw_id']; ?>"><?php echo _(theme_t392); ?></button>
         </div>
     </div>
 <?php }
-if ($i == 0) echo '<span class="sound_only">팝업레이어 알림이 없습니다.</span>';
+if ($i == 0) echo '<span class="sound_only">' . _(theme_t994) . '</span>';
 ?>
 </div>
 

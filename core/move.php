@@ -2,17 +2,17 @@
 include_once('./_common.php');
 
 if ($sw == 'move')
-    $act = '이동';
+    $act = _(theme_t685);
 else if ($sw == 'copy')
-    $act = '복사';
+    $act = _(theme_t684);
 else
-    alert('sw 값이 제대로 넘어오지 않았습니다.');
+    alert(_(core_a59));
 
 // 게시판 관리자 이상 복사, 이동 가능
 if ($is_admin != 'board' && $is_admin != 'group' && $is_admin != 'super')
-    alert_close("게시판 관리자 이상 접근이 가능합니다.");
+    alert_close(_(core_a88));
 
-$g5['title'] = '게시물 ' . $act;
+$g5['title'] = _(theme_t1077) . $act;
 include_once(G5_PATH.'/head.sub.php');
 
 $wr_id_list = '';
@@ -59,14 +59,14 @@ for ($i=0; $row=sql_fetch_array($result); $i++)
 
     <div class="tbl_head01 tbl_wrap">
         <table>
-        <caption><?php echo $act ?>할 게시판을 한개 이상 선택하여 주십시오.</caption>
+        <caption><?php echo _(core_a89, $act) ?></caption>
         <thead>
         <tr>
             <th scope="col">
-                <label for="chkall" class="sound_only">현재 페이지 게시판 전체</label>
+                <label for="chkall" class="sound_only"><?php echo _(theme_t686); ?></label>
                 <input type="checkbox" id="chkall" onclick="if (this.checked) all_checked(true); else all_checked(false);">
             </th>
-            <th scope="col">게시판</th>
+            <th scope="col"><?php echo _(theme_t687); ?></th>
         </tr>
         </thead>
         <tbody>
@@ -74,7 +74,7 @@ for ($i=0; $row=sql_fetch_array($result); $i++)
             $atc_mark = '';
             $atc_bg = '';
             if ($list[$i]['bo_table'] == $bo_table) { // 게시물이 현재 속해 있는 게시판이라면
-                $atc_mark = '<span class="copymove_current">현재<span class="sound_only">게시판</span></span>';
+                $atc_mark = '<span class="copymove_current">' . _(theme_t1397) . '<span class="sound_only">' .  _(theme_t687) . '</span></span>';
                 $atc_bg = 'copymove_currentbg';
             }
         ?>
@@ -108,7 +108,7 @@ for ($i=0; $row=sql_fetch_array($result); $i++)
 
 <script>
 $(function() {
-    $(".win_btn").append("<button type=\"button\" class=\"btn_cancel\">창닫기</button>");
+    $(".win_btn").append("<button type=\"button\" class=\"btn_cancel\"><?php echo _(theme_t425); ?></button>");
 
     $(".win_btn button").click(function() {
         window.close();
@@ -145,7 +145,7 @@ function fboardmoveall_submit(f)
     }
 
     if (!check) {
-        alert('게시물을 '+f.act.value+'할 게시판을 한개 이상 선택해 주십시오.');
+        alert(_('core.a89', [f.act.value]));
         return false;
     }
 

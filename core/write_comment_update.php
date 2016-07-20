@@ -5,7 +5,7 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 
 // 090710
 if (substr_count($wr_content, "&#") > 50) {
-    alert('내용에 올바르지 않은 코드가 다수 포함되어 있습니다.');
+    alert(_(core_a113));
     exit;
 }
 
@@ -20,28 +20,28 @@ if (!empty($_POST['wr_email']))
 // 비회원의 경우 이름이 누락되는 경우가 있음
 if ($is_guest) {
     if ($wr_name == '')
-        alert('이름은 필히 입력하셔야 합니다.');
+        alert(_(core_a145));
     if(!chk_captcha())
-        alert('자동등록방지 숫자가 틀렸습니다.');
+        alert(_(core_a51));
 }
 
 if ($w == "c" || $w == "cu") {
     if ($member['mb_level'] < $board['bo_comment_level'])
-        alert('댓글을 쓸 권한이 없습니다.');
+        alert(_(core_a146));
 }
 else
-    alert('w 값이 제대로 넘어오지 않았습니다.');
+    alert('w ' . _(core_a59));
 
 // 세션의 시간 검사
 // 4.00.15 - 댓글 수정시 연속 게시물 등록 메시지로 인한 오류 수정
 if ($w == 'c' && $_SESSION['ss_datetime'] >= (G5_SERVER_TIME - $config['cf_delay_sec']) && !$is_admin)
-    alert('너무 빠른 시간내에 게시물을 연속해서 올릴 수 없습니다.');
+    alert(_(core_a147));
 
 set_session('ss_datetime', G5_SERVER_TIME);
 
 $wr = get_write($write_table, $wr_id);
 if (empty($wr['wr_id']))
-    alert("글이 존재하지 않습니다.\\n글이 삭제되었거나 이동하였을 수 있습니다.");
+    alert(_(core_a148));
 
 
 // "인터넷옵션 > 보안 > 사용자정의수준 > 스크립팅 > Action 스크립팅 > 사용 안 함" 일 경우의 오류 처리
@@ -72,7 +72,7 @@ if ($w == 'c') // 댓글 입력
     // 댓글쓰기 포인트설정시 회원의 포인트가 음수인 경우 댓글을 쓰지 못하던 버그를 수정 (곱슬최씨님)
     $tmp_point = ($member['mb_point'] > 0) ? $member['mb_point'] : 0;
     if ($tmp_point + $board['bo_comment_point'] < 0 && !$is_admin)
-        alert('보유하신 포인트('.number_format($member['mb_point']).')가 없거나 모자라서 댓글쓰기('.number_format($board['bo_comment_point']).')가 불가합니다.\\n\\n포인트를 적립하신 후 다시 댓글을 써 주십시오.');
+        alert(_(core_a149, array(number_format($member['mb_point']), number_format($board['bo_comment_point']))));
 
     // 댓글 답변
     if ($comment_id)
@@ -81,12 +81,12 @@ if ($w == 'c') // 댓글 입력
                     where wr_id = '$comment_id' ";
         $reply_array = sql_fetch($sql);
         if (!$reply_array['wr_id'])
-            alert('답변할 댓글이 없습니다.\\n\\n답변하는 동안 댓글이 삭제되었을 수 있습니다.');
+            alert(_(core_a150));
 
         $tmp_comment = $reply_array['wr_comment'];
 
         if (strlen($reply_array['wr_comment_reply']) == 5)
-            alert('더 이상 답변하실 수 없습니다.\\n\\n답변은 5단계 까지만 가능합니다.');
+            alert(_(core_a151));
 
         $reply_len = strlen($reply_array['wr_comment_reply']) + 1;
         if ($board['bo_reply_order']) {
@@ -117,7 +117,7 @@ if ($w == 'c') // 댓글 입력
         if (!$row['reply'])
             $reply_char = $begin_reply_char;
         else if ($row['reply'] == $end_reply_char) // A~Z은 26 입니다.
-            alert('더 이상 답변하실 수 없습니다.\\n\\n답변은 26개 까지만 가능합니다.');
+            alert(_(core_a152));
         else
             $reply_char = chr(ord($row['reply']) + $reply_number);
 
@@ -264,24 +264,24 @@ else if ($w == 'cu') // 댓글 수정
             if ($member['mb_level'] >= $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
                 ;
             else
-                alert('그룹관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.');
+                alert(_(core_a153));
         } else
-            alert('자신이 관리하는 그룹의 게시판이 아니므로 댓글을 수정할 수 없습니다.');
+            alert(_(core_a154));
     } else if ($is_admin == 'board') { // 게시판관리자이면
         $mb = get_member($comment['mb_id']);
         if ($member['mb_id'] == $board['bo_admin']) { // 자신이 관리하는 게시판인가?
             if ($member['mb_level'] >= $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
                 ;
             else
-                alert('게시판관리자의 권한보다 높은 회원의 댓글이므로 수정할 수 없습니다.');
+                alert(_(core_a155));
         } else
-            alert('자신이 관리하는 게시판이 아니므로 댓글을 수정할 수 없습니다.');
+            alert(_(core_a156));
     } else if ($member['mb_id']) {
         if ($member['mb_id'] != $comment['mb_id'])
-            alert('자신의 글이 아니므로 수정할 수 없습니다.');
+            alert(_(core_a157));
     } else {
         if($comment['wr_password'] != $wr_password)
-            alert('댓글을 수정할 권한이 없습니다.');
+            alert(_(core_a158));
     }
 
     $sql = " select count(*) as cnt from $write_table
@@ -292,7 +292,7 @@ else if ($w == 'cu') // 댓글 수정
                 and wr_is_comment = 1 ";
     $row = sql_fetch($sql);
     if ($row['cnt'] && !$is_admin)
-        alert('이 댓글와 관련된 답변댓글이 존재하므로 수정 할 수 없습니다.');
+        alert(_(core_a159));
 
     $sql_ip = "";
     if (!$is_admin)

@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if ($is_guest)
-    alert('로그인 한 회원만 접근하실 수 있습니다.', G5_BBS_URL.'/login.php');
+    alert(_(core_a651), G5_BBS_URL.'/login.php');
 
 /*
 if ($url)
@@ -11,7 +11,7 @@ else
     $urlencode = urlencode($_SERVER[REQUEST_URI]);
 */
 
-$g5['title'] = '회원 비밀번호 확인';
+$g5['title'] = _(theme_t781);
 include_once('./_head.sub.php');
 
 $url = clean_xss_tags($_GET['url']);

@@ -4,19 +4,19 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 include_once(G5_LIB_PATH.'/mailer.lib.php');
 
 if (!$config['cf_email_use'])
-    alert('환경설정에서 "메일발송 사용"에 체크하셔야 메일을 발송할 수 있습니다.\\n\\n관리자에게 문의하시기 바랍니다.');
+    alert(_(core_a649));
 
 if (!$is_member && $config['cf_formmail_is_member'])
-    alert_close('회원만 이용하실 수 있습니다.');
+    alert_close(_(core_a49));
 
 $to = base64_decode($to);
 
 if (substr_count($to, "@") > 1)
-    alert_close('한번에 한사람에게만 메일을 발송할 수 있습니다.');
+    alert_close(_(core_a50));
 
 
 if (!chk_captcha()) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
+    alert(_(core_a51));
 }
 
 
@@ -50,10 +50,10 @@ if(!empty($file)) {
 }
 
 //$html_title = $tmp_to . "님께 메일발송";
-$html_title = '메일 발송중';
+$html_title = _(core_a649);
 include_once(G5_PATH.'/head.sub.php');
 
-alert_close('메일을 정상적으로 발송하였습니다.');
+alert_close(_(core_a52));
 
 include_once(G5_PATH.'/tail.sub.php');
 ?>

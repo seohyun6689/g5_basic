@@ -1,7 +1,7 @@
 <?php
 include_once('./_common.php');
 
-$g5['title'] = '전체검색 결과';
+$g5['title'] = _(theme_t1076);
 include_once('./_head.php');
 
 $search_table = Array();
@@ -220,7 +220,7 @@ if ($stx) {
     $write_pages = get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, $_SERVER['SCRIPT_NAME'].'?'.$search_query.'&amp;gr_id='.$gr_id.'&amp;srows='.$srows.'&amp;onetable='.$onetable.'&amp;page=');
 }
 
-$group_select = '<label for="gr_id" class="sound_only">게시판 그룹선택</label><select name="gr_id" id="gr_id" class="select"><option value="">전체 분류';
+$group_select = '<label for="gr_id" class="sound_only">' . _(theme_t1419) . '</label><select name="gr_id" id="gr_id" class="select"><option value="">' . _(theme_t1420);
 $sql = " select gr_id, gr_subject from {$g5['group_table']} order by gr_id ";
 $result = sql_query($sql);
 for ($i=0; $row=sql_fetch_array($result); $i++)

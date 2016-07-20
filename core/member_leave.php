@@ -2,13 +2,13 @@
 include_once('./_common.php');
 
 if (!$member['mb_id'])
-    alert('회원만 접근하실 수 있습니다.');
+    alert(_(core_a78));
 
 if ($is_admin == 'super')
-    alert('최고 관리자는 탈퇴할 수 없습니다');
+    alert(_(core_a79));
 
 if (!($_POST['mb_password'] && check_password($_POST['mb_password'], $member['mb_password'])))
-    alert('비밀번호가 틀립니다.');
+    alert(_(core_a28));
 
 // 회원탈퇴일을 저장
 $date = date("Ymd");
@@ -21,5 +21,5 @@ unset($_SESSION['ss_mb_id']);
 if (!$url)
     $url = G5_URL;
 
-alert(''.$member['mb_nick'].'님께서는 '. date("Y년 m월 d일") .'에 회원에서 탈퇴 하셨습니다.', $url);
+alert(_(core_a80, array($member['mb_nick'], date("Y"), date("m"), date("d") )), $url);
 ?>

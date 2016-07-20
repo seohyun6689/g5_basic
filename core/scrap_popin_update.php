@@ -6,7 +6,7 @@ include_once(G5_PATH.'/head.sub.php');
 if (!$is_member)
 {
     $href = './login.php?'.$qstr.'&amp;url='.urlencode('./board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id);
-    echo '<script> alert(\'회원만 접근 가능합니다.\'); top.location.href = \''.str_replace('&amp;', '&', $href).'\'; </script>';
+    echo '<script> alert(\'' . _(core_a670) . '\'); top.location.href = \''.str_replace('&amp;', '&', $href).'\'; </script>';
     exit;
 }
 
@@ -19,14 +19,14 @@ if ($row['cnt'])
 {
     echo '
     <script>
-    if (confirm(\'이미 스크랩하신 글 입니다.'."\n\n".'지금 스크랩을 확인하시겠습니까?\'))
+    if (confirm(\'' .  _(core_a143) . '\'))
         document.location.href = \'./scrap.php\';
     else
         window.close();
     </script>
     <noscript>
-    <p>이미 스크랩하신 글 입니다.</p>
-    <a href="./scrap.php">스크랩 확인하기</a>
+    <p>' . _(core_a666) . '</p>
+    <a href="./scrap.php">' . _(core_a667) . '</a>
     <a href="./board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.'">돌아가기</a>
     </noscript>';
     exit;
@@ -91,16 +91,20 @@ sql_query($sql);
 
 delete_cache_latest($bo_table);
 
+$a667 = _(core_a667);
+$a668 = _(core_a668);
+$a669 = _(core_a669);
+
 echo <<<HEREDOC
 <script>
-    if (confirm('이 글을 스크랩 하였습니다.\\n\\n지금 스크랩을 확인하시겠습니까?'))
+    if (confirm('{$a668}\\n\\n{$a669}'))
         document.location.href = './scrap.php';
     else
         window.close();
 </script>
 <noscript>
-<p>이 글을 스크랩 하였습니다.</p>
-<a href="./scrap.php">스크랩 확인하기</a>
+<p>{$a668}</p>
+<a href="./scrap.php">{$a667}</a>
 </noscript>
 HEREDOC;
 ?>

@@ -94,11 +94,14 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             <li><a href="<?php echo G5_BBS_URL ?>/qalist.php">1:1문의</a></li>
             <li><a href="<?php echo G5_BBS_URL ?>/current_connect.php">접속자 <?php echo connect('theme/basic'); // 현재 접속자수, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정  ?></a></li>
             <li><a href="<?php echo G5_BBS_URL ?>/new.php">새글</a></li>
+            <?php if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && isset($i18n)) { ?>
+            <li><?php echo $i18n->getLangSelectbox(); ?></li>
+            <?php } ?>
         </ul>
     </div>
 
     <hr>
-	
+
 	<?php echo $gnb->display('theme/basic'); ?>
 </div>
 <!-- } 상단 끝 -->
@@ -112,5 +115,5 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
         <?php echo poll('theme/basic'); // 설문조사, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
     </div>
     <div id="container">
-	    
+
         <?php echo $lnb->display_head('theme/basic'); ?>

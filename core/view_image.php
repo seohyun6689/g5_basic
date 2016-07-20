@@ -21,7 +21,7 @@ if(strpos($filename, 'data/editor')) {
 if(is_file($filepath)) {
     $size = @getimagesize($filepath);
     if(empty($size))
-        alert_close('이미지 파일이 아닙니다.');
+        alert_close(_(core_a144));
 
     $width = $size[0];
     $height = $size[1];
@@ -33,7 +33,7 @@ if(is_file($filepath)) {
 
     $img = '<img src="'.$fileurl.'" alt="" width="'.$width.'" height="'.$height.'" class="draggable" style="position:relative;top:0;left:0;cursor:move;">';
 } else {
-    alert_close('파일이 존재하지 않습니다.');
+    alert_close(_(core_a42));
 }
 ?>
 

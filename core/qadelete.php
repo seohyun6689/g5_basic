@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if($is_guest)
-    alert('회원이시라면 로그인 후 이용해 주십시오.', G5_URL);
+    alert(_(core_a106), G5_URL);
 
 $tmp_array = array();
 if ($qa_id) // 건별삭제
@@ -12,7 +12,7 @@ else // 일괄삭제
 
 $count = count($tmp_array);
 if(!$count)
-    alert('삭제할 게시글을 하나이상 선택해 주십시오.');
+    alert(_(core_a107));
 
 for($i=0; $i<$count; $i++) {
     $qa_id = $tmp_array[$i];

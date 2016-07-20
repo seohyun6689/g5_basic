@@ -36,3 +36,6 @@ if (isset($_GET['lang']) && trim($_GET['lang']) !== '') {
     $_SESSION['lang'] = $_GET['lang'];
 }
 $i18n->init();
+
+
+// echo _(theme_t384);

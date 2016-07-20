@@ -10,7 +10,7 @@ if ($w == '')
 
     $po = sql_fetch(" select * from {$g5['poll_table']} where po_id = '{$po_id}' ");
     if (!$po['po_id'])
-        alert('po_id 값이 제대로 넘어오지 않았습니다.');
+        alert('po_id ' . _(core_a59));
 
     $tmp_row = sql_fetch(" select max(pc_id) as max_pc_id from {$g5['poll_etc_table']} ");
     $pc_id = $tmp_row['max_pc_id'] + 1;
