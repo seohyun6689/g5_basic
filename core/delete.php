@@ -4,7 +4,7 @@ include_once('./_common.php');
 if ($is_admin)
 {
     if (!($token && get_session('ss_delete_token') == $token))
-        alert(_(core_a21));
+        alert(__(core_a21));
 }
 
 //$wr = sql_fetch(" select * from $write_table where wr_id = '$wr_id' ");
@@ -16,23 +16,23 @@ if ($is_admin == 'super') // 최고관리자 통과
 else if ($is_admin == 'group') { // 그룹관리자
     $mb = get_member($write['mb_id']);
     if ($member['mb_id'] != $group['gr_admin']) // 자신이 관리하는 그룹인가?
-        alert(_(core_a30));
+        alert(__(core_a30));
     else if ($member['mb_level'] < $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
-        alert(_(core_a31));
+        alert(__(core_a31));
 } else if ($is_admin == 'board') { // 게시판관리자이면
     $mb = get_member($write['mb_id']);
     if ($member['mb_id'] != $board['bo_admin']) // 자신이 관리하는 게시판인가?
-        alert(_(core_a32));
+        alert(__(core_a32));
     else if ($member['mb_level'] < $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
-        alert(_(core_a31));
+        alert(__(core_a31));
 } else if ($member['mb_id']) {
     if ($member['mb_id'] != $write['mb_id'])
-        alert(_(core_a27));
+        alert(__(core_a27));
 } else {
     if ($write['mb_id'])
-        alert(_(core_a33), './login.php?url='.urlencode('./board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id));
+        alert(__(core_a33), './login.php?url='.urlencode('./board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id));
     else if (!check_password($wr_password, $write['wr_password']))
-        alert(_(core_a34));
+        alert(__(core_a34));
 }
 
 $len = strlen($write['wr_reply']);
@@ -47,7 +47,7 @@ $sql = " select count(*) as cnt from $write_table
             and wr_is_comment = 0 ";
 $row = sql_fetch($sql);
 if ($row['cnt'] && !$is_admin)
-    alert(_(core_a35));
+    alert(__(core_a35));
 
 // 코멘트 달린 원글의 삭제 여부
 $sql = " select count(*) as cnt from $write_table
@@ -56,7 +56,7 @@ $sql = " select count(*) as cnt from $write_table
             and wr_is_comment = 1 ";
 $row = sql_fetch($sql);
 if ($row['cnt'] >= $board['bo_count_delete'] && !$is_admin)
-    alert(_(core_a36, $board['bo_count_delete']));
+    alert(__(core_a36, $board['bo_count_delete']));
 
 
 // 사용자 코드 실행

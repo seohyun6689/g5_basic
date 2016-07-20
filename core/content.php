@@ -15,7 +15,7 @@ if (G5_IS_MOBILE) {
 $sql = " select * from {$g5['content_table']} where co_id = '$co_id' ";
 $co = sql_fetch($sql);
 if (!$co['co_id'])
-    alert(_(core_a20));
+    alert(__(core_a20));
 
 $g5['title'] = $co['co_subject'];
 

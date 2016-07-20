@@ -19,7 +19,7 @@ sql_query(" update {$g5['member_table']} set mb_lost_certify = '' where mb_no = 
 if ($mb_nonce === substr($mb['mb_lost_certify'], 0, 32)) {
     $new_password_hash = substr($mb['mb_lost_certify'], 33);
     sql_query(" update {$g5['member_table']} set mb_password = '$new_password_hash' where mb_no = '$mb_no' ");
-    alert(_(core_a92), G5_BBS_URL.'/login.php');
+    alert(__(core_a92), G5_BBS_URL.'/login.php');
 }
 else {
     die("Error");

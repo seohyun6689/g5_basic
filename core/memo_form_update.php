@@ -3,10 +3,10 @@ include_once('./_common.php');
 include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 
 if ($is_guest)
-    alert(_(core_a49));
+    alert(__(core_a49));
 
 if (!chk_captcha()) {
-    alert(_(core_a51));
+    alert(__(core_a51));
 }
 
 $recv_list = explode(',', trim($_POST['me_recv_mb_id']));
@@ -39,14 +39,14 @@ for ($i=0; $i<count($recv_list); $i++) {
 $error_msg = implode(",", $error_list);
 
 if ($error_msg && !$is_admin)
-    alert(_(core_a81, $error_msg));
+    alert(__(core_a81, $error_msg));
 
 if (!$is_admin) {
     if (count($member_list['id'])) {
         $point = (int)$config['cf_memo_send_point'] * count($member_list['id']);
         if ($point) {
             if ($member['mb_point'] - $point < 0) {
-                alert(_(core_a82, number_format($member['mb_point'])));
+                alert(__(core_a82, number_format($member['mb_point'])));
             }
         }
     }
@@ -74,8 +74,8 @@ for ($i=0; $i<count($member_list['id']); $i++) {
 
 if ($member_list) {
     $str_nick_list = implode(',', $member_list['nick']);
-    alert($str_nick_list._(core_a83), G5_HTTP_BBS_URL."/memo.php?kind=send", false);
+    alert($str_nick_list.__(core_a83), G5_HTTP_BBS_URL."/memo.php?kind=send", false);
 } else {
-    alert(_(core_a84), G5_HTTP_BBS_URL."/memo_form.php", false);
+    alert(__(core_a84), G5_HTTP_BBS_URL."/memo_form.php", false);
 }
 ?>

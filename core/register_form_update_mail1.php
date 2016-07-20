@@ -7,7 +7,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title><?php echo _(theme_t1415); ?></title>
+<title><?php echo __(theme_t1415); ?></title>
 </head>
 
 <body>

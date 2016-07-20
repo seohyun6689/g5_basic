@@ -1,7 +1,7 @@
 <?php
 include_once('./_common.php');
 
-$g5['title'] = _(theme_t617);
+$g5['title'] = __(theme_t617);
 include_once('./_head.sub.php');
 
 $url = $_GET['url'];

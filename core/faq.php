@@ -23,7 +23,7 @@ if ($fm_id){
 
 $fm = $faq_master_list[$fm_id];
 if (!$fm['fm_id'])
-    alert(_(core_a20));
+    alert(__(core_a20));
 
 $g5['title'] = $fm['fm_subject'];
 
@@ -91,7 +91,7 @@ if(is_file($skin_file)) {
     }
     include_once($skin_file);
 } else {
-    echo '<p>'. _(core_a648 , str_replace(G5_PATH.'/', '', $skin_file)).'</p>';
+    echo '<p>'. __(core_a648 , str_replace(G5_PATH.'/', '', $skin_file)).'</p>';
 }
 
 include_once('./_tail.php');

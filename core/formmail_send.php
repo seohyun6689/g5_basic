@@ -4,19 +4,19 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 include_once(G5_LIB_PATH.'/mailer.lib.php');
 
 if (!$config['cf_email_use'])
-    alert(_(core_a649));
+    alert(___(core_a649));
 
 if (!$is_member && $config['cf_formmail_is_member'])
-    alert_close(_(core_a49));
+    alert_close(___(core_a49));
 
 $to = base64_decode($to);
 
 if (substr_count($to, "@") > 1)
-    alert_close(_(core_a50));
+    alert_close(___(core_a50));
 
 
 if (!chk_captcha()) {
-    alert(_(core_a51));
+    alert(___(core_a51));
 }
 
 
@@ -50,10 +50,10 @@ if(!empty($file)) {
 }
 
 //$html_title = $tmp_to . "님께 메일발송";
-$html_title = _(core_a649);
+$html_title = ___(core_a649);
 include_once(G5_PATH.'/head.sub.php');
 
-alert_close(_(core_a52));
+alert_close(___(core_a52));
 
 include_once(G5_PATH.'/tail.sub.php');
 ?>

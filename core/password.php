@@ -1,7 +1,7 @@
 <?php
 include_once('./_common.php');
 
-$g5['title'] = _(theme_t785);
+$g5['title'] = __(theme_t785);
 
 switch ($w) {
     case 'u' :
@@ -36,7 +36,7 @@ switch ($w) {
         }
         break;
     default :
-        alert('w ' . _(core_a59));
+        alert('w ' . __(core_a59));
 }
 
 include_once(G5_PATH.'/head.sub.php');

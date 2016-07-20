@@ -2,19 +2,19 @@
 include_once('./_common.php');
 
 if (!$member['mb_id'])
-    alert_close(_(core_a49));
+    alert_close(__(core_a49));
 
 if (!$member['mb_open'] && $is_admin != 'super' && $member['mb_id'] != $mb_id)
-    alert_close(_(core_a105));
+    alert_close(__(core_a105));
 
 $mb = get_member($mb_id);
 if (!$mb['mb_id'])
-    alert_close(_(core_a55));
+    alert_close(__(core_a55));
 
 if (!$mb['mb_open'] && $is_admin != 'super' && $member['mb_id'] != $mb_id)
-    alert_close(_(core_a56));
+    alert_close(__(core_a56));
 
-$g5['title'] = $mb['mb_nick'].' ' . _(theme_t849);
+$g5['title'] = $mb['mb_nick'].' ' . __(theme_t849);
 include_once(G5_PATH.'/head.sub.php');
 
 $mb_nick = get_sideview($mb['mb_id'], get_text($mb['mb_nick']), $mb['mb_email'], $mb['mb_homepage'], $mb['mb_open']);
@@ -25,7 +25,7 @@ $row = sql_fetch($sql);
 $mb_reg_after = $row['days'];
 
 $mb_homepage = set_http(get_text(clean_xss_tags($mb['mb_homepage'])));
-$mb_profile = $mb['mb_profile'] ? conv_content($mb['mb_profile'],0) : _(theme_t1412);
+$mb_profile = $mb['mb_profile'] ? conv_content($mb['mb_profile'],0) : __(theme_t1412);
 
 include_once($member_skin_path.'/profile.skin.php');
 

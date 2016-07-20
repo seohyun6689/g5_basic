@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if (!$board['bo_table']) {
-   alert(_(core_a176), G5_URL);
+   alert(__(core_a176), G5_URL);
 }
 
 check_device($board['bo_device']);
@@ -12,7 +12,7 @@ if (isset($write['wr_is_comment']) && $write['wr_is_comment']) {
 }
 
 if (!$bo_table) {
-    $msg = _(core_a6);
+    $msg = __(core_a6);
     alert($msg);
 }
 
@@ -20,14 +20,14 @@ if (!$bo_table) {
 if (isset($wr_id) && $wr_id) {
     // 글이 없을 경우 해당 게시판 목록으로 이동
     if (!$write['wr_id']) {
-        $msg = _(core_a7);
+        $msg = __(core_a7);
         alert($msg, './board.php?bo_table='.$bo_table);
     }
 
     // 그룹접근 사용
     if (isset($group['gr_use_access']) && $group['gr_use_access']) {
         if ($is_guest) {
-            $msg = _(core_a8);
+            $msg = __(core_a8);
             alert($msg, './login.php?wr_id='.$wr_id.$qstr.'&amp;url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr));
         }
 
@@ -39,7 +39,7 @@ if (isset($wr_id) && $wr_id) {
             $sql = " select count(*) as cnt from {$g5['group_member_table']} where gr_id = '{$board['gr_id']}' and mb_id = '{$member['mb_id']}' ";
             $row = sql_fetch($sql);
             if (!$row['cnt']) {
-                alert(_(core_a9), G5_URL);
+                alert(__(core_a9), G5_URL);
             }
         }
     }
@@ -47,32 +47,32 @@ if (isset($wr_id) && $wr_id) {
     // 로그인된 회원의 권한이 설정된 읽기 권한보다 작다면
     if ($member['mb_level'] < $board['bo_read_level']) {
         if ($is_member)
-            alert(_(core_a10), G5_URL);
+            alert(__(core_a10), G5_URL);
         else
-            alert(_(core_a11), './login.php?wr_id='.$wr_id.$qstr.'&amp;url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr));
+            alert(__(core_a11), './login.php?wr_id='.$wr_id.$qstr.'&amp;url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr));
     }
 
     // 본인확인을 사용한다면
     if ($config['cf_cert_use'] && !$is_admin) {
         // 인증된 회원만 가능
         if ($board['bo_use_cert'] != '' && $is_guest) {
-            alert(_(core_a12), './login.php?wr_id='.$wr_id.$qstr.'&amp;url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr));
+            alert(__(core_a12), './login.php?wr_id='.$wr_id.$qstr.'&amp;url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr));
         }
 
         if ($board['bo_use_cert'] == 'cert' && !$member['mb_certify']) {
-            alert(_(core_a13), G5_URL);
+            alert(__(core_a13), G5_URL);
         }
 
         if ($board['bo_use_cert'] == 'adult' && !$member['mb_adult']) {
-            alert(_(core_a14), G5_URL);
+            alert(__(core_a14), G5_URL);
         }
 
         if ($board['bo_use_cert'] == 'hp-cert' && $member['mb_certify'] != 'hp') {
-            alert(_(core_a15), G5_URL);
+            alert(__(core_a15), G5_URL);
         }
 
         if ($board['bo_use_cert'] == 'hp-adult' && (!$member['mb_adult'] || $member['mb_certify'] != 'hp')) {
-            alert(_(core_a16), G5_URL);
+            alert(__(core_a16), G5_URL);
         }
     }
 
@@ -128,7 +128,7 @@ if (isset($wr_id) && $wr_id) {
         } else {
             // 글읽기 포인트가 설정되어 있다면
             if ($config['cf_use_point'] && $board['bo_read_point'] && $member['mb_point'] + $board['bo_read_point'] < 0)
-                alert(_(core_a17, array(number_format($member['mb_point']), number_format($board['bo_read_point']))));
+                alert(__(core_a17, array(number_format($member['mb_point']), number_format($board['bo_read_point']))));
 
             insert_point($member['mb_id'], $board['bo_read_point'], ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']).' '.$wr_id.' 글읽기', $bo_table, $wr_id, '읽기');
         }
@@ -140,38 +140,38 @@ if (isset($wr_id) && $wr_id) {
 } else {
     if ($member['mb_level'] < $board['bo_list_level']) {
         if ($member['mb_id'])
-            alert(_(core_a18), G5_URL);
+            alert(__(core_a18), G5_URL);
         else
-            alert(_(core_a19), './login.php?'.$qstr.'&url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.($qstr?'&amp;':'')));
+            alert(__(core_a19), './login.php?'.$qstr.'&url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.($qstr?'&amp;':'')));
     }
 
     // 본인확인을 사용한다면
     if ($config['cf_cert_use'] && !$is_admin) {
         // 인증된 회원만 가능
         if ($board['bo_use_cert'] != '' && $is_guest) {
-            alert(_(core_a12), './login.php?wr_id='.$wr_id.$qstr.'&amp;url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr));
+            alert(__(core_a12), './login.php?wr_id='.$wr_id.$qstr.'&amp;url='.urlencode(G5_BBS_URL.'/board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.$qstr));
         }
 
         if ($board['bo_use_cert'] == 'cert' && !$member['mb_certify']) {
-            alert(_(core_a13), G5_URL);
+            alert(__(core_a13), G5_URL);
         }
 
         if ($board['bo_use_cert'] == 'adult' && !$member['mb_adult']) {
-            alert(_(core_a14), G5_URL);
+            alert(__(core_a14), G5_URL);
         }
 
         if ($board['bo_use_cert'] == 'hp-cert' && $member['mb_certify'] != 'hp') {
-            alert(_(core_a15), G5_URL);
+            alert(__(core_a15), G5_URL);
         }
 
         if ($board['bo_use_cert'] == 'hp-adult' && (!$member['mb_adult'] || $member['mb_certify'] != 'hp')) {
-            alert(_(core_a16), G5_URL);
+            alert(__(core_a16), G5_URL);
         }
     }
 
     if (!isset($page) || (isset($page) && $page == 0)) $page = 1;
 
-    $g5['title'] = ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']).' ' . _(theme_t662, $page);
+    $g5['title'] = ((G5_IS_MOBILE && $board['bo_mobile_subject']) ? $board['bo_mobile_subject'] : $board['bo_subject']).' ' . __(theme_t662, $page);
 }
 
 include_once(G5_PATH.'/head.sub.php');

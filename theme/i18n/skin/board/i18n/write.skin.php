@@ -27,7 +27,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     if ($is_notice || $is_html || $is_secret || $is_mail) {
         $option = '';
         if ($is_notice) {
-            $option .= "\n".'<input type="checkbox" id="notice" name="notice" value="1" '.$notice_checked.'>'."\n".'<label for="notice">' . _(theme_t725) . '</label>';
+            $option .= "\n".'<input type="checkbox" id="notice" name="notice" value="1" '.$notice_checked.'>'."\n".'<label for="notice">' . __(theme_t725) . '</label>';
         }
 
         if ($is_html) {
@@ -40,14 +40,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
         if ($is_secret) {
             if ($is_admin || $is_secret==1) {
-                $option .= "\n".'<input type="checkbox" id="secret" name="secret" value="secret" '.$secret_checked.'>'."\n".'<label for="secret">' . _(theme_t726) . '</label>';
+                $option .= "\n".'<input type="checkbox" id="secret" name="secret" value="secret" '.$secret_checked.'>'."\n".'<label for="secret">' . __(theme_t726) . '</label>';
             } else {
                 $option_hidden .= '<input type="hidden" name="secret" value="secret">';
             }
         }
 
         if ($is_mail) {
-            $option .= "\n".'<input type="checkbox" id="mail" name="mail" value="mail" '.$recv_email_checked.'>'."\n".'<label for="mail">' . _(theme_t728) . '</label>';
+            $option .= "\n".'<input type="checkbox" id="mail" name="mail" value="mail" '.$recv_email_checked.'>'."\n".'<label for="mail">' . __(theme_t728) . '</label>';
         }
     }
 
@@ -59,45 +59,45 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <tbody>
         <?php if ($is_name) { ?>
         <tr>
-            <th scope="row"><label for="wr_name"><?php echo _(theme_t452); ?><strong class="sound_only"><?php echo _(theme_t421); ?></strong></label></th>
+            <th scope="row"><label for="wr_name"><?php echo __(theme_t452); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="text" name="wr_name" value="<?php echo $name ?>" id="wr_name" required class="frm_input required" size="10" maxlength="20"></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_password) { ?>
         <tr>
-            <th scope="row"><label for="wr_password"><?php echo _(theme_t471); ?><strong class="sound_only"><?php echo _(theme_t421); ?></strong></label></th>
+            <th scope="row"><label for="wr_password"><?php echo __(theme_t471); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="password" name="wr_password" id="wr_password" <?php echo $password_required ?> class="frm_input <?php echo $password_required ?>" maxlength="20"></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_email) { ?>
         <tr>
-            <th scope="row"><label for="wr_email"><?php echo _(theme_t583); ?></label></th>
+            <th scope="row"><label for="wr_email"><?php echo __(theme_t583); ?></label></th>
             <td><input type="text" name="wr_email" value="<?php echo $email ?>" id="wr_email" class="frm_input email" size="50" maxlength="100"></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_homepage) { ?>
         <tr>
-            <th scope="row"><label for="wr_homepage"><?php echo _(theme_t723); ?></label></th>
+            <th scope="row"><label for="wr_homepage"><?php echo __(theme_t723); ?></label></th>
             <td><input type="text" name="wr_homepage" value="<?php echo $homepage ?>" id="wr_homepage" class="frm_input" size="50"></td>
         </tr>
         <?php } ?>
 
         <?php if ($option) { ?>
         <tr>
-            <th scope="row"><?php echo _(theme_t1434); ?></th>
+            <th scope="row"><?php echo __(theme_t1434); ?></th>
             <td><?php echo $option ?></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_category) { ?>
         <tr>
-            <th scope="row"><label for="ca_name"><?php echo _(theme_t1040); ?><strong class="sound_only"><?php echo _(theme_t421); ?></strong></label></th>
+            <th scope="row"><label for="ca_name"><?php echo __(theme_t1040); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td>
                 <select name="ca_name" id="ca_name" required class="required" >
-                    <option value=""><?php echo _(theme_t724); ?></option>
+                    <option value=""><?php echo __(theme_t724); ?></option>
                     <?php echo $category_option ?>
                 </select>
             </td>
@@ -105,19 +105,19 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <?php } ?>
 
         <tr>
-            <th scope="row"><label for="wr_subject"><?php echo _(theme_t422); ?><strong class="sound_only"><?php echo _(theme_t421); ?></strong></label></th>
+            <th scope="row"><label for="wr_subject"><?php echo __(theme_t422); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td>
                 <div id="autosave_wrapper">
                     <input type="text" name="wr_subject" value="<?php echo $subject ?>" id="wr_subject" required class="frm_input required" size="50" maxlength="255">
                     <?php if ($is_member) { // 임시 저장된 글 기능 ?>
                     <script src="<?php echo G5_JS_URL; ?>/autosave.js"></script>
                     <?php if($editor_content_js) echo $editor_content_js; ?>
-                    <button type="button" id="btn_autosave" class="btn_frmline"><?php echo _(theme_t729); ?> (<span id="autosave_count"><?php echo $autosave_count; ?></span>)</button>
+                    <button type="button" id="btn_autosave" class="btn_frmline"><?php echo __(theme_t729); ?> (<span id="autosave_count"><?php echo $autosave_count; ?></span>)</button>
                     <div id="autosave_pop">
-                        <strong><?php echo _(theme_t730); ?></strong>
-                        <div><button type="button" class="autosave_close"><img src="<?php echo $board_skin_url; ?>/img/btn_close.gif" alt="<?php echo _(theme_t392); ?>"></button></div>
+                        <strong><?php echo __(theme_t730); ?></strong>
+                        <div><button type="button" class="autosave_close"><img src="<?php echo $board_skin_url; ?>/img/btn_close.gif" alt="<?php echo __(theme_t392); ?>"></button></div>
                         <ul></ul>
-                        <div><button type="button" class="autosave_close"><img src="<?php echo $board_skin_url; ?>/img/btn_close.gif" alt="<?php echo _(theme_t392); ?>"></button></div>
+                        <div><button type="button" class="autosave_close"><img src="<?php echo $board_skin_url; ?>/img/btn_close.gif" alt="<?php echo __(theme_t392); ?>"></button></div>
                     </div>
                     <?php } ?>
                 </div>
@@ -125,37 +125,37 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         </tr>
 
         <tr>
-            <th scope="row"><label for="wr_content"><?php echo _(theme_t423); ?><strong class="sound_only"><?php echo _(theme_t421); ?></strong></label></th>
+            <th scope="row"><label for="wr_content"><?php echo __(theme_t423); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td class="wr_content">
                 <?php if($write_min || $write_max) { ?>
                 <!-- 최소/최대 글자 수 사용 시 -->
-                <p id="char_count_desc"><?php echo _(theme_t732, array($write_min, $write_max)); ?></p>
+                <p id="char_count_desc"><?php echo __(theme_t732, array($write_min, $write_max)); ?></p>
                 <?php } ?>
                 <?php echo $editor_html; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
                 <?php if($write_min || $write_max) { ?>
                 <!-- 최소/최대 글자 수 사용 시 -->
-                <div id="char_count_wrap"><span id="char_count"></span><?php echo _(theme_t698); ?></div>
+                <div id="char_count_wrap"><span id="char_count"></span><?php echo __(theme_t698); ?></div>
                 <?php } ?>
             </td>
         </tr>
 
         <?php for ($i=1; $is_link && $i<=G5_LINK_COUNT; $i++) { ?>
         <tr>
-            <th scope="row"><label for="wr_link<?php echo $i ?>"><?php echo _(theme_t733); ?> #<?php echo $i ?></label></th>
+            <th scope="row"><label for="wr_link<?php echo $i ?>"><?php echo __(theme_t733); ?> #<?php echo $i ?></label></th>
             <td><input type="text" name="wr_link<?php echo $i ?>" value="<?php if($w=="u"){echo$write['wr_link'.$i];} ?>" id="wr_link<?php echo $i ?>" class="frm_input" size="50"></td>
         </tr>
         <?php } ?>
 
         <?php for ($i=0; $is_file && $i<$file_count; $i++) { ?>
         <tr>
-            <th scope="row"><?php echo _(theme_t1249); ?> #<?php echo $i+1 ?></th>
+            <th scope="row"><?php echo __(theme_t1249); ?> #<?php echo $i+1 ?></th>
             <td>
-                <input type="file" name="bf_file[]" title="<?php echo _(theme_t1329, array($i+1 , $upload_max_filesize)); ?>" class="frm_file frm_input">
+                <input type="file" name="bf_file[]" title="<?php echo __(theme_t1329, array($i+1 , $upload_max_filesize)); ?>" class="frm_file frm_input">
                 <?php if ($is_file_content) { ?>
-                <input type="text" name="bf_content[]" value="<?php echo ($w == 'u') ? $file[$i]['bf_content'] : ''; ?>" title="<?php echo _(theme_t1435); ?>" class="frm_file frm_input" size="50">
+                <input type="text" name="bf_content[]" value="<?php echo ($w == 'u') ? $file[$i]['bf_content'] : ''; ?>" title="<?php echo __(theme_t1435); ?>" class="frm_file frm_input" size="50">
                 <?php } ?>
                 <?php if($w == 'u' && $file[$i]['file']) { ?>
-                <input type="checkbox" id="bf_file_del<?php echo $i ?>" name="bf_file_del[<?php echo $i;  ?>]" value="1"> <label for="bf_file_del<?php echo $i ?>"><?php echo $file[$i]['source'].'('.$file[$i]['size'].')';  ?> <?php echo _(theme_t1056); ?></label>
+                <input type="checkbox" id="bf_file_del<?php echo $i ?>" name="bf_file_del[<?php echo $i;  ?>]" value="1"> <label for="bf_file_del<?php echo $i ?>"><?php echo $file[$i]['source'].'('.$file[$i]['size'].')';  ?> <?php echo __(theme_t1056); ?></label>
                 <?php } ?>
             </td>
         </tr>
@@ -163,7 +163,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
         <?php if ($is_guest) { //자동등록방지  ?>
         <tr>
-            <th scope="row"><?php echo _(theme_t700); ?></th>
+            <th scope="row"><?php echo __(theme_t700); ?></th>
             <td>
                 <?php echo $captcha_html ?>
             </td>
@@ -175,8 +175,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     </div>
 
     <div class="btn_confirm">
-        <input type="submit" value="<?php echo _(theme_t1139); ?>" id="btn_submit" accesskey="s" class="btn_submit">
-        <a href="./board.php?bo_table=<?php echo $bo_table ?>" class="btn_cancel"><?php echo _(theme_t513); ?></a>
+        <input type="submit" value="<?php echo __(theme_t1139); ?>" id="btn_submit" accesskey="s" class="btn_submit">
+        <a href="./board.php?bo_table=<?php echo $bo_table ?>" class="btn_cancel"><?php echo __(theme_t513); ?></a>
     </div>
     </form>
 
@@ -197,7 +197,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     function html_auto_br(obj)
     {
         if (obj.checked) {
-            result = confirm(_('theme.t749'));
+            result = confirm(__('theme.t749'));
             if (result)
                 obj.value = "html2";
             else
@@ -230,13 +230,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         });
 
         if (subject) {
-            alert(_('theme.t750', [subject]));
+            alert(__('theme.t750', [subject]));
             f.wr_subject.focus();
             return false;
         }
 
         if (content) {
-            alert(_('theme.t702', [content]));
+            alert(__('theme.t702', [content]));
             if (typeof(ed_wr_content) != "undefined")
                 ed_wr_content.returnFalse();
             else
@@ -248,11 +248,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             if (char_min > 0 || char_max > 0) {
                 var cnt = parseInt(check_byte("wr_content", "char_count"));
                 if (char_min > 0 && char_min > cnt) {
-                    alert(_('theme.t751', [char_min]));
+                    alert(__('theme.t751', [char_min]));
                     return false;
                 }
                 else if (char_max > 0 && char_max < cnt) {
-                    alert(_('theme.t752', [char_max]));
+                    alert(__('theme.t752', [char_max]));
                     return false;
                 }
             }

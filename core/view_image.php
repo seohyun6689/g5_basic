@@ -21,7 +21,7 @@ if(strpos($filename, 'data/editor')) {
 if(is_file($filepath)) {
     $size = @getimagesize($filepath);
     if(empty($size))
-        alert_close(_(core_a144));
+        alert_close(__(core_a144));
 
     $width = $size[0];
     $height = $size[1];
@@ -33,7 +33,7 @@ if(is_file($filepath)) {
 
     $img = '<img src="'.$fileurl.'" alt="" width="'.$width.'" height="'.$height.'" class="draggable" style="position:relative;top:0;left:0;cursor:move;">';
 } else {
-    alert_close(_(core_a42));
+    alert_close(__(core_a42));
 }
 ?>
 

@@ -2,9 +2,9 @@
 include_once('./_common.php');
 
 if ($is_guest)
-    alert_close(_(core_a99));
+    alert_close(__(core_a99));
 
-$g5['title'] = _(theme_t1409 , get_text($member['mb_nick']) );
+$g5['title'] = __(theme_t1409 , get_text($member['mb_nick']) );
 include_once(G5_PATH.'/head.sub.php');
 
 $list = array();

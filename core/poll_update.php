@@ -3,14 +3,14 @@ include_once('./_common.php');
 
 $po = sql_fetch(" select * from {$g5['poll_table']} where po_id = '{$_POST['po_id']}' ");
 if (!$po['po_id'])
-    alert('po_id ' . _(core_a59));
+    alert('po_id ' . __(core_a59));
 
 if ($member['mb_level'] < $po['po_level'])
-    alert_close(_(core_a102, $po['po_level']));
+    alert_close(__(core_a102, $po['po_level']));
 
 $gb_poll = preg_replace('/[^0-9]/', '', $gb_poll);
 if(!$gb_poll)
-    alert_close(_(core_a103));
+    alert_close(__(core_a103));
 
 $search_mb_id = false;
 $search_ip = false;
@@ -50,7 +50,7 @@ if (!($search_ip || $search_mb_id)) {
 
     sql_query($sql);
 } else {
-    alert($po['po_subject'].''._(core_a104), $result_url);
+    alert($po['po_subject'].''.__(core_a104), $result_url);
 }
 
 if (!$search_mb_id)

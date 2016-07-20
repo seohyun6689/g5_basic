@@ -5,9 +5,9 @@ global $lo_url;
 include_once('./_common.php');
 
 if($error) {
-    $g5['title'] = _(core_a645);
+    $g5['title'] = __(core_a645);
 } else {
-    $g5['title'] = _(core_a646);
+    $g5['title'] = __(core_a646);
 }
 include_once(G5_PATH.'/head.sub.php');
 // 필수 입력입니다.
@@ -39,9 +39,9 @@ $url = preg_replace("/[\<\>\'\"\\\'\\\"\(\)]/", "", $url);
 check_url_host($url);
 
 if($error) {
-    $header2 = _(core_a643);
+    $header2 = __(core_a643);
 } else {
-    $header2 = _(core_a644);
+    $header2 = __(core_a644);
 }
 ?>
 
@@ -76,11 +76,11 @@ history.back();
     <?php
     }
     ?>
-    <input type="submit" value="<?php echo _(gotoreturn); ?>">
+    <input type="submit" value="<?php echo __(gotoreturn); ?>">
     </form>
     <?php } else { ?>
     <div class="btn_confirm">
-        <a href="<?php echo $url ?>"><?php echo _(gotoreturn); ?></a>
+        <a href="<?php echo $url ?>"><?php echo __(gotoreturn); ?></a>
     </div>
     <?php } ?>
 </div>

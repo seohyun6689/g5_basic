@@ -17,7 +17,7 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
             <?php echo $wr_subject ?>
         </h1>
         <span style="display:block;padding:10px 30px 30px;background:#f7f7f7;text-align:right">
-            <?php echo _(theme_t1421); ?> <?php echo $wr_name ?>
+            <?php echo __(theme_t1421); ?> <?php echo $wr_name ?>
         </span>
         <div style="margin:20px 0 0;padding:30px 30px 50px;min-height:200px;height:auto !important;height:200px;border-bottom:1px solid #eee">
             <?php echo $wr_content ?>

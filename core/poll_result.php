@@ -4,12 +4,12 @@ include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 
 $po = sql_fetch(" select * from {$g5['poll_table']} where po_id = '{$po_id}' ");
 if (!$po['po_id'])
-    alert(_(core_a100));
+    alert(__(core_a100));
 
 if ($member['mb_level'] < $po['po_level'])
-    alert(_(core_a101, $po['po_level']));
+    alert(__(core_a101, $po['po_level']));
 
-$g5['title'] = _(theme_t1411);
+$g5['title'] = __(theme_t1411);
 
 $po_subject = $po['po_subject'];
 

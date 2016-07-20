@@ -8,16 +8,16 @@ include_once(G5_LIB_PATH.'/mailer.lib.php');
 referer_check();
 
 if (!($w == '' || $w == 'u')) {
-    alert('w ' . _(core_a59));
+    alert('w ' . __(core_a59));
 }
 
 if ($w == 'u' && $is_admin == 'super') {
     if (file_exists(G5_PATH.'/DEMO'))
-        alert(_(core_a125));
+        alert(__(core_a125));
 }
 
 if (!chk_captcha()) {
-    alert(_(core_a51));
+    alert(__(core_a51));
 }
 
 if($w == 'u')
@@ -25,10 +25,10 @@ if($w == 'u')
 else if($w == '')
     $mb_id = trim($_POST['mb_id']);
 else
-    alert(_(core_a126), G5_URL);
+    alert(__(core_a126), G5_URL);
 
 if(!$mb_id)
-    alert(_(core_a127));
+    alert(__(core_a127));
 
 $mb_password    = trim($_POST['mb_password']);
 $mb_password_re = trim($_POST['mb_password_re']);
@@ -83,17 +83,17 @@ if ($w == '' || $w == 'u') {
     // 서버환경에 따라 정상적으로 체크되지 않을 수 있음.
     $tmp_mb_name = iconv('UTF-8', 'UTF-8//IGNORE', $mb_name);
     if($tmp_mb_name != $mb_name) {
-        alert(_(core_a658));
+        alert(__(core_a658));
     }
     $tmp_mb_nick = iconv('UTF-8', 'UTF-8//IGNORE', $mb_nick);
     if($tmp_mb_nick != $mb_nick) {
-        alert(_(core_a659));
+        alert(__(core_a659));
     }
 
     if ($w == '' && !$mb_password)
-        alert(_(core_a128));
+        alert(__(core_a128));
     if($w == '' && $mb_password != $mb_password_re)
-        alert(_(core_a129));
+        alert(__(core_a129));
 
     if ($msg = empty_mb_name($mb_name))       alert($msg, "", true, true);
     if ($msg = empty_mb_nick($mb_nick))     alert($msg, "", true, true);
@@ -119,22 +119,22 @@ if ($w == '' || $w == 'u') {
             set_session('ss_check_mb_nick', '');
             set_session('ss_check_mb_email', '');
 
-            alert(_(core_a120));
+            alert(__(core_a120));
         }
 
         // 본인확인 체크
         if($config['cf_cert_use'] && $config['cf_cert_req']) {
             if(trim($_POST['cert_no']) != $_SESSION['ss_cert_no'] || !$_SESSION['ss_cert_no'])
-                alert(_(core_a130));
+                alert(__(core_a130));
         }
 
         if ($config['cf_use_recommend'] && $mb_recommend) {
             if (!exist_mb_id($mb_recommend))
-                alert(_(core_a131));
+                alert(__(core_a131));
         }
 
         if (strtolower($mb_id) == strtolower($mb_recommend)) {
-            alert(_(core_a132));
+            alert(__(core_a132));
         }
     } else {
         // 자바스크립트로 정보변경이 가능한 버그 수정
@@ -161,7 +161,7 @@ if($config['cf_cert_use'] && $_SESSION['ss_cert_type'] && $_SESSION['ss_cert_dup
     $sql = " select mb_id from {$g5['member_table']} where mb_id <> '{$member['mb_id']}' and mb_dupinfo = '{$_SESSION['ss_cert_dupinfo']}' ";
     $row = sql_fetch($sql);
     if ($row['mb_id']) {
-        alert(_(core_a133)." : ".$row['mb_id']);
+        alert(__(core_a133)." : ".$row['mb_id']);
     }
 }
 
@@ -251,7 +251,7 @@ if ($w == '') {
 
     // 회원님께 메일 발송
     if ($config['cf_email_mb_member']) {
-        $subject = '['.$config['cf_title'].'] ' . _(theme_t1416);
+        $subject = '['.$config['cf_title'].'] ' . __(theme_t1416);
 
         $mb_md5 = md5($mb_id.$mb_email.G5_TIME_YMDHIS);
         $certify_href = G5_BBS_URL.'/email_certify.php?mb_id='.$mb_id.'&amp;mb_md5='.$mb_md5;
@@ -288,10 +288,10 @@ if ($w == '') {
 
 } else if ($w == 'u') {
     if (!trim($_SESSION['ss_mb_id']))
-        alert(_(core_a660));
+        alert(__(core_a660));
 
     if (trim($_POST['mb_id']) != $mb_id)
-        alert(_(core_a134));
+        alert(__(core_a134));
 
     $sql_password = "";
     if ($mb_password)
@@ -383,18 +383,18 @@ if (isset($_FILES['mb_icon']) && is_uploaded_file($_FILES['mb_icon']['tmp_name']
                 //=================================================================\
             }
         } else {
-            $msg .= _(core_a661, number_format($config['cf_member_icon_size']));
+            $msg .= __(core_a661, number_format($config['cf_member_icon_size']));
         }
 
     } else {
-        $msg .= _(core_a662, $_FILES['mb_icon']['name']);
+        $msg .= __(core_a662, $_FILES['mb_icon']['name']);
     }
 }
 
 
 // 인증메일 발송
 if ($config['cf_use_email_certify'] && $old_email != $mb_email) {
-    $subject = '['.$config['cf_title'].'] ' . _(core_a657);
+    $subject = '['.$config['cf_title'].'] ' . __(core_a657);
 
     $mb_datetime = $member['mb_datetime'] ? $member['mb_datetime'] : G5_TIME_YMDHIS;
     $mb_md5 = md5($mb_id.$mb_email.$mb_datetime);
@@ -429,14 +429,14 @@ if ($w == '') {
 
     if ($old_email != $mb_email && $config['cf_use_email_certify']) {
         set_session('ss_mb_id', '');
-        alert(_(core_a663), G5_URL);
+        alert(__(core_a663), G5_URL);
     } else {
         echo '
         <!doctype html>
         <html lang="ko">
         <head>
         <meta charset="utf-8">
-        <title>' . _(theme_t434) . '</title>
+        <title>' . __(theme_t434) . '</title>
         <body>
         <form name="fregisterupdate" method="post" action="'.G5_HTTP_BBS_URL.'/register_form.php">
         <input type="hidden" name="w" value="u">
@@ -445,7 +445,7 @@ if ($w == '') {
         <input type="hidden" name="is_update" value="1">
         </form>
         <script>
-        alert("' . _(theme_t1417) . '");
+        alert("' . __(theme_t1417) . '");
         document.fregisterupdate.submit();
         </script>
         </body>

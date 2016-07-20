@@ -3,13 +3,13 @@ include_once('./_common.php');
 
 // 게시판 관리자 이상 복사, 이동 가능
 if ($is_admin != 'board' && $is_admin != 'group' && $is_admin != 'super')
-    alert_close(_(core_a88));
+    alert_close(__(core_a88));
 
 if ($sw != 'move' && $sw != 'copy')
-    alert('sw ' . _(core_a59));
+    alert('sw ' . __(core_a59));
 
 if(!count($_POST['chk_bo_table']))
-    alert(_(core_a89, $act), $url);
+    alert(__(core_a89, $act), $url);
 
 // 원본 파일 디렉토리
 $src_dir = G5_DATA_PATH.'/file/'.$bo_table;
@@ -195,7 +195,7 @@ if ($sw == 'move')
     sql_query(" update {$g5['board_table']} set bo_count_write = bo_count_write - '$save_count_write', bo_count_comment = bo_count_comment - '$save_count_comment' where bo_table = '$bo_table' ");
 }
 
-$msg = _(core_a90, $act);
+$msg = __(core_a90, $act);
 $opener_href  = './board.php?bo_table='.$bo_table.'&amp;page='.$page.'&amp;'.$qstr;
 $opener_href1 = str_replace('&amp;', '&', $opener_href);
 

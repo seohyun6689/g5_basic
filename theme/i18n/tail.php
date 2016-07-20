@@ -28,18 +28,18 @@ if ($config['cf_use_i18n'] && $config['cf_use_i18n_layout']) {
     </div>
     <div id="ft_copy">
         <div>
-            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company"><?php echo _(theme_t625); ?></a>
-            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy"><?php echo _(theme_t1426); ?></a>
-            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision"><?php echo _(theme_t1427); ?></a>
+            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company"><?php echo __(theme_t625); ?></a>
+            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy"><?php echo __(theme_t1426); ?></a>
+            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision"><?php echo __(theme_t1427); ?></a>
             Copyright &copy; <b>소유하신 도메인.</b> All rights reserved.<br>
-            <a href="#hd" id="ft_totop"><?php echo _(theme_t1429); ?></a>
+            <a href="#hd" id="ft_totop"><?php echo __(theme_t1429); ?></a>
         </div>
     </div>
 </div>
 
 <?php
 if(G5_DEVICE_BUTTON_DISPLAY && !G5_IS_MOBILE) { ?>
-<a href="<?php echo get_device_change_url(); ?>" id="device_change"><?php echo _(theme_t1428); ?></a>
+<a href="<?php echo get_device_change_url(); ?>" id="device_change"><?php echo __(theme_t1428); ?></a>
 <?php
 }
 

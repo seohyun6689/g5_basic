@@ -7,26 +7,26 @@ $mb_id = substr(clean_xss_tags($_POST['mb_id']), 0, 20);
 $mb_email = get_email_address(trim($_POST['mb_email']));
 
 if(!$mb_id || !$mb_email)
-    alert(_(core_a120), G5_URL);
+    alert(__(core_a120), G5_URL);
 
 $sql = " select mb_name, mb_password, mb_email, mb_datetime from {$g5['member_table']} where mb_id = '{$mb_id}' and substring(mb_email_certify, 1, 1) = '0' ";
 $mb = sql_fetch($sql);
 if (!$mb) {
-    alert(_(core_a122), G5_URL);
+    alert(__(core_a122), G5_URL);
 }
 
 if (!chk_captcha()) {
-    alert(_(core_a51));
+    alert(__(core_a51));
 }
 
 $sql = " select count(*) as cnt from {$g5['member_table']} where mb_id <> '{$mb_id}' and mb_email = '$mb_email' ";
 $row = sql_fetch($sql);
 if ($row['cnt']) {
-    alert("{$mb_email} " . _(core_a123));
+    alert("{$mb_email} " . __(core_a123));
 }
 
 // 인증메일 발송
-$subject = '['.$config['cf_title'].'] ' . _(core_a657);
+$subject = '['.$config['cf_title'].'] ' . __(core_a657);
 
 $mb_name = $mb['mb_name'];
 $mb_datetime = $mb['mb_datetime'] ? $mb['mb_datetime'] : G5_TIME_YMDHIS;
@@ -43,5 +43,5 @@ mailer($config['cf_admin_email_name'], $config['cf_admin_email'], $mb_email, $su
 $sql = " update {$g5['member_table']} set mb_email = '$mb_email' where mb_id = '$mb_id' ";
 sql_query($sql);
 
-alert(_(core_a124, array($mb_email, $mb_email)), G5_URL);
+alert(__(core_a124, array($mb_email, $mb_email)), G5_URL);
 ?>

@@ -2,13 +2,13 @@
 include_once('./_common.php');
 
 if (!$member['mb_id'])
-    alert(_(core_a78));
+    alert(__(core_a78));
 
 if ($is_admin == 'super')
-    alert(_(core_a79));
+    alert(__(core_a79));
 
 if (!($_POST['mb_password'] && check_password($_POST['mb_password'], $member['mb_password'])))
-    alert(_(core_a28));
+    alert(__(core_a28));
 
 // 회원탈퇴일을 저장
 $date = date("Ymd");
@@ -21,5 +21,5 @@ unset($_SESSION['ss_mb_id']);
 if (!$url)
     $url = G5_URL;
 
-alert(_(core_a80, array($member['mb_nick'], date("Y"), date("m"), date("d") )), $url);
+alert(__(core_a80, array($member['mb_nick'], date("Y"), date("m"), date("d") )), $url);
 ?>

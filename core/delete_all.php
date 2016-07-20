@@ -2,7 +2,7 @@
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
 if(!$is_admin)
-    alert(_(core_a647), G5_URL);
+    alert(__(core_a647), G5_URL);
 
 // 4.11
 @include_once($board_skin_path.'/delete_all.head.skin.php');
@@ -19,7 +19,7 @@ else // 일괄삭제
 $chk_count = count($tmp_array);
 
 if($chk_count > (G5_IS_MOBILE ? $board['bo_mobile_page_rows'] : $board['bo_page_rows']))
-    alert(_(core_a120));
+    alert(__(core_a120));
 
 // 사용자 코드 실행
 @include_once($board_skin_path.'/delete_all.skin.php');

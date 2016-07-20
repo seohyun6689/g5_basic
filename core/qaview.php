@@ -3,7 +3,7 @@ include_once('./_common.php');
 include_once(G5_EDITOR_LIB);
 
 if($is_guest)
-    alert(_(core_a108), './login.php?url='.urlencode(G5_BBS_URL.'/qaview.php?qa_id='.$qa_id));
+    alert(__(core_a108), './login.php?url='.urlencode(G5_BBS_URL.'/qaview.php?qa_id='.$qa_id));
 
 $qaconfig = get_qa_config();
 
@@ -21,7 +21,7 @@ if(is_file($skin_file)) {
     $view = sql_fetch($sql);
 
     if(!$view['qa_id'])
-        alert(_(core_a109));
+        alert(__(core_a109));
 
     $subject_len = G5_IS_MOBILE ? $qaconfig['qa_mobile_subject_len'] : $qaconfig['qa_subject_len'];
 
@@ -168,7 +168,7 @@ if(is_file($skin_file)) {
 
     include_once($skin_file);
 } else {
-    echo '<div>'._(core_a648, str_replace(G5_PATH.'/', '', $skin_file)).'</div>';
+    echo '<div>'.__(core_a648, str_replace(G5_PATH.'/', '', $skin_file)).'</div>';
 }
 
 include_once('./qatail.php');

@@ -131,7 +131,7 @@ function no_comma(data)
 // 삭제 검사 확인
 function del(href)
 {
-    if(confirm(_('theme.t1433'))) {
+    if(confirm(__('theme.t1433'))) {
         var iev = -1;
         if (navigator.appName == 'Microsoft Internet Explorer') {
             var ua = navigator.userAgent;

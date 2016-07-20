@@ -2,13 +2,13 @@
 include_once('./_common.php');
 
 if (!$is_member)
-    alert(_(core_a49));
+    alert(__(core_a49));
 
 $me_id = (int)$_REQUEST['me_id'];
 
 if ($kind == 'recv')
 {
-    $t = _(theme_t787);
+    $t = __(theme_t787);
     $unkind = 'send';
 
     $sql = " update {$g5['memo_table']}
@@ -20,12 +20,12 @@ if ($kind == 'recv')
 }
 else if ($kind == 'send')
 {
-    $t = _(theme_t788);
+    $t = __(theme_t788);
     $unkind = 'recv';
 }
 else
 {
-    alert(_(core_a87, $kind));
+    alert(__(core_a87, $kind));
 }
 
 $g5['title'] = $t;

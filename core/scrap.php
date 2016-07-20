@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if (!$is_member)
-    alert_close(_(core_a99));
+    alert_close(__(core_a99));
 
 $g5['title'] = get_text($member['mb_nick']).' is scrap';
 include_once(G5_PATH.'/head.sub.php');

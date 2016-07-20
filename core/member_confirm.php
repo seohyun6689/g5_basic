@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if ($is_guest)
-    alert(_(core_a651), G5_BBS_URL.'/login.php');
+    alert(__(core_a651), G5_BBS_URL.'/login.php');
 
 /*
 if ($url)
@@ -11,7 +11,7 @@ else
     $urlencode = urlencode($_SERVER[REQUEST_URI]);
 */
 
-$g5['title'] = _(theme_t781);
+$g5['title'] = __(theme_t781);
 include_once('./_head.sub.php');
 
 $url = clean_xss_tags($_GET['url']);

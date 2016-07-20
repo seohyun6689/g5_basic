@@ -26,16 +26,16 @@ if (confirm(conf)) {
 <header>
     <hgroup>
         <h1><?php echo $header; ?></h1> <!-- 수행 중이던 작업 내용 -->
-        <h2><?php echo _(theme_t1393); ?></h2>
+        <h2><?php echo __(theme_t1393); ?></h2>
     </hgroup>
 </header>
 <p>
     <?php echo $msg; ?>
 </p>
 
-<a href="<?php echo $url1; ?>"><?php echo _(theme_t429); ?></a>
-<a href="<?php echo $url2; ?>"><?php echo _(theme_t513); ?></a><br><br>
-<a href="<?php echo $url3; ?>"><?php echo _(theme_t814); ?></a>
+<a href="<?php echo $url1; ?>"><?php echo __(theme_t429); ?></a>
+<a href="<?php echo $url2; ?>"><?php echo __(theme_t513); ?></a><br><br>
+<a href="<?php echo $url3; ?>"><?php echo __(theme_t814); ?></a>
 </article>
 </noscript>
 

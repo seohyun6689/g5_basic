@@ -9,7 +9,7 @@ if ($is_member) {
 // 세션을 지웁니다.
 set_session("ss_mb_reg", "");
 
-$g5['title'] = _(theme_t884);
+$g5['title'] = __(theme_t884);
 include_once('./_head.php');
 
 $register_action_url = G5_BBS_URL.'/register_form.php';

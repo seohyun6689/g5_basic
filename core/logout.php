@@ -13,7 +13,7 @@ set_cookie('ck_auto', '', 0);
 if ($url) {
     $p = @parse_url($url);
     if ($p['scheme'] || $p['host']) {
-        alert(_(core_a77));
+        alert(__(core_a77));
     }
 
     $link = $url;

@@ -10,7 +10,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
 
 <!-- 댓글 시작 { -->
 <section id="bo_vc">
-    <h2><?php echo _(theme_t688); ?></h2>
+    <h2><?php echo __(theme_t688); ?></h2>
     <?php
     $cmt_amt = count($list);
     for ($i=0; $i<$cmt_amt; $i++) {
@@ -29,14 +29,14 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
 
     <article id="c_<?php echo $comment_id ?>" <?php if ($cmt_depth) { ?>style="margin-left:<?php echo $cmt_depth ?>px;border-top-color:#e0e0e0"<?php } ?>>
         <header style="z-index:<?php echo $cmt_sv; ?>">
-            <h1><?php echo _(theme_t689, get_text($list[$i]['wr_name'])); ?></h1>
+            <h1><?php echo __(theme_t689, get_text($list[$i]['wr_name'])); ?></h1>
             <?php echo $list[$i]['name'] ?>
-            <?php if ($cmt_depth) { ?><img src="<?php echo $board_skin_url ?>/img/icon_reply.gif" class="icon_reply" alt="<?php echo _(theme_t1431); ?>"><?php } ?>
+            <?php if ($cmt_depth) { ?><img src="<?php echo $board_skin_url ?>/img/icon_reply.gif" class="icon_reply" alt="<?php echo __(theme_t1431); ?>"><?php } ?>
             <?php if ($is_ip_view) { ?>
-            <?php echo _(theme_t1432); ?>
+            <?php echo __(theme_t1432); ?>
             <span class="bo_vc_hdinfo"><?php echo $list[$i]['ip']; ?></span>
             <?php } ?>
-            <?php echo _(theme_t1041); ?>
+            <?php echo __(theme_t1041); ?>
             <span class="bo_vc_hdinfo"><time datetime="<?php echo date('Y-m-d\TH:i:s+09:00', strtotime($list[$i]['datetime'])) ?>"><?php echo $list[$i]['datetime'] ?></time></span>
             <?php
             include(G5_SNS_PATH.'/view_comment_list.sns.skin.php');
@@ -45,7 +45,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
 
         <!-- 댓글 출력 -->
         <p>
-            <?php if (strstr($list[$i]['wr_option'], "secret")) { ?><img src="<?php echo $board_skin_url; ?>/img/icon_secret.gif" alt="<?php echo _(theme_t726); ?>"><?php } ?>
+            <?php if (strstr($list[$i]['wr_option'], "secret")) { ?><img src="<?php echo $board_skin_url; ?>/img/icon_secret.gif" alt="<?php echo __(theme_t726); ?>"><?php } ?>
             <?php echo $comment ?>
         </p>
 
@@ -71,15 +71,15 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
          ?>
         <footer>
             <ul class="bo_vc_act">
-                <?php if ($list[$i]['is_reply']) { ?><li><a href="<?php echo $c_reply_href;  ?>" onclick="comment_box('<?php echo $comment_id ?>', 'c'); return false;"><?php echo _(theme_t718); ?></a></li><?php } ?>
-                <?php if ($list[$i]['is_edit']) { ?><li><a href="<?php echo $c_edit_href;  ?>" onclick="comment_box('<?php echo $comment_id ?>', 'cu'); return false;"><?php echo _(theme_t690); ?></a></li><?php } ?>
-                <?php if ($list[$i]['is_del'])  { ?><li><a href="<?php echo $list[$i]['del_link'];  ?>" onclick="return comment_delete();"><?php echo _(theme_t391); ?></a></li><?php } ?>
+                <?php if ($list[$i]['is_reply']) { ?><li><a href="<?php echo $c_reply_href;  ?>" onclick="comment_box('<?php echo $comment_id ?>', 'c'); return false;"><?php echo __(theme_t718); ?></a></li><?php } ?>
+                <?php if ($list[$i]['is_edit']) { ?><li><a href="<?php echo $c_edit_href;  ?>" onclick="comment_box('<?php echo $comment_id ?>', 'cu'); return false;"><?php echo __(theme_t690); ?></a></li><?php } ?>
+                <?php if ($list[$i]['is_del'])  { ?><li><a href="<?php echo $list[$i]['del_link'];  ?>" onclick="return comment_delete();"><?php echo __(theme_t391); ?></a></li><?php } ?>
             </ul>
         </footer>
         <?php } ?>
     </article>
     <?php } ?>
-    <?php if ($i == 0) { //댓글이 없다면 ?><p id="bo_vc_empty"><?php echo _(theme_t691); ?></p><?php } ?>
+    <?php if ($i == 0) { //댓글이 없다면 ?><p id="bo_vc_empty"><?php echo __(theme_t691); ?></p><?php } ?>
 
 </section>
 <!-- } 댓글 끝 -->
@@ -108,21 +108,21 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
         <tbody>
         <?php if ($is_guest) { ?>
         <tr>
-            <th scope="row"><label for="wr_name"><?php echo _(theme_t452); ?><strong class="sound_only"> <?php echo _(theme_t421); ?></strong></label></th>
+            <th scope="row"><label for="wr_name"><?php echo __(theme_t452); ?><strong class="sound_only"> <?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="text" name="wr_name" value="<?php echo get_cookie("ck_sns_name"); ?>" id="wr_name" required class="frm_input required" size="5" maxLength="20"></td>
         </tr>
         <tr>
-            <th scope="row"><label for="wr_password"><?php echo _(theme_t471); ?><strong class="sound_only"> 필수</strong></label></th>
+            <th scope="row"><label for="wr_password"><?php echo __(theme_t471); ?><strong class="sound_only"> 필수</strong></label></th>
             <td><input type="password" name="wr_password" id="wr_password" required class="frm_input required" size="10" maxLength="20"></td>
         </tr>
         <?php } ?>
         <tr>
-            <th scope="row"><label for="wr_secret"><?php echo _(theme_t693); ?></label></th>
+            <th scope="row"><label for="wr_secret"><?php echo __(theme_t693); ?></label></th>
             <td><input type="checkbox" name="wr_secret" value="secret" id="wr_secret"></td>
         </tr>
         <?php if ($is_guest) { ?>
         <tr>
-            <th scope="row"><?php echo _(theme_t700); ?></th>
+            <th scope="row"><?php echo __(theme_t700); ?></th>
             <td><?php echo $captcha_html; ?></td>
         </tr>
         <?php } ?>
@@ -130,17 +130,17 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
         if($board['bo_use_sns'] && ($config['cf_facebook_appid'] || $config['cf_twitter_key'])) {
         ?>
         <tr>
-            <th scope="row"><?php echo _(theme_t695); ?></th>
+            <th scope="row"><?php echo __(theme_t695); ?></th>
             <td id="bo_vc_send_sns"></td>
         </tr>
         <?php
         }
         ?>
         <tr>
-            <th scope="row"><?php echo _(theme_t423); ?></th>
+            <th scope="row"><?php echo __(theme_t423); ?></th>
             <td>
-                <?php if ($comment_min || $comment_max) { ?><strong id="char_cnt"><span id="char_count"></span><?php echo _(theme_t698); ?></strong><?php } ?>
-                <textarea id="wr_content" name="wr_content" maxlength="10000" required class="required" title="<?php echo _(theme_t423); ?>"
+                <?php if ($comment_min || $comment_max) { ?><strong id="char_cnt"><span id="char_count"></span><?php echo __(theme_t698); ?></strong><?php } ?>
+                <textarea id="wr_content" name="wr_content" maxlength="10000" required class="required" title="<?php echo __(theme_t423); ?>"
                 <?php if ($comment_min || $comment_max) { ?>onkeyup="check_byte('wr_content', 'char_count');"<?php } ?>><?php echo $c_wr_content;  ?></textarea>
                 <?php if ($comment_min || $comment_max) { ?><script> check_byte('wr_content', 'char_count'); </script><?php } ?>
                 <script>
@@ -160,7 +160,7 @@ var char_max = parseInt(<?php echo $comment_max ?>); // 최대
     </div>
 
     <div class="btn_confirm">
-        <input type="submit" id="btn_submit" class="btn_submit" value="<?php echo _(theme_t701); ?>">
+        <input type="submit" id="btn_submit" class="btn_submit" value="<?php echo __(theme_t701); ?>">
     </div>
 
     </form>
@@ -206,7 +206,7 @@ function fviewcomment_submit(f)
     });
 
     if (content) {
-        alert(_('theme.t702', [content]));
+        alert(__('theme.t702', [content]));
         f.wr_content.focus();
         return false;
     }
@@ -220,17 +220,17 @@ function fviewcomment_submit(f)
         var cnt = parseInt(document.getElementById('char_count').innerHTML);
         if (char_min > 0 && char_min > cnt)
         {
-            alert(_('theme.t703', [char_min]));
+            alert(__('theme.t703', [char_min]));
             return false;
         } else if (char_max > 0 && char_max < cnt)
         {
-            alert(_('theme.t704', [char_max]));
+            alert(__('theme.t704', [char_max]));
             return false;
         }
     }
     else if (!document.getElementById('wr_content').value)
     {
-        alert(_('theme.t705'));
+        alert(__('theme.t705'));
         return false;
     }
 
@@ -239,7 +239,7 @@ function fviewcomment_submit(f)
         f.wr_name.value = f.wr_name.value.replace(pattern, "");
         if (f.wr_name.value == '')
         {
-            alert(_('theme.t706'));
+            alert(__('theme.t706'));
             f.wr_name.focus();
             return false;
         }
@@ -250,7 +250,7 @@ function fviewcomment_submit(f)
         f.wr_password.value = f.wr_password.value.replace(pattern, "");
         if (f.wr_password.value == '')
         {
-            alert(_('theme.t707'));
+            alert(__('theme.t707'));
             f.wr_password.focus();
             return false;
         }
@@ -311,7 +311,7 @@ function comment_box(comment_id, work)
 
 function comment_delete()
 {
-    return confirm(_('theme.t708'));
+    return confirm(__('theme.t708'));
 }
 
 comment_box('', 'c'); // 댓글 입력폼이 보이도록 처리하기위해서 추가 (root님)

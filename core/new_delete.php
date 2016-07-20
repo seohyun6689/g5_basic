@@ -4,7 +4,7 @@ include_once('./_common.php');
 //print_r2($_POST); exit;
 
 if ($is_admin != 'super')
-    alert(_(core_a91));
+    alert(__(core_a91));
 
 $board = array();
 $save_bo_table = array();
@@ -67,7 +67,7 @@ for($i=0;$i<count($_POST['chk_bn_id']);$i++)
             }
         }
 
-        if ($pressed == _(theme_t1398)) {
+        if ($pressed == __(theme_t1398)) {
             // 게시글 내용만 삭제
             sql_query(" update $write_table set wr_subject = '{$g5['time_ymdhis']} - 본인 요청으로 인한 삭제 (냉무) ☆', wr_content = '', wr_name='본인요청삭제☆' where wr_id = '{$write['wr_id']}' ");
         } else {

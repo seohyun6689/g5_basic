@@ -23,11 +23,11 @@ if ($w == "") {
     referer_check();
 
     if (!isset($_POST['agree']) || !$_POST['agree']) {
-        alert(_(core_a135), G5_BBS_URL.'/register.php');
+        alert(__(core_a135), G5_BBS_URL.'/register.php');
     }
 
     if (!isset($_POST['agree2']) || !$_POST['agree2']) {
-        alert(_(core_a136), G5_BBS_URL.'/register.php');
+        alert(__(core_a136), G5_BBS_URL.'/register.php');
     }
 
     $agree  = preg_replace('#[^0-9]#', '', $_POST['agree']);
@@ -46,18 +46,18 @@ if ($w == "") {
         $member['mb_name']  = $_POST['mb_name'];
     }
 
-    $g5['title'] = _(theme_t616);
+    $g5['title'] = __(theme_t616);
 
 } else if ($w == 'u') {
 
     if ($is_admin)
-        alert(_(core_a137), G5_URL);
+        alert(__(core_a137), G5_URL);
 
     if (!$is_member)
-        alert(_(core_a138), G5_URL);
+        alert(__(core_a138), G5_URL);
 
     if ($member['mb_id'] != $_POST['mb_id'])
-        alert(_(core_a139));
+        alert(__(core_a139));
 
     /*
     if (!($member[mb_password] == sql_password($_POST[mb_password]) && $_POST[mb_password]))
@@ -78,7 +78,7 @@ if ($w == "") {
             alert('비밀번호가 틀립니다.');
     }
 
-    $g5['title'] = _(theme_t434);
+    $g5['title'] = __(theme_t434);
 
     set_session("ss_reg_mb_name", $member['mb_name']);
     set_session("ss_reg_mb_hp", $member['mb_hp']);
@@ -104,7 +104,7 @@ if ($w == "") {
     $member['mb_9']           = get_text($member['mb_9']);
     $member['mb_10']          = get_text($member['mb_10']);
 } else {
-    alert('w ' . _(core_a59));
+    alert('w ' . __(core_a59));
 }
 
 include_once('./_head.php');

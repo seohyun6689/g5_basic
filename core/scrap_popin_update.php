@@ -6,7 +6,7 @@ include_once(G5_PATH.'/head.sub.php');
 if (!$is_member)
 {
     $href = './login.php?'.$qstr.'&amp;url='.urlencode('./board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id);
-    echo '<script> alert(\'' . _(core_a670) . '\'); top.location.href = \''.str_replace('&amp;', '&', $href).'\'; </script>';
+    echo '<script> alert(\'' . __(core_a670) . '\'); top.location.href = \''.str_replace('&amp;', '&', $href).'\'; </script>';
     exit;
 }
 
@@ -19,14 +19,14 @@ if ($row['cnt'])
 {
     echo '
     <script>
-    if (confirm(\'' .  _(core_a143) . '\'))
+    if (confirm(\'' .  __(core_a143) . '\'))
         document.location.href = \'./scrap.php\';
     else
         window.close();
     </script>
     <noscript>
-    <p>' . _(core_a666) . '</p>
-    <a href="./scrap.php">' . _(core_a667) . '</a>
+    <p>' . __(core_a666) . '</p>
+    <a href="./scrap.php">' . __(core_a667) . '</a>
     <a href="./board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id.'">돌아가기</a>
     </noscript>';
     exit;
@@ -91,9 +91,9 @@ sql_query($sql);
 
 delete_cache_latest($bo_table);
 
-$a667 = _(core_a667);
-$a668 = _(core_a668);
-$a669 = _(core_a669);
+$a667 = __(core_a667);
+$a668 = __(core_a668);
+$a669 = __(core_a669);
 
 echo <<<HEREDOC
 <script>

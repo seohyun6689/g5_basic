@@ -8,7 +8,7 @@ $w == u : 수정
 ==========================*/
 
 if($is_guest)
-    alert(_(core_a108), './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
+    alert(__(core_a108), './login.php?url='.urlencode(G5_BBS_URL.'/qalist.php'));
 
 $msg = array();
 
@@ -20,10 +20,10 @@ if(isset($_POST['qa_email']) && $qa_email) {
     $qa_email = get_email_address(trim($_POST['qa_email']));
 
     if($qaconfig['qa_req_email'] && !$qa_email)
-        $msg[] = _(core_a110);
+        $msg[] = __(core_a110);
 
     if (!preg_match("/([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)\.([0-9a-zA-Z_-]+)/", $qa_email))
-        $msg[] = _(core_a652);
+        $msg[] = __(core_a652);
 }
 
 $qa_subject = '';
@@ -32,7 +32,7 @@ if (isset($_POST['qa_subject'])) {
     $qa_subject = preg_replace("#[\\\]+$#", "", $qa_subject);
 }
 if ($qa_subject == '') {
-    $msg[] = _(core_a111);
+    $msg[] = __(core_a111);
 }
 
 $qa_content = '';
@@ -41,7 +41,7 @@ if (isset($_POST['qa_content'])) {
     $qa_content = preg_replace("#[\\\]+$#", "", $qa_content);
 }
 if ($qa_content == '') {
-    $msg[] = _(core_a112);
+    $msg[] = __(core_a112);
 }
 
 if (!empty($msg)) {
@@ -54,14 +54,14 @@ if($qa_hp)
 
 // 090710
 if (substr_count($qa_content, '&#') > 50) {
-    alert(_(core_a113));
+    alert(__(core_a113));
     exit;
 }
 
 $upload_max_filesize = ini_get('upload_max_filesize');
 
 if (empty($_POST)) {
-    alert(_(core_a114, array( "post_max_size=" . ini_get('post_max_size'), "upload_max_filesize=" . $upload_max_filesize)));
+    alert(__(core_a114, array( "post_max_size=" . ini_get('post_max_size'), "upload_max_filesize=" . $upload_max_filesize)));
 }
 
 for ($i=1; $i<=5; $i++) {
@@ -74,7 +74,7 @@ for ($i=1; $i<=5; $i++) {
 
 if($w == 'u' || $w == 'a' || $w == 'r') {
     if($w == 'a' && !$is_admin)
-        alert(_(core_a115));
+        alert(__(core_a115));
 
     $sql = " select * from {$g5['qa_content_table']} where qa_id = '$qa_id' ";
     if(!$is_admin) {
@@ -85,23 +85,23 @@ if($w == 'u' || $w == 'a' || $w == 'r') {
 
     if($w == 'u') {
         if(!$write['qa_id'])
-            alert(_(core_a109));
+            alert(__(core_a109));
 
         if(!$is_admin) {
             if($write['qa_type'] == 0 && $write['qa_status'] == 1)
-                alert(_(core_a116));
+                alert(__(core_a116));
 
             if($write['mb_id'] != $member['mb_id'])
-                alert(_(core_a117), G5_URL);
+                alert(__(core_a117), G5_URL);
         }
     }
 
     if($w == 'a') {
         if(!$write['qa_id'])
-            alert(_(core_a118));
+            alert(__(core_a118));
 
         if($write['qa_type'] == 1)
-            alert(_(core_a119));
+            alert(__(core_a119));
     }
 }
 
@@ -137,11 +137,11 @@ for ($i=1; $i<=count($_FILES['bf_file']['name']); $i++) {
     // 서버에 설정된 값보다 큰파일을 업로드 한다면
     if ($filename) {
         if ($_FILES['bf_file']['error'][$i] == 1) {
-            $file_upload_msg .= '\"'.$filename.'\" ' . _(core_a173, $upload_max_filesize);
+            $file_upload_msg .= '\"'.$filename.'\" ' . __(core_a173, $upload_max_filesize);
             continue;
         }
         else if ($_FILES['bf_file']['error'][$i] != 0) {
-            $file_upload_msg .= '\"'.$filename.'\" ' . _(core_a174);
+            $file_upload_msg .= '\"'.$filename.'\" ' . __(core_a174);
             continue;
         }
     }
@@ -149,7 +149,7 @@ for ($i=1; $i<=count($_FILES['bf_file']['name']); $i++) {
     if (is_uploaded_file($tmp_file)) {
         // 관리자가 아니면서 설정한 업로드 사이즈보다 크다면 건너뜀
         if (!$is_admin && $filesize > $qaconfig['qa_upload_size']) {
-            $file_upload_msg .= '\"'.$filename.'\" ' . _(core_a175, array(number_format($filesize), number_format($qaconfig['qa_upload_size'])));
+            $file_upload_msg .= '\"'.$filename.'\" ' . __(core_a175, array(number_format($filesize), number_format($qaconfig['qa_upload_size'])));
             continue;
         }
 
@@ -338,7 +338,7 @@ if($config['cf_sms_use'] == 'icode' && $qaconfig['qa_use_sms']) {
 
             // 문의글 등록시 관리자에게 전송
             if(($w == '' || $w == 'r') && trim($qaconfig['qa_admin_hp'])) {
-                $sms_content = $config['cf_title'].' '.$qaconfig['qa_title'].' ' . _(core_a653);
+                $sms_content = $config['cf_title'].' '.$qaconfig['qa_title'].' ' . __(core_a653);
                 $send_number = preg_replace('/[^0-9]/', '', $qaconfig['qa_send_number']);
                 $recv_number = preg_replace('/[^0-9]/', '', $qaconfig['qa_admin_hp']);
 
@@ -370,7 +370,7 @@ if($config['cf_sms_use'] == 'icode' && $qaconfig['qa_use_sms']) {
 
         // 답변글은 질문 등록자에게 전송
         if($w == 'a' && $write['qa_sms_recv'] && trim($write['qa_hp'])) {
-            $sms_content = $config['cf_title'].' '.$qaconfig['qa_title'].' ' . _(core_a654);
+            $sms_content = $config['cf_title'].' '.$qaconfig['qa_title'].' ' . __(core_a654);
             $send_number = preg_replace('/[^0-9]/', '', $qaconfig['qa_send_number']);
             $recv_number = preg_replace('/[^0-9]/', '', $write['qa_hp']);
 
@@ -384,7 +384,7 @@ if($config['cf_sms_use'] == 'icode' && $qaconfig['qa_use_sms']) {
 
         // 문의글 등록시 관리자에게 전송
         if(($w == '' || $w == 'r') && trim($qaconfig['qa_admin_hp'])) {
-            $sms_content = $config['cf_title'].' '.$qaconfig['qa_title'].' ' . _(core_a653);
+            $sms_content = $config['cf_title'].' '.$qaconfig['qa_title'].' ' . __(core_a653);
             $send_number = preg_replace('/[^0-9]/', '', $qaconfig['qa_send_number']);
             $recv_number = preg_replace('/[^0-9]/', '', $qaconfig['qa_admin_hp']);
 
@@ -402,7 +402,7 @@ if($config['cf_sms_use'] == 'icode' && $qaconfig['qa_use_sms']) {
 if($w == 'a' && $write['qa_email_recv'] && trim($write['qa_email'])) {
     include_once(G5_LIB_PATH.'/mailer.lib.php');
 
-    $subject = $config['cf_title'].' '.$qaconfig['qa_title'].' '._(core_a655);
+    $subject = $config['cf_title'].' '.$qaconfig['qa_title'].' '.__(core_a655);
     $content = nl2br(conv_unescape_nl($qa_content));
 
     mailer($config['cf_admin_email_name'], $config['cf_admin_email'], $write['qa_email'], $subject, $content, 1);
@@ -412,7 +412,7 @@ if($w == 'a' && $write['qa_email_recv'] && trim($write['qa_email'])) {
 if(($w == '' || $w == 'r') && trim($qaconfig['qa_admin_email'])) {
     include_once(G5_LIB_PATH.'/mailer.lib.php');
 
-    $subject = $config['cf_title'].' '.$qaconfig['qa_title'].' '._(core_a656);
+    $subject = $config['cf_title'].' '.$qaconfig['qa_title'].' '.__(core_a656);
     $content = nl2br(conv_unescape_nl($qa_content));
 
     mailer($config['cf_admin_email_name'], $qa_email, $qaconfig['qa_admin_email'], $subject, $content, 1);

@@ -25,13 +25,13 @@ $lines = $row['bo_page_rows'];
 
 // 비회원 읽기가 가능한 게시판만 RSS 지원
 if ($row['bo_read_level'] >= 2) {
-    echo _(core_a664);
+    echo __(core_a664);
     exit;
 }
 
 // RSS 사용 체크
 if (!$row['bo_use_rss_view']) {
-    echo _(core_a665);
+    echo __(core_a665);
     exit;
 }
 

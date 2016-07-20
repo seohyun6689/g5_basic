@@ -16,7 +16,7 @@ if (G5_IS_MOBILE) {
 }
 
 if(!$is_admin && $group['gr_device'] == 'mobile')
-    alert($group['gr_subject']. _(core_a69));
+    alert($group['gr_subject']. __(core_a69));
 
 $g5['title'] = $group['gr_subject'];
 include_once('./_head.php');

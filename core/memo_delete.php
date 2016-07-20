@@ -2,7 +2,7 @@
 include_once('./_common.php');
 
 if (!$is_member)
-    alert(_(core_a49));
+    alert(__(core_a49));
 
 $me_id = (int)$_REQUEST['me_id'];
 

@@ -4,11 +4,11 @@ include_once(G5_EDITOR_LIB);
 include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 
 if (!$board['bo_table']) {
-    alert(_(core_a176), G5_URL);
+    alert(__(core_a176), G5_URL);
 }
 
 if (!$bo_table) {
-    alert(_(core_a6), G5_URL);
+    alert(__(core_a6), G5_URL);
 }
 
 check_device($board['bo_device']);
@@ -16,7 +16,7 @@ check_device($board['bo_device']);
 $notice_array = explode(',', trim($board['bo_notice']));
 
 if (!($w == '' || $w == 'u' || $w == 'r')) {
-    alert('w ' . _(core_a59));
+    alert('w ' . __(core_a59));
 }
 
 if ($w == 'u' || $w == 'r') {
@@ -27,20 +27,20 @@ if ($w == 'u' || $w == 'r') {
             $$vvar = $write['wr_'.$i];
         }
     } else {
-        alert(_(core_a109), G5_URL);
+        alert(__(core_a109), G5_URL);
     }
 }
 
 if ($w == '') {
     if ($wr_id) {
-        alert(_(core_a179), G5_BBS_URL.'/board.php?bo_table='.$bo_table);
+        alert(__(core_a179), G5_BBS_URL.'/board.php?bo_table='.$bo_table);
     }
 
     if ($member['mb_level'] < $board['bo_write_level']) {
         if ($member['mb_id']) {
-            alert(_(core_a161));
+            alert(__(core_a161));
         } else {
-            alert(_(core_a180), './login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
+            alert(__(core_a180), './login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
         }
     }
 
@@ -48,11 +48,11 @@ if ($w == '') {
     if ($is_member) {
         $tmp_point = ($member['mb_point'] > 0) ? $member['mb_point'] : 0;
         if ($tmp_point + $board['bo_write_point'] < 0 && !$is_admin) {
-            alert(_(core_a181, array(number_format($member['mb_point']), number_format($board['bo_write_point']))));
+            alert(__(core_a181, array(number_format($member['mb_point']), number_format($board['bo_write_point']))));
         }
     }
 
-    $title_msg = _(theme_t1423);
+    $title_msg = __(theme_t1423);
 } else if ($w == 'u') {
     // 김선용 1.00 : 글쓰기 권한과 수정은 별도로 처리되어야 함
     //if ($member['mb_level'] < $board['bo_write_level']) {
@@ -60,9 +60,9 @@ if ($w == '') {
         ;
     } else if ($member['mb_level'] < $board['bo_write_level']) {
         if ($member['mb_id']) {
-            alert(_(core_a182));
+            alert(__(core_a182));
         } else {
-            alert(_(core_a183), './login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
+            alert(__(core_a183), './login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
         }
     }
 
@@ -78,7 +78,7 @@ if ($w == '') {
                 and wr_is_comment = 0 ";
     $row = sql_fetch($sql);
     if ($row['cnt'] && !$is_admin)
-        alert(_(core_a184));
+        alert(__(core_a184));
 
     // 코멘트 달린 원글의 수정 여부
     $sql = " select count(*) as cnt from {$write_table}
@@ -87,41 +87,41 @@ if ($w == '') {
                 and wr_is_comment = 1 ";
     $row = sql_fetch($sql);
     if ($board['bo_count_modify'] && $row['cnt'] >= $board['bo_count_modify'] && !$is_admin)
-        alert(_(core_a185, $board['bo_count_modify']));
+        alert(__(core_a185, $board['bo_count_modify']));
 
-    $title_msg = _(theme_t1424);
+    $title_msg = __(theme_t1424);
 } else if ($w == 'r') {
     if ($member['mb_level'] < $board['bo_reply_level']) {
         if ($member['mb_id'])
-            alert(_(core_a164));
+            alert(__(core_a164));
         else
-            alert(_(core_a186), './login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
+            alert(__(core_a186), './login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
     }
 
     $tmp_point = isset($member['mb_point']) ? $member['mb_point'] : 0;
     if ($tmp_point + $board['bo_write_point'] < 0 && !$is_admin)
-        alert(_(core_a187, array(number_format($member['mb_point']), number_format($board['bo_comment_point']))));
+        alert(__(core_a187, array(number_format($member['mb_point']), number_format($board['bo_comment_point']))));
 
     //if (preg_match("/[^0-9]{0,1}{$wr_id}[\r]{0,1}/",$board['bo_notice']))
     if (in_array((int)$wr_id, $notice_array))
-        alert(_(core_a163));
+        alert(__(core_a163));
 
     //----------
     // 4.06.13 : 비밀글을 타인이 열람할 수 있는 오류 수정 (헐랭이, 플록님께서 알려주셨습니다.)
     // 코멘트에는 원글의 답변이 불가하므로
     if ($write['wr_is_comment'])
-        alert(_(core_a188));
+        alert(__(core_a188));
 
     // 비밀글인지를 검사
     if (strstr($write['wr_option'], 'secret')) {
         if ($write['mb_id']) {
             // 회원의 경우는 해당 글쓴 회원 및 관리자
             if (!($write['mb_id'] == $member['mb_id'] || $is_admin))
-                alert(_(core_a189));
+                alert(__(core_a189));
         } else {
             // 비회원의 경우는 비밀글에 답변이 불가함
             if (!$is_admin)
-                alert(_(core_a190));
+                alert(__(core_a190));
         }
     }
     //----------
@@ -131,7 +131,7 @@ if ($w == '') {
 
     // 최대 답변은 테이블에 잡아놓은 wr_reply 사이즈만큼만 가능합니다.
     if (strlen($reply_array['wr_reply']) == 10)
-        alert(_(core_a165));
+        alert(__(core_a165));
 
     $reply_len = strlen($reply_array['wr_reply']) + 1;
     if ($board['bo_reply_order']) {
@@ -151,13 +151,13 @@ if ($w == '') {
     if (!$row['reply'])
         $reply_char = $begin_reply_char;
     else if ($row['reply'] == $end_reply_char) // A~Z은 26 입니다.
-        alert(_(core_a166));
+        alert(__(core_a166));
     else
         $reply_char = chr(ord($row['reply']) + $reply_number);
 
     $reply = $reply_array['wr_reply'] . $reply_char;
 
-    $title_msg = _(theme_t1425);
+    $title_msg = __(theme_t1425);
 
     $write['wr_subject'] = 'Re: '.$write['wr_subject'];
 }
@@ -165,7 +165,7 @@ if ($w == '') {
 // 그룹접근 가능
 if (!empty($group['gr_use_access'])) {
     if ($is_guest) {
-        alert(_(core_a192), 'login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
+        alert(__(core_a192), 'login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
     }
 
     if ($is_admin == 'super' || $group['gr_admin'] == $member['mb_id'] || $board['bo_admin'] == $member['mb_id']) {
@@ -175,7 +175,7 @@ if (!empty($group['gr_use_access'])) {
         $sql = " select gr_id from {$g5['group_member_table']} where gr_id = '{$board['gr_id']}' and mb_id = '{$member['mb_id']}' ";
         $row = sql_fetch($sql);
         if (!$row['gr_id'])
-            alert(_(core_a193));
+            alert(__(core_a193));
     }
 }
 
@@ -183,23 +183,23 @@ if (!empty($group['gr_use_access'])) {
 if ($config['cf_cert_use'] && !$is_admin) {
     // 인증된 회원만 가능
     if ($board['bo_use_cert'] != '' && $is_guest) {
-        alert(_(core_a194), 'login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
+        alert(__(core_a194), 'login.php?'.$qstr.'&amp;url='.urlencode($_SERVER['SCRIPT_NAME'].'?bo_table='.$bo_table));
     }
 
     if ($board['bo_use_cert'] == 'cert' && !$member['mb_certify']) {
-        alert(_(core_a195), G5_URL);
+        alert(__(core_a195), G5_URL);
     }
 
     if ($board['bo_use_cert'] == 'adult' && !$member['mb_adult']) {
-        alert(_(core_a196), G5_URL);
+        alert(__(core_a196), G5_URL);
     }
 
     if ($board['bo_use_cert'] == 'hp-cert' && $member['mb_certify'] != 'hp') {
-        alert(_(core_a15), G5_URL);
+        alert(__(core_a15), G5_URL);
     }
 
     if ($board['bo_use_cert'] == 'hp-adult' && (!$member['mb_adult'] || $member['mb_certify'] != 'hp')) {
-        alert(_(core_a16), G5_URL);
+        alert(__(core_a16), G5_URL);
     }
 }
 

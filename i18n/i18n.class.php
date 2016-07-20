@@ -39,7 +39,7 @@ class i18n {
      * The class name of the compiled class that contains the translated texts.
      * @var string
      */
-    protected $prefix = '_';
+    protected $prefix = '__';
 
     /**
      * Forced language

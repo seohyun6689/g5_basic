@@ -2,9 +2,9 @@
 include_once('./_common.php');
 
 if ($is_guest)
-    alert_close(_(core_a49));
+    alert_close(__(core_a49));
 
-$g5['title'] = _(theme_t433);
+$g5['title'] = __(theme_t433);
 include_once(G5_PATH.'/head.sub.php');
 
 if (!$kind) $kind = 'recv';
@@ -14,7 +14,7 @@ if ($kind == 'recv')
 else if ($kind == 'send')
     $unkind = 'recv';
 else
-    alert(_(core_a87, $kind));
+    alert(__(core_a87, $kind));
 
 $sql = " select count(*) as cnt from {$g5['memo_table']} where me_{$kind}_mb_id = '{$member['mb_id']}' ";
 $row = sql_fetch($sql);
@@ -22,13 +22,13 @@ $total_count = number_format($row['cnt']);
 
 if ($kind == 'recv')
 {
-    $kind_title = _(theme_t787);
+    $kind_title = __(theme_t787);
     $recv_img = 'on';
     $send_img = 'off';
 }
 else
 {
-    $kind_title = _(theme_t788);
+    $kind_title = __(theme_t788);
     $recv_img = 'off';
     $send_img = 'on';
 }
@@ -50,12 +50,12 @@ for ($i=0; $row=sql_fetch_array($result); $i++)
     if ($row['mb_nick'])
         $mb_nick = $row['mb_nick'];
     else
-        $mb_nick = _(theme_t1396);
+        $mb_nick = __(theme_t1396);
 
     $name = get_sideview($row['mb_id'], $row['mb_nick'], $row['mb_email'], $row['mb_homepage']);
 
     if (substr($row['me_read_datetime'],0,1) == 0)
-        $read_datetime = _(theme_t1208);
+        $read_datetime = __(theme_t1208);
     else
         $read_datetime = substr($row['me_read_datetime'],2,14);
 

@@ -7,7 +7,7 @@ $sprintf_func = file_get_contents(G5_PATH . '/js/jquery.sprintf.js');
 ?>
 <?php echo $sprintf_func; ?>
 var lang = <?php echo $json; ?>;
-function _(string, args) {
+function __(string, args) {
     var str = eval('lang.' + string);
     return jQuery.vsprintf(str, args);
 }

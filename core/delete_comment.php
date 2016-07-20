@@ -5,7 +5,7 @@ include_once('./_common.php');
 if ($is_admin)
 {
     if (!($token && get_session("ss_delete_token") == $token))
-        alert(_(core_a21));
+        alert(__(core_a21));
 }
 
 // 4.1
@@ -14,7 +14,7 @@ if ($is_admin)
 $write = sql_fetch(" select * from {$write_table} where wr_id = '{$comment_id}' ");
 
 if (!$write['wr_id'] || !$write['wr_is_comment'])
-    alert(_(core_a22));
+    alert(__(core_a22));
 
 if ($is_admin == 'super') // 최고관리자 통과
     ;
@@ -24,24 +24,24 @@ else if ($is_admin == 'group') { // 그룹관리자
         if ($member['mb_level'] >= $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
             ;
         else
-            alert(_(core_a23));
+            alert(__(core_a23));
     } else
-        alert(_(core_a24));
+        alert(__(core_a24));
 } else if ($is_admin == 'board') { // 게시판관리자이면
     $mb = get_member($write['mb_id']);
     if ($member['mb_id'] == $board['bo_admin']) { // 자신이 관리하는 게시판인가?
         if ($member['mb_level'] >= $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
             ;
         else
-            alert(_(core_a25));
+            alert(__(core_a25));
     } else
-        alert(_(core_a26));
+        alert(__(core_a26));
 } else if ($member['mb_id']) {
     if ($member['mb_id'] != $write['mb_id'])
-        alert(_(core_a27));
+        alert(__(core_a27));
 } else {
     if (!check_password($wr_password, $write['wr_password']))
-        alert(_(core_a28));
+        alert(__(core_a28));
 }
 
 $len = strlen($write['wr_comment_reply']);
@@ -56,7 +56,7 @@ $sql = " select count(*) as cnt from {$write_table}
             and wr_is_comment = 1 ";
 $row = sql_fetch($sql);
 if ($row['cnt'] && !$is_admin)
-    alert(_(core_a29));
+    alert(__(core_a29));
 
 // 코멘트 포인트 삭제
 if (!delete_point($write['mb_id'], $bo_table, $comment_id, '댓글'))

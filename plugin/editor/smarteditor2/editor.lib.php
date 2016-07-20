@@ -11,7 +11,7 @@ function editor_html($id, $content, $is_dhtml_editor=true)
     $html = "";
     $html .= "<span class=\"sound_only\">웹에디터 시작</span>";
     if ($is_dhtml_editor)
-        $html .= '<script>document.write("<div class=\'cke_sc\'><button type=\'button\' class=\'btn_cke_sc\'>' . ($config['cf_use_i18n'] ? _(theme_t1436) : '단축키 열람') . '</button></div>");</script>';
+        $html .= '<script>document.write("<div class=\'cke_sc\'><button type=\'button\' class=\'btn_cke_sc\'>' . ($config['cf_use_i18n'] ? __(theme_t1436) : '단축키 열람') . '</button></div>");</script>';
 
     if ($is_dhtml_editor && $js) {
         $html .= "\n".'<script src="'.$editor_url.'/js/HuskyEZCreator.js"></script>';
@@ -23,10 +23,10 @@ function editor_html($id, $content, $is_dhtml_editor=true)
             $(".btn_cke_sc").click(function(){
                 if ($(this).next("div.cke_sc_def").length) {
                     $(this).next("div.cke_sc_def").remove();
-                    $(this).text("' . ($config['cf_use_i18n'] ? _(theme_t1436) : '단축키 열람') . '");
+                    $(this).text("' . ($config['cf_use_i18n'] ? __(theme_t1436) : '단축키 열람') . '");
                 } else {
                     $(this).after("<div class=\'cke_sc_def\' />").next("div.cke_sc_def").load("'.$editor_url.'/shortcut.html");
-                    $(this).text("' . ($config['cf_use_i18n'] ? _(theme_t1436) : '단축키 열람') . ' ' .  ($config['cf_use_i18n'] ? _(theme_t392) : '닫기') . '");
+                    $(this).text("' . ($config['cf_use_i18n'] ? __(theme_t1436) : '단축키 열람') . ' ' .  ($config['cf_use_i18n'] ? __(theme_t392) : '닫기') . '");
                 }
             });
             $(document).on("click", ".btn_cke_sc_close", function(){
@@ -61,9 +61,9 @@ function chk_editor_js($id, $is_dhtml_editor=true)
 {
     global $config;
     if ($is_dhtml_editor) {
-        return "if (!{$id}_editor_data || jQuery.inArray({$id}_editor_data.toLowerCase(), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<p></p>','<br>']) != -1) { alert(\"" . ( $config['cf_use_i18n'] ? _(theme_t1437) : "내용을 입력해 주십시오.") . "\"); oEditors.getById['{$id}'].exec('FOCUS'); return false; }\n";
+        return "if (!{$id}_editor_data || jQuery.inArray({$id}_editor_data.toLowerCase(), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<p></p>','<br>']) != -1) { alert(\"" . ( $config['cf_use_i18n'] ? __(theme_t1437) : "내용을 입력해 주십시오.") . "\"); oEditors.getById['{$id}'].exec('FOCUS'); return false; }\n";
     } else {
-        return "if (!{$id}_editor.value) { alert(\"" . ( $config['cf_use_i18n'] ? _(theme_t1437) : "내용을 입력해 주십시오.") . "\"); {$id}_editor.focus(); return false; }\n";
+        return "if (!{$id}_editor.value) { alert(\"" . ( $config['cf_use_i18n'] ? __(theme_t1437) : "내용을 입력해 주십시오.") . "\"); {$id}_editor.focus(); return false; }\n";
     }
 }
 

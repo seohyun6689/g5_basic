@@ -3,18 +3,18 @@ include_once('./_common.php');
 include_once(G5_LIB_PATH.'/naver_syndi.lib.php');
 include_once(G5_CAPTCHA_PATH.'/captcha.lib.php');
 
-$g5['title'] = _(theme_t1422);
+$g5['title'] = __(theme_t1422);
 
 $msg = array();
 
 if($board['bo_use_category']) {
     $ca_name = trim($_POST['ca_name']);
     if(!$ca_name) {
-        $msg[] = _(core_a673);
+        $msg[] = __(core_a673);
     } else {
         $categories = array_map('trim', explode("|", $board['bo_category_list'].($is_admin ? '|공지' : '')));
         if(!empty($categories) && !in_array($ca_name, $categories))
-            $msg[] = _(core_a672);
+            $msg[] = __(core_a672);
     }
 }
 
@@ -24,7 +24,7 @@ if (isset($_POST['wr_subject'])) {
     $wr_subject = preg_replace("#[\\\]+$#", "", $wr_subject);
 }
 if ($wr_subject == '') {
-    $msg[] = _(core_a111);
+    $msg[] = __(core_a111);
 }
 
 $wr_content = '';
@@ -33,7 +33,7 @@ if (isset($_POST['wr_content'])) {
     $wr_content = preg_replace("#[\\\]+$#", "", $wr_content);
 }
 if ($wr_content == '') {
-    $msg[] = _(core_a112);
+    $msg[] = __(core_a112);
 }
 
 $wr_link1 = '';
@@ -57,14 +57,14 @@ if ($msg) {
 
 // 090710
 if (substr_count($wr_content, '&#') > 50) {
-    alert(_(core_a113));
+    alert(__(core_a113));
     exit;
 }
 
 $upload_max_filesize = ini_get('upload_max_filesize');
 
 if (empty($_POST)) {
-    alert(_(core_a114, array("post_max_size=".ini_get('post_max_size'), "upload_max_filesize=".$upload_max_filesize)));
+    alert(__(core_a114, array("post_max_size=".ini_get('post_max_size'), "upload_max_filesize=".$upload_max_filesize)));
 }
 
 $notice_array = explode(",", $board['bo_notice']);
@@ -72,13 +72,13 @@ $notice_array = explode(",", $board['bo_notice']);
 if ($w == 'u' || $w == 'r') {
     $wr = get_write($write_table, $wr_id);
     if (!$wr['wr_id']) {
-        alert(_(core_a148));
+        alert(__(core_a148));
     }
 }
 
 // 외부에서 글을 등록할 수 있는 버그가 존재하므로 비밀글은 사용일 경우에만 가능해야 함
 if (!$is_admin && !$board['bo_use_secret'] && $secret) {
-    alert(_(core_a160));
+    alert(__(core_a160));
 }
 
 // 외부에서 글을 등록할 수 있는 버그가 존재하므로 비밀글 무조건 사용일때는 관리자를 제외(공지)하고 무조건 비밀글로 등록
@@ -117,22 +117,22 @@ if ($w == '' || $w == 'u') {
     if($w =='u' && $member['mb_id'] && $wr['mb_id'] == $member['mb_id']) {
         ;
     } else if ($member['mb_level'] < $board['bo_write_level']) {
-        alert(_(core_a161));
+        alert(__(core_a161));
     }
 
     // 외부에서 글을 등록할 수 있는 버그가 존재하므로 공지는 관리자만 등록이 가능해야 함
     if (!$is_admin && $notice) {
-        alert(_(core_a162));
+        alert(__(core_a162));
     }
 
 } else if ($w == 'r') {
 
     if (in_array((int)$wr_id, $notice_array)) {
-        alert(_(core_a163));
+        alert(__(core_a163));
     }
 
     if ($member['mb_level'] < $board['bo_reply_level']) {
-        alert(_(core_a164));
+        alert(__(core_a164));
     }
 
     // 게시글 배열 참조
@@ -140,7 +140,7 @@ if ($w == '' || $w == 'u') {
 
     // 최대 답변은 테이블에 잡아놓은 wr_reply 사이즈만큼만 가능합니다.
     if (strlen($reply_array['wr_reply']) == 10) {
-        alert(_(core_a165));
+        alert(__(core_a165));
     }
 
     $reply_len = strlen($reply_array['wr_reply']) + 1;
@@ -161,7 +161,7 @@ if ($w == '' || $w == 'u') {
     if (!$row['reply']) {
         $reply_char = $begin_reply_char;
     } else if ($row['reply'] == $end_reply_char) { // A~Z은 26 입니다.
-        alert(_(core_a166));
+        alert(__(core_a166));
     } else {
         $reply_char = chr(ord($row['reply']) + $reply_number);
     }
@@ -169,24 +169,24 @@ if ($w == '' || $w == 'u') {
     $reply = $reply_array['wr_reply'] . $reply_char;
 
 } else {
-    alert('w ' . _(core_a59));
+    alert('w ' . __(core_a59));
 }
 
 if ($is_guest && !chk_captcha()) {
-    alert(_(core_a51));
+    alert(__(core_a51));
 }
 
 if ($w == '' || $w == 'r') {
     if (isset($_SESSION['ss_datetime'])) {
         if ($_SESSION['ss_datetime'] >= (G5_SERVER_TIME - $config['cf_delay_sec']) && !$is_admin)
-            alert(_(core_a147));
+            alert(__(core_a147));
     }
 
     set_session("ss_datetime", G5_SERVER_TIME);
 }
 
 if (!isset($_POST['wr_subject']) || !trim($_POST['wr_subject']))
-    alert(_(core_a167));
+    alert(__(core_a167));
 
 if ($w == '' || $w == 'r') {
 
@@ -201,7 +201,7 @@ if ($w == '' || $w == 'r') {
         // 비회원의 경우 이름이 누락되는 경우가 있음
         $wr_name = clean_xss_tags(trim($_POST['wr_name']));
         if (!$wr_name)
-            alert(_(core_a145));
+            alert(__(core_a145));
         $wr_password = get_encrypt_string($wr_password);
         $wr_email = get_email_address(trim($_POST['wr_email']));
         $wr_homepage = clean_xss_tags($wr_homepage);
@@ -281,7 +281,7 @@ if ($w == '' || $w == 'r') {
     }
 }  else if ($w == 'u') {
     if (get_session('ss_bo_table') != $_POST['bo_table'] || get_session('ss_wr_id') != $_POST['wr_id']) {
-        alert(_(core_a168), G5_BBS_URL.'/board.php?bo_table='.$bo_table);
+        alert(__(core_a168), G5_BBS_URL.'/board.php?bo_table='.$bo_table);
     }
 
     $return_url = './board.php?bo_table='.$bo_table.'&amp;wr_id='.$wr_id;
@@ -291,21 +291,21 @@ if ($w == '' || $w == 'r') {
     else if ($is_admin == 'group') { // 그룹관리자
         $mb = get_member($write['mb_id']);
         if ($member['mb_id'] != $group['gr_admin']) // 자신이 관리하는 그룹인가?
-            alert(_(core_a169), $return_url);
+            alert(__(core_a169), $return_url);
         else if ($member['mb_level'] < $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
-            alert(_(core_a170), $return_url);
+            alert(__(core_a170), $return_url);
     } else if ($is_admin == 'board') { // 게시판관리자이면
         $mb = get_member($write['mb_id']);
         if ($member['mb_id'] != $board['bo_admin']) // 자신이 관리하는 게시판인가?
-            alert(_(core_a171), $return_url);
+            alert(__(core_a171), $return_url);
         else if ($member['mb_level'] < $mb['mb_level']) // 자신의 레벨이 크거나 같다면 통과
-            alert(_(core_a170), $return_url);
+            alert(__(core_a170), $return_url);
     } else if ($member['mb_id']) {
         if ($member['mb_id'] != $write['mb_id'])
-            alert(_(core_a157), $return_url);
+            alert(__(core_a157), $return_url);
     } else {
         if ($write['mb_id'])
-            alert(_(core_a172), './login.php?url='.urlencode($return_url));
+            alert(__(core_a172), './login.php?url='.urlencode($return_url));
     }
 
     if ($member['mb_id']) {
@@ -333,7 +333,7 @@ if ($w == '' || $w == 'r') {
     } else {
         $mb_id = "";
         // 비회원의 경우 이름이 누락되는 경우가 있음
-        if (!trim($wr_name)) alert(_(core_a145));
+        if (!trim($wr_name)) alert(__(core_a145));
         $wr_name = clean_xss_tags(trim($_POST['wr_name']));
         $wr_email = get_email_address(trim($_POST['wr_email']));
     }
@@ -442,11 +442,11 @@ for ($i=0; $i<count($_FILES['bf_file']['name']); $i++) {
     // 서버에 설정된 값보다 큰파일을 업로드 한다면
     if ($filename) {
         if ($_FILES['bf_file']['error'][$i] == 1) {
-            $file_upload_msg .= '\"'.$filename.'\" ' . _(core_a173, $upload_max_filesize);
+            $file_upload_msg .= '\"'.$filename.'\" ' . __(core_a173, $upload_max_filesize);
             continue;
         }
         else if ($_FILES['bf_file']['error'][$i] != 0) {
-            $file_upload_msg .= '\"'.$filename.'\" ' . _(core_a174);
+            $file_upload_msg .= '\"'.$filename.'\" ' . __(core_a174);
             continue;
         }
     }
@@ -454,7 +454,7 @@ for ($i=0; $i<count($_FILES['bf_file']['name']); $i++) {
     if (is_uploaded_file($tmp_file)) {
         // 관리자가 아니면서 설정한 업로드 사이즈보다 크다면 건너뜀
         if (!$is_admin && $filesize > $board['bo_upload_size']) {
-            $file_upload_msg .= '\"'.$filename.'\" ' . _(core_a175, array(number_format($filesize), number_format($board['bo_upload_size'])));
+            $file_upload_msg .= '\"'.$filename.'\" ' . __(core_a175, array(number_format($filesize), number_format($board['bo_upload_size'])));
             continue;
         }
 

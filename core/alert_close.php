@@ -5,11 +5,11 @@ include_once(G5_PATH.'/head.sub.php');
 $msg2 = str_replace("\\n", "<br>", $msg);
 
 if($error) {
-    $header2 = _(core_a643);
-    $msg3 = _(core_a1);
+    $header2 = __(core_a643);
+    $msg3 = __(core_a1);
 } else {
-    $header2 = _(core_a644);
-    $msg3 = _(core_a2);
+    $header2 = __(core_a644);
+    $msg3 = __(core_a2);
 }
 ?>
 

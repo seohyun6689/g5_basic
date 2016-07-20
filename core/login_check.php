@@ -7,7 +7,7 @@ $mb_id       = trim($_POST['mb_id']);
 $mb_password = trim($_POST['mb_password']);
 
 if (!$mb_id || !$mb_password)
-    alert(_(core_a71));
+    alert(__(core_a71));
 
 $mb = get_member($mb_id);
 
@@ -15,26 +15,26 @@ $mb = get_member($mb_id);
 // 회원아이디를 입력해 보고 맞으면 또 비밀번호를 입력해보는 경우를 방지하기 위해서입니다.
 // 불법사용자의 경우 회원아이디가 틀린지, 비밀번호가 틀린지를 알기까지는 많은 시간이 소요되기 때문입니다.
 if (!$mb['mb_id'] || !check_password($mb_password, $mb['mb_password'])) {
-    alert(_(core_a72));
+    alert(__(core_a72));
 }
 
 // 차단된 아이디인가?
 if ($mb['mb_intercept_date'] && $mb['mb_intercept_date'] <= date("Ymd", G5_SERVER_TIME)) {
     // $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", "\\1년 \\2월 \\3일", $mb['mb_intercept_date']);
     $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", "\\1-\\2-\\3", $mb['mb_intercept_date']);
-    alert( _(core_a73) . ' : '.$date);
+    alert( __(core_a73) . ' : '.$date);
 }
 
 // 탈퇴한 아이디인가?
 if ($mb['mb_leave_date'] && $mb['mb_leave_date'] <= date("Ymd", G5_SERVER_TIME)) {
     // $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", "\\1년 \\2월 \\3일", $mb['mb_leave_date']);
     $date = preg_replace("/([0-9]{4})([0-9]{2})([0-9]{2})/", "\\1-\\2-\\3", $mb['mb_leave_date']);
-    alert( _(core_a74) . ' : '.$date);
+    alert( __(core_a74) . ' : '.$date);
 }
 
 if ($config['cf_use_email_certify'] && !preg_match("/[1-9]/", $mb['mb_email_certify'])) {
     $ckey = md5($mb['mb_ip'].$mb['mb_datetime']);
-    confirm($mb['mb_email'] . _(core_a75), G5_URL, G5_BBS_URL.'/register_email.php?mb_id='.$mb_id.'&ckey='.$ckey);
+    confirm($mb['mb_email'] . __(core_a75), G5_URL, G5_BBS_URL.'/register_email.php?mb_id='.$mb_id.'&ckey='.$ckey);
 }
 
 @include_once($member_skin_path.'/login_check.skin.php');
