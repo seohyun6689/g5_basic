@@ -11,7 +11,7 @@ function editor_html($id, $content, $is_dhtml_editor=true)
     $html = "";
     $html .= "<span class=\"sound_only\">웹에디터 시작</span>";
     if ($is_dhtml_editor)
-        $html .= '<script>document.write("<div class=\'cke_sc\'><button type=\'button\' class=\'btn_cke_sc\'>단축키 일람</button></div>");</script>';
+        $html .= '<script>document.write("<div class=\'cke_sc\'><button type=\'button\' class=\'btn_cke_sc\'>' . ($config['cf_use_i18n'] ? _(theme_t1436) : '단축키 열람') . '</button></div>");</script>';
 
     if ($is_dhtml_editor && $js) {
         $html .= "\n".'<script src="'.$editor_url.'/js/HuskyEZCreator.js"></script>';
@@ -23,10 +23,10 @@ function editor_html($id, $content, $is_dhtml_editor=true)
             $(".btn_cke_sc").click(function(){
                 if ($(this).next("div.cke_sc_def").length) {
                     $(this).next("div.cke_sc_def").remove();
-                    $(this).text("단축키 일람");
+                    $(this).text("' . ($config['cf_use_i18n'] ? _(theme_t1436) : '단축키 열람') . '");
                 } else {
                     $(this).after("<div class=\'cke_sc_def\' />").next("div.cke_sc_def").load("'.$editor_url.'/shortcut.html");
-                    $(this).text("단축키 일람 닫기");
+                    $(this).text("' . ($config['cf_use_i18n'] ? _(theme_t1436) : '단축키 열람') . ' ' .  ($config['cf_use_i18n'] ? _(theme_t392) : '닫기') . '");
                 }
             });
             $(document).on("click", ".btn_cke_sc_close", function(){
@@ -47,6 +47,7 @@ function editor_html($id, $content, $is_dhtml_editor=true)
 // textarea 로 값을 넘긴다. javascript 반드시 필요
 function get_editor_js($id, $is_dhtml_editor=true)
 {
+    global $config;
     if ($is_dhtml_editor) {
         return "var {$id}_editor_data = oEditors.getById['{$id}'].getIR();\noEditors.getById['{$id}'].exec('UPDATE_CONTENTS_FIELD', []);\nif(jQuery.inArray(document.getElementById('{$id}').value.toLowerCase().replace(/^\s*|\s*$/g, ''), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<div><br></div>','<p></p>','<br>','']) != -1){document.getElementById('{$id}').value='';}\n";
     } else {
@@ -58,10 +59,11 @@ function get_editor_js($id, $is_dhtml_editor=true)
 //  textarea 의 값이 비어 있는지 검사
 function chk_editor_js($id, $is_dhtml_editor=true)
 {
+    global $config;
     if ($is_dhtml_editor) {
-        return "if (!{$id}_editor_data || jQuery.inArray({$id}_editor_data.toLowerCase(), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<p></p>','<br>']) != -1) { alert(\"내용을 입력해 주십시오.\"); oEditors.getById['{$id}'].exec('FOCUS'); return false; }\n";
+        return "if (!{$id}_editor_data || jQuery.inArray({$id}_editor_data.toLowerCase(), ['&nbsp;','<p>&nbsp;</p>','<p><br></p>','<p></p>','<br>']) != -1) { alert(\"" . ( $config['cf_use_i18n'] ? _(theme_t1437) : "내용을 입력해 주십시오.") . "\"); oEditors.getById['{$id}'].exec('FOCUS'); return false; }\n";
     } else {
-        return "if (!{$id}_editor.value) { alert(\"내용을 입력해 주십시오.\"); {$id}_editor.focus(); return false; }\n";
+        return "if (!{$id}_editor.value) { alert(\"" . ( $config['cf_use_i18n'] ? _(theme_t1437) : "내용을 입력해 주십시오.") . "\"); {$id}_editor.focus(); return false; }\n";
     }
 }
 
@@ -74,7 +76,7 @@ function chk_editor_js($id, $is_dhtml_editor=true)
  * Version: 0.2
  */
 
-/* 
+/*
 Copyright 2009 Full Throttle Development, LLC
 
 This program is free software; you can redistribute it and/or modify

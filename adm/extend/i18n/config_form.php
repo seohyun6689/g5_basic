@@ -11,6 +11,10 @@ if (!isset($config['cf_use_i18n'])) {
                     ADD `cf_use_i18n` tinyint(4) NOT NULL DEFAULT 0 AFTER `cf_kakao_js_apikey`,
                     ADD `cf_language` varchar(255) NOT NULL DEFAULT '' AFTER `cf_use_i18n` ");
 }
+if (!isset($config['cf_use_i18n_layout'])) {
+    sql_query("ALTER TABLE `{$g5['config_table']}`
+                    ADD `cf_use_i18n_layout` tinyint(4) NOT NULL DEFAULT 0 AFTER `cf_use_i18n` ");
+}
 
 $g5['title'] = "다국어 지원";
 include_once(G5_ADMIN_PATH.'/admin.head.php');
@@ -44,6 +48,12 @@ $frm_submit = '<div class="btn_confirm01 btn_confirm">
                 <label for="language_zh-CN"><input type="checkbox" name="language[zh-CN]" id="language_zh-CN" value="简体中文"<?php echo (isset($config['cf_language']) && array_key_exists('zh-CN', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 중국어</label>
                 <label for="language_ru"><input type="checkbox" name="language[ru]" id="language_ru" value="Русский"<?php echo (isset($config['cf_language']) && array_key_exists('ru', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 러시아어</label>
                 <label for="translate_de"><input type="checkbox" name="language[de]" id="translate_de" value="Deutsch"<?php echo (isset($config['cf_language']) && array_key_exists('de', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 독일어</label>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">레이아웃 분리 사용</th>
+            <td>
+                <label for="cf_use_i18n_layout"><input type="checkbox" name="cf_use_i18n_layout" id="cf_use_i18n_layout" value="1"<?php echo ($config['cf_use_i18n_layout'] ? ' checked' : ''); ?>> 레이아웃 분리</label>
             </td>
         </tr>
         </tbody>

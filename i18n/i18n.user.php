@@ -36,6 +36,7 @@ if (isset($_GET['lang']) && trim($_GET['lang']) !== '') {
     $_SESSION['lang'] = $_GET['lang'];
 }
 $i18n->init();
-
+$langs = $i18n->getUserLangs();
+define('G5_I18N_LANG', $langs[0]);
 
 // echo _(theme_t384);

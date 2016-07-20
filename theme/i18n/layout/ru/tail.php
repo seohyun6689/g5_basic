@@ -1,15 +1,5 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
-
-if (G5_IS_MOBILE) {
-    include_once(G5_THEME_MOBILE_PATH.'/tail.php');
-    return;
-}
-
-if ($config['cf_use_i18n'] && $config['cf_use_i18n_layout']) {
-    include_once(G5_THEME_PATH.'/layout/'.G5_I18N_LANG.'/tail.php');
-    return;
-}
 ?>
 		<?php echo $lnb->display_tail(); ?>
     </div>

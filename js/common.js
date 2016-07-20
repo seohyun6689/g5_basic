@@ -131,7 +131,7 @@ function no_comma(data)
 // 삭제 검사 확인
 function del(href)
 {
-    if(confirm("한번 삭제한 자료는 복구할 방법이 없습니다.\n\n정말 삭제하시겠습니까?")) {
+    if(confirm(_('theme.t1433'))) {
         var iev = -1;
         if (navigator.appName == 'Microsoft Internet Explorer') {
             var ua = navigator.userAgent;
