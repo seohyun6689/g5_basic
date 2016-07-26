@@ -161,7 +161,7 @@ class i18n {
             	. "\n}\n}\n"
             	. "function ".$this->prefix .'($string, $args=NULL) {'."\n"
             	. '    $return = constant("'.$this->prefix.'::".$string);'."\n"
-            	. '    return $args ? vsprintf($return,$args) : $return;'
+            	. '    return !is_null($args) ? vsprintf($return,$args) : $return;'
             	. "\n}";
 
 			if( ! is_dir($this->cachePath))

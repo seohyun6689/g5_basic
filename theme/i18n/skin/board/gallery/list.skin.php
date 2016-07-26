@@ -13,7 +13,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <?php if ($is_category) { ?>
     <nav id="bo_cate">
-        <h2><?php echo $board['bo_subject'] ?> 카테고리</h2>
+        <h2><?php echo $board['bo_subject'] ?> <?php echo __(theme_t659); ?></h2>
         <ul id="bo_cate_ul">
             <?php echo $category_option ?>
         </ul>
@@ -22,15 +22,15 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <div class="bo_fx">
         <div id="bo_list_total">
-            <span>Total <?php echo number_format($total_count) ?>건</span>
-            <?php echo $page ?> 페이지
+            <span><?php echo __(theme_t1163, number_format($total_count)) ?></span>
+            <?php echo __(theme_t662, $page) ?>
         </div>
 
         <?php if ($rss_href || $write_href) { ?>
         <ul class="btn_bo_user">
             <?php if ($rss_href) { ?><li><a href="<?php echo $rss_href ?>" class="btn_b01">RSS</a></li><?php } ?>
-            <?php if ($admin_href) { ?><li><a href="<?php echo $admin_href ?>" class="btn_admin">관리자</a></li><?php } ?>
-            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02">글쓰기</a></li><?php } ?>
+            <?php if ($admin_href) { ?><li><a href="<?php echo $admin_href ?>" class="btn_admin"><?php echo __(theme_t432); ?></a></li><?php } ?>
+            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02"><?php echo __(theme_t663); ?></a></li><?php } ?>
         </ul>
         <?php } ?>
     </div>
@@ -47,7 +47,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <?php if ($is_checkbox) { ?>
     <div id="gall_allchk">
-        <label for="chkall" class="sound_only">현재 페이지 게시물 전체</label>
+        <label for="chkall" class="sound_only"><?php echo __(theme_t664); ?></label>
         <input type="checkbox" id="chkall" onclick="if (this.checked) all_checked(true); else all_checked(false);">
     </div>
     <?php } ?>
@@ -70,7 +70,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             <span class="sound_only">
                 <?php
                 if ($wr_id == $list[$i]['wr_id'])
-                    echo "<span class=\"bo_current\">열람중</span>";
+                    echo "<span class=\"bo_current\">" . __(theme_t669) . "</span>";
                 else
                     echo $list[$i]['num'];
                  ?>
@@ -80,7 +80,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                     <a href="<?php echo $list[$i]['href'] ?>">
                     <?php
                     if ($list[$i]['is_notice']) { // 공지사항  ?>
-                        <strong style="width:<?php echo $board['bo_gallery_width'] ?>px;height:<?php echo $board['bo_gallery_height'] ?>px">공지</strong>
+                        <strong style="width:<?php echo $board['bo_gallery_width'] ?>px;height:<?php echo $board['bo_gallery_height'] ?>px"><?php echo __(theme_t725); ?></strong>
                     <?php } else {
                         $thumb = get_list_thumbnail($board['bo_table'], $list[$i]['wr_id'], $board['bo_gallery_width'], $board['bo_gallery_height']);
 
@@ -117,31 +117,31 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                     //if (isset($list[$i]['icon_secret'])) echo $list[$i]['icon_secret'];
                      ?>
                 </li>
-                <li><span class="gall_subject">작성자 </span><?php echo $list[$i]['name'] ?></li>
-                <li><span class="gall_subject">작성일 </span><?php echo $list[$i]['datetime2'] ?></li>
-                <li><span class="gall_subject">조회 </span><?php echo $list[$i]['wr_hit'] ?></li>
-                <?php if ($is_good) { ?><li><span class="gall_subject">추천</span><strong><?php echo $list[$i]['wr_good'] ?></strong></li><?php } ?>
-                <?php if ($is_nogood) { ?><li><span class="gall_subject">비추천</span><strong><?php echo $list[$i]['wr_nogood'] ?></strong></li><?php } ?>
+                <li><span class="gall_subject"><?php echo __(theme_t1421); ?> </span><?php echo $list[$i]['name'] ?></li>
+                <li><span class="gall_subject"><?php echo __(theme_t1438); ?> </span><?php echo $list[$i]['datetime2'] ?></li>
+                <li><span class="gall_subject"><?php echo __(theme_t764); ?> </span><?php echo $list[$i]['wr_hit'] ?></li>
+                <?php if ($is_good) { ?><li><span class="gall_subject"><?php echo __(theme_t1394); ?></span><strong><?php echo $list[$i]['wr_good'] ?></strong></li><?php } ?>
+                <?php if ($is_nogood) { ?><li><span class="gall_subject"><?php echo __(theme_t1395); ?></span><strong><?php echo $list[$i]['wr_nogood'] ?></strong></li><?php } ?>
             </ul>
         </li>
         <?php } ?>
-        <?php if (count($list) == 0) { echo "<li class=\"empty_list\">게시물이 없습니다.</li>"; } ?>
+        <?php if (count($list) == 0) { echo "<li class=\"empty_list\">" . __(theme_t672) . "</li>"; } ?>
     </ul>
 
     <?php if ($list_href || $is_checkbox || $write_href) { ?>
     <div class="bo_fx">
         <?php if ($is_checkbox) { ?>
         <ul class="btn_bo_adm">
-            <li><input type="submit" name="btn_submit" value="선택삭제" onclick="document.pressed=this.value"></li>
-            <li><input type="submit" name="btn_submit" value="선택복사" onclick="document.pressed=this.value"></li>
-            <li><input type="submit" name="btn_submit" value="선택이동" onclick="document.pressed=this.value"></li>
+            <li><input type="submit" name="btn_submit" value="<?php echo __(theme_t384); ?>" onclick="document.pressed=this.value"></li>
+            <li><input type="submit" name="btn_submit" value="<?php echo __(theme_t673); ?>" onclick="document.pressed=this.value"></li>
+            <li><input type="submit" name="btn_submit" value="<?php echo __(theme_t674); ?>" onclick="document.pressed=this.value"></li>
         </ul>
         <?php } ?>
 
         <?php if ($list_href || $write_href) { ?>
         <ul class="btn_bo_user">
-            <?php if ($list_href) { ?><li><a href="<?php echo $list_href ?>" class="btn_b01">목록</a></li><?php } ?>
-            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02">글쓰기</a></li><?php } ?>
+            <?php if ($list_href) { ?><li><a href="<?php echo $list_href ?>" class="btn_b01"><?php echo __(theme_t717); ?></a></li><?php } ?>
+            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02"><?php echo __(theme_t663); ?></a></li><?php } ?>
         </ul>
         <?php } ?>
     </div>
@@ -151,7 +151,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
 <?php if($is_checkbox) { ?>
 <noscript>
-<p>자바스크립트를 사용하지 않는 경우<br>별도의 확인 절차 없이 바로 선택삭제 처리하므로 주의하시기 바랍니다.</p>
+<p><?php echo __(theme_t681); ?></p>
 </noscript>
 <?php } ?>
 
@@ -166,19 +166,19 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
     <input type="hidden" name="sca" value="<?php echo $sca ?>">
     <input type="hidden" name="sop" value="and">
-    <label for="sfl" class="sound_only">검색대상</label>
+    <label for="sfl" class="sound_only"><?php echo __(theme_t676); ?></label>
     <select name="sfl" id="sfl">
-        <option value="wr_subject"<?php echo get_selected($sfl, 'wr_subject', true); ?>>제목</option>
-        <option value="wr_content"<?php echo get_selected($sfl, 'wr_content'); ?>>내용</option>
-        <option value="wr_subject||wr_content"<?php echo get_selected($sfl, 'wr_subject||wr_content'); ?>>제목+내용</option>
-        <option value="mb_id,1"<?php echo get_selected($sfl, 'mb_id,1'); ?>>회원아이디</option>
-        <option value="mb_id,0"<?php echo get_selected($sfl, 'mb_id,0'); ?>>회원아이디(코)</option>
-        <option value="wr_name,1"<?php echo get_selected($sfl, 'wr_name,1'); ?>>글쓴이</option>
-        <option value="wr_name,0"<?php echo get_selected($sfl, 'wr_name,0'); ?>>글쓴이(코)</option>
+        <option value="wr_subject"<?php echo get_selected($sfl, 'wr_subject', true); ?>><?php echo __(theme_t422); ?></option>
+        <option value="wr_content"<?php echo get_selected($sfl, 'wr_content'); ?>><?php echo __(theme_t423); ?></option>
+        <option value="wr_subject||wr_content"<?php echo get_selected($sfl, 'wr_subject||wr_content'); ?>><?php echo __(theme_t677); ?></option>
+        <option value="mb_id,1"<?php echo get_selected($sfl, 'mb_id,1'); ?>><?php echo __(theme_t678); ?></option>
+        <option value="mb_id,0"<?php echo get_selected($sfl, 'mb_id,0'); ?>><?php echo __(theme_t679); ?></option>
+        <option value="wr_name,1"<?php echo get_selected($sfl, 'wr_name,1'); ?>><?php echo __(theme_t666); ?></option>
+        <option value="wr_name,0"<?php echo get_selected($sfl, 'wr_name,0'); ?>><?php echo __(theme_t680); ?></option>
     </select>
-    <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <label for="stx" class="sound_only"><?php echo __(theme_t598); ?><strong class="sound_only"> <?php echo __(theme_t421); ?></strong></label>
     <input type="text" name="stx" value="<?php echo stripslashes($stx) ?>" required id="stx" class="frm_input required" size="15" maxlength="20">
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="submit" value="<?php echo __(theme_t675); ?>" class="btn_submit">
     </form>
 </fieldset>
 <!-- } 게시물 검색 끝 -->
@@ -203,22 +203,22 @@ function fboardlist_submit(f) {
     }
 
     if (!chk_count) {
-        alert(document.pressed + "할 게시물을 하나 이상 선택하세요.");
+        alert(__('theme.t682', [document.pressed]));
         return false;
     }
 
-    if(document.pressed == "선택복사") {
+    if(document.pressed == __('theme.t673')) {
         select_copy("copy");
         return;
     }
 
-    if(document.pressed == "선택이동") {
+    if(document.pressed == __('theme.t674')) {
         select_copy("move");
         return;
     }
 
-    if(document.pressed == "선택삭제") {
-        if (!confirm("선택한 게시물을 정말 삭제하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다\n\n답변글이 있는 게시글을 선택하신 경우\n답변글도 선택하셔야 게시글이 삭제됩니다."))
+    if(document.pressed == __('theme.t384')) {
+        if (!confirm(__('theme.t683')))
             return false;
 
         f.removeAttribute("target");
@@ -233,9 +233,9 @@ function select_copy(sw) {
     var f = document.fboardlist;
 
     if (sw == 'copy')
-        str = "복사";
+        str = __('theme.t684');
     else
-        str = "이동";
+        str = __('theme.t685');
 
     var sub_win = window.open("", "move", "left=50, top=50, width=500, height=550, scrollbars=1");
 

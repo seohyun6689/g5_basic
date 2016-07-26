@@ -10,9 +10,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$connect_skin_url.'/style.css">',
     <table id="current_connect_tbl">
     <thead>
     <tr>
-        <th scope="col">번호</th>
-        <th scope="col">이름</th>
-        <th scope="col">위치</th>
+        <th scope="col"><?php echo __(theme_t755); ?></th>
+        <th scope="col"><?php echo __(theme_t452); ?></th>
+        <th scope="col"><?php echo __(theme_t756); ?></th>
     </tr>
     </thead>
     <tbody>
@@ -33,7 +33,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$connect_skin_url.'/style.css">',
     <?php
     }
     if ($i == 0)
-        echo "<tr><td colspan=\"3\" class=\"empty_table\">현재 접속자가 없습니다.</td></tr>";
+        echo "<tr><td colspan=\"3\" class=\"empty_table\">" . __(theme_t757) . "</td></tr>";
     ?>
     </tbody>
     </table>

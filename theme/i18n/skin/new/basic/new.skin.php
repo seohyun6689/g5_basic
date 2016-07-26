@@ -12,19 +12,19 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
 
 <!-- 전체게시물 검색 시작 { -->
 <fieldset id="new_sch">
-    <legend>상세검색</legend>
+    <legend><?php echo __(theme_t1462); ?></legend>
     <form name="fnew" method="get">
     <?php echo $group_select ?>
-    <label for="view" class="sound_only">검색대상</label>
+    <label for="view" class="sound_only"><?php echo __(theme_t676); ?></label>
     <select name="view" id="view">
-        <option value="">전체게시물
-        <option value="w">원글만
-        <option value="c">코멘트만
+        <option value=""><?php echo __(theme_t975); ?>
+        <option value="w"><?php echo __(theme_t984); ?>
+        <option value="c"><?php echo __(theme_t985); ?>
     </select>
-    <label for="mb_id" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <label for="mb_id" class="sound_only"><?php echo __(theme_t598); ?><strong class="sound_only"> <?php echo __(theme_t421); ?></strong></label>
     <input type="text" name="mb_id" value="<?php echo $mb_id ?>" id="mb_id" required class="frm_input required">
-    <input type="submit" value="검색" class="btn_submit">
-    <p>회원 아이디만 검색 가능</p>
+    <input type="submit" value="<?php echo __(theme_t675); ?>" class="btn_submit">
+    <p><?php echo __(theme_t986); ?></p>
     </form>
     <script>
     /* 셀렉트 박스에서 자동 이동 해제
@@ -55,15 +55,15 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
     <tr>
         <?php if ($is_admin) { ?>
         <th scope="col">
-            <label for="all_chk" class="sound_only">목록 전체</label>
+            <label for="all_chk" class="sound_only"><?php echo __(theme_t987); ?></label>
             <input type="checkbox" id="all_chk">
         </th>
         <?php } ?>
-        <th scope="col">그룹</th>
-        <th scope="col">게시판</th>
-        <th scope="col">제목</th>
-        <th scope="col">이름</th>
-        <th scope="col">일시</th>
+        <th scope="col"><?php echo __(theme_t982); ?></th>
+        <th scope="col"><?php echo __(theme_t687); ?></th>
+        <th scope="col"><?php echo __(theme_t422); ?></th>
+        <th scope="col"><?php echo __(theme_t452); ?></th>
+        <th scope="col"><?php echo __(theme_t816); ?></th>
     </tr>
     </thead>
     <tbody>
@@ -93,7 +93,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
     <?php }  ?>
 
     <?php if ($i == 0)
-        echo '<tr><td colspan="'.$colspan.'" class="empty_table">게시물이 없습니다.</td></tr>';
+        echo '<tr><td colspan="'.$colspan.'" class="empty_table">' . __(theme_t672) . '</td></tr>';
     ?>
     </tbody>
     </table>
@@ -101,7 +101,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
 
 <?php if ($is_admin) { ?>
 <div class="sir_bw02 sir_bw">
-    <input type="submit" onclick="document.pressed=this.value" value="선택삭제" class="btn_submit">
+    <input type="submit" onclick="document.pressed=this.value" value="<?php echo __(theme_t384); ?>" class="btn_submit">
 </div>
 <?php } ?>
 </form>
@@ -125,11 +125,11 @@ function fnew_submit(f)
     }
 
     if (!cnt) {
-        alert(document.pressed+"할 게시물을 하나 이상 선택하세요.");
+        alert(__('theme.t682', [document.pressed]));
         return false;
     }
 
-    if (!confirm("선택한 게시물을 정말 "+document.pressed+" 하시겠습니까?\n\n한번 삭제한 자료는 복구할 수 없습니다")) {
+    if (!confirm(__('theme.t989', [document.pressed]))) {
         return false;
     }
 

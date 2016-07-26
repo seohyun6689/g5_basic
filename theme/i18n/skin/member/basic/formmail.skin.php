@@ -7,7 +7,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
 <!-- 폼메일 시작 { -->
 <div id="formmail" class="new_win mbskin">
-    <h1 id="win_title"><?php echo $name ?>님께 메일보내기</h1>
+    <h1 id="win_title"><?php echo __(theme_t765, $name) ?></h1>
 
     <form name="fformmail" action="./formmail_send.php" onsubmit="return fformmail_submit(this);" method="post" enctype="multipart/form-data" style="margin:0px;">
     <input type="hidden" name="to" value="<?php echo $email ?>">
@@ -19,24 +19,24 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
     <div class="tbl_frm01 tbl_form">
         <table>
-        <caption>메일쓰기</caption>
+        <caption><?php echo __(theme_t766); ?></caption>
         <tbody>
         <?php if (!$is_member) {  ?>
         <tr>
-            <th scope="row"><label for="fnick">이름<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="fnick"><?php echo __(theme_t452); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="text" name="fnick" id="fnick" required class="frm_input required"></td>
         </tr>
         <tr>
-            <th scope="row"><label for="fmail">E-mail<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="fmail">E-mail<strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="text" name="fmail"  id="fmail" required class="frm_input required"></td>
         </tr>
         <?php }  ?>
         <tr>
-            <th scope="row"><label for="subject">제목<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="subject"><?php echo __(theme_t422); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="text" name="subject" id="subject" required class="frm_input required"></td>
         </tr>
         <tr>
-            <th scope="row">형식</th>
+            <th scope="row"><?php echo __(theme_t767); ?></th>
             <td>
                 <input type="radio" name="type" value="0" id="type_text" checked> <label for="type_text">TEXT</label>
                 <input type="radio" name="type" value="1" id="type_html"> <label for="type_html">HTML</label>
@@ -44,22 +44,22 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="content">내용<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="content"><?php echo __(theme_t423); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><textarea name="content" id="content" required class="required"></textarea></td>
         </tr>
         <tr>
-            <th scope="row"><label for="file1">첨부 파일 1</label></th>
+            <th scope="row"><label for="file1"><?php echo __(theme_t712); ?> 1</label></th>
             <td>
                 <input type="file" name="file1"  id="file1"  class="frm_input">
-                첨부 파일은 누락될 수 있으므로 메일을 보낸 후 파일이 첨부 되었는지 반드시 확인해 주시기 바랍니다.
+                <?php echo __(theme_t1439); ?>
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="file2">첨부 파일 2</label></th>
+            <th scope="row"><label for="file2"><?php echo __(theme_t712); ?> 2</label></th>
             <td><input type="file" name="file2" id="file2" class="frm_input"></td>
         </tr>
         <tr>
-            <th scope="row">자동등록방지</th>
+            <th scope="row"><?php echo __(theme_t700); ?></th>
             <td><?php echo captcha_html(); ?></td>
         </tr>
         </tbody>
@@ -67,8 +67,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     </div>
 
     <div class="win_btn">
-        <input type="submit" value="메일발송" id="btn_submit" class="btn_submit">
-        <button type="button" onclick="window.close();">창닫기</button>
+        <input type="submit" value="<?php echo __(theme_t1207); ?>" id="btn_submit" class="btn_submit">
+        <button type="button" onclick="window.close();"><?php echo __(theme_t425); ?></button>
     </div>
 
     </form>
@@ -88,7 +88,7 @@ function fformmail_submit(f)
 
     if (f.file1.value || f.file2.value) {
         // 4.00.11
-        if (!confirm("첨부파일의 용량이 큰경우 전송시간이 오래 걸립니다.\n\n메일보내기가 완료되기 전에 창을 닫거나 새로고침 하지 마십시오."))
+        if (!confirm(__('theme.t769')))
             return false;
     }
 

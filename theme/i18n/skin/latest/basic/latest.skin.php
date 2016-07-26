@@ -36,9 +36,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$latest_skin_url.'/style.css">', 
         </li>
     <?php }  ?>
     <?php if (count($list) == 0) { //게시물이 없을 때  ?>
-    <li>게시물이 없습니다.</li>
+    <li><?php echo __(theme_t672); ?></li>
     <?php }  ?>
     </ul>
-    <div class="lt_more"><a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=<?php echo $bo_table ?>"><span class="sound_only"><?php echo $bo_subject ?></span>더보기</a></div>
+    <div class="lt_more"><a href="<?php echo G5_BBS_URL ?>/board.php?bo_table=<?php echo $bo_table ?>"><span class="sound_only"><?php echo $bo_subject ?></span><?php echo __(theme_t954); ?></a></div>
 </div>
 <!-- } <?php echo $bo_subject; ?> 최신글 끝 -->

@@ -10,11 +10,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <h1><?php echo $g5['title'] ?></h1>
 
     <p>
-        <strong>비밀번호를 한번 더 입력해주세요.</strong>
+        <strong><?php echo __(theme_t782); ?></strong>
         <?php if ($url == 'member_leave.php') { ?>
-        비밀번호를 입력하시면 회원탈퇴가 완료됩니다.
+        <?php echo __(theme_t783); ?>
         <?php }else{ ?>
-        회원님의 정보를 안전하게 보호하기 위해 비밀번호를 한번 더 확인합니다.
+        <?php echo __(theme_t784); ?>
         <?php }  ?>
     </p>
 
@@ -23,18 +23,18 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <input type="hidden" name="w" value="u">
 
     <fieldset>
-        회원아이디
+        <?php echo __(theme_t678); ?>
         <span id="mb_confirm_id"><?php echo $member['mb_id'] ?></span>
 
-        <label for="confirm_mb_password">비밀번호<strong class="sound_only">필수</strong></label>
+        <label for="confirm_mb_password"><?php echo __(theme_t471); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label>
         <input type="password" name="mb_password" id="confirm_mb_password" required class="required frm_input" size="15" maxLength="20">
-        <input type="submit" value="확인" id="btn_submit" class="btn_submit">
+        <input type="submit" value="<?php echo __(theme_t429); ?>" id="btn_submit" class="btn_submit">
     </fieldset>
 
     </form>
 
     <div class="btn_confirm">
-        <a href="<?php echo G5_URL ?>">메인으로 돌아가기</a>
+        <a href="<?php echo G5_URL ?>"><?php echo __(theme_t779); ?></a>
     </div>
 
 </div>

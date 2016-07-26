@@ -11,18 +11,18 @@ add_stylesheet('<link rel="stylesheet" href="'.$poll_skin_url.'/style.css">', 0)
 
     <!-- 설문조사 결과 그래프 시작 { -->
     <section id="poll_result_list">
-        <h2><?php echo $po_subject ?> 결과</h2>
+        <h2><?php echo $po_subject ?> <?php echo __(theme_t1003); ?></h2>
 
         <dl>
-            <dt><span>전체 <?php echo $nf_total_po_cnt ?>표</span></dt>
+            <dt><span><?php echo __(theme_t1005, $nf_total_po_cnt) ?></span></dt>
             <dd>
                 <ol>
                 <?php for ($i=1; $i<=count($list); $i++) {  ?>
                     <li>
                         <p>
                             <?php echo $list[$i]['content'] ?>
-                            <strong><?php echo $list[$i]['cnt'] ?> 표</strong>
-                            <span><?php echo number_format($list[$i]['rate'], 1) ?> 퍼센트</span>
+                            <strong><?php echo $list[$i]['cnt'] ?> <?php echo __(theme_t1006); ?></strong>
+                            <span><?php echo number_format($list[$i]['rate'], 1) ?> %</span>
                         </p>
                         <div class="poll_result_graph">
                             <span style="width:<?php echo number_format($list[$i]['rate'], 1) ?>%"></span>
@@ -38,12 +38,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$poll_skin_url.'/style.css">', 0)
     <!-- 설문조사 기타의견 시작 { -->
     <?php if ($is_etc) {  ?>
     <section id="poll_result_cmt">
-        <h2>이 설문에 대한 기타의견</h2>
+        <h2><?php echo __(theme_t1007); ?></h2>
 
         <?php for ($i=0; $i<count($list2); $i++) {  ?>
         <article>
             <header>
-                <h1><?php echo $list2[$i]['pc_name'] ?><span class="sound_only">님의 의견</span></h1>
+                <h1><?php echo $list2[$i]['pc_name'] ?><span class="sound_only"><?php echo __(theme_t1008); ?></span></h1>
                 <?php echo $list2[$i]['name'] ?>
                 <span class="poll_datetime"><?php echo $list2[$i]['datetime'] ?></span>
             </header>
@@ -51,7 +51,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$poll_skin_url.'/style.css">', 0)
                 <?php echo $list2[$i]['idea'] ?>
             </p>
             <footer>
-                <span class="poll_cmt_del"><?php if ($list2[$i]['del']) { echo $list2[$i]['del']."삭제</a>"; }  ?></span>
+                <span class="poll_cmt_del"><?php if ($list2[$i]['del']) { echo $list2[$i]['del']. __(theme_t391) ."</a>"; }  ?></span>
             </footer>
         </article>
         <?php }  ?>
@@ -69,17 +69,17 @@ add_stylesheet('<link rel="stylesheet" href="'.$poll_skin_url.'/style.css">', 0)
             <tbody>
             <?php if ($is_guest) {  ?>
             <tr>
-                <th scope="row"><label for="pc_name">이름<strong class="sound_only">필수</strong></label></th>
+                <th scope="row"><label for="pc_name"><?php echo __(theme_t452); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
                 <td><input type="text" name="pc_name" id="pc_name" required class="frm_input required" size="10"></td>
             </tr>
             <?php }  ?>
             <tr>
-                <th scope="row"><label for="pc_idea">의견<strong class="sound_only">필수</strong></label></th>
+                <th scope="row"><label for="pc_idea"><?php echo __(theme_t1009); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
                 <td><input type="text" id="pc_idea" name="pc_idea" required class="frm_input required" size="47" maxlength="100"></td>
             </tr>
             <?php if ($is_guest) {  ?>
             <tr>
-                <th scope="row">자동등록방지</th>
+                <th scope="row"><?php echo __(theme_t700); ?></th>
                 <td><?php echo captcha_html(); ?></td>
             </tr>
             <?php }  ?>
@@ -88,7 +88,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$poll_skin_url.'/style.css">', 0)
         </div>
 
         <div class="btn_confirm">
-            <input type="submit" class="btn_submit" value="의견남기기">
+            <input type="submit" class="btn_submit" value="<?php echo __(theme_t1010); ?>">
         </div>
         </form>
         <?php }  ?>
@@ -109,14 +109,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$poll_skin_url.'/style.css">', 0)
     <!-- } 설문조사 다른 결과 보기 끝 -->
 
     <div class="win_btn">
-        <button type="button" onclick="window.close();">창닫기</button>
+        <button type="button" onclick="window.close();"><?php echo __(theme_t425); ?></button>
     </div>
 </div>
 
 <script>
 $(function() {
     $(".poll_delete").click(function() {
-        if(!confirm("해당 기타의견을 삭제하시겠습니까?"))
+        if(!confirm(__('theme.t1012')))
             return false;
     });
 });

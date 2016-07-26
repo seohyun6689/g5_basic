@@ -10,9 +10,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <h1 id="win_title"><?php echo $g5['title'] ?></h1>
 
     <ul class="win_ul">
-        <li><a href="./memo.php?kind=recv">받은쪽지</a></li>
-        <li><a href="./memo.php?kind=send">보낸쪽지</a></li>
-        <li><a href="./memo_form.php">쪽지쓰기</a></li>
+        <li><a href="./memo.php?kind=recv"><?php echo __(theme_t787);?></a></li>
+        <li><a href="./memo.php?kind=send"><?php echo __(theme_t788); ?></a></li>
+        <li><a href="./memo_form.php"><?php echo __(theme_t789); ?></a></li>
     </ul>
 
     <div class="tbl_head01 tbl_wrap">
@@ -22,10 +22,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         </caption>
         <thead>
         <tr>
-            <th scope="col"><?php echo  ($kind == "recv") ? "보낸사람" : "받는사람";  ?></th>
-            <th scope="col">보낸시간</th>
-            <th scope="col">읽은시간</th>
-            <th scope="col">관리</th>
+            <th scope="col"><?php echo  ($kind == "recv") ? __(theme_t800) : __(theme_t801);  ?></th>
+            <th scope="col"><?php echo __(theme_t802); ?></th>
+            <th scope="col"><?php echo __(theme_t803); ?></th>
+            <th scope="col"><?php echo __(theme_t454); ?></th>
         </tr>
         </thead>
         <tbody>
@@ -37,17 +37,17 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <td class="td_mng"><a href="<?php echo $list[$i]['del_href'] ?>" onclick="del(this.href); return false;">삭제</a></td>
         </tr>
         <?php }  ?>
-        <?php if ($i==0) { echo '<tr><td colspan="4" class="empty_table">자료가 없습니다.</td></tr>'; }  ?>
+        <?php if ($i==0) { echo '<tr><td colspan="4" class="empty_table">' . __(core_a202) . '</td></tr>'; }  ?>
         </tbody>
         </table>
     </div>
 
     <p class="win_desc">
-        쪽지 보관일수는 최장 <strong><?php echo $config['cf_memo_del'] ?></strong>일 입니다.
+        <?php echo __(theme_t804, '<strong>' . $config['cf_memo_del'] . '</strong>'); ?>
     </p>
 
     <div class="win_btn">
-        <button type="button" onclick="window.close();">창닫기</button>
+        <button type="button" onclick="window.close();"><?php echo __(theme_t425); ?></button>
     </div>
 </div>
 <!-- } 쪽지 목록 끝 -->

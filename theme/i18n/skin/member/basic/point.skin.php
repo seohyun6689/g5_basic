@@ -10,14 +10,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
     <div class="tbl_head01 tbl_wrap">
         <table>
-        <caption>포인트 사용내역 목록</caption>
+        <caption><?php echo __(theme_t1444);?></caption>
         <thead>
         <tr>
-            <th scope="col">일시</th>
-            <th scope="col">내용</th>
-            <th scope="col">만료일</th>
-            <th scope="col">지급포인트</th>
-            <th scope="col">사용포인트</th>
+            <th scope="col"><?php echo __(theme_t816); ?></th>
+            <th scope="col"><?php echo __(theme_t423); ?></th>
+            <th scope="col"><?php echo __(theme_t817); ?></th>
+            <th scope="col"><?php echo __(theme_t818); ?></th>
+            <th scope="col"><?php echo __(theme_t819); ?></th>
         </tr>
         </thead>
         <tbody>
@@ -60,7 +60,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         }
 
         if ($i == 0)
-            echo '<tr><td colspan="5" class="empty_table">자료가 없습니다.</td></tr>';
+            echo '<tr><td colspan="5" class="empty_table">' . __(core_a202) . '</td></tr>';
         else {
             if ($sum_point1 > 0)
                 $sum_point1 = "+" . number_format($sum_point1);
@@ -70,12 +70,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         </tbody>
         <tfoot>
         <tr>
-            <th scope="row" colspan="3">소계</th>
+            <th scope="row" colspan="3"><?php echo __(theme_t370); ?></th>
             <td><?php echo $sum_point1; ?></td>
             <td><?php echo $sum_point2; ?></td>
         </tr>
         <tr>
-            <th scope="row" colspan="3">보유포인트</th>
+            <th scope="row" colspan="3"><?php echo __(theme_t436); ?></th>
             <td colspan="2"><?php echo number_format($member['mb_point']); ?></td>
         </tr>
         </tfoot>
@@ -84,5 +84,5 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
     <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, $_SERVER['SCRIPT_NAME'].'?'.$qstr.'&amp;page='); ?>
 
-    <div class="win_btn"><button type="button" onclick="javascript:window.close();">창닫기</button></div>
+    <div class="win_btn"><button type="button" onclick="javascript:window.close();"><?php echo __(theme_t425); ?></button></div>
 </div>

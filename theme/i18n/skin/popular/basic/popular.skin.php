@@ -8,7 +8,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$popular_skin_url.'/style.css">',
 <!-- 인기검색어 시작 { -->
 <section id="popular">
     <div>
-        <h2>인기검색어</h2>
+        <h2><?php echo __(theme_t1018); ?></h2>
         <ul>
         <?php for ($i=0; $i<count($list); $i++) {  ?>
             <li><a href="<?php echo G5_BBS_URL ?>/search.php?sfl=wr_subject&amp;sop=and&amp;stx=<?php echo urlencode($list[$i]['pp_word']) ?>"><?php echo get_text($list[$i]['pp_word']); ?></a></li>

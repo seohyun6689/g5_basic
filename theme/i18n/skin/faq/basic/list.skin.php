@@ -45,7 +45,7 @@ if( count($faq_master_list) ){
     if( count($faq_list) ){
     ?>
     <section id="faq_con">
-        <h2><?php echo $g5['title']; ?> 목록</h2>
+        <h2><?php echo $g5['title']; ?> <?php echo __(theme_t717); ?></h2>
         <ol>
             <?php
             foreach($faq_list as $key=>$v){
@@ -56,7 +56,7 @@ if( count($faq_master_list) ){
                 <h3><a href="#none" onclick="return faq_open(this);"><?php echo conv_content($v['fa_subject'], 1); ?></a></h3>
                 <div class="con_inner">
                     <?php echo conv_content($v['fa_content'], 1); ?>
-                    <div class="con_closer"><button type="button" class="closer_btn">닫기</button></div>
+                    <div class="con_closer"><button type="button" class="closer_btn"><?php echo __(theme_t392); ?></button></div>
                 </div>
             </li>
             <?php
@@ -68,11 +68,11 @@ if( count($faq_master_list) ){
 
     } else {
         if($stx){
-            echo '<p class="empty_list">검색된 게시물이 없습니다.</p>';
+            echo '<p class="empty_list">' . __(theme_t758) . '</p>';
         } else {
-            echo '<div class="empty_list">등록된 FAQ가 없습니다.';
+            echo '<div class="empty_list">' . __(theme_t759);
             if($is_admin)
-                echo '<br><a href="'.G5_ADMIN_URL.'/faqmasterlist.php">FAQ를 새로 등록하시려면 FAQ관리</a> 메뉴를 이용하십시오.';
+                echo '<br><a href="'.G5_ADMIN_URL.'/faqmasterlist.php">' . __(theme_t1204) . '</a>' . __(theme_t1205);
             echo '</div>';
         }
     }
@@ -90,20 +90,20 @@ if ($timg_src)
 ?>
 
 <fieldset id="faq_sch">
-    <legend>FAQ 검색</legend>
+    <legend>FAQ <?php echo __(theme_t675); ?></legend>
 
     <form name="faq_search_form" method="get">
     <input type="hidden" name="fm_id" value="<?php echo $fm_id;?>">
-    <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+    <label for="stx" class="sound_only"><?php echo __(theme_t598); ?><strong class="sound_only"> <?php echo __(theme_t421); ?></strong></label>
     <input type="text" name="stx" value="<?php echo $stx;?>" required id="stx" class="frm_input required" size="15" maxlength="15">
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="submit" value="<?php echo __(theme_t675); ?>" class="btn_submit">
     </form>
 </fieldset>
 <!-- } FAQ 끝 -->
 
 <?php
 if ($admin_href)
-    echo '<div class="faq_admin"><a href="'.$admin_href.'" class="btn_admin">FAQ 수정</a></div>';
+    echo '<div class="faq_admin"><a href="'.$admin_href.'" class="btn_admin">' . __(theme_t1206) . '</a></div>';
 ?>
 
 <script src="<?php echo G5_JS_URL; ?>/viewimageresize.js"></script>
