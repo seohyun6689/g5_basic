@@ -22,15 +22,15 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
     </header>
 
     <section id="bo_v_info">
-        <h2>페이지 정보</h2>
-        작성자 <strong><?php echo $view['name'] ?></strong>
-        <span class="sound_only">작성일</span><strong><?php echo $view['datetime']; ?></strong>
+        <h2><?php echo __(theme_t711); ?></h2>
+        <?php echo __(theme_t1421); ?> <strong><?php echo $view['name'] ?></strong>
+        <span class="sound_only"><?php echo __(theme_t1438); ?></span><strong><?php echo $view['datetime']; ?></strong>
     </section>
 
     <?php if($view['download_count']) { ?>
     <!-- 첨부파일 시작 { -->
     <section id="bo_v_file">
-        <h2>첨부파일</h2>
+        <h2><?php echo __(theme_t712); ?></h2>
         <ul>
         <?php
         // 가변 파일
@@ -38,7 +38,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
          ?>
             <li>
                 <a href="<?php echo $view['download_href'][$i];  ?>" class="view_file_download">
-                    <img src="<?php echo $qa_skin_url ?>/img/icon_file.gif" alt="첨부">
+                    <img src="<?php echo $qa_skin_url ?>/img/icon_file.gif" alt="<?php echo __(theme_t712); ?>">
                     <strong><?php echo $view['download_source'][$i] ?></strong>
                 </a>
             </li>
@@ -52,14 +52,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 
     <?php if($view['email'] || $view['hp']) { ?>
     <section id="bo_v_contact">
-        <h2>연락처정보</h2>
+        <h2><?php echo __(theme_t1052); ?></h2>
         <dl>
             <?php if($view['email']) { ?>
-            <dt>이메일</dt>
+            <dt><?php echo __(theme_t583); ?></dt>
             <dd><?php echo $view['email']; ?></dd>
             <?php } ?>
             <?php if($view['hp']) { ?>
-            <dt>휴대폰</dt>
+            <dt><?php echo __(theme_t505); ?></dt>
             <dd><?php echo $view['hp']; ?></dd>
             <?php } ?>
         </dl>
@@ -73,16 +73,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
          ?>
         <?php if ($prev_href || $next_href) { ?>
         <ul class="bo_v_nb">
-            <?php if ($prev_href) { ?><li><a href="<?php echo $prev_href ?>" class="btn_b01">이전글</a></li><?php } ?>
-            <?php if ($next_href) { ?><li><a href="<?php echo $next_href ?>" class="btn_b01">다음글</a></li><?php } ?>
+            <?php if ($prev_href) { ?><li><a href="<?php echo $prev_href ?>" class="btn_b01"><?php echo __(theme_t715); ?></a></li><?php } ?>
+            <?php if ($next_href) { ?><li><a href="<?php echo $next_href ?>" class="btn_b01"><?php echo __(theme_t716); ?></a></li><?php } ?>
         </ul>
         <?php } ?>
 
         <ul class="bo_v_com">
-            <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>" class="btn_b01">수정</a></li><?php } ?>
-            <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" class="btn_b01" onclick="del(this.href); return false;">삭제</a></li><?php } ?>
-            <li><a href="<?php echo $list_href ?>" class="btn_b01">목록</a></li>
-            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02">글쓰기</a></li><?php } ?>
+            <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>" class="btn_b01"><?php echo __(theme_t690); ?></a></li><?php } ?>
+            <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" class="btn_b01" onclick="del(this.href); return false;"><?php echo __(theme_t391); ?></a></li><?php } ?>
+            <li><a href="<?php echo $list_href ?>" class="btn_b01"><?php echo __(theme_t717); ?></a></li>
+            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02"><?php echo __(theme_t663); ?></a></li><?php } ?>
         </ul>
         <?php
         $link_buttons = ob_get_contents();
@@ -92,7 +92,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
     <!-- } 게시물 상단 버튼 끝 -->
 
     <section id="bo_v_atc">
-        <h2 id="bo_v_atc_title">본문</h2>
+        <h2 id="bo_v_atc_title"><?php echo __(theme_t719); ?></h2>
 
         <?php
         // 파일 출력
@@ -113,7 +113,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
         <!-- } 본문 내용 끝 -->
 
         <?php if($view['qa_type']) { ?>
-        <div><a href="<?php echo $rewrite_href; ?>" class="btn_b01">추가질문</a></div>
+        <div><a href="<?php echo $rewrite_href; ?>" class="btn_b01"><?php echo __(theme_t1045); ?></a></div>
         <?php } ?>
 
     </section>
@@ -130,16 +130,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 
     <?php if($view['rel_count']) { ?>
     <section id="bo_v_rel">
-        <h2>연관질문</h2>
+        <h2><?php echo __(theme_t1053); ?></h2>
 
         <div class="tbl_head01 tbl_wrap">
             <table>
             <thead>
             <tr>
-                <th scope="col">분류</th>
-                <th scope="col">제목</th>
-                <th scope="col">상태</th>
-                <th scope="col">등록일</th>
+                <th scope="col"><?php echo __(theme_t1040); ?></th>
+                <th scope="col"><?php echo __(theme_t422); ?></th>
+                <th scope="col"><?php echo __(theme_t525); ?></th>
+                <th scope="col"><?php echo __(theme_t1041); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -153,7 +153,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
                         <?php echo $rel_list[$i]['subject']; ?>
                     </a>
                 </td>
-                <td class="td_stat <?php echo ($list[$i]['qa_status'] ? 'txt_done' : 'txt_rdy'); ?>"><?php echo ($rel_list[$i]['qa_status'] ? '답변완료' : '답변대기'); ?></td>
+                <td class="td_stat <?php echo ($list[$i]['qa_status'] ? 'txt_done' : 'txt_rdy'); ?>"><?php echo ($rel_list[$i]['qa_status'] ? __(theme_t1042) : __(theme_t1043)); ?></td>
                 <td class="td_date"><?php echo $rel_list[$i]['date']; ?></td>
             </tr>
             <?php

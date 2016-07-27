@@ -9,17 +9,17 @@ add_stylesheet('<link rel="stylesheet" href="'.$visit_skin_url.'/style.css">', 0
 
 <aside id="visit">
     <div>
-        <h2>접속자집계</h2>
+        <h2><?php echo __(theme_t1459); ?></h2>
         <dl>
-            <dt>오늘</dt>
+            <dt><?php echo __(theme_t1059); ?></dt>
             <dd><?php echo number_format($visit[1]) ?></dd>
-            <dt>어제</dt>
+            <dt><?php echo __(theme_t1460); ?></dt>
             <dd><?php echo number_format($visit[2]) ?></dd>
-            <dt>최대</dt>
+            <dt><?php echo __(theme_t506); ?></dt>
             <dd><?php echo number_format($visit[3]) ?></dd>
-            <dt>전체</dt>
+            <dt><?php echo __(theme_t660); ?></dt>
             <dd><?php echo number_format($visit[4]) ?></dd>
         </dl>
-        <?php if ($is_admin == "super") { ?><a href="<?php echo G5_ADMIN_URL ?>/visit_list.php">상세보기</a><?php } ?>
+        <?php if ($is_admin == "super") { ?><a href="<?php echo G5_ADMIN_URL ?>/visit_list.php"><?php echo __(theme_t1461); ?></a><?php } ?>
     </div>
 </aside>

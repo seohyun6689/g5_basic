@@ -4,7 +4,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 
 <section id="bo_v_ans">
     <h2>답변: <?php echo get_text($answer['qa_subject']); ?></h2>
-    <a href="<?php echo $rewrite_href; ?>" class="btn_b01">추가질문</a>
+    <a href="<?php echo $rewrite_href; ?>" class="btn_b01"><?php echo __(theme_t1045); ?></a>
 
     <div id="ans_datetime">
         <?php echo $answer['qa_datetime']; ?>
@@ -15,10 +15,10 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
 
     <div id="ans_add">
         <?php if($answer_update_href) { ?>
-        <a href="<?php echo $answer_update_href; ?>" class="btn_b01">답변수정</a>
+        <a href="<?php echo $answer_update_href; ?>" class="btn_b01"><?php echo __(theme_t1046); ?></a>
         <?php } ?>
         <?php if($answer_delete_href) { ?>
-        <a href="<?php echo $answer_delete_href; ?>" class="btn_b01" onclick="del(this.href); return false;">답변삭제</a>
+        <a href="<?php echo $answer_delete_href; ?>" class="btn_b01" onclick="del(this.href); return false;"><?php echo __(theme_t1047); ?></a>
         <?php } ?>
     </div>
 </section>

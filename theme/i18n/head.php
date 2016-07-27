@@ -40,11 +40,11 @@ if ($config['cf_use_i18n'] && $config['cf_use_i18n_layout']) {
         </div>
 
         <fieldset id="hd_sch">
-            <legend>사이트 내 전체검색</legend>
+            <legend><?php echo __(theme_t1467); ?></legend>
             <form name="fsearchbox" method="get" action="<?php echo G5_BBS_URL ?>/search.php" onsubmit="return fsearchbox_submit(this);">
             <input type="hidden" name="sfl" value="wr_subject||wr_content">
             <input type="hidden" name="sop" value="and">
-            <label for="sch_stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
+            <label for="sch_stx" class="sound_only"><?php echo __(theme_t598); ?><strong class="sound_only"> <?php echo __(theme_t421); ?></strong></label>
             <input type="text" name="stx" id="sch_stx" maxlength="20">
             <input type="submit" id="sch_submit" value="<?php echo __(theme_t675); ?>">
             </form>

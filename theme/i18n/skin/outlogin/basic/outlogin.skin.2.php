@@ -9,13 +9,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$outlogin_skin_url.'/style.css">'
 <section id="ol_after" class="ol">
     <header id="ol_after_hd">
         <h2><?php echo __(theme_t1457); ?></h2>
-        <strong><?php echo $nick ?>님</strong>
+        <strong><?php echo $nick ?></strong>
         <?php if ($is_admin == 'super' || $is_auth) {  ?><a href="<?php echo G5_ADMIN_URL ?>" class="btn_admin"><?php echo __(theme_t1458); ?></a><?php }  ?>
     </header>
     <ul id="ol_after_private">
         <li>
             <a href="<?php echo G5_BBS_URL ?>/memo.php" target="_blank" id="ol_after_memo" class="win_memo">
-                <span class="sound_only">안 읽은 </span><?php echo __(theme_t646); ?>
+                <?php echo __(theme_t646); ?>
                 <strong><?php echo $memo_not_read ?></strong>
             </a>
         </li>

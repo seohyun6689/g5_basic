@@ -14,14 +14,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <h1><?php echo $g5['title'] ?></h1>
     <p>
         <?php if ($w == 'u') { ?>
-        <strong>작성자만 글을 수정할 수 있습니다.</strong>
-        작성자 본인이라면, 글 작성시 입력한 비밀번호를 입력하여 글을 수정할 수 있습니다.
+        <?php echo __(theme_t811); ?>
         <?php } else if ($w == 'd' || $w == 'x') { ?>
-        <strong>작성자만 글을 삭제할 수 있습니다.</strong>
-        작성자 본인이라면, 글 작성시 입력한 비밀번호를 입력하여 글을 삭제할 수 있습니다.
+        <?php echo __(theme_t812); ?>
         <?php } else { ?>
-        <strong>비밀글 기능으로 보호된 글입니다.</strong>
-        작성자와 관리자만 열람하실 수 있습니다. 본인이라면 비밀번호를 입력하세요.
+        <?php echo __(theme_t813); ?>
         <?php } ?>
     </p>
 
@@ -35,13 +32,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <input type="hidden" name="page" value="<?php echo $page ?>">
 
     <fieldset>
-        <input type="password" name="wr_password" id="pw_wr_password"  placeholder="비밀번호(필수)" required class="frm_input required" maxLength="20">
-        <input type="submit" class="btn_submit" value="확인">
+        <input type="password" name="wr_password" id="pw_wr_password"  placeholder="<?php echo __(theme_t471); ?>(<?php echo __(theme_t421); ?>)" required class="frm_input required" maxLength="20">
+        <input type="submit" class="btn_submit" value="<?php echo __(theme_t429); ?>">
     </fieldset>
     </form>
 
     <div class="btn_confirm">
-        <a href="<?php echo $return_url ?>">돌아가기</a>
+        <a href="<?php echo $return_url ?>"><?php echo __(theme_t814); ?></a>
     </div>
 
 </div>

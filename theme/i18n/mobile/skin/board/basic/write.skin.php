@@ -25,7 +25,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     if ($is_notice || $is_html || $is_secret || $is_mail) {
         $option = '';
         if ($is_notice) {
-            $option .= PHP_EOL.'<input type="checkbox" id="notice" name="notice" value="1" '.$notice_checked.'>'.PHP_EOL.'<label for="notice">공지</label>';
+            $option .= PHP_EOL.'<input type="checkbox" id="notice" name="notice" value="1" '.$notice_checked.'>'.PHP_EOL.'<label for="notice">' . __(theme_t725) . '</label>';
         }
 
         if ($is_html) {
@@ -38,14 +38,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
         if ($is_secret) {
             if ($is_admin || $is_secret==1) {
-                $option .= PHP_EOL.'<input type="checkbox" id="secret" name="secret" value="secret" '.$secret_checked.'>'.PHP_EOL.'<label for="secret">비밀글</label>';
+                $option .= PHP_EOL.'<input type="checkbox" id="secret" name="secret" value="secret" '.$secret_checked.'>'.PHP_EOL.'<label for="secret">' . __(theme_t726) . '</label>';
             } else {
                 $option_hidden .= '<input type="hidden" name="secret" value="secret">';
             }
         }
 
         if ($is_mail) {
-            $option .= PHP_EOL.'<input type="checkbox" id="mail" name="mail" value="mail" '.$recv_email_checked.'>'.PHP_EOL.'<label for="mail">답변메일받기</label>';
+            $option .= PHP_EOL.'<input type="checkbox" id="mail" name="mail" value="mail" '.$recv_email_checked.'>'.PHP_EOL.'<label for="mail">' . __(theme_t728) . '</label>';
         }
     }
 
@@ -57,45 +57,45 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <tbody>
         <?php if ($is_name) { ?>
         <tr>
-            <th scope="row"><label for="wr_name">이름<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="wr_name"><?php echo __(theme_t452); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="text" name="wr_name" value="<?php echo $name ?>" id="wr_name" required class="frm_input required" maxlength="20"></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_password) { ?>
         <tr>
-            <th scope="row"><label for="wr_password">비밀번호<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="wr_password"><?php echo __(theme_t471); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="password" name="wr_password" id="wr_password" <?php echo $password_required ?> class="frm_input <?php echo $password_required ?>" maxlength="20"></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_email) { ?>
         <tr>
-            <th scope="row"><label for="wr_email">이메일</label></th>
+            <th scope="row"><label for="wr_email"><?php echo __(theme_t583); ?></label></th>
             <td><input type="email" name="wr_email" value="<?php echo $email ?>" id="wr_email" class="frm_input email" maxlength="100"></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_homepage) { ?>
         <tr>
-            <th scope="row"><label for="wr_homepage">홈페이지</label></th>
+            <th scope="row"><label for="wr_homepage"><?php echo __(theme_t723); ?></label></th>
             <td><input type="url" name="wr_homepage" value="<?php echo $homepage ?>" id="wr_homepage" class="frm_input"></td>
         </tr>
         <?php } ?>
 
         <?php if ($option) { ?>
         <tr>
-            <th scope="row">옵션</th>
+            <th scope="row"><?php echo __(theme_t1434); ?></th>
             <td><?php echo $option ?></td>
         </tr>
         <?php } ?>
 
         <?php if ($is_category) { ?>
         <tr>
-            <th scope="row"><label for="ca_name">분류<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="ca_name"><?php echo __(theme_t1040); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td>
                 <select class="required" id="ca_name" name="ca_name" required>
-                    <option value="">선택하세요</option>
+                    <option value=""><?php echo __(theme_t724); ?></option>
                     <?php echo $category_option ?>
                 </select>
             </td>
@@ -103,28 +103,28 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <?php } ?>
 
         <tr>
-            <th scope="row"><label for="wr_subject">제목<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="wr_subject"><?php echo __(theme_t422); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td><input type="text" name="wr_subject" value="<?php echo $subject ?>" id="wr_subject" required class="frm_input required"></td>
         </tr>
 
         <tr>
-            <th scope="row"><label for="wr_content">내용<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="wr_content"><?php echo __(theme_t423); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td class="wr_content">
                 <?php if($write_min || $write_max) { ?>
                 <!-- 최소/최대 글자 수 사용 시 -->
-                <p id="char_count_desc">이 게시판은 최소 <strong><?php echo $write_min; ?></strong>글자 이상, 최대 <strong><?php echo $write_max; ?></strong>글자 이하까지 글을 쓰실 수 있습니다.</p>
+                <p id="char_count_desc"><?php echo __(theme_t732, array($write_min, $write_max)); ?></p>
                 <?php } ?>
                 <?php echo $editor_html; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
                 <?php if($write_min || $write_max) { ?>
                 <!-- 최소/최대 글자 수 사용 시 -->
-                <div id="char_count_wrap"><span id="char_count"></span>글자</div>
+                <div id="char_count_wrap"><span id="char_count"></span><?php echo __(theme_t698); ?></div>
                 <?php } ?>
             </td>
         </tr>
 
         <?php for ($i=1; $is_link && $i<=G5_LINK_COUNT; $i++) { ?>
         <tr>
-            <th scope="row"><label for="wr_link<?php echo $i ?>">링크 #<?php echo $i ?></label></th>
+            <th scope="row"><label for="wr_link<?php echo $i ?>"><?php echo __(theme_t733); ?> #<?php echo $i ?></label></th>
             <td><input type="url" name="wr_link<?php echo $i ?>" value="<?php if($w=="u"){echo$write['wr_link'.$i];} ?>" id="wr_link<?php echo $i ?>" class="frm_input wr_link"></td>
         </tr>
         <?php } ?>
@@ -133,12 +133,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
         <tr>
             <th scope="row">파일 #<?php echo $i+1 ?></th>
             <td>
-                <input type="file" name="bf_file[]" title="파일첨부 <?php echo $i+1 ?> :  용량 <?php echo $upload_max_filesize ?> 이하만 업로드 가능" class="frm_file frm_input">
+                <input type="file" name="bf_file[]" title="<?php echo __(theme_t1329, array($i+1, $upload_max_filesize)); ?>" class="frm_file frm_input">
                 <?php if ($is_file_content) { ?>
-                <input type="text" name="bf_content[]" value="<?php echo ($w == 'u') ? $file[$i]['bf_content'] : ''; ?>" title="파일 설명을 입력해주세요." class="frm_file frm_input">
+                <input type="text" name="bf_content[]" value="<?php echo ($w == 'u') ? $file[$i]['bf_content'] : ''; ?>" title="<?php echo __(theme_t1435); ?>" class="frm_file frm_input">
                 <?php } ?>
                 <?php if($w == 'u' && $file[$i]['file']) { ?>
-                <input type="checkbox" id="bf_file_del<?php echo $i ?>" name="bf_file_del[<?php echo $i; ?>]" value="1"> <label for="bf_file_del<?php echo $i ?>"><?php echo $file[$i]['source'].'('.$file[$i]['size'].')'; ?> 파일 삭제</label>
+                <input type="checkbox" id="bf_file_del<?php echo $i ?>" name="bf_file_del[<?php echo $i; ?>]" value="1"> <label for="bf_file_del<?php echo $i ?>"><?php echo $file[$i]['source'].'('.$file[$i]['size'].')'; ?> <?php echo __(theme_t1056); ?></label>
                 <?php } ?>
             </td>
         </tr>
@@ -146,7 +146,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
         <?php if ($is_guest) { //자동등록방지 ?>
         <tr>
-            <th scope="row">자동등록방지</th>
+            <th scope="row"><?php echo __(theme_t700); ?></th>
             <td>
                 <?php echo $captcha_html ?>
             </td>
@@ -158,8 +158,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     </div>
 
     <div class="btn_confirm">
-        <input type="submit" value="작성완료" id="btn_submit" class="btn_submit" accesskey="s">
-        <a href="./board.php?bo_table=<?php echo $bo_table ?>" class="btn_cancel">취소</a>
+        <input type="submit" value="<?php echo __(theme_t1139); ?>" id="btn_submit" class="btn_submit" accesskey="s">
+        <a href="./board.php?bo_table=<?php echo $bo_table ?>" class="btn_cancel"><?php echo __(theme_t513); ?></a>
     </div>
     </form>
 </section>
@@ -181,7 +181,7 @@ $(function() {
 function html_auto_br(obj)
 {
     if (obj.checked) {
-        result = confirm("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다.");
+        result = confirm(__('theme.t749'));
         if (result)
             obj.value = "html2";
         else
@@ -214,13 +214,13 @@ function fwrite_submit(f)
     });
 
     if (subject) {
-        alert("제목에 금지단어('"+subject+"')가 포함되어있습니다");
+        alert(__('theme.t750', [subject]));
         f.wr_subject.focus();
         return false;
     }
 
     if (content) {
-        alert("내용에 금지단어('"+content+"')가 포함되어있습니다");
+        alert(__('theme.t702', [content]));
         if (typeof(ed_wr_content) != "undefined")
             ed_wr_content.returnFalse();
         else
@@ -232,11 +232,11 @@ function fwrite_submit(f)
         if (char_min > 0 || char_max > 0) {
             var cnt = parseInt(check_byte("wr_content", "char_count"));
             if (char_min > 0 && char_min > cnt) {
-                alert("내용은 "+char_min+"글자 이상 쓰셔야 합니다.");
+                alert(__('theme.t751', [char_min]));
                 return false;
             }
             else if (char_max > 0 && char_max < cnt) {
-                alert("내용은 "+char_max+"글자 이하로 쓰셔야 합니다.");
+                alert(__('theme.t752', [char_max]));
                 return false;
             }
         }

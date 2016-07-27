@@ -15,18 +15,18 @@ if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
     <?php echo visit('theme/basic'); // 방문자수 ?>
     <div id="ft_copy">
         <div id="ft_company">
-            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company">회사소개</a>
-            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy">개인정보취급방침</a>
-            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision">서비스이용약관</a>
+            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=company"><?php echo __(theme_t625); ?></a>
+            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=privacy"><?php echo __(theme_t1426); ?></a>
+            <a href="<?php echo G5_BBS_URL; ?>/content.php?co_id=provision"><?php echo __(theme_t1427); ?></a>
         </div>
         Copyright &copy; <b>소유하신 도메인.</b> All rights reserved.<br>
-        <a href="#">상단으로</a>
+        <a href="#"><?php echo __(theme_t1429); ?></a>
     </div>
 </div>
 
 <?php
 if(G5_DEVICE_BUTTON_DISPLAY && G5_IS_MOBILE) { ?>
-<a href="<?php echo get_device_change_url(); ?>" id="device_change">PC 버전으로 보기</a>
+<a href="<?php echo get_device_change_url(); ?>" id="device_change"><?php echo __(theme_t1468); ?></a>
 <?php
 }
 

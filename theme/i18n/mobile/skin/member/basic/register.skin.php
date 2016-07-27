@@ -9,51 +9,51 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
     <form name="fregister" id="fregister" action="<?php echo $register_action_url ?>" onsubmit="return fregister_submit(this);" method="POST" autocomplete="off">
 
-    <p>회원가입약관 및 개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.</p>
+    <p><?php echo __(theme_t883); ?></p>
 
     <section id="fregister_term">
-        <h2>회원가입약관</h2>
+        <h2><?php echo __(theme_t884); ?></h2>
         <textarea readonly><?php echo get_text($config['cf_stipulation']) ?></textarea>
         <fieldset class="fregister_agree">
-            <label for="agree11">회원가입약관의 내용에 동의합니다.</label>
+            <label for="agree11"><?php echo __(theme_t885); ?></label>
             <input type="checkbox" name="agree" value="1" id="agree11">
         </fieldset>
     </section>
 
     <section id="fregister_private">
-        <h2>개인정보처리방침안내</h2>
+        <h2><?php echo __(theme_t427); ?></h2>
         <div class="tbl_head01 tbl_wrap">
             <table>
-                <caption>개인정보처리방침안내</caption>
+                <caption><?php echo __(theme_t427); ?></caption>
                 <thead>
                 <tr>
-                    <th>목적</th>
-                    <th>항목</th>
-                    <th>보유기간</th>
+                    <th><?php echo __(theme_t1449); ?></th>
+                    <th><?php echo __(theme_t1150); ?></th>
+                    <th><?php echo __(theme_t1450); ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td>이용자 식별 및 본인여부 확인</td>
-                    <td>아이디, 이름, 비밀번호</td>
-                    <td>회원 탈퇴 시까지</td>
+                    <td><?php echo __(theme_t1451); ?></td>
+                    <td><?php echo __(theme_t1452); ?></td>
+                    <td><?php echo __(theme_t1453); ?></td>
                 </tr>
                 <tr>
-                    <td>고객서비스 이용에 관한 통지,<br>CS대응을 위한 이용자 식별</td>
-                    <td>연락처 (이메일, 휴대전화번호)</td>
-                    <td>회원 탈퇴 시까지</td>
+                    <td><?php echo __(theme_t1454); ?></td>
+                    <td><?php echo __(theme_t1455); ?></td>
+                    <td><?php echo __(theme_t1453); ?></td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <fieldset class="fregister_agree">
-            <label for="agree21">개인정보처리방침안내의 내용에 동의합니다.</label>
+            <label for="agree21"><?php echo __(theme_t428); ?>.</label>
             <input type="checkbox" name="agree2" value="1" id="agree21">
         </fieldset>
     </section>
 
     <div class="btn_confirm">
-        <input type="submit" class="btn_submit" value="회원가입">
+        <input type="submit" class="btn_submit" value="<?php echo __(theme_t616); ?>">
     </div>
 
     </form>
@@ -62,13 +62,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     function fregister_submit(f)
     {
         if (!f.agree.checked) {
-            alert("회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
+            alert(__('core.a135'));
             f.agree.focus();
             return false;
         }
 
         if (!f.agree2.checked) {
-            alert("개인정보처리방침안내의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
+            alert(__('core.a136'));
             f.agree2.focus();
             return false;
         }

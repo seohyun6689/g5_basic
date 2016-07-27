@@ -32,7 +32,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         </tr>
         <?php }  ?>
 
-        <?php if ($i == 0) echo "<tr><td colspan=\"5\" class=\"empty_table\">" . __(core_a202) . "</td></tr>";  ?>
+        <?php if ($i == 0) echo "<tr><td colspan=\"5\" class=\"empty_table\">" . __(theme_t1471) . "</td></tr>";  ?>
         </tbody>
         </table>
     </div>

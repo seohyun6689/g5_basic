@@ -41,7 +41,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <div class="point_wrap02">
                 <span class="point_expdate<?php echo $expr; ?>">
                     <?php if ($row['po_expired'] == 1) { ?>
-                    만료<?php echo substr(str_replace('-', '', $row['po_expire_date']), 2); ?>
+                    <?php echo __(theme_t820); ?><?php echo substr(str_replace('-', '', $row['po_expire_date']), 2); ?>
                     <?php } else echo $row['po_expire_date'] == '9999-12-31' ? '&nbsp;' : $row['po_expire_date']; ?>
                 </span>
                 <span class="point_inout"><?php if ($point1) echo $point1; else echo $point2; ?></span>
@@ -51,7 +51,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         }
 
         if ($i == 0)
-            echo '<li class="empty_list">자료가 없습니다.</li>';
+            echo '<li class="empty_list">' . __(theme_t1471) . '</li>';
         else {
             if ($sum_point1 > 0)
                 $sum_point1 = "+" . number_format($sum_point1);
@@ -62,20 +62,20 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
     <div id="point_sum">
         <div class="sum_row">
-            <span class="sum_tit">지급</span>
+            <span class="sum_tit"><?php echo __(theme_t818); ?></span>
             <b class="sum_val"><?php echo $sum_point1; ?></b>
         </div>
         <div class="sum_row">
-            <span class="sum_tit">사용</span>
+            <span class="sum_tit"><?php echo __(theme_t819); ?></span>
             <b class="sum_val"><?php echo $sum_point2; ?></b>
         </div>
         <div class="sum_row">
-            <span class="sum_tit">보유</span>
+            <span class="sum_tit"><?php echo __(theme_t821); ?></span>
             <b class="sum_val"><?php echo number_format($member['mb_point']); ?></b>
         </div>
     </div>
 
     <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, $_SERVER['SCRIPT_NAME'].'?'.$qstr.'&amp;page='); ?>
 
-    <div class="win_btn"><button type="button" onclick="javascript:window.close();">창닫기</button></div>
+    <div class="win_btn"><button type="button" onclick="javascript:window.close();"><?php echo __(theme_t425); ?></button></div>
 </div>

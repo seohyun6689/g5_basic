@@ -13,7 +13,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 <header id="hd">
     <h1 id="hd_h1"><?php echo $g5['title'] ?></h1>
 
-    <div class="to_content"><a href="#container">본문 바로가기</a></div>
+    <div class="to_content"><a href="#container"><?php echo __(theme_t607); ?></a></div>
 
     <?php
     if(defined('_INDEX_')) { // index에서만 실행
@@ -26,7 +26,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             <a href="<?php echo G5_URL ?>"><img src="<?php echo G5_IMG_URL ?>/logo.jpg" alt="<?php echo $config['cf_title']; ?>"></a>
         </div>
 
-        <button type="button" id="gnb_open" class="hd_opener">메뉴<span class="sound_only"> 열기</span></button>
+        <button type="button" id="gnb_open" class="hd_opener"><?php echo __(theme_t1465); ?><span class="sound_only"> <?php echo __(theme_t1466); ?></span></button>
 
         <div id="gnb" class="hd_div">
             <ul id="gnb_1dul">
@@ -67,28 +67,28 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             }
 
             if ($i == 0) {  ?>
-                <li id="gnb_empty">메뉴 준비 중입니다.<?php if ($is_admin) { ?> <br><a href="<?php echo G5_ADMIN_URL; ?>/menu_list.php">관리자모드 &gt; 환경설정 &gt; 메뉴설정</a>에서 설정하세요.<?php } ?></li>
+                <li id="gnb_empty"><?php echo __(theme_t1456); ?><?php if ($is_admin) { ?> <br><a href="<?php echo G5_ADMIN_URL; ?>/menu_list.php">관리자모드 &gt; 환경설정 &gt; 메뉴설정</a>에서 설정하세요.<?php } ?></li>
             <?php } ?>
             </ul>
-            <button type="button" id="gnb_close" class="hd_closer"><span class="sound_only">메뉴 </span>닫기</button>
+            <button type="button" id="gnb_close" class="hd_closer"><span class="sound_only"><?php echo __(theme_t1465); ?> </span><?php echo __(theme_t392); ?></button>
         </div>
 
-        <button type="button" id="hd_sch_open" class="hd_opener">검색<span class="sound_only"> 열기</span></button>
+        <button type="button" id="hd_sch_open" class="hd_opener"><?php echo __(theme_t675); ?><span class="sound_only"> <?php echo __(theme_t1466); ?></span></button>
 
         <div id="hd_sch" class="hd_div">
             <h2>사이트 내 전체검색</h2>
             <form name="fsearchbox" action="<?php echo G5_BBS_URL ?>/search.php" onsubmit="return fsearchbox_submit(this);" method="get">
             <input type="hidden" name="sfl" value="wr_subject||wr_content">
             <input type="hidden" name="sop" value="and">
-            <input type="text" name="stx" id="sch_stx" placeholder="검색어(필수)" required class="required" maxlength="20">
-            <input type="submit" value="검색" id="sch_submit">
+            <input type="text" name="stx" id="sch_stx" placeholder="<?php echo __(theme_t598); ?>" required class="required" maxlength="20">
+            <input type="submit" value="<?php echo __(theme_t675); ?>" id="sch_submit">
             </form>
 
             <script>
             function fsearchbox_submit(f)
             {
                 if (f.stx.value.length < 2) {
-                    alert("검색어는 두글자 이상 입력하십시오.");
+                    alert(__('core.a351'));
                     f.stx.select();
                     f.stx.focus();
                     return false;
@@ -102,7 +102,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                 }
 
                 if (cnt > 1) {
-                    alert("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다.");
+                    alert(__('core.a361'));
                     f.stx.select();
                     f.stx.focus();
                     return false;
@@ -111,7 +111,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                 return true;
             }
             </script>
-            <button type="button" id="sch_close" class="hd_closer"><span class="sound_only">검색 </span>닫기</button>
+            <button type="button" id="sch_close" class="hd_closer"><span class="sound_only"><?php echo __(theme_t675); ?> </span><?php echo __(theme_t392); ?></button>
         </div>
 
         <script>
@@ -122,39 +122,42 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 
                 if($hd_layer.is(":visible")) {
                     $hd_layer.hide();
-                    $this.find("span").text("열기");
+                    $this.find("span").text("<?php echo __(theme_t1466); ?>");
                 } else {
                     var $hd_layer2 = $(".hd_div:visible");
-                    $hd_layer2.prev(".hd_opener").find("span").text("열기");
+                    $hd_layer2.prev(".hd_opener").find("span").text("<?php echo __(theme_t1466); ?>");
                     $hd_layer2.hide();
 
                     $hd_layer.show();
-                    $this.find("span").text("닫기");
+                    $this.find("span").text("<?php echo __(theme_t392); ?>");
                 }
             });
 
             $(".hd_closer").on("click", function() {
                 var idx = $(".hd_closer").index($(this));
                 $(".hd_div:visible").hide();
-                $(".hd_opener:eq("+idx+")").find("span").text("열기");
+                $(".hd_opener:eq("+idx+")").find("span").text("<?php echo __(theme_t1466); ?>");
             });
         });
         </script>
 
         <ul id="hd_nb">
-            <li><a href="<?php echo G5_BBS_URL ?>/qalist.php" id="snb_new">1:1문의</a></li>
+            <li><a href="<?php echo G5_BBS_URL ?>/qalist.php" id="snb_new"><?php echo __(theme_t619); ?></a></li>
             <li><a href="<?php echo G5_BBS_URL ?>/faq.php" id="snb_faq">FAQ</a></li>
-            <li><a href="<?php echo G5_BBS_URL ?>/current_connect.php" id="snb_cnt">접속자 <?php echo connect('theme/basic'); // 현재 접속자수 ?></a></li>
-            <li><a href="<?php echo G5_BBS_URL ?>/new.php" id="snb_new">새글</a></li>
+            <li><a href="<?php echo G5_BBS_URL ?>/current_connect.php" id="snb_cnt"><?php echo __(theme_t649); ?> <?php echo connect('theme/basic'); // 현재 접속자수 ?></a></li>
+            <li><a href="<?php echo G5_BBS_URL ?>/new.php" id="snb_new"><?php echo __(theme_t1399); ?></a></li>
             <?php if ($is_member) { ?>
             <?php if ($is_admin) { ?>
-            <li><a href="<?php echo G5_ADMIN_URL ?>" id="snb_adm"><b>관리자</b></a></li>
+            <li><a href="<?php echo G5_ADMIN_URL ?>" id="snb_adm"><b><?php echo __(theme_t432); ?></b></a></li>
             <?php } ?>
-            <li><a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=<?php echo G5_BBS_URL ?>/register_form.php" id="snb_modify">정보수정</a></li>
-            <li><a href="<?php echo G5_BBS_URL ?>/logout.php" id="snb_logout">로그아웃</a></li>
+            <li><a href="<?php echo G5_BBS_URL ?>/member_confirm.php?url=<?php echo G5_BBS_URL ?>/register_form.php" id="snb_modify"><?php echo __(theme_t614); ?></a></li>
+            <li><a href="<?php echo G5_BBS_URL ?>/logout.php" id="snb_logout"><?php echo __(theme_t615); ?></a></li>
             <?php } else { ?>
-            <li><a href="<?php echo G5_BBS_URL ?>/register.php" id="snb_join">회원가입</a></li>
-            <li><a href="<?php echo G5_BBS_URL ?>/login.php" id="snb_login">로그인</a></li>
+            <li><a href="<?php echo G5_BBS_URL ?>/register.php" id="snb_join"><?php echo __(theme_t616); ?></a></li>
+            <li><a href="<?php echo G5_BBS_URL ?>/login.php" id="snb_login"><?php echo __(theme_t617); ?></a></li>
+            <?php } ?>
+            <?php if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && isset($i18n)) { ?>
+            <li><?php echo $i18n->getLangSelectbox(); ?></li>
             <?php } ?>
         </ul>
 
@@ -169,9 +172,3 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
     </div>
     <div id="container">
         <?php if ((!$bo_table || $w == 's' ) && !defined("_INDEX_")) { ?><div id="container_title"><?php echo $g5['title'] ?></div><?php } ?>
-        <div id="text_size">
-            <!-- font_resize('엘리먼트id', '제거할 class', '추가할 class'); -->
-            <button id="size_down" onclick="font_resize('container', 'ts_up ts_up2', '');"><img src="<?php echo G5_URL; ?>/img/ts01.gif" alt="기본"></button>
-            <button id="size_def" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up');"><img src="<?php echo G5_URL; ?>/img/ts02.gif" alt="크게"></button>
-            <button id="size_up" onclick="font_resize('container', 'ts_up ts_up2', 'ts_up2');"><img src="<?php echo G5_URL; ?>/img/ts03.gif" alt="더크게"></button>
-        </div>

@@ -50,7 +50,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <td><?php echo $po_content; ?></td>
             <td class="td_date<?php echo $expr; ?>">
                 <?php if ($row['po_expired'] == 1) { ?>
-                만료<?php echo substr(str_replace('-', '', $row['po_expire_date']), 2); ?>
+                <?php echo __(theme_t820); ?><?php echo substr(str_replace('-', '', $row['po_expire_date']), 2); ?>
                 <?php } else echo $row['po_expire_date'] == '9999-12-31' ? '&nbsp;' : $row['po_expire_date']; ?>
             </td>
             <td class="td_numbig"><?php echo $point1; ?></td>
@@ -60,7 +60,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         }
 
         if ($i == 0)
-            echo '<tr><td colspan="5" class="empty_table">' . __(core_a202) . '</td></tr>';
+            echo '<tr><td colspan="5" class="empty_table">' . __(theme_t1471) . '</td></tr>';
         else {
             if ($sum_point1 > 0)
                 $sum_point1 = "+" . number_format($sum_point1);

@@ -79,7 +79,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
                         $mb_cert = __(theme_t504);
                 ?>
                 <div id="msg_certify">
-                    <strong><?php echo $mb_cert; ?> <?php echo __(theme_t841); ?></strong><?php if ($member['mb_adult']) { ?> <?php echo __(theme_t842); ?><?php } ?> 완료
+                    <strong><?php echo $mb_cert; ?> <?php echo __(theme_t841); ?></strong><?php if ($member['mb_adult']) { ?> <?php echo __(theme_t842); ?><?php } ?> <?php echo __(theme_t543); ?>
                 </div>
                 <?php } ?>
             </td>
@@ -145,11 +145,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
                 <?php if ($config['cf_req_addr']) { ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong><?php }  ?>
             </th>
             <td>
-                <label for="reg_mb_zip" class="sound_only"><?php echo __(theme_t1446); ?><?php echo $config['cf_req_addr']?'<strong class="sound_only"> 필수</strong>':''; ?></label>
+                <label for="reg_mb_zip" class="sound_only"><?php echo __(theme_t1446); ?><?php echo $config['cf_req_addr']?'<strong class="sound_only"> ' . __(theme_t421) . '</strong>':''; ?></label>
                 <input type="text" name="mb_zip" value="<?php echo $member['mb_zip1'].$member['mb_zip2']; ?>" id="reg_mb_zip" <?php echo $config['cf_req_addr']?"required":""; ?> class="frm_input <?php echo $config['cf_req_addr']?"required":""; ?>" size="5" maxlength="6">
                 <button type="button" class="btn_frmline" onclick="win_zip('fregisterform', 'mb_zip', 'mb_addr1', 'mb_addr2', 'mb_addr3', 'mb_addr_jibeon');"><?php echo __(theme_t476); ?></button><br>
                 <input type="text" name="mb_addr1" value="<?php echo get_text($member['mb_addr1']) ?>" id="reg_mb_addr1" <?php echo $config['cf_req_addr']?"required":""; ?> class="frm_input frm_address <?php echo $config['cf_req_addr']?"required":""; ?>" size="50">
-                <label for="reg_mb_addr1"><?php echo __(theme_t477); ?><?php echo $config['cf_req_addr']?'<strong class="sound_only"> 필수</strong>':''; ?></label><br>
+                <label for="reg_mb_addr1"><?php echo __(theme_t477); ?><?php echo $config['cf_req_addr']?'<strong class="sound_only"> ' . __(theme_t421) . '</strong>':''; ?></label><br>
                 <input type="text" name="mb_addr2" value="<?php echo get_text($member['mb_addr2']) ?>" id="reg_mb_addr2" class="frm_input frm_address" size="50">
                 <label for="reg_mb_addr2"><?php echo __(theme_t478); ?></label>
                 <br>

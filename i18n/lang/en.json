@@ -456,7 +456,7 @@
 		"t418" : "The information of exchange",
 		"t419" : "The related item",
 		"t420" : "The E-mail of person who should be recommended",
-		"t421" : "The necessariness",
+		"t421" : "Required",
 		"t422" : "Title",
 		"t423" : "The content",
 		"t424" : "To send",
@@ -506,7 +506,7 @@
 		"t468" : "The discount coupon",
 		"t469" : "The total",
 		"t470" : "The person who want to order.",
-		"t471" : "The password",
+		"t471" : "Password",
 		"t472" : "0, number from 3 to 20 characters (need when used for order inquiry)",
 		"t473" : "The cell phone",
 		"t474" : "The front code of the postal code",
@@ -1475,7 +1475,7 @@
         "t1440" : "Member Login",
         "t1441" : "Member Login Information",
         "t1442" : "Member ID and password, remember to breathe when you use the Find username or password.<br>Please use after a member yet ahnisiramyeon membership.",
-        "t1443" : "Received",
+        "t1443" : "The time of receive",
         "t1444" : "Point History List",
         "t1445" : "Letters, numbers, and _ only input. Please enter at least three characters.",
         "t1446" : "Zip code",
@@ -1496,6 +1496,13 @@
         "t1461" : "View Details",
         "t1462" : "Detail Search",
         "t1463" : "[C]",
-        "t1464" : "Previous answer information"
+        "t1464" : "Previous answer information",
+        "t1465" : "Menu",
+        "t1466" : "Open",
+        "t1467" : "Search All My Sites",
+        "t1468" : "View the PC version",
+        "t1469" : "Images List",
+        "t1470" : "FAQ Category",
+        "t1471" : "There is no data."
     }
 }

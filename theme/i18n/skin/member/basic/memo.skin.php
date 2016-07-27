@@ -18,7 +18,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <div class="tbl_head01 tbl_wrap">
         <table>
         <caption>
-            전체 <?php echo $kind_title ?>쪽지 <?php echo $total_count ?>통<br>
+            <?php echo __(theme_t660); ?> <?php echo $kind_title ?><?php echo __(theme_t646); ?> <?php echo $total_count ?><br>
         </caption>
         <thead>
         <tr>
@@ -37,7 +37,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <td class="td_mng"><a href="<?php echo $list[$i]['del_href'] ?>" onclick="del(this.href); return false;">삭제</a></td>
         </tr>
         <?php }  ?>
-        <?php if ($i==0) { echo '<tr><td colspan="4" class="empty_table">' . __(core_a202) . '</td></tr>'; }  ?>
+        <?php if ($i==0) { echo '<tr><td colspan="4" class="empty_table">' . __(theme_t1471) . '</td></tr>'; }  ?>
         </tbody>
         </table>
     </div>

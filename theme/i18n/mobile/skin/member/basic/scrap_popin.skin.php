@@ -6,7 +6,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 ?>
 
 <div id="scrap_do" class="new_win mbskin">
-    <h1 id="win_title">스크랩하기</h1>
+    <h1 id="win_title"><?php echo __(theme_t886); ?></h1>
 
     <form name="f_scrap_popin" action="./scrap_popin_update.php" method="post">
     <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">
@@ -14,14 +14,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
     <div class="tbl_frm01 tbl_wrap">
         <table>
-        <caption>제목 확인 및 댓글 쓰기</caption>
+        <caption><?php echo __(theme_t887); ?></caption>
         <tbody>
         <tr>
-            <th scope="row">제목</th>
+            <th scope="row"><?php echo __(theme_t422); ?></th>
             <td><?php echo get_text(cut_str($write['wr_subject'], 255)) ?></td>
         </tr>
         <tr>
-            <th scope="row"><label for="wr_content">댓글</label></th>
+            <th scope="row"><label for="wr_content"><?php echo __(theme_t671); ?></label></th>
             <td><textarea name="wr_content" id="wr_content"></textarea></td>
         </tr>
         </tbody>
@@ -29,11 +29,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     </div>
 
     <p class="win_desc">
-        스크랩을 하시면서 감사 혹은 격려의 댓글을 남기실 수 있습니다.
+        <?php echo __(theme_t888); ?>
     </p>
 
     <div class="win_btn">
-        <input type="submit" class="btn_submit" value="스크랩 확인">
+        <input type="submit" value="<?php echo __(theme_t889); ?>" class="btn_submit">
     </div>
     </form>
 </div>

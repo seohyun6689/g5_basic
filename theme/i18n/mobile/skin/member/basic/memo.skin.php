@@ -9,32 +9,32 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <h1 id="win_title"><?php echo $g5['title'] ?></h1>
 
     <ul class="win_ul">
-        <li><a href="./memo.php?kind=recv">받은쪽지</a></li>
-        <li><a href="./memo.php?kind=send">보낸쪽지</a></li>
-        <li><a href="./memo_form.php">쪽지쓰기</a></li>
+        <li><a href="./memo.php?kind=recv"><?php echo __(theme_t787); ?></a></li>
+        <li><a href="./memo.php?kind=send"><?php echo __(theme_t788); ?></a></li>
+        <li><a href="./memo_form.php"><?php echo __(theme_t789); ?></a></li>
     </ul>
 
     <div class="win_desc">
-        전체 <?php echo $kind_title ?>쪽지 <?php echo $total_count ?>통<br>
+        <?php echo __(theme_t660); ?> <?php echo $kind_title ?><?php echo __(theme_t646); ?> <?php echo $total_count ?><br>
     </div>
 
     <ul id="memo_list_ul">
         <?php for ($i=0; $i<count($list); $i++) { ?>
         <li>
-            <a href="<?php echo $list[$i]['view_href'] ?>" class="memo_link"><?php echo $list[$i]['send_datetime'] ?> 에 <?php echo  ($kind == "recv") ? "받은" : "보낸";  ?> 쪽지</a>
+            <a href="<?php echo $list[$i]['view_href'] ?>" class="memo_link"><?php echo $list[$i]['send_datetime'] ?> <?php echo  ($kind == "recv") ? __(theme_t787) : __(theme_t788);  ?></a>
             <span class="memo_read"><?php echo $list[$i]['read_datetime'] ?></span>
             <span class="memo_send"><?php echo $list[$i]['name'] ?></span>
-            <a href="<?php echo $list[$i]['del_href'] ?>" onclick="del(this.href); return false;" class="memo_del">삭제</a>
+            <a href="<?php echo $list[$i]['del_href'] ?>" onclick="del(this.href); return false;" class="memo_del"><?php echo __(theme_t391); ?></a>
         </li>
         <?php } ?>
-        <?php if ($i==0) { echo "<li class=\"empty_list\">자료가 없습니다.</li>"; } ?>
+        <?php if ($i==0) { echo "<li class=\"empty_list\">" . __(theme_t1471) . "</li>"; } ?>
     </ul>
 
     <p class="win_desc">
-        쪽지 보관일수는 최장 <strong><?php echo $config['cf_memo_del'] ?></strong>일 입니다.
+        <?php echo __(theme_t804, $config['cf_memo_del']); ?>
     </p>
 
     <div class="win_btn">
-        <button type="button" onclick="window.close();">창닫기</button>
+        <button type="button" onclick="window.close();"><?php echo __(theme_t425); ?></button>
     </div>
 </div>

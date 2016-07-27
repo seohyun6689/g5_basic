@@ -21,11 +21,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     </header>
 
     <section id="bo_v_info">
-        <h2>페이지 정보</h2>
-        작성자 <strong><?php echo $view['name'] ?><?php if ($is_ip_view) { echo "&nbsp;($ip)"; } ?></strong>
-        <span class="sound_only">작성일</span><strong><?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></strong>
-        조회<strong><?php echo number_format($view['wr_hit']) ?>회</strong>
-        댓글<strong><?php echo number_format($view['wr_comment']) ?>건</strong>
+        <h2><?php echo __(theme_t711); ?></h2>
+        <?php echo __(theme_t1421); ?> <strong><?php echo $view['name'] ?><?php if ($is_ip_view) { echo "&nbsp;($ip)"; } ?></strong>
+        <span class="sound_only"><?php echo __(theme_t1438); ?></span><strong><?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></strong>
+        <?php echo __(theme_t764); ?><strong><?php echo number_format($view['wr_hit']) ?></strong>
+        <?php echo __(theme_t671); ?><strong><?php echo number_format($view['wr_comment']) ?></strong>
     </section>
 
     <?php
@@ -40,7 +40,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
     <?php if($cnt) { ?>
     <section id="bo_v_file">
-        <h2>첨부파일</h2>
+        <h2><?php echo __(theme_t712); ?></h2>
         <ul>
         <?php
         // 가변 파일
@@ -53,7 +53,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                     <strong><?php echo $view['file'][$i]['source'] ?></strong>
                     <?php echo $view['file'][$i]['content'] ?> (<?php echo $view['file'][$i]['size'] ?>)
                 </a>
-                <span class="bo_v_file_cnt"><?php echo $view['file'][$i]['download'] ?>회 다운로드</span>
+                <span class="bo_v_file_cnt"><?php echo $view['file'][$i]['download'] ?> <?php echo __(theme_t1413); ?></span>
                 <span>DATE : <?php echo $view['file'][$i]['datetime'] ?></span>
             </li>
         <?php
@@ -68,7 +68,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     if ($view['link']) {
      ?>
     <section id="bo_v_link">
-        <h2>관련링크</h2>
+        <h2><?php echo __(theme_t713); ?></h2>
         <ul>
         <?php
         // 링크
@@ -80,10 +80,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
          ?>
             <li>
                 <a href="<?php echo $view['link_href'][$i] ?>" target="_blank">
-                    <img src="<?php echo $board_skin_url ?>/img/icon_link.gif" alt="관련링크">
+                    <img src="<?php echo $board_skin_url ?>/img/icon_link.gif" alt="<?php echo __(theme_t713); ?>">
                     <strong><?php echo $link ?></strong>
                 </a>
-                <span class="bo_v_link_cnt"><?php echo $view['link_hit'][$i] ?>회 연결</span>
+                <span class="bo_v_link_cnt"><?php echo __(theme_t714, $view['link_hit'][$i]) ?></span>
             </li>
         <?php
             }
@@ -99,20 +99,20 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
          ?>
         <?php if ($prev_href || $next_href) { ?>
         <ul class="bo_v_nb">
-            <?php if ($prev_href) { ?><li><a href="<?php echo $prev_href ?>" class="btn_b01">이전글</a></li><?php } ?>
-            <?php if ($next_href) { ?><li><a href="<?php echo $next_href ?>" class="btn_b01">다음글</a></li><?php } ?>
+            <?php if ($prev_href) { ?><li><a href="<?php echo $prev_href ?>" class="btn_b01"><?php echo __(theme_t715); ?></a></li><?php } ?>
+            <?php if ($next_href) { ?><li><a href="<?php echo $next_href ?>" class="btn_b01"><?php echo __(theme_t716) ;?></a></li><?php } ?>
         </ul>
         <?php } ?>
 
         <ul class="bo_v_com">
-            <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>" class="btn_b01">수정</a></li><?php } ?>
-            <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" class="btn_b01" onclick="del(this.href); return false;">삭제</a></li><?php } ?>
-            <?php if ($copy_href) { ?><li><a href="<?php echo $copy_href ?>" class="btn_admin" onclick="board_move(this.href); return false;">복사</a></li><?php } ?>
-            <?php if ($move_href) { ?><li><a href="<?php echo $move_href ?>" class="btn_admin" onclick="board_move(this.href); return false;">이동</a></li><?php } ?>
-            <?php if ($search_href) { ?><li><a href="<?php echo $search_href ?>" class="btn_b01">검색</a></li><?php } ?>
-            <li><a href="<?php echo $list_href ?>" class="btn_b01">목록</a></li>
-            <?php if ($reply_href) { ?><li><a href="<?php echo $reply_href ?>" class="btn_b01">답변</a></li><?php } ?>
-            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02">글쓰기</a></li><?php } ?>
+            <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>" class="btn_b01"><?php echo __(theme_t690); ?></a></li><?php } ?>
+            <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" class="btn_b01" onclick="del(this.href); return false;"><?php echo __(theme_t391); ?></a></li><?php } ?>
+            <?php if ($copy_href) { ?><li><a href="<?php echo $copy_href ?>" class="btn_admin" onclick="board_move(this.href); return false;"><?php echo __(theme_t684); ?></a></li><?php } ?>
+            <?php if ($move_href) { ?><li><a href="<?php echo $move_href ?>" class="btn_admin" onclick="board_move(this.href); return false;"><?php echo __(theme_t685); ?></a></li><?php } ?>
+            <?php if ($search_href) { ?><li><a href="<?php echo $search_href ?>" class="btn_b01"><?php echo __(theme_t675); ?></a></li><?php } ?>
+            <li><a href="<?php echo $list_href ?>" class="btn_b01"><?php echo __(theme_t717); ?></a></li>
+            <?php if ($reply_href) { ?><li><a href="<?php echo $reply_href ?>" class="btn_b01"><?php echo __(theme_t718); ?></a></li><?php } ?>
+            <?php if ($write_href) { ?><li><a href="<?php echo $write_href ?>" class="btn_b02"><?php echo __(theme_t663); ?></a></li><?php } ?>
         </ul>
         <?php
         $link_buttons = ob_get_contents();
@@ -121,7 +121,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     </div>
 
     <section id="bo_v_atc">
-        <h2 id="bo_v_atc_title">본문</h2>
+        <h2 id="bo_v_atc_title"><?php echo __(theme_t719); ?></h2>
 
         <?php
         // 파일 출력
@@ -147,16 +147,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
         <?php if ($scrap_href || $good_href || $nogood_href) { ?>
         <div id="bo_v_act">
-            <?php if ($scrap_href) { ?><a href="<?php echo $scrap_href; ?>" target="_blank" class="btn_b01" onclick="win_scrap(this.href); return false;">스크랩</a><?php } ?>
+            <?php if ($scrap_href) { ?><a href="<?php echo $scrap_href; ?>" target="_blank" class="btn_b01" onclick="win_scrap(this.href); return false;"><?php echo __(theme_t720); ?></a><?php } ?>
             <?php if ($good_href) { ?>
             <span class="bo_v_act_gng">
-                <a href="<?php echo $good_href.'&amp;'.$qstr ?>" id="good_button" class="btn_b01">추천 <strong><?php echo number_format($view['wr_good']) ?></strong></a>
-                <b id="bo_v_act_good">이 글을 추천하셨습니다</b>
+                <a href="<?php echo $good_href.'&amp;'.$qstr ?>" id="good_button" class="btn_b01"><?php echo __(theme_t1394); ?> <strong><?php echo number_format($view['wr_good']) ?></strong></a>
+                <b id="bo_v_act_good"><?php echo __(theme_t710); ?></b>
             </span>
             <?php } ?>
             <?php if ($nogood_href) { ?>
             <span class="bo_v_act_gng">
-                <a href="<?php echo $nogood_href.'&amp;'.$qstr ?>" id="nogood_button" class="btn_b01">비추천  <strong><?php echo number_format($view['wr_nogood']) ?></strong></a>
+                <a href="<?php echo $nogood_href.'&amp;'.$qstr ?>" id="nogood_button" class="btn_b01"><?php echo __(theme_t1395); ?>  <strong><?php echo number_format($view['wr_nogood']) ?></strong></a>
                 <b id="bo_v_act_nogood"></b>
             </span>
             <?php } ?>
@@ -165,8 +165,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
             if($board['bo_use_good'] || $board['bo_use_nogood']) {
         ?>
         <div id="bo_v_act">
-            <?php if($board['bo_use_good']) { ?><span>추천 <strong><?php echo number_format($view['wr_good']) ?></strong></span><?php } ?>
-            <?php if($board['bo_use_nogood']) { ?><span>비추천 <strong><?php echo number_format($view['wr_nogood']) ?></strong></span><?php } ?>
+            <?php if($board['bo_use_good']) { ?><span><?php echo __(theme_t1394); ?> <strong><?php echo number_format($view['wr_good']) ?></strong></span><?php } ?>
+            <?php if($board['bo_use_nogood']) { ?><span><?php echo __(theme_t1395); ?> <strong><?php echo number_format($view['wr_nogood']) ?></strong></span><?php } ?>
         </div>
         <?php
             }
@@ -194,11 +194,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 $(function() {
     $("a.view_file_download").click(function() {
         if(!g5_is_member) {
-            alert("다운로드 권한이 없습니다.\n회원이시라면 로그인 후 이용해 보십시오.");
+            alert(__('theme.t721'));
             return false;
         }
 
-        var msg = "파일을 다운로드 하시면 포인트가 차감(<?php echo number_format($board['bo_download_point']) ?>점)됩니다.\n\n포인트는 게시물당 한번만 차감되며 다음에 다시 다운로드 하셔도 중복하여 차감하지 않습니다.\n\n그래도 다운로드 하시겠습니까?";
+        var msg = __('theme.t722', ['<?php echo number_format($board['bo_download_point']) ?>']);
 
         if(confirm(msg)) {
             var href = $(this).attr("href")+"&js=on";
@@ -257,10 +257,10 @@ function excute_good(href, $el, $tx)
             if(data.count) {
                 $el.find("strong").text(number_format(String(data.count)));
                 if($tx.attr("id").search("nogood") > -1) {
-                    $tx.text("이 글을 비추천하셨습니다.");
+                    $tx.text(__('theme.t709'));
                     $tx.fadeIn(200).delay(2500).fadeOut(200);
                 } else {
-                    $tx.text("이 글을 추천하셨습니다.");
+                    $tx.text(__('theme.t710'));
                     $tx.fadeIn(200).delay(2500).fadeOut(200);
                 }
             }

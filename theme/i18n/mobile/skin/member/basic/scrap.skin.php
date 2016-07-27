@@ -16,12 +16,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <a href="<?php echo $list[$i]['del_href']; ?>" class="scrap_del" onclick="del(this.href); return false;">삭제</a>
         </li>
         <?php } ?>
-        <?php if ($i == 0) echo "<li class=\"empty_list\">자료가 없습니다.</li>"; ?>
+        <?php if ($i == 0) echo "<li class=\"empty_list\">" . __(theme_t1471) . "</li>"; ?>
     </ul>
 
     <?php echo get_paging($config['cf_mobile_pages'], $page, $total_page, "?$qstr&amp;page="); ?>
 
     <div class="win_btn">
-        <button type="button" onclick="window.close();">창닫기</button>
+        <button type="button" onclick="window.close();"><?php echo __(theme_t425); ?></button>
     </div>
 </div>

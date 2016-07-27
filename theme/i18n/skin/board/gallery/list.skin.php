@@ -6,7 +6,7 @@ include_once(G5_LIB_PATH.'/thumbnail.lib.php');
 add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0);
 ?>
 
-<h2 id="container_title"><?php echo $board['bo_subject'] ?><span class="sound_only"> 목록</span></h2>
+<h2 id="container_title"><?php echo $board['bo_subject'] ?><span class="sound_only"> <?php echo __(theme_t717); ?></span></h2>
 
 <!-- 게시판 목록 시작 { -->
 <div id="bo_gall" style="width:<?php echo $width; ?>">
@@ -104,7 +104,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
                     <?php } ?>
                     <a href="<?php echo $list[$i]['href'] ?>">
                         <?php echo $list[$i]['subject'] ?>
-                        <?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only">댓글</span><?php echo $list[$i]['comment_cnt']; ?><span class="sound_only">개</span><?php } ?>
+                        <?php if ($list[$i]['comment_cnt']) { ?><span class="sound_only"><?php echo __(theme_t671); ?></span><?php echo __(theme_t670, $list[$i]['comment_cnt']); ?><?php } ?>
                     </a>
                     <?php
                     // if ($list[$i]['link']['count']) { echo '['.$list[$i]['link']['count']}.']'; }
@@ -160,7 +160,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 
 <!-- 게시물 검색 시작 { -->
 <fieldset id="bo_sch">
-    <legend>게시물 검색</legend>
+    <legend><?php echo __(theme_t1430); ?></legend>
 
     <form name="fsearch" method="get">
     <input type="hidden" name="bo_table" value="<?php echo $bo_table ?>">

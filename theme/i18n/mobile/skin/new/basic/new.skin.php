@@ -10,14 +10,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
     <legend>상세검색</legend>
     <form name="fnew" method="get">
     <?php echo $group_select ?>
-    <label for="view" class="sound_only">검색대상</label>
+    <label for="view" class="sound_only"><?php echo __(theme_t676); ?></label>
     <select name="view" id="view" onchange="select_change()">
-        <option value="">전체게시물
-        <option value="w">원글만
-        <option value="c">코멘트만
+        <option value=""><?php echo __(theme_t975); ?>
+        <option value="w"><?php echo __(theme_t984); ?>
+        <option value="c"><?php echo __(theme_t985); ?>
     </select>
-    <input type="text" name="mb_id" value="<?php echo $mb_id ?>" id="mb_id" placeholder="검색어(필수)" required class="frm_input required">
-    <input type="submit" value="검색" class="btn_submit">
+    <input type="text" name="mb_id" value="<?php echo $mb_id ?>" id="mb_id" placeholder="<?php echo __(theme_t598); ?>(<?php echo __(theme_t421); ?>)" required class="frm_input required">
+    <input type="submit" value="<?php echo __(theme_t675); ?>" class="btn_submit">
     </form>
     <script>
     function select_change()
@@ -35,9 +35,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
     <table id="new_tbl">
     <thead>
     <tr>
-        <th scope="col">게시판</th>
-        <th scope="col">제목</th>
-        <th scope="col">일시</th>
+        <th scope="col"><?php echo __(theme_t687); ?></th>
+        <th scope="col"><?php echo __(theme_t422); ?></th>
+        <th scope="col"><?php echo __(theme_t816); ?></th>
     </tr>
     </thead>
     <tbody>
@@ -56,7 +56,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$new_skin_url.'/style.css">', 0);
     <?php } ?>
 
     <?php if ($i == 0)
-        echo '<tr><td colspan="3" class="empty_table">게시물이 없습니다.</td></tr>';
+        echo '<tr><td colspan="3" class="empty_table">' . __(theme_t672) . '</td></tr>';
     ?>
     </tbody>
     </table>

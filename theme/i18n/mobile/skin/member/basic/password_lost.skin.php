@@ -6,22 +6,21 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 ?>
 
 <div id="find_info" class="new_win mbskin">
-    <h1 id="win_title">아이디/비밀번호 찾기</h1>
+    <h1 id="win_title"><?php echo __(theme_t770); ?></h1>
 
     <form name="fpasswordlost" action="<?php echo $action_url ?>" onsubmit="return fpasswordlost_submit(this);" method="post" autocomplete="off">
     <fieldset id="info_fs">
         <p>
-            회원가입 시 등록하신 이메일 주소를 입력해 주세요.<br>
-            해당 이메일로 아이디와 비밀번호 정보를 보내드립니다.
+            <?php echo __(theme_t807); ?>
         </p>
-        <input type="email" id="mb_email" name="mb_email" placeholder="이메일주소(필수)" required class="frm_input email">
+        <input type="email" id="mb_email" name="mb_email" placeholder="<?php echo __(theme_t876) ;?>(<?php echo __(theme_t421); ?>)" required class="frm_input email">
     </fieldset>
 
     <?php echo captcha_html(); ?>
 
     <div class="win_btn">
-        <input type="submit" class="btn_submit" value="확인">
-        <button type="button" onclick="window.close();">창닫기</button>
+        <input type="submit" class="btn_submit" value="<?php echo __(theme_t429); ?>">
+        <button type="button" onclick="window.close();"><?php echo __(theme_t425); ?></button>
     </div>
     </form>
 </div>

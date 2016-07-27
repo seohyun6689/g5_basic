@@ -7,7 +7,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     if($is_admin) // 관리자이면 답변등록
     {
     ?>
-    <h2>답변등록</h2>
+    <h2><?php echo __(theme_t1048); ?></h2>
 
     <form name="fanswer" method="post" action="./qawrite_update.php" autocomplete="off">
     <input type="hidden" name="qa_id" value="<?php echo $view['qa_id']; ?>">
@@ -34,16 +34,16 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
         <tbody>
         <?php if ($option) { ?>
         <tr>
-            <th scope="row">옵션</th>
+            <th scope="row"><?php echo __(theme_t1434); ?></th>
             <td><?php echo $option; ?></td>
         </tr>
         <?php } ?>
         <tr>
-            <th><label for="qa_subject">제목</label></th>
+            <th><label for="qa_subject"><?php echo __(theme_t422); ?></label></th>
             <td><input type="text" name="qa_subject" value="" id="qa_subject" required class="frm_input required" size="50" maxlength="255"></td>
         </tr>
         <tr>
-        <th scope="row"><label for="qa_content">내용<strong class="sound_only">필수</strong></label></th>
+        <th scope="row"><label for="qa_content"><?php echo __(theme_t423); ?><strong class="sound_only"><?php echo __(theme_t421); ?></strong></label></th>
             <td class="wr_content">
                 <?php echo $editor_html; // 에디터 사용시는 에디터로, 아니면 textarea 로 노출 ?>
             </td>
@@ -53,7 +53,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     </div>
 
     <div class="btn_confirm">
-        <input type="submit" value="답변쓰기" id="btn_submit" accesskey="s" class="btn_submit">
+        <input type="submit" value="<?php echo __(theme_t1050); ?>" id="btn_submit" accesskey="s" class="btn_submit">
     </div>
     </form>
 
@@ -61,7 +61,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     function html_auto_br(obj)
     {
         if (obj.checked) {
-            result = confirm("자동 줄바꿈을 하시겠습니까?\n\n자동 줄바꿈은 게시물 내용중 줄바뀐 곳을<br>태그로 변환하는 기능입니다.");
+            result = confirm(__('theme.t749'));
             if (result)
                 obj.value = "2";
             else
@@ -94,13 +94,13 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
         });
 
         if (subject) {
-            alert("제목에 금지단어('"+subject+"')가 포함되어있습니다");
+            alert(__('theme.t750', [subject]));
             f.qa_subject.focus();
             return false;
         }
 
         if (content) {
-            alert("내용에 금지단어('"+content+"')가 포함되어있습니다");
+            alert(__('theme.t702', [content]));
             if (typeof(ed_qa_content) != "undefined")
                 ed_qa_content.returnFalse();
             else
@@ -118,7 +118,7 @@ if (!defined("_GNUBOARD_")) exit; // 개별 페이지 접근 불가
     else
     {
     ?>
-    <p id="ans_msg">고객님의 문의에 대한 답변을 준비 중입니다.</p>
+    <p id="ans_msg"><?php echo __(theme_t1051); ?></p>
     <?php
     }
     ?>
