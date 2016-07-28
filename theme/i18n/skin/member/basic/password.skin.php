@@ -40,7 +40,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     </form>
 
     <div class="btn_confirm">
-        <a href="<?php echo $return_url ?>">돌아가기</a>
+        <a href="<?php echo $return_url ?>"><?php echo __(theme_t814); ?></a>
     </div>
 
 </div>
