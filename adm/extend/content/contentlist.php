@@ -12,6 +12,7 @@ if(!sql_query(" DESCRIBE {$g5['content_table']} ", false)) {
         sql_query(" ALTER TABLE {$g5['g5_shop_content_table']} RENAME TO `{$g5['content_table']}` ;", false);
     } else {
        $query_cp = sql_query(" CREATE TABLE IF NOT EXISTS `{$g5['content_table']}` (
+                      `co_lang` varchar(20) NOT NULL DEFAULT 'ko',
                       `co_id` varchar(20) NOT NULL DEFAULT '',
                       `co_html` tinyint(4) NOT NULL DEFAULT '0',
                       `co_subject` varchar(255) NOT NULL DEFAULT '',
@@ -19,7 +20,7 @@ if(!sql_query(" DESCRIBE {$g5['content_table']} ", false)) {
                       `co_hit` int(11) NOT NULL DEFAULT '0',
                       `co_include_head` varchar(255) NOT NULL,
                       `co_include_tail` varchar(255) NOT NULL,
-                      PRIMARY KEY (`co_id`)
+                      PRIMARY KEY (`co_lang`, `co_id`)
                     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ", true);
 
         // 내용관리 생성
@@ -33,6 +34,10 @@ $g5['title'] = '내용관리';
 include_once (G5_ADMIN_PATH.'/admin.head.php');
 
 $sql_common = " from {$g5['content_table']} ";
+
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+    $sql_common .= " where co_lang = '" . G5_I18N_LANG . "' ";
+}
 
 // 테이블의 전체 레코드수만 얻음
 $sql = " select count(*) as cnt " . $sql_common;
@@ -69,7 +74,7 @@ $result = sql_query($sql);
     </thead>
     <tbody>
     <?php for ($i=0; $row=sql_fetch_array($result); $i++) {
-	  
+
         $bg = 'bg'.($i%2);
     ?>
     <tr class="<?php echo $bg; ?>">

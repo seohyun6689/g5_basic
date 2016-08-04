@@ -6,7 +6,7 @@ if ( defined('G5_GNB_LIB_EXISTS') ) { return; }
 else { define( 'G5_GNB_LIB_EXISTS', true ); }
 
 class GNB {
-	
+
 	protected $skin = '';
 	protected $skin_path = '';
 	protected $skin_url = '';
@@ -19,20 +19,20 @@ class GNB {
 	public function setSkin( $skin )
 	{
 		global $is_mobile;
-		
+
 		$this->skin = $skin;
 		if ( !$this->skin ) { $this->skin = 'basic'; }
 		$skin_path = get_skin_path( 'menu', $this->skin );
 		$skin_url = get_skin_url( 'menu', $this->skin );
-		
+
         $this->skin_path = $skin_path;
         $this->skin_url = $skin_url;
-    
+
 	}
-	
+
 	// 하위메뉴 갯수
 	protected function global_menu_count($me_code) {
-		global $g5;
+		global $g5, $config;
 		if(!$me_code) return 0;
 		$me_code_len = strlen($me_code)+2;
 		$sql = "select count(me_id) as count from {$g5[menu_table]} where me_code LIKE '{$me_code}%' and LENGTH(me_code) = {$me_code_len}";
@@ -43,7 +43,7 @@ class GNB {
 
 	// 도든 메뉴 불러오기(제귀함수)
 	protected function global_menus($me_code = null){
-		global $g5, $is_mobile;
+		global $g5, $config, $is_mobile;
 		$conditions = array();
 
 		if (!$me_code) {
@@ -61,7 +61,11 @@ class GNB {
 	    {
 		   $conditions['me_use'] = "me_use = '1'";
 	    }
-	    
+
+		if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+            $conditions['me_lang'] = "me_lang = '" . G5_I18N_LANG . "'";
+        }
+
 	    $condition = ( count( $conditions ) > 0 ? ' where ' . implode( ' and ', $conditions ) : '' );
 	    $sql = " select * from {$g5['menu_table']} {$condition} order by me_order asc, me_code, me_id ";
 		$result = sql_query($sql, true);
@@ -91,7 +95,7 @@ class GNB {
 		foreach ($menu as $key => $me){
 			if ($me['me_use_' . $type] == 0)  {  // GNB, LNB 사용안함
 				unset($_menu[$key]);
-				continue; 
+				continue;
 			}
 			if (in_array($me['me_code'], $me_code_selected)) {
 				$me['me_selected'] = true;
@@ -101,7 +105,7 @@ class GNB {
 			}
 			$_menu[$key] = $me;
 		}
-		
+
 		return $_menu;
 	}
 	// 전체 메뉴 리턴
@@ -118,14 +122,14 @@ class GNB {
 			}
 		}
 		$menu = $this->get_selected_global_menu($menu, $me_code_selected, $type);
-		return $menu;	
+		return $menu;
 	}
 
 	// 선택된 메뉴
-	protected function selected($menu) 
+	protected function selected($menu)
 	{
 		global $g5, $bo_table, $co_id;
-		
+
 		$me_link_parse = parse_url( $menu['me_link'] );
 		parse_str($me_link_parse['query'], $me_link_parameters);
 
@@ -140,18 +144,18 @@ class GNB {
 		} else if ($is_board && isset($me_link_parameters['sca']) && $_REQUEST['sca'] != $me_link_parameters['sca']) {
 			$is_board = false;
 		}
-		
+
 		if ( defined('_SHOP_') ) {
 			$is_shop = (isset($_REQUEST['ca_id']) && $_REQUEST['ca_id'] == $me_link_parameters['ca_id']);
 		}
 
 		return ( $is_define || $is_menu || $is_content || $is_board || $is_shop );
 	}
-	
+
 	function display( $skin = null )
 	{
 		global $g5, $bo_table, $w;
-		
+
 		if ( !is_null( $skin ) )
 		{
 			$this->setSkin( $skin );
@@ -161,21 +165,21 @@ class GNB {
 		    echo ( 'GNB 스킨 디렉토리가 존재하지 않습니다.' );
 		    return false;
 	    }
-	    
+
 	    $gnb_skin_file = $this->skin_path . '/gnb.skin.php';
 	    if ( !is_file($gnb_skin_file) && !file_exists($gnb_skin_file) )
 	    {
 		    echo ( 'GNB 스킨 파일이 존재하지 않습니다.' );
 		    return false;
 	    }
-	    		
+
 		$rows = $this->get_global_menu("gnb");
 
 	    ob_start();
 	    include_once $this->skin_path.'/gnb.skin.php';
 	    $content = ob_get_contents();
 	    ob_end_clean();
-	
+
 	    return $content;
 	}
 }

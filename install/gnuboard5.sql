@@ -777,6 +777,7 @@ CREATE TABLE IF NOT EXISTS `g5_qa_content` (
 
 DROP TABLE IF EXISTS `g5_content`;
 CREATE TABLE IF NOT EXISTS `g5_content` (
+  `co_lang` varchar(20) NOT NULL DEFAULT 'ko',
   `co_id` varchar(20) NOT NULL DEFAULT '',
   `co_html` tinyint(4) NOT NULL DEFAULT '0',
   `co_subject` varchar(255) NOT NULL DEFAULT '',
@@ -788,7 +789,7 @@ CREATE TABLE IF NOT EXISTS `g5_content` (
   `co_hit` int(11) NOT NULL DEFAULT '0',
   `co_include_head` varchar(255) NOT NULL,
   `co_include_tail` varchar(255) NOT NULL,
-  PRIMARY KEY (`co_id`)
+  PRIMARY KEY (`co_lang`, `co_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -858,6 +859,7 @@ CREATE TABLE IF NOT EXISTS `g5_new_win` (
 DROP TABLE IF EXISTS `g5_menu`;
 CREATE TABLE IF NOT EXISTS `g5_menu` (
   `me_id` int(11) NOT NULL AUTO_INCREMENT,
+  `me_lang` varchar(20) NOT NULL DEFAULT 'ko',
   `me_code` varchar(255) NOT NULL DEFAULT '',
   `me_name` varchar(255) NOT NULL DEFAULT '',
   `me_link` varchar(255) NOT NULL DEFAULT '',
@@ -867,5 +869,6 @@ CREATE TABLE IF NOT EXISTS `g5_menu` (
   `me_use_gnb` tinyint(4) NOT NULL DEFAULT '1',
   `me_use_lnb` tinyint(4) NOT NULL DEFAULT '1',
   `me_mobile_use` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`me_id`)
+  PRIMARY KEY (`me_id`),
+  UNIQUE KEY (`me_lang`, `me_code`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

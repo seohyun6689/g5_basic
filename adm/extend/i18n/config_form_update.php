@@ -16,6 +16,7 @@ if (isset($_POST['language']) && is_array($_POST['language']) ) {
 
 $sql = " update {$g5['config_table']}
             set cf_use_i18n = '{$_POST['cf_use_i18n']}',
+                cf_i18n_default = '{$cf_i18n_default}',
                 cf_language = '{$cf_language}',
                 cf_use_i18n_layout = '{$cf_use_i18n_layout}' ";
 sql_query($sql);

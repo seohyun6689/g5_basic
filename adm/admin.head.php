@@ -38,6 +38,7 @@ function print_menu2($key, $no)
 
     return $str;
 }
+add_stylesheet('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />', 0);
 ?>
 
 <script>

@@ -22,7 +22,10 @@ $last_pos = strlen($me_code);
 $sql = " select MAX(SUBSTRING(me_code,".$start_pos.",2)) as max_me_code
 			from {$g5['menu_table']}
 			where SUBSTRING(me_code,1,".$last_pos.") = '$me_code' ";
-
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+    $sql .= " and me_lang = '" . G5_I18N_LANG . "' ";
+}
+debugout($sql);
 $row = sql_fetch($sql);
 
 $row['max_me_code'] = $row['max_me_code'] ? $row['max_me_code'] : 0;
@@ -41,6 +44,9 @@ $sql = " insert into {$g5['menu_table']}
 				me_order        = '0',
 				me_use          = '1',
 				me_mobile_use   = '1' ";
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+    $sql .= ", me_lang = '" . G5_I18N_LANG . "' ";
+}
 sql_query($sql);
 
 ?>

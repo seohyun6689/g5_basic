@@ -41,20 +41,30 @@ if ($w == "u")
     $html_title .= " 수정";
     $readonly = " readonly";
 
-    $sql = " select * from {$g5['content_table']} where co_id = '$co_id' ";
+    $sql_common = "from {$g5['content_table']}";
+    $sql_search = "where (1)";
+
+    if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+        $sql_search .= " and co_lang = '" . G5_I18N_LANG . "' ";
+    }
+
+    $sql_search .= " and co_id = '$co_id' ";
+
+    $sql = " select * {$sql_common} {$sql_search} ";
     $co = sql_fetch($sql);
     if (!$co['co_id'])
-        alert('등록된 자료가 없습니다.');
-        
-        
-    if ( file_exists($contentpath . "/" . $co['co_id'] . ".php") && $fp = fopen($contentpath . "/" . $co['co_id'] . ".php", 'rb') ) {
-	    $flength = ( filesize($contentpath . "/" . $co['co_id'] . ".php") > 0 ? filesize($contentpath . "/" . $co['co_id'] . ".php") : 1024 );
+        alert('등록된 자료가 없습니다.', './contentlist.php');
+
+    $content_pc_path = $contentpath . '/' . $co['co_id'] . (defined('G5_I18N_LANG') && G5_I18N_LANG ? '.' . G5_I18N_LANG : '') . '.php';
+    if ( file_exists($content_pc_path) && $fp = fopen($content_pc_path, 'rb') ) {
+	    $flength = ( filesize($content_pc_path) > 0 ? filesize($content_pc_path) : 1024 );
 	    $co['co_content'] = fread($fp, $flength);
 	    fclose($fp);
     }
-    
-    if ( file_exists($contentpath . "/mobile/" . $co['co_id'] . ".php") && $fp = fopen($contentpath . "/mobile/" . $co['co_id'] . ".php", 'rb') ) {
-	    $flength = ( filesize($contentpath . "/mobile/" . $co['co_id'] . ".php") > 0 ? filesize($contentpath . "/mobile/" . $co['co_id'] . ".php") : 1024 );
+
+    $content_mobile_path = $contentpath . '/mobile/' . $co['co_id'] . (defined('G5_I18N_LANG') && G5_I18N_LANG ? '.' . G5_I18N_LANG : '') . '.php';
+    if ( file_exists($content_mobile_path) && $fp = fopen($content_mobile_path, 'rb') ) {
+	    $flength = ( filesize($content_mobile_path) > 0 ? filesize($content_mobile_path) : 1024 );
 	    $co['co_mobile_content'] = fread($fp, $flength);
 	    fclose($fp);
     }
@@ -72,7 +82,7 @@ add_javascript( '<script type="text/javascript" src="' . G5_PLUGIN_URL . '/ace-b
 ?>
 <style type="text/css" media="screen">
 textarea.co_content { display: none; }
-#co_content_editor, #co_mobile_content_editor { 
+#co_content_editor, #co_mobile_content_editor {
     width: 100%;
     height: 400px;
 }
@@ -225,7 +235,7 @@ $(document).ready(function(){
 	co_content_editor.getSession().on('change', function(){
 		co_content.val(co_content_editor.getSession().getValue());
 	});
-	
+
 	co_mobile_content_editor = ace.edit("co_mobile_content_editor");
     co_mobile_content_editor.setTheme("ace/theme/chrome");
     co_mobile_content_editor.getSession().setMode("ace/mode/php");
@@ -235,7 +245,7 @@ $(document).ready(function(){
 		co_mobile_content.val(co_mobile_content_editor.getSession().getValue());
 	});
 
-});	
+});
 
 function frmcontentform_check(f)
 {

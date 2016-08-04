@@ -11,10 +11,15 @@ if (!isset($config['cf_use_i18n'])) {
                     ADD `cf_use_i18n` tinyint(4) NOT NULL DEFAULT 0 AFTER `cf_kakao_js_apikey`,
                     ADD `cf_language` varchar(255) NOT NULL DEFAULT '' AFTER `cf_use_i18n` ");
 }
+if (!isset($config['cf_i18n_default'])) {
+    sql_query("ALTER TABLE `{$g5['config_table']}`
+                    ADD `cf_i18n_default` varchar(20) NOT NULL DEFAULT 'ko' AFTER `cf_use_i18n` ");
+}
 if (!isset($config['cf_use_i18n_layout'])) {
     sql_query("ALTER TABLE `{$g5['config_table']}`
                     ADD `cf_use_i18n_layout` tinyint(4) NOT NULL DEFAULT 0 AFTER `cf_use_i18n` ");
 }
+
 
 $g5['title'] = "다국어 지원";
 include_once(G5_ADMIN_PATH.'/admin.head.php');
@@ -40,6 +45,17 @@ $frm_submit = '<div class="btn_confirm01 btn_confirm">
             <td><label for="cf_use_i18n"><input type="checkbox" name="cf_use_i18n" id="cf_use_i18n" value="1"<?php echo ($config['cf_use_i18n'] ? ' checked' : ''); ?> /> 다국어 사용</label></td>
         </tr>
         <tr>
+            <th scope="row">다국어 기본 언어 설정</th>
+            <td>
+                <label for="default_ko"><input type="radio" name="cf_i18n_default" id="default_ko" value="ko"<?php echo ($config['cf_i18n_default'] == 'ko'  ? ' checked' : ''); ?> /> 한국어</label>
+                <label for="default_en"><input type="radio" name="cf_i18n_default" id="default_en" value="en"<?php echo ($config['cf_i18n_default'] == 'en' ? ' checked' : ''); ?> /> 영어</label>
+                <label for="default_ja"><input type="radio" name="cf_i18n_default" id="default_ja" value="ja"<?php echo ($config['cf_i18n_default'] == 'ja' ? ' checked' : ''); ?> /> 일본어</label>
+                <label for="default_zh-CN"><input type="radio" name="cf_i18n_default" id="default_zh-CN" value="zh-CN"<?php echo ($config['cf_i18n_default'] == 'zh-CN' ? ' checked' : ''); ?> /> 중국어</label>
+                <label for="default_ru"><input type="radio" name="cf_i18n_default" id="default_ru" value="ru"<?php echo ($config['cf_i18n_default'] == 'ru' ? ' checked' : ''); ?> /> 러시아어</label>
+                <label for="default_de"><input type="radio" name="cf_i18n_default" id="default_de" value="de"<?php echo ($config['cf_i18n_default'] == 'de' ? ' checked' : ''); ?> /> 독일어</label>
+            </td>
+        </tr>
+        <tr>
             <th scope="row">다국어 언어 설정</th>
             <td>
                 <label for="language_ko"><input type="checkbox" name="language[ko]" id="language_ko" value="한국어"<?php echo (isset($config['cf_language']) && array_key_exists('ko', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 한국어</label>
@@ -47,7 +63,7 @@ $frm_submit = '<div class="btn_confirm01 btn_confirm">
                 <label for="language_ja"><input type="checkbox" name="language[ja]" id="language_ja" value="日本語"<?php echo (isset($config['cf_language']) && array_key_exists('ja', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 일본어</label>
                 <label for="language_zh-CN"><input type="checkbox" name="language[zh-CN]" id="language_zh-CN" value="简体中文"<?php echo (isset($config['cf_language']) && array_key_exists('zh-CN', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 중국어</label>
                 <label for="language_ru"><input type="checkbox" name="language[ru]" id="language_ru" value="Русский"<?php echo (isset($config['cf_language']) && array_key_exists('ru', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 러시아어</label>
-                <label for="translate_de"><input type="checkbox" name="language[de]" id="translate_de" value="Deutsch"<?php echo (isset($config['cf_language']) && array_key_exists('de', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 독일어</label>
+                <label for="language_de"><input type="checkbox" name="language[de]" id="language_de" value="Deutsch"<?php echo (isset($config['cf_language']) && array_key_exists('de', (array)$config['cf_language']) ? ' checked' : ''); ?> /> 독일어</label>
             </td>
         </tr>
         <tr>

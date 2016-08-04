@@ -17,8 +17,12 @@ switch($type) {
         break;
     case 'content':
         $sql = " select co_id as id, co_subject as subject
-                    from {$g5['content_table']}
-                    order by co_id ";
+                    from {$g5['content_table']} ";
+
+        if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+            $sql .= "where co_lang = '" . G5_I18N_LANG . "' ";
+        }
+        $sql .= "order by co_id ";
         break;
     default:
         $sql = '';
@@ -53,7 +57,7 @@ if($sql) {
                 $link = G5_BBS_URL.'/board.php?bo_table='.$row['id'];
                 break;
             case 'content':
-                $link = G5_BBS_URL.'/content.php?co_id='.$row['id'];
+                $link = G5_URL . '/content/'.$row['id'];
                 break;
             default:
                 $link = '';

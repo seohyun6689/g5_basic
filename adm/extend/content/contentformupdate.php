@@ -39,6 +39,12 @@ if ($w == "")
     if(preg_match("/[^a-z0-9_]/i", $co_id)) alert("ID 는 영문자, 숫자, _ 만 가능합니다.");
 
     $sql = " select co_id from {$g5['content_table']} where co_id = '$co_id' ";
+
+    if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+        $sql .= " and co_lang = '" . G5_I18N_LANG . "' ";
+        $sql_common .= ", co_lang = '" . G5_I18N_LANG . "' ";
+    }
+
     $row = sql_fetch($sql);
     if ($row['co_id'])
         alert("이미 같은 ID로 등록된 내용이 있습니다.");
@@ -53,6 +59,10 @@ else if ($w == "u")
     $sql = " update {$g5['content_table']}
                 set $sql_common
               where co_id = '$co_id' ";
+
+    if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+        $sql .= " and co_lang = '" . G5_I18N_LANG . "' ";
+    }
     sql_query($sql);
 }
 else if ($w == "d")
@@ -61,22 +71,24 @@ else if ($w == "d")
     @unlink(G5_DATA_PATH."/content/{$co_id}_t");
 
     $sql = " delete from {$g5['content_table']} where co_id = '$co_id' ";
+    if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+        $sql .= " and co_lang = '" . G5_I18N_LANG . "' ";
+    }
     sql_query($sql);
 }
 
 if ($w == "" || $w == "u")
 {
-	
-	if ( $fp = fopen($contentpath . "/" . $co_id . '.php', 'w' ) ) {
+	if ( $fp = fopen($contentpath . "/" . $co_id . ( defined(G5_I18N_LANG) && G5_I18N_LANG ? '.'  . G5_I18N_LANG : '' ) . '.php', 'w+' ) ) {
 		fwrite($fp, stripslashes($co_content));
 		fclose($fp);
 	}
-	
-	if ( $fp = fopen($contentpath . "/mobile/" . $co_id . '.php', 'w' ) ) {
+
+	if ( $fp = fopen($contentpath . "/mobile/" . $co_id . ( defined(G5_I18N_LANG) && G5_I18N_LANG ? '.'  . G5_I18N_LANG : '' ) . '.php', 'w+' ) ) {
 		fwrite($fp, stripslashes($co_mobile_content));
 		fclose($fp);
 	}
-	
+
     if ($_FILES['co_himg']['name'])
     {
         $dest_path = G5_DATA_PATH."/content/".$co_id."_h";

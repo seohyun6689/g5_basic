@@ -15,6 +15,7 @@ if( !isset($g5['menu_table']) ){
 if(!sql_query(" DESCRIBE {$g5['menu_table']} ", false)) {
     sql_query(" CREATE TABLE IF NOT EXISTS `{$g5['menu_table']}` (
                   `me_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `me_lang` varchar(20) NOT NULL DEFAULT 'ko',
                   `me_code` varchar(255) NOT NULL DEFAULT '',
                   `me_name` varchar(255) NOT NULL DEFAULT '',
                   `me_link` varchar(255) NOT NULL DEFAULT '',
@@ -24,17 +25,25 @@ if(!sql_query(" DESCRIBE {$g5['menu_table']} ", false)) {
                   `me_use_gnb` tinyint(4) NOT NULL DEFAULT '1',
                   `me_use_lnb` tinyint(4) NOT NULL DEFAULT '1',
                   `me_mobile_use` tinyint(4) NOT NULL DEFAULT '0',
-                  PRIMARY KEY (`me_id`)
+                  PRIMARY KEY (`me_id`),
+                  UNIQUE KEY (`me_lang`, `me_code`)
                 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ", true);
 }
 
-$sql = " select * from {$g5['menu_table']} order by me_code,me_id ";
+$sql_common = "from {$g5['menu_table']}";
+$sql_search = "where (1) ";
+
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+    $sql_search .= "and me_lang = '" . G5_I18N_LANG . "'";
+}
+
+$sql = " select * {$sql_common} {$sql_search} order by me_code, me_id ";
 $result = sql_query($sql);
 
 $g5['title'] = "메뉴설정";
 include_once(G5_ADMIN_PATH .'/admin.head.php');
 
-$colspan = 8;
+$colspan = 10;
 ?>
 
 <div class="local_desc01 local_desc">

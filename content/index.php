@@ -8,6 +8,9 @@ if( !isset($g5['content_table']) ){
 
 // 내용
 $sql = " select * from {$g5['content_table']} where co_id = '$co_id' ";
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n']) {
+    $sql .= " and co_lang = '" . G5_I18N_LANG . "'";
+}
 $co = sql_fetch($sql);
 if (!$co['co_id'])
     // alert('등록된 내용이 없습니다.');
@@ -19,9 +22,10 @@ if (G5_IS_MOBILE) {
 }
 
 $contentpath = G5_DATA_PATH."/pages";
-if ( is_file( $contentpath . "/" . $co['co_id'] . ".php" ) && file_exists($contentpath . "/" . $co['co_id'] . ".php") ) {
+$content_file_path = $contentpath . "/" . $co['co_id'] . (defined('G5_I18N_LANG') && G5_I18N_LANG ? '.'  . G5_I18N_LANG : '') . ".php";
+if ( is_file($content_file_path) && file_exists($content_file_path) ) {
 	ob_start();
-	@include_once( $contentpath . "/" . $co['co_id'] . ".php" );
+	@include_once( $content_file_path );
 	$co['co_content'] = ob_get_contents();
 	ob_end_clean();
 }
@@ -86,7 +90,7 @@ if(is_file($skin_file)) {
     if (file_exists($timg)) // 하단 이미지
         echo '<div id="ctt_timg" class="ctt_img"><img src="'.G5_DATA_URL.'/content/'.$co_id.'_t" alt=""></div>';
 } else {
-    echo '<p>'.str_replace(G5_PATH.'/', '', $skin_file).'이 존재하지 않습니다.</p>';
+    echo '<p>'. __( 'core.a648', str_replace(G5_PATH.'/', '', $skin_file)).'</p>';
 }
 
 if ($co['co_include_tail'])
