@@ -1,0 +1,110 @@
+@charset 'UTF-8';
+/* Slider */
+.slick-loading .slick-list
+{
+    background: #fff url('./ajax-loader.gif') center center no-repeat;
+}
+
+/* Icons */
+@font-face
+{
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('./fonts/slick.eot');
+    src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');
+}
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 34px;
+    height: 68px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent no-repeat;
+    z-index: 9999;
+}
+.slick-prev {
+	background-image: url('./img/ico-prev.png');
+	left: -70px;
+}
+.slick-next {
+	background-image: url('./img/ico-next.png');
+	right: -70px;
+}
+
+/* Dots */
+.slick-dotted.slick-slider
+{
+    margin-bottom: 30px;
+}
+
+.slick-dots
+{
+    position: absolute;
+    top: 50%;
+    
+    display: block;
+    
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin-top: 40px;
+    list-style: none;
+
+    text-align: center;
+    z-index: 999;
+}
+.slick-dots li
+{
+    position: relative;
+	display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 3px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+	
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: url('./img/ico-dot-none.png') no-repeat center center;
+}
+
+.slick-dots li.slick-active button {
+	background-image: url('./img/ico-dot-active.png');
+}
+

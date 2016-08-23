@@ -98,7 +98,7 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
     </div>
 
     <hr>
-	
+
 	<?php echo $gnb->display('theme/basic'); ?>
 </div>
 <!-- } 상단 끝 -->
@@ -112,5 +112,5 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
         <?php echo poll('theme/basic'); // 설문조사, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정 ?>
     </div>
     <div id="container">
-	    
+
         <?php echo $lnb->display_head('theme/basic'); ?>
