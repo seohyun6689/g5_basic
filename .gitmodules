@@ -1,3 +1,6 @@
 [submodule "theme/b001"]
 	path = theme/b001
 	url = https://seohyun6689@github.com/seohyun6689/theme-B001.git
+[submodule "theme/b002"]
+	path = theme/b002
+	url = https://seohyun6689@github.com/seohyun6689/theme-B002.git
