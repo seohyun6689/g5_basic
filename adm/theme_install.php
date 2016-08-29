@@ -22,7 +22,6 @@ $remote_theme_content = file_get_contents('http://api.seohyunco.com/theme/items/
 $remote_theme = json_decode($remote_theme_content);
 $master_path = G5_DATA_PATH . '/master.tar.gz';
 $cmd = 'curl -Lko ' . $master_path . ' ' . $remote_theme->download;
-// debugout($cmd);
 shell_exec($cmd);
 
 $tmp_path = G5_DATA_PATH . '/tmp';
@@ -30,11 +29,15 @@ $tmp_path = G5_DATA_PATH . '/tmp';
 $cmd = 'tar xzf ' . $master_path . ' -C ' . $tmp_path . ' 2>&1 ';
 shell_exec($cmd);
 
-$list = glob($tmp_path . '/*-master');
+$list = glob($tmp_path . '/theme-*-master');
 foreach ($list as $tmp_theme) {
     @rename($tmp_theme, $theme_path . '/' . $theme);
 }
 
 @unlink($master_path);
+
+if (file_exists($theme_path . '/' . $theme . '/install.php')) {
+    @include_once($theme_path . '/' . $theme . '/install.php');
+}
 die(json_encode(array('success' => '"' . $theme . '" 테마설치를 완료하였습니다.')));
 ?>

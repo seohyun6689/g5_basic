@@ -124,7 +124,8 @@ $(function() {
 
     $('.theme_install').on('click', function(){
         var theme = $(this).data('theme');
-        if (window.confirm("선택하신 테마를 정말 설치하시겠습니까?")) {
+        var theme_name = $(this).data('name');
+        if (window.confirm('"' + theme_name + '" 테마를 정말 설치하시겠습니까?')) {
             $('body').prepend('<div style="position: fixed;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:9999;"><img src="/adm/img/ajax_loader.gif" alt="loading..." style="position: absolute;top: 50%;left:50%;margin-top: -150px;margin-left: -150px;" /></div>');
             $.ajax({
                 type: 'POST',
@@ -133,6 +134,31 @@ $(function() {
                 dataType: 'json',
                 success: function(data){
                     if (typeof(data.error) !== 'undefined') {
+                        alert(data.error);
+                    } else {
+                        if (data.success == 'OK') {
+                            document.location.href = data.url;
+                        } else {
+                            alert(data.success);
+                            document.location.reload();
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    $('.theme_uninstall').on('click', function(){
+        var theme = $(this).data('theme');
+        var theme_name = $(this).data('name');
+        if (confirm('설치된 "' + theme_name + '" 테마를 언인스톨하시겠습니까?')) {
+            $.ajax({
+                type: 'POST',
+                url: './theme_uninstall.php',
+                data: {theme: theme},
+                dataType: 'json',
+                success: function(data){
+                    if (data.error) {
                         alert(data.error);
                     } else {
                         alert(data.success);
