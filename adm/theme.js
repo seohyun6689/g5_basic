@@ -77,4 +77,69 @@ $(function() {
             }
         });
     });
+
+    $('.remote_theme_preview').on('click', function(){
+        var theme_detail = null;
+        var theme = $(this).data('theme');
+
+        $('#theme_detail').remove();
+
+        $.ajax({
+            type: "GET",
+            url: "http://api.seohyunco.com/theme/items/id/"+theme,
+            success: function(data){
+                theme_detail = '<div id="theme_detail"> \
+                    <div class="thdt_img"><img src="' + data.screenshot + '" alt="' + data.theme_name + '" /></div> \
+                    <div class="thdt_if"> \
+                        <h2>' + data.theme_name + '</h2> \
+                        <table> \
+                            <tr> \
+                                <th scope="row">Version</th> \
+                                <td>' + data.version + '</td> \
+                            </tr> \
+                            <tr> \
+                                <th scope="row">Maker</th> \
+                                <td>' + data.maker + '</td> \
+                            </tr> \
+                            <tr> \
+                                <th scope="row">License</th> \
+                                <td>' + data.license + '</td> \
+                            </tr> \
+                        </table> \
+                        <p>' + data.detail + '</p> \
+                        <button type="button" class="close_btn">닫기</button> \
+                    </div> \
+                </div> \
+ \
+                <script> \
+                $(".close_btn").on("click", function() { \
+                    $("#theme_detail").remove(); \
+                }); \
+                </script>';
+
+                $("#theme_list.remote_theme_list").after(theme_detail);
+            }
+        });
+    });
+
+    $('.theme_install').on('click', function(){
+        var theme = $(this).data('theme');
+        if (window.confirm("선택하신 테마를 정말 설치하시겠습니까?")) {
+            $('body').prepend('<div style="position: fixed;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:9999;"><img src="/adm/img/ajax_loader.gif" alt="loading..." style="position: absolute;top: 50%;left:50%;margin-top: -150px;margin-left: -150px;" /></div>');
+            $.ajax({
+                type: 'POST',
+                url: './theme_install.php',
+                data: {theme: theme},
+                dataType: 'json',
+                success: function(data){
+                    if (typeof(data.error) !== 'undefined') {
+                        alert(data.error);
+                    } else {
+                        alert(data.success);
+                        document.location.reload();
+                    }
+                }
+            });
+        }
+    });
 });
