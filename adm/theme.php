@@ -65,6 +65,12 @@ include_once('./admin.head.php');
 
             $btn_active = '<button type="button" class="theme_sl theme_active" data-theme="'.$theme[$i].'" '.'data-name="'.$name.'" data-set_default_skin="'.$set_default_skin.'">테마적용</button>';
         }
+
+        if (file_exists(G5_PATH . '/' . G5_THEME_DIR . '/' . $theme[$i] . '/uninstall.php')) {
+            $btn_uninstall = '<button type="button" class="theme_sl theme_uninstall" data-theme="'.$theme[$i].'" data-name="'.$name.'">언인스톨</button>';
+        } else {
+            $btn_uninstall = '';
+        }
     ?>
     <li>
         <div class="tmli_if">
@@ -74,6 +80,7 @@ include_once('./admin.head.php');
             </div>
         </div>
         <?php echo $btn_active; ?>
+        <?php echo $btn_uninstall ?>
         <a href="./theme_preview.php?theme=<?php echo $theme[$i]; ?>" class="theme_pr" target="theme_preview">미리보기</a>
         <button type="button" class="tmli_dt theme_preview" data-theme="<?php echo $theme[$i]; ?>">상세보기</button>
     </li>
@@ -100,7 +107,7 @@ include_once('./admin.head.php');
             else
                 $screenshot = '<img src="'.G5_ADMIN_URL.'/img/theme_img.jpg" alt="">';
 
-            $btn_active = '<button type="button" class="theme_sl theme_install" data-theme="' . $info['id'] . '">테마설치</button>';
+            $btn_active = '<button type="button" class="theme_sl theme_install" data-theme="' . $info['id'] . '" data-name="' . $info['theme_name'] . '">테마설치</button>';
         ?>
         <li>
             <div class="tmli_if">
