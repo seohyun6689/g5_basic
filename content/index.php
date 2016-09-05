@@ -22,7 +22,7 @@ if (G5_IS_MOBILE) {
 }
 
 $contentpath = G5_DATA_PATH."/pages";
-$content_file_path = $contentpath . "/" . $co['co_id'] . (defined('G5_I18N_LANG') && G5_I18N_LANG ? '.'  . G5_I18N_LANG : '') . ".php";
+$content_file_path = $contentpath . "/" . $co['co_id'] . ( defined('G5_I18N_LANG') && G5_I18N_LANG && $config['cf_use_i18n'] ? '.'  . G5_I18N_LANG : '') . ".php";
 if ( is_file($content_file_path) && file_exists($content_file_path) ) {
 	ob_start();
 	@include_once( $content_file_path );
