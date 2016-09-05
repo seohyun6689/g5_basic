@@ -19,8 +19,8 @@ class G5_i18n extends i18n {
             $user_langs = $this->getUserLangs();
 
             $change_url = G5_I18N_URL . '/language.php?url=' . urlencode($_SERVER['REQUEST_URI']);
-            if (G5_IS_ADMIN)  $change_url .= '&is_admin=1';
-            $change_url .= '&lang=\'+this.value;';
+            if (defined('G5_IS_ADMIN') && G5_IS_ADMIN)  $change_url .= '&is_admin=1';
+            $change_url .= '&language=\'+this.value;';
 
             if (count($config['cf_language'])>0) {
                 echo '<select onchange="location.href=\'' . $change_url . '">';
@@ -38,13 +38,13 @@ $i18n = new G5_i18n();
 $i18n->setCachePath(G5_DATA_PATH . '/cache/i18n');
 $i18n->setFilePath(G5_LANG_PATH . '/{LANGUAGE}.json'); // language file path
 if ($config['cf_i18n_default']) {
-    $i18n->setForcedLang($config['cf_i18n_default']);
+    $i18n->setFallbackLang($config['cf_i18n_default']);
 }
-if (isset($_GET['lang']) && trim($_GET['lang']) !== '') {
-    $_SESSION['lang'] = $_GET['lang'];
+if (isset($_GET['language']) && trim($_GET['language']) !== '') {
+	debugout($_GET['language']);
+    setcookie('lang', $_GET['language'], time() + (60*60*24), '/');
 }
+
 $i18n->init();
 $langs = $i18n->getUserLangs();
 define('G5_I18N_LANG', $langs[0]);
-
-// echo _(theme_t384);
