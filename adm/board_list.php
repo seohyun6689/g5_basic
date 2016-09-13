@@ -28,6 +28,11 @@ if ($stx) {
     $sql_search .= " ) ";
 }
 
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+    $sql_search .= " and bo_lang = '" . G5_I18N_LANG . "'";
+}
+
+
 if (!$sst) {
     $sst  = "a.gr_id, a.bo_table";
     $sod = "asc";

@@ -15,6 +15,10 @@ $count = count($_POST['chk']);
 if(!$count)
     alert($_POST['act_button'].'할 게시판그룹을 1개이상 선택해 주세요.');
 
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+    $sql_common_where = " and gr_lang = '" . G5_I18N_LANG . "' ";
+}
+
 for ($i=0; $i<$count; $i++)
 {
     $k     = $_POST['chk'][$i];
@@ -32,15 +36,19 @@ for ($i=0; $i<$count; $i++)
             $sql .= " and gr_admin    = '{$_POST['gr_admin'][$k]}' ";
         sql_query($sql);
     } else if($_POST['act_button'] == '선택삭제') {
-        $row = sql_fetch(" select count(*) as cnt from {$g5['board_table']} where gr_id = '$gr_id' ");
+        $sql = " select count(*) as cnt from {$g5['board_table']} where gr_id = '$gr_id'";
+        if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+            $sql .= " and bo_lang = '" . G5_I18N_LANG . "' ";
+        }
+        $row = sql_fetch($sql);
         if ($row['cnt'])
             alert("이 그룹에 속한 게시판이 존재하여 게시판 그룹을 삭제할 수 없습니다.\\n\\n이 그룹에 속한 게시판을 먼저 삭제하여 주십시오.", './board_list.php?sfl=gr_id&amp;stx='.$gr_id);
 
         // 그룹 삭제
-        sql_query(" delete from {$g5['group_table']} where gr_id = '$gr_id' ");
+        sql_query(" delete from {$g5['group_table']} where gr_id = '$gr_id' {$sql_common_where}");
 
         // 그룹접근 회원 삭제
-        sql_query(" delete from {$g5['group_member_table']} where gr_id = '$gr_id' ");
+        sql_query(" delete from {$g5['group_member_table']} where gr_id = '$gr_id'");
     }
 }
 

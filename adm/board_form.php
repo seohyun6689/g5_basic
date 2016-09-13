@@ -6,6 +6,9 @@ include_once(G5_EDITOR_LIB);
 auth_check($auth[$sub_menu], 'w');
 
 $sql = " select count(*) as cnt from {$g5['group_table']} ";
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+    $sql .= " where gr_lang = '" . G5_I18N_LANG . "'";
+}
 $row = sql_fetch($sql);
 if (!$row['cnt'])
     alert('게시판그룹이 한개 이상 생성되어야 합니다.', './boardgroup_form.php');
@@ -74,6 +77,14 @@ if (!isset($board['bo_use_list_file'])) {
 
 if (!isset($board['bo_mobile_subject'])) {
     sql_query(" ALTER TABLE `{$g5['board_table']}` ADD `bo_mobile_subject` VARCHAR(255) NOT NULL DEFAULT '' AFTER `bo_subject` ", false);
+}
+
+if (!isset($board['bo_lang'])) {
+    sql_query(" ALTER TABLE `{$g5['board_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' FIRST ", false);
+    sql_query(" ALTER TABLE `{$g5['board_file_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' FIRST ", false);
+    sql_query(" ALTER TABLE `{$g5['board_good_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `bg_id` ", false);
+    sql_query(" ALTER TABLE `{$g5['board_new_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `bn_id` ", false);
+    sql_query(" ALTER TABLE `{$g5['scrap_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `mb_id` ");
 }
 
 $required = "";

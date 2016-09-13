@@ -19,7 +19,10 @@ if (!isset($config['cf_use_i18n_layout'])) {
     sql_query("ALTER TABLE `{$g5['config_table']}`
                     ADD `cf_use_i18n_layout` tinyint(4) NOT NULL DEFAULT 0 AFTER `cf_use_i18n` ");
 }
-
+if (!isset($config['cf_use_i18n_board'])) {
+    sql_query("ALTER TABLE `{$g5['config_table']}`
+                    ADD `cf_use_i18n_board` tinyint(4) NOT NULL DEFAULT 0 AFTER `cf_use_i18n` ");
+}
 
 $g5['title'] = "다국어 지원";
 include_once(G5_ADMIN_PATH.'/admin.head.php');
@@ -67,9 +70,10 @@ $frm_submit = '<div class="btn_confirm01 btn_confirm">
             </td>
         </tr>
         <tr>
-            <th scope="row">레이아웃 분리 사용</th>
+            <th scope="row">분리 사용</th>
             <td>
                 <label for="cf_use_i18n_layout"><input type="checkbox" name="cf_use_i18n_layout" id="cf_use_i18n_layout" value="1"<?php echo ($config['cf_use_i18n_layout'] ? ' checked' : ''); ?>> 레이아웃 분리</label>
+                <label for="cf_use_i18n_board"><input type="checkbox" name="cf_use_i18n_board" id="cf_use_i18n_board" value="1"<?php echo ($config['cf_use_i18n_board'] ? ' checked' : ''); ?>> 게시판 분리</label>
             </td>
         </tr>
         </tbody>

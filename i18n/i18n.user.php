@@ -41,7 +41,6 @@ if ($config['cf_i18n_default']) {
     $i18n->setFallbackLang($config['cf_i18n_default']);
 }
 if (isset($_GET['language']) && trim($_GET['language']) !== '') {
-	debugout($_GET['language']);
     setcookie('lang', $_GET['language'], time() + (60*60*24), '/');
 }
 
