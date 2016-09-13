@@ -29,7 +29,7 @@ function firephp($value, $type='log') {
 /**
  * debugout function.
  * 디버깅용 함수 (울회사에서만 됨?)
- * 
+ *
  * @access public
  * @param mixed $value
  * @param bool $stopProcess (default: false, true일경우 실행 중지)
@@ -44,7 +44,7 @@ function debugout ( $value, $stopProcess = false )
 		var_dump( $value );
 		$dumped = ob_get_contents();
 		ob_end_clean();
-		
+
 		$dumped = str_replace( "=>\n  ", ' => ', $dumped );
 
 		echo _before();
@@ -62,7 +62,7 @@ function debugout ( $value, $stopProcess = false )
  * exportVariable function.
  * 배열(주로 $_GET, $_POST)에 사용하려고 만든 함수
  * 배열의 키값으로 PHP 배열 소스를 생성
- * 
+ *
  * @access public
  * @param mixed $input
  * @param mixed $valueFormat (default: null)
@@ -74,7 +74,7 @@ function exportVariable ( $input, $valueFormat = null )
 	var_export( array_keys( $input ) );
 	$content = ob_get_contents();
 	ob_end_clean();
-	
+
 	$content   = preg_replace( '/\ +[0-9]+ \=\>\ /', '', $content );
 	$lines     = explode( PHP_EOL, $content );
 	$maxLength = 0;
@@ -83,7 +83,7 @@ function exportVariable ( $input, $valueFormat = null )
 		$lines[ $key ] = trim( $value );
 		$maxLength     = ( $maxLength < strlen( $value ) ) ? strlen( $value ) : $maxLength;
 	}
-	
+
 	foreach ( $lines as $key => $value )
 	{
 		if ( strstr( $value, "'" ) )
@@ -91,16 +91,16 @@ function exportVariable ( $input, $valueFormat = null )
 			$lines[ $key ] = str_pad( $value, $maxLength + 1 );
 		}
 	}
-	
+
 	$replaces = '    \'$1\'$3=> \'$1\'$2';
 	if ( !is_null( $valueFormat ) )
 	{
 		$replaces = '    \'$1\'$3=> ' . sprintf( $valueFormat, '$1' ) . '$2';
 	}
-	
+
 	$content = implode( PHP_EOL, $lines );
 	$content = preg_replace( '/\'([^\']+)\'(,)([^\n]+)/', $replaces, $content );
-	
+
 	return $content;
 }
 
