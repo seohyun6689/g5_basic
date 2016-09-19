@@ -249,9 +249,10 @@ class i18n {
             $userLangs[] = $_GET['lang'];
         }
 
-        // 3rd highest priority: SESSION parameter 'lang'
-        if (isset($_SESSION['lang']) && is_string($_SESSION['lang'])) {
-            $userLangs[] = $_SESSION['lang'];
+        // 3rd highest priority: COOKIE parameter 'lang'
+        // debugout($_COOKIE, 1);
+        if (isset($_COOKIE['lang']) && is_string($_COOKIE['lang'])) {
+            $userLangs[] = $_COOKIE['lang'];
         }
 
         // 4th highest priority: HTTP_ACCEPT_LANGUAGE

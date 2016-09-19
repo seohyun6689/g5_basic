@@ -393,7 +393,13 @@ if ($_SESSION['ss_mb_id']) { // 로그인중이라면
 $write = array();
 $write_table = "";
 if ($bo_table) {
-    $board = sql_fetch(" select * from {$g5['board_table']} where bo_table = '$bo_table' ");
+    $sql = " select * from {$g5['board_table']} where bo_table = '$bo_table' ";
+    if ($config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+        $g5['language'] = (isset($_COOKIE['lang']) ? $_COOKIE['lang'] : $config['cf_i18n_default']);
+        $g5['write_prefix'] .= $g5['language'] . '_';
+        $sql .= " and bo_lang = '" . $g5['language'] . "' ";
+    }
+    $board = sql_fetch($sql);
     if ($board['bo_table']) {
         set_cookie("ck_bo_table", $board['bo_table'], 86400 * 1);
         $gr_id = $board['gr_id'];

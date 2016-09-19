@@ -816,13 +816,18 @@ function get_category_option($bo_table='', $ca_name='')
 // 게시판 그룹을 SELECT 형식으로 얻음
 function get_group_select($name, $selected='', $event='')
 {
-    global $g5, $is_admin, $member;
+    global $g5, $config, $is_admin, $member;
 
     $sql = " select gr_id, gr_subject from {$g5['group_table']} a ";
     if ($is_admin == "group") {
         $sql .= " left join {$g5['member_table']} b on (b.mb_id = a.gr_admin)
                   where b.mb_id = '{$member['mb_id']}' ";
     }
+    if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+        $sql .= (!preg_match('/where/', $sql) ? " where (1) " : "");
+        $sql .= " and a.gr_lang = '" . G5_I18N_LANG . "' ";
+    }
+
     $sql .= " order by a.gr_id ";
 
     $result = sql_query($sql);

@@ -16,7 +16,11 @@ if ($w == '') {
     $html_title .= ' 생성';
 } else if ($w == 'u') {
     $gr_id_attr = 'readonly';
-    $gr = sql_fetch(" select * from {$g5['group_table']} where gr_id = '$gr_id' ");
+    $sql = " select * from {$g5['group_table']} where gr_id = '$gr_id' ";
+    if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+        $sql .= " and gr_lang = '" . G5_I18N_LANG . "' ";
+    }
+    $gr = sql_fetch($sql);
     $html_title .= ' 수정';
 }
 else

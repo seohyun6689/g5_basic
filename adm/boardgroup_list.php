@@ -10,7 +10,12 @@ if (!isset($group['gr_device'])) {
     // pc : pc 전용 사용
     // mobile : mobile 전용 사용
     // none : 사용 안함
-    sql_query(" ALTER TABLE  `{$g5['board_group_table']}` ADD  `gr_device` ENUM(  'both',  'pc',  'mobile' ) NOT NULL DEFAULT  'both' AFTER  `gr_subject` ", false);
+    sql_query(" ALTER TABLE  `{$g5['group_table']}` ADD  `gr_device` ENUM(  'both',  'pc',  'mobile' ) NOT NULL DEFAULT  'both' AFTER  `gr_subject` ", false);
+}
+
+if (!isset($group['gr_lang'])) {
+    sql_query(" ALTER TABLE `{$g5['group_table']}` ADD `gr_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `gr_id`", false);
+    sql_query(" ALTER TABLE `{$g5['group_table']}` DROP PRIMARY KEY, ADD PRIMARY KEY (`gr_id`, `gr_lang`) ", false);
 }
 
 $sql_common = " from {$g5['group_table']} ";
@@ -31,6 +36,10 @@ if ($stx) {
             break;
     }
     $sql_search .= " ) ";
+}
+
+if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
+    $sql_search .= " and gr_lang = '" . G5_I18N_LANG . "' ";
 }
 
 if ($sst)
