@@ -85,6 +85,8 @@ if (!isset($board['bo_lang'])) {
     sql_query(" ALTER TABLE `{$g5['board_good_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `bg_id` ", false);
     sql_query(" ALTER TABLE `{$g5['board_new_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `bn_id` ", false);
     sql_query(" ALTER TABLE `{$g5['scrap_table']}` ADD `bo_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `mb_id` ");
+    sql_query(" ALTER TABLE `{$g5['board_table']}` DROP PRIMARY KEY, ADD PRIMARY KEY (`bo_table`, `bo_lang`) ");
+    sql_query(" ALTER TABLE `{$g5['board_file_table']}` DROP PRIMARY KEY, ADD PRIMARY KEY (`bo_lang`, `bo_table`, `wr_id`, `bf_no`) ");
 }
 
 $required = "";

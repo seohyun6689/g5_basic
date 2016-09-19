@@ -16,16 +16,16 @@ if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['
 }
 
 // 게시판 설정 삭제
-sql_query(" delete from {$g5['board_table']} where bo_table = '{$tmp_bo_table}' ");
+sql_query(" delete from {$g5['board_table']} where bo_table = '{$tmp_bo_table}' {$sql_search} ");
 
 // 최신글 삭제
-sql_query(" delete from {$g5['board_new_table']} where bo_table = '{$tmp_bo_table}' ");
+sql_query(" delete from {$g5['board_new_table']} where bo_table = '{$tmp_bo_table}' {$sql_search} ");
 
 // 스크랩 삭제
-sql_query(" delete from {$g5['scrap_table']} where bo_table = '{$tmp_bo_table}' ");
+sql_query(" delete from {$g5['scrap_table']} where bo_table = '{$tmp_bo_table}' {$sql_search} ");
 
 // 파일 삭제
-sql_query(" delete from {$g5['board_file_table']} where bo_table = '{$tmp_bo_table}' ");
+sql_query(" delete from {$g5['board_file_table']} where bo_table = '{$tmp_bo_table}' {$sql_search} ");
 
 // 게시판 테이블 DROP
 sql_query(" drop table {$g5['write_prefix']}{$tmp_bo_table} ", FALSE);

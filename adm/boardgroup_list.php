@@ -15,6 +15,7 @@ if (!isset($group['gr_device'])) {
 
 if (!isset($group['gr_lang'])) {
     sql_query(" ALTER TABLE `{$g5['group_table']}` ADD `gr_lang` VARCHAR(20) NOT NULL DEFAULT 'ko' AFTER `gr_id`", false);
+    sql_query(" ALTER TABLE `{$g5['group_table']}` DROP PRIMARY KEY, ADD PRIMARY KEY (`gr_id`, `gr_lang`) ", false);
 }
 
 $sql_common = " from {$g5['group_table']} ";

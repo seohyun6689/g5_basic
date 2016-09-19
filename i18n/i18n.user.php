@@ -37,11 +37,11 @@ class G5_i18n extends i18n {
 $i18n = new G5_i18n();
 $i18n->setCachePath(G5_DATA_PATH . '/cache/i18n');
 $i18n->setFilePath(G5_LANG_PATH . '/{LANGUAGE}.json'); // language file path
-if ($config['cf_i18n_default']) {
-    $i18n->setFallbackLang($config['cf_i18n_default']);
-}
 if (isset($_GET['language']) && trim($_GET['language']) !== '') {
     setcookie('lang', $_GET['language'], time() + (60*60*24), '/');
+} else if ($config['cf_i18n_default'] && empty($_COOKIE['lang'])) {
+    $i18n->setForcedLang($config['cf_i18n_default']);
+    setcookie('lang', $config['cf_i18n_default'], time() + (60*60*24), '/');
 }
 
 $i18n->init();
