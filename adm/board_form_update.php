@@ -148,6 +148,7 @@ if ($w == '') {
     $sql = " select count(*) as cnt from {$g5['board_table']} where bo_table = '{$bo_table}' ";
     if (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] && $config['cf_use_i18n_board']) {
         $sql .= " and bo_lang = '" . G5_I18N_LANG . "' ";
+        $common .= ", bo_lang = '" . G5_I18N_LANG . "'";
     }
     $row = sql_fetch($sql);
     if ($row['cnt'])
