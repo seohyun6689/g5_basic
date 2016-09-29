@@ -55,14 +55,14 @@ if ($w == "u")
     if (!$co['co_id'])
         alert('등록된 자료가 없습니다.', './contentlist.php');
 
-    $content_pc_path = $contentpath . '/' . $co['co_id'] . (defined('G5_I18N_LANG') && G5_I18N_LANG ? '.' . G5_I18N_LANG : '') . '.php';
+    $content_pc_path = $contentpath . '/' . $co['co_id'] . (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] ? '.' . G5_I18N_LANG : '') . '.php';
     if ( file_exists($content_pc_path) && $fp = fopen($content_pc_path, 'rb') ) {
 	    $flength = ( filesize($content_pc_path) > 0 ? filesize($content_pc_path) : 1024 );
 	    $co['co_content'] = fread($fp, $flength);
 	    fclose($fp);
     }
 
-    $content_mobile_path = $contentpath . '/mobile/' . $co['co_id'] . (defined('G5_I18N_LANG') && G5_I18N_LANG ? '.' . G5_I18N_LANG : '') . '.php';
+    $content_mobile_path = $contentpath . '/mobile/' . $co['co_id'] . (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] ? '.' . G5_I18N_LANG : '') . '.php';
     if ( file_exists($content_mobile_path) && $fp = fopen($content_mobile_path, 'rb') ) {
 	    $flength = ( filesize($content_mobile_path) > 0 ? filesize($content_mobile_path) : 1024 );
 	    $co['co_mobile_content'] = fread($fp, $flength);

@@ -76,8 +76,8 @@ else if ($w == "d")
     }
     $result = sql_query($sql);
 	if ($result) {
-		@unlink(G5_DATA_PATH . '/pages/' . $co_id . (defined('G5_I18N_LANG') && G5_I18N_LANG && $config['cf_use_i18n'] ? '.' . G5_I18N_LANG : '') . '.php');
-		@unlink(G5_DATA_PATH . '/pages/mobile/' . $co_id . (defined('G5_I18N_LANG') && G5_I18N_LANG && $config['cf_use_i18n'] ? '.' . G5_I18N_LANG : '') . '.php');
+		@unlink(G5_DATA_PATH . '/pages/' . $co_id . (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] ? '.' . G5_I18N_LANG : '') . '.php');
+		@unlink(G5_DATA_PATH . '/pages/mobile/' . $co_id . (defined('G5_USE_I18N') && G5_USE_I18N && $config['cf_use_i18n'] ? '.' . G5_I18N_LANG : '') . '.php');
 	}
 }
 
