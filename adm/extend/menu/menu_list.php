@@ -45,11 +45,31 @@ include_once(G5_ADMIN_PATH .'/admin.head.php');
 
 $colspan = 10;
 ?>
+<h2>엑셀 일괄 등록</h2>
+<form name="fmenuexcel" action="./menu_import_excel.php" method="post" enctype="multipart/form-data">
+	<div class="local_desc01 local_desc">
+	    <p><strong>주의!</strong> 기존에 등록된 메뉴가 있을 경우 <strong>초기화</strong> 됩니다. 업로드시 주의하셔야 합니다.</p>
+	</div>
 
+	<div class="tbl_frm01 tbl_wrap">
+		<table>
+		<tbody>
+			<tr>
+				<th scope="row">엑셀파일</th>
+				<td><input type="file" name="import_excel" value="" required="" /></td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+	<div class="btn_confirm01 btn_confirm">
+		<button type="submit" class="btn_submit">등록</button>
+	</div>
+</form>
+
+<h2>메뉴관리</h2>
 <div class="local_desc01 local_desc">
     <p><strong>주의!</strong> 메뉴설정 작업 후 반드시 <strong>확인</strong>을 누르셔야 저장됩니다.</p>
 </div>
-
 <form name="fmenulist" id="fmenulist" method="post" action="./menu_list_updateAll.php" onsubmit="return fmenulist_submit(this);">
 <input type="hidden" name="token" value="<?php echo $token ?>">
 
