@@ -172,7 +172,7 @@ if ($w == '' || $w == 'u') {
     alert('w ' . __(core_a59));
 }
 
-if ($is_guest && !chk_captcha()) {
+if (isset($_POST['captcha_key']) && $_POST['captcha_key'] && $is_guest && !chk_captcha()) {
     alert(__(core_a51));
 }
 
