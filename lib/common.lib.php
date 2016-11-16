@@ -402,9 +402,9 @@ function get_list($write_row, $board, $skin_url, $subject_len=40)
         $list['icon_link'] = '<img src="'.$skin_url.'/img/icon_link.gif" alt="관련링크">';
 
     // 분류명 링크
-    $list['ca_name_href'] = G5_BBS_URL.'/board.php?bo_table='.$board['bo_table'].'&amp;sca='.urlencode($list['ca_name']);
+    $list['ca_name_href'] = (defined('G5_IS_ADMIN') ? G5_ADMIN_URL . '/bbs'  : G5_BBS_URL).'/board.php?bo_table='.$board['bo_table'].'&amp;sca='.urlencode($list['ca_name']);
 
-    $list['href'] = G5_BBS_URL.'/board.php?bo_table='.$board['bo_table'].'&amp;wr_id='.$list['wr_id'].$qstr;
+    $list['href'] = (defined('G5_IS_ADMIN') ? G5_ADMIN_URL . '/bbs'  : G5_BBS_URL).'/board.php?bo_table='.$board['bo_table'].'&amp;wr_id='.$list['wr_id'].$qstr;
     $list['comment_href'] = $list['href'];
 
     $list['icon_new'] = '';
