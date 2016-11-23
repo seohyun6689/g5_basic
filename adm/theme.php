@@ -2,6 +2,37 @@
 $sub_menu = "100280";
 include_once('./_common.php');
 
+// http://kr1.php.net/manual/en/function.curl-setopt-array.php 참고
+if (!function_exists('curl_setopt_array')) {
+   function curl_setopt_array(&$ch, $curl_options)
+   {
+       foreach ($curl_options as $option => $value) {
+           if (!curl_setopt($ch, $option, $value)) {
+               return false;
+           } 
+       }
+       return true;
+   }
+}
+
+function seohyun_theme_items()
+{
+	// curl library 가 지원되어야 합니다.
+    if (!function_exists('curl_init')) return -3;
+    $client_opt = array(
+        CURLOPT_URL => "http://api.seohyunco.com/theme/items",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_TIMEOUT => 10,
+		// CURLOPT_HTTPHEADER => array("Host: apis.naver.com", "Pragma: no-cache", "Accept: */*")
+    );
+    $ch = curl_init();
+    curl_setopt_array($ch, $client_opt);
+    $response = curl_exec($ch);
+
+	return $response;
+}
+
 if ($is_admin != 'super')
     alert('최고관리자만 접근 가능합니다.');
 
@@ -23,8 +54,10 @@ if($config['cf_theme'] && !in_array($config['cf_theme'], $theme))
 
 
 // 원격 테마 정보를 불러오기
-$remote_theme_content = file_get_contents('http://api.seohyunco.com/theme/items');
+
+$remote_theme_content = seohyun_theme_items();
 $remote_themes = json_decode($remote_theme_content);
+
 $remote_theme = array();
 if (isset($remote_themes) && count($remote_themes)) {
     foreach ($remote_themes as $key => $val ) {
@@ -100,7 +133,6 @@ include_once('./admin.head.php');
         <?php
         for($i=0; $i<$remote_theme_count; $i++) {
             $info = (array)$remote_themes[$i];
-
             $name = get_text($info['theme_name']);
             if($info['screenshot'])
                 $screenshot = '<img src="'.$info['screenshot'].'" alt="'.$name.'">';
