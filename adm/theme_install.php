@@ -18,7 +18,7 @@ if (file_exists($theme_path . '/' . $theme) && is_dir($theme_path . '/' . $theme
     error_print(array('error'=>'테마 디렉토리에 같은 테마명이 존재합니다.'));
 }
 
-$remote_theme_content = file_get_contents('http://api.seohyunco.com/theme/items/id/' . $theme);
+$remote_theme_content = seohyun_theme_items('http://api.seohyunco.com/theme/items/id/' . $theme);
 $remote_theme = json_decode($remote_theme_content);
 $master_path = G5_DATA_PATH . '/master.tar.gz';
 $cmd = 'curl -Lko ' . $master_path . ' ' . $remote_theme->download;

@@ -23,8 +23,10 @@ if($config['cf_theme'] && !in_array($config['cf_theme'], $theme))
 
 
 // 원격 테마 정보를 불러오기
-$remote_theme_content = file_get_contents('http://api.seohyunco.com/theme/items');
+
+$remote_theme_content = seohyun_theme_items('http://api.seohyunco.com/theme/items/id/' . $theme);
 $remote_themes = json_decode($remote_theme_content);
+
 $remote_theme = array();
 if (isset($remote_themes) && count($remote_themes)) {
     foreach ($remote_themes as $key => $val ) {
@@ -100,7 +102,6 @@ include_once('./admin.head.php');
         <?php
         for($i=0; $i<$remote_theme_count; $i++) {
             $info = (array)$remote_themes[$i];
-
             $name = get_text($info['theme_name']);
             if($info['screenshot'])
                 $screenshot = '<img src="'.$info['screenshot'].'" alt="'.$name.'">';
