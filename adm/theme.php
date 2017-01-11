@@ -24,7 +24,7 @@ if($config['cf_theme'] && !in_array($config['cf_theme'], $theme))
 
 // 원격 테마 정보를 불러오기
 
-$remote_theme_content = seohyun_theme_items('http://api.seohyunco.com/theme/items/id/' . $theme);
+$remote_theme_content = seohyun_theme_items('http://api.seohyunco.com/theme/items');
 $remote_themes = json_decode($remote_theme_content);
 
 $remote_theme = array();
