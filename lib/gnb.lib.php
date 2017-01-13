@@ -137,7 +137,7 @@ class GNB {
 		$is_define = ( defined('G5_MENU') && G5_MENU == $menu['me_code'] );
 		$is_menu = preg_match( '/^' . preg_quote( $_SERVER['REQUEST_URI'], '/' )  . '$/' , $menu['me_link'] );
 		$is_content = (isset($_REQUEST['co_id']) && $_REQUEST['co_id'] == $me_link_parameters['co_id'] );
-		$is_content_path = ($uri_segment['path'] == $me_link_parse['path']);
+		$is_content_path = (isset($_REQUEST['co_id']) && $uri_segment['path'] == $me_link_parse['path']);
 		$is_board = ( isset($_REQUEST['bo_table']) && $_REQUEST['bo_table'] == $me_link_parameters['bo_table'] );
 
 		// 메뉴가 게시판이고 카테고리가 존재하는 경우 선택
