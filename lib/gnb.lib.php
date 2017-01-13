@@ -132,10 +132,12 @@ class GNB {
 
 		$me_link_parse = parse_url( $menu['me_link'] );
 		parse_str($me_link_parse['query'], $me_link_parameters);
+		$uri_segment = parse_url($_SERVER['REQUEST_URI']);
 
 		$is_define = ( defined('G5_MENU') && G5_MENU == $menu['me_code'] );
 		$is_menu = preg_match( '/^' . preg_quote( $_SERVER['REQUEST_URI'], '/' )  . '$/' , $menu['me_link'] );
 		$is_content = (isset($_REQUEST['co_id']) && $_REQUEST['co_id'] == $me_link_parameters['co_id'] );
+		$is_content_path = ($uri_segment['path'] == $me_link_parse['path']);
 		$is_board = ( isset($_REQUEST['bo_table']) && $_REQUEST['bo_table'] == $me_link_parameters['bo_table'] );
 
 		// 메뉴가 게시판이고 카테고리가 존재하는 경우 선택
@@ -149,7 +151,7 @@ class GNB {
 			$is_shop = (isset($_REQUEST['ca_id']) && $_REQUEST['ca_id'] == $me_link_parameters['ca_id']);
 		}
 
-		return ( $is_define || $is_menu || $is_content || $is_board || $is_shop );
+		return ( $is_define || $is_menu || $is_content || $is_content_path || $is_board || $is_shop );
 	}
 
 	function display( $skin = null )
